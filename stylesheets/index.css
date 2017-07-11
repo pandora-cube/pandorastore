@@ -1,0 +1,48 @@
+header ul.orbit li,
+header ul.orbit button {
+	cursor: pointer;
+}
+@media screen and (max-width: 70rem) { /* for Mobile */
+	header .orbitArea {
+		font-size: .8em;
+	}
+	header ul.orbit {
+		max-width: 100%;
+	}
+}
+@media screen and (min-width: 70rem) { /* for Desktop */
+	header .orbitArea {
+		padding: 0 5rem 2rem 5rem;
+	}
+	header ul.orbit {
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+}
+
+#contents .list {
+	white-space: nowrap;
+	overflow: hidden;
+	margin: -.5em 0;
+}
+#contents .list > div {
+	display: inline-block;
+	float: left;
+	padding: 1em;
+	background-color: #e8e8e8;
+	margin: .5em;
+}
+#contents .list .cover img {
+	width: 100%;
+	height: 100%;
+}
+@media screen and (max-width: 70rem) { /* for Mobile */
+	#contents h2 {
+		margin-bottom: .9rem;
+	}
+}
+@media screen and (min-width: 70rem) { /* for Desktop */
+	#contents h2 {
+		margin-bottom: 1.8rem;
+	}
+}

@@ -1,0 +1,49 @@
+.menuArea {
+	background-color: white;
+}
+.menuArea.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right:0;
+	z-index: 1000;
+}
+.menuArea.fixed .menu {
+	border-top: none;
+}
+.menuArea.enabled {
+	background-color: #555;
+	color: white;
+}
+.menuArea .menu {
+	list-style: none;
+	line-height: 3em;
+	white-space: normal;
+	margin: 0 auto;
+	border-top: 1px solid #AAA;
+}
+.menuArea .menu li {
+	display: inline-block;
+	height: 3em;
+	line-height: 3em;
+	font-weight: bold;
+	font-size: 1.1em;
+	cursor: pointer;
+}
+.menuArea .menu li.enabled {
+	background-color: #8badc9;
+	color: white;
+}
+@media screen and (max-width: 70rem) { /* for Mobile */
+	.menuArea .menu {
+		text-align: center;
+	}
+	.menuArea .menu li {
+		padding: 0 1em;
+	}
+}
+@media screen and (min-width: 70rem) { /* for Desktop */
+	.menuArea .menu li {
+		padding: 0 2em;
+	}
+}

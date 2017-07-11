@@ -1,0 +1,173 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+* {
+	margin: 0;
+	padding: 0;
+	/* 텍스트 크기 자동 조절 X */
+	-webkit-text-size-adjust: none;
+}
+::selection {
+	background-color: rgba(153, 255, 0, .3);
+}
+
+body {
+	white-space: nowrap;
+	background-color: #F1F1F1;
+	margin: 0;
+	color: #555;
+	font-family: "Nanum Gothic", sans-serif;
+}
+/* body를 제외한 모든 요소의 폰트 사이즈는 em단위 */
+@media screen and (max-width: 70rem) { /* for Mobile */
+	body {
+		font-size: .7rem;
+	}
+}
+@media screen and (min-width: 70rem) { /* for Desktop */
+	body {
+		font-size: 1rem;
+	}
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+a:hover {
+	color: #8badc9;
+}
+
+cast {
+	display: none;
+}
+
+header {
+	background-color: white;
+	margin-top: 10px;
+}
+header .headerArea {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+header h1 {
+	height: 2rem;
+	line-height: 2rem;
+	font-size: 2em;
+}
+header .links {
+	list-style: none;
+	display: inline-block;
+	margin: 0;
+}
+header .links li {
+	display: inline;
+	float: left;
+}
+header .links li:nth-last-child(n+2)::after {
+	content: "|";
+	margin: 0 1em;
+	color: #AAA;
+}
+header .subject {
+	clear: both;
+}
+header .menuArea .menu {
+	max-width: 1400px;
+}
+@media screen and (max-width: 70rem) { /* for Mobile */
+	header {
+		padding: 2rem 0 1rem 0;
+	}
+	header .blankArea {
+		height: 2rem;
+	}
+	header .headerArea {
+		padding: 0 2rem;
+		text-align: center;
+	}
+	header h1 {
+		text-align: center;
+		margin: 0;
+	}
+	header .subject {
+		display: none;
+	}
+	header .links {
+		height: 1rem;
+		line-height: 1rem;
+		text-align: center;
+	}
+}
+@media screen and (min-width: 70rem) { /* for Desktop */
+	header .blankArea {
+		height: 5rem;
+	}
+	header .headerArea {
+		padding: 2rem 5rem;
+	}
+	header h1 {
+		float: left;
+		margin: 0 0 5rem 0;
+	}
+	header h2 {
+		text-align: center;
+		font-size: 2.3em;
+		font-weight: normal;
+		letter-spacing: .5rem;
+	}
+	header h3 {
+		text-align: center;
+		font-size: 1em;
+		font-weight: normal;
+	}
+	header .links {
+		float: right;
+		height: 2rem;
+		line-height: 2rem;
+	}
+	header .subject {
+		margin-top: 2rem;
+	}
+	header .menuArea {
+		padding: 0 5rem;
+	}
+}
+
+#contents {
+	max-width: 1400px;
+	margin: 0 auto;
+}
+#contents h2 {
+	font-size: 1.7em;
+	font-weight: 500;
+	color: black;
+}
+@media screen and (max-width: 70rem) { /* for Mobile */
+	#contents {
+		padding: 1rem;
+	}
+}
+@media screen and (min-width: 70rem) { /* for Desktop */
+	#contents {
+		padding: 2rem 5rem;
+	}
+}
+
+footer {
+	background-color: #333;
+}
+footer .footerArea {
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+	margin: 0 auto;
+}
+footer .copyright {
+	text-align: center;
+	color: #AAA;
+}
+footer .copyright img {
+	width: 25em;
+}
+footer .copyright div {
+	margin: 1rem 0;
+}
