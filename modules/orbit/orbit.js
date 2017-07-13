@@ -41,17 +41,20 @@ $(document).ready(function() {
 					.attr("position", datum.position)
 					.appendTo(orbit);
 
-				if(datum.summary != undefined || datum.description != undefined) {
+				var summary = datum.summary || "";
+				var description = datum.description || "";
+				var url = datum.url || "";
+				if(summary.length > 0 || description.length > 0) {
 					var wrapper = $("<div/>").addClass("caption-wrapper").appendTo(slide);
 					var caption = $("<div/>").addClass("caption").appendTo(wrapper);
 
-					if(datum.summary != undefined)
-						$("<div/>").addClass("summary").text(datum.summary).appendTo(caption);
-					if(datum.description != undefined)
-						$("<div/>").addClass("description").text(datum.description).appendTo(caption);
+					if(summary.length > 0)
+						$("<div/>").addClass("summary").text(summary).appendTo(caption);
+					if(description.length > 0)
+						$("<div/>").addClass("description").text(description).appendTo(caption);
 				}
-				if(datum.url != undefined) {
-					slide.on("click", { url: datum.url }, function(e) {
+				if(url.length > 0) {
+					slide.on("click", { url: url }, function(e) {
 						location.href = e.data.url;
 					});
 				}
@@ -66,7 +69,7 @@ $(document).ready(function() {
 		}
 
 		function activeSlide(index, speed, interval) {
-			interval = interval | 5000;
+			interval = interval || 5000;
 			clearTimeout(orbitTimer);
 
 			var pre = $(orbit).find("li.active");

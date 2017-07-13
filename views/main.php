@@ -72,6 +72,20 @@
 	<script src="libraries/jquery.js"></script>
 	<script src="modules/orbit/orbit.js"></script>
 	<script src="modules/stickymenu/stickymenu.js"></script>
-	<script src="scripts/header.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			setHeaderOrbitHeight();
+			$(window).on("resize", setHeaderOrbitHeight);
+
+			$("header .orbitArea").each(function() { this.load(<?=json_encode($orbit)?>) });
+
+			function setHeaderOrbitHeight() {
+				$("header .orbitArea").each(function() {
+					$(this).height($(this).find("ul.orbit").width() * 0.4);
+				});
+			}
+		});
+	</script>
 </body>
 </html>
