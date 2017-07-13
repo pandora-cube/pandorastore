@@ -25,7 +25,7 @@ header ul.orbit button {
 	overflow: hidden;
 	margin: -.5em 0;
 }
-#contents .list > div {
+#contents .list > section {
 	display: inline-block;
 	float: left;
 	padding: 1em;
