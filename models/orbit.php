@@ -1,5 +1,5 @@
 <?php
-class OrbitModel {
+class Orbit {
 	private $mysqli = NULL;
 
 	function __construct($link) {
