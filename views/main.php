@@ -75,12 +75,12 @@
 
 	<script>
 		$(document).ready(function() {
-			setHeaderOrbitHeight();
-			$(window).on("resize", setHeaderOrbitHeight);
+			updateOrbitHeight();
+			$(window).on("resize", updateOrbitHeight);
 
 			$("header .orbitArea").each(function() { this.load(<?=json_encode($orbit)?>) });
 
-			function setHeaderOrbitHeight() {
+			function updateOrbitHeight() {
 				$("header .orbitArea").each(function() {
 					$(this).height($(this).find("ul.orbit").width() * 0.4);
 				});
