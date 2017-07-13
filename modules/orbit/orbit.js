@@ -37,13 +37,13 @@ $(document).ready(function() {
 		function applyData(data) {
 			for(var datum of data) {
 				var slide = $('<li/>')
-					.attr("image", datum.image)
-					.attr("position", datum.position)
+					.attr("image", datum["Image"])
+					.attr("position", datum["Position"])
 					.appendTo(orbit);
 
-				var summary = datum.summary || "";
-				var description = datum.description || "";
-				var url = datum.url || "";
+				var summary = datum["Summary"] || "";
+				var description = datum["Description"] || "";
+				var url = datum["URL"] || "";
 				if(summary.length > 0 || description.length > 0) {
 					var wrapper = $("<div/>").addClass("caption-wrapper").appendTo(slide);
 					var caption = $("<div/>").addClass("caption").appendTo(wrapper);

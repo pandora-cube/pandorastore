@@ -8,7 +8,7 @@ class OrbitModel {
 
 	function load($table) {
 		$data = array();
-		if($result = $this->mysqli->query("SELECT * FROM $table ORDER BY id ASC")) {
+		if($result = $this->mysqli->query("SELECT * FROM $table ORDER BY ID ASC")) {
 			for($i = 0; $i < $result->num_rows; $i++)
 				$data[$i] = $result->fetch_assoc();
 			$result->free();
