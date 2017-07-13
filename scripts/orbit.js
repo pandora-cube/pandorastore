@@ -7,7 +7,7 @@ $(document).ready(function() {
 			$(this).height($(this).find("ul.orbit").width() * 0.4);
 		});
 	}
-}
+});
 
 function loadOrbitData(data) {
 	$("header .orbitArea").each(function() {
