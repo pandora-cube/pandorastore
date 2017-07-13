@@ -72,31 +72,13 @@
 	<script src="libraries/jquery.js"></script>
 	<script src="modules/orbit/orbit.js"></script>
 	<script src="modules/stickymenu/stickymenu.js"></script>
+	<script src="scripts/orbit.js"></script>
+	<script src="scripts/gamelist.js"></script>
 
 	<script>
 		$(document).ready(function() {
-			updateOrbitHeight();
-			$(window).on("resize", updateOrbitHeight);
-			$("header .orbitArea").each(function() { this.load(<?=json_encode($orbit)?>); });
-
+			loadOrbitData(<?=json_encode($orbit)?>);
 			loadGameData(<?=json_encode($games)?>);
-
-			function updateOrbitHeight() {
-				$("header .orbitArea").each(function() {
-					$(this).height($(this).find("ul.orbit").width() * 0.4);
-				});
-			}
-
-			function loadGameData(data) {
-				for(var datum of data) {
-					var section = $("<section/>")
-						.appendTo("#contents .list")
-						.html($("#contents .list cast").html());
-					section.find(".cover img").attr("src", datum["Thumbnail"]);
-					section.find(".details .title").text(datum["Title"]);
-					section.find(".details .subtitle").text(datum["Creator"]);
-				}
-			}
 		});
 	</script>
 </body>
