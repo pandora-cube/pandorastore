@@ -11,6 +11,6 @@ $(document).ready(function() {
 
 function loadOrbitData(data) {
 	$("header .orbitArea").each(function() {
-		this.load(<?=json_encode($orbit)?>);
+		this.load(data);
 	});
 }
