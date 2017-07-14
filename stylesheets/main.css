@@ -31,10 +31,21 @@ header ul.orbit button {
 	padding: 1em;
 	background-color: #e8e8e8;
 	margin: .5em;
+	cursor: pointer;
+}
+#contents .list .cover {
+	width: 10em;
+	height: 10em;
 }
 #contents .list .cover img {
 	width: 100%;
 	height: 100%;
+}
+#contents .list .details {
+	margin-top: .5em;
+}
+#contents .list .details .title {
+	font-weight: 600;
 }
 @media screen and (max-width: 70rem) { /* for Mobile */
 	#contents h2 {
