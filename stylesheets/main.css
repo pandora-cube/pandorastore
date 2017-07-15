@@ -28,6 +28,7 @@ header ul.orbit button {
 #contents .list > section {
 	display: inline-block;
 	float: left;
+	width: 10em;
 	padding: 1em;
 	background-color: #e8e8e8;
 	margin: .5em;
@@ -36,16 +37,25 @@ header ul.orbit button {
 #contents .list .cover {
 	width: 10em;
 	height: 10em;
+	line-height: 10em;
+	background-color: white;
+	overflow: hidden;
 }
 #contents .list .cover img {
 	width: 100%;
-	height: 100%;
+	vertical-align: middle;
 }
-#contents .list .details {
+#contents .list .title {
+	margin-top: .7em;
+	font-size: 1.1em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#contents .list .subtitle {
 	margin-top: .5em;
-}
-#contents .list .details .title {
-	font-weight: 600;
+	font-size: .9em;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 @media screen and (max-width: 70rem) { /* for Mobile */
 	#contents h2 {
