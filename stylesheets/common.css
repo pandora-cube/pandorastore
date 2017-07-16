@@ -76,7 +76,7 @@ header .menuArea .menu {
 }
 @media screen and (max-width: 70rem) { /* for Mobile */
 	header {
-		padding: 2rem 0 1rem 0;
+		padding-top: 2rem;
 	}
 	header .blankArea {
 		height: 2rem;
