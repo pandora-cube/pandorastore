@@ -36,9 +36,9 @@ $(document).ready(function() {
 
 		function applyData(data) {
 			for(var datum of data) {
-				var slide = $('<li/>')
-					.attr("image", datum["Image"])
-					.attr("position", datum["Position"])
+				var slide = $("<li/>")
+					.data("image", datum["Image"])
+					.data("position", datum["Position"])
 					.appendTo(orbit);
 
 				var summary = datum["Summary"] || "";
@@ -63,8 +63,8 @@ $(document).ready(function() {
 
 		function applyImages() {
 			$(orbit).find("li").each(function() {
-				$(this).css("background-image", "url(\"" + $(this).attr("image") + "\")");
-				$(this).css("background-position", $(this).attr("position"));
+				$(this).css("background-image", "url(\"" + $(this).data("image") + "\")");
+				$(this).css("background-position", $(this).data("position"));
 			});
 		}
 
