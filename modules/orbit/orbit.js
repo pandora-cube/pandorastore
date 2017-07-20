@@ -68,8 +68,7 @@ $(document).ready(function() {
 			});
 		}
 
-		function activeSlide(index, speed, interval) {
-			interval = interval || 5000;
+		function activeSlide(index, speed, interval=5000) {
 			clearTimeout(orbitTimer);
 
 			var pre = $(orbit).find("li.active");
