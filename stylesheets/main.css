@@ -20,12 +20,12 @@ header ul.orbit button {
 	}
 }
 
-#contents .list {
+#contents .game-list {
 	white-space: nowrap;
 	overflow: hidden;
 	margin: -.5em 0;
 }
-#contents .list > section {
+#contents .game-list > section {
 	display: inline-block;
 	float: left;
 	width: 10em;
@@ -34,24 +34,24 @@ header ul.orbit button {
 	margin: .5em;
 	cursor: pointer;
 }
-#contents .list .cover {
+#contents .game-list .cover {
 	width: 10em;
 	height: 10em;
 	line-height: 10em;
 	background-color: white;
 	overflow: hidden;
 }
-#contents .list .cover img {
+#contents .game-list .cover img {
 	width: 100%;
 	vertical-align: middle;
 }
-#contents .list .title {
+#contents .game-list .title {
 	margin-top: .7em;
 	font-size: 1.1em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-#contents .list .subtitle {
+#contents .game-list .subtitle {
 	margin-top: .5em;
 	font-size: .9em;
 	overflow: hidden;

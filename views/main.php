@@ -47,7 +47,7 @@
 
 	<div id="contents">
 		<h2>목록</h2>
-		<div class="list">
+		<div class="game-list">
 			<cast>
 				<div class="cover">
 					<img />
