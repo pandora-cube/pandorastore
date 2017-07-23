@@ -1,11 +1,12 @@
 function loadGameData(data) {
 	for(var datum of data) {
-		var section = $("<section/>")
+		var $section = $("<section/>")
 			.html($("#contents .game-list cast").html())
-			.attr("game-id", datum["ID"])
+			.data("game-id", datum["ID"])
 			.appendTo("#contents .game-list");
-		section.find(".cover img").attr("src", datum["Thumbnail"]);
-		section.find(".details .title").text(datum["Title"]);
-		section.find(".details .subtitle").text(datum["Creator"]);
+
+		$section.find(".cover img").attr("src", datum["Thumbnail"]);
+		$section.find(".details .title").text(datum["Title"]);
+		$section.find(".details .subtitle").text(datum["Creator"]);
 	}
 }
