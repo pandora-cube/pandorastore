@@ -3,13 +3,17 @@ $(document).ready(function() {
 		var $orbit = $("<ul/>").addClass("orbit").appendTo(this);
 		var orbitTimer;
 
-		addButton("<", "left");
-		addButton(">", "right");
-
 		this.load = function(data) {
 			applyData(data);
 			applyImages();
-			activeSlide(0, "slow");
+
+			if(data.length > 1) {
+				addButton("<", "left");
+				addButton(">", "right");
+				activeSlide(0, "slow");
+			} else {
+				activeSlide(0, 0, 0);
+			}
 		};
 
 		this.stop = function() {
@@ -91,7 +95,7 @@ $(document).ready(function() {
 			$slide.addClass("active");
 			if($pre.length == 0) {
 				$slide.css("display", "list-item");
-			} else {
+			} else if($pre.get(0) != $slide.get(0)) {
 				$pre.removeClass("active");
 				$slide.css("z-index", 2);
 				$slide.fadeIn(speed, function() {
