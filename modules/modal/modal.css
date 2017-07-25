@@ -1,0 +1,49 @@
+.modal-origin {
+	display: none;
+}
+
+.modalArea {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 1001;
+	background-color: rgba(0, 0, 0, 0.75);
+}
+.modalArea .modal {
+	background-color: white;
+	padding: 1em;
+	overflow: auto;
+}
+.modalArea .closebutton {
+	float: right;
+}
+@media screen and (max-width: 70rem) { /* for Mobile */
+	.modalArea .modal {
+		position: fixed;
+		top: 10%;
+		right: 0;
+		left: 0;
+		bottom: 10%;
+	}
+	.modalArea .closebutton {
+		font-size: 1.2em;
+		margin: -.7em -.5em 0 0;
+	}
+}
+@media screen and (min-width: 70rem) { /* for Desktop */
+	.modalArea {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.modalArea .modal {
+		display: inline-block;
+		max-width: 90%;
+		max-height: 90%;
+	}
+	.modalArea .closebutton {
+		margin: -1em -.7em 0 0;
+	}
+}
