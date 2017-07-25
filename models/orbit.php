@@ -10,7 +10,7 @@ class Orbit {
 
 	public function load() {
 		$data = array();
-		if($result = $this->mysqli->query("SELECT * FROM $this->table WHERE Actived = 1 ORDER BY ID ASC")) {
+		if($result = $this->mysqli->query("SELECT * FROM ".$this->table["orbit"]." WHERE Actived = 1 ORDER BY ID ASC")) {
 			for($i = 0; $i < $result->num_rows; $i++)
 				$data[$i] = $result->fetch_assoc();
 			$result->free();
