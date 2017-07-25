@@ -3,12 +3,12 @@ class Game {
 	private $mysqli = NULL;
 	private $table = NULL;
 
-	function __construct($link, $table) {
+	public function __construct($link, $table) {
 		$this->mysqli = $link;
 		$this->table = $table;
 	}
 
-	function loadAll() {
+	public function loadAll() {
 		$data = array();
 		if($result = $this->mysqli->query("SELECT * FROM $this->table ORDER BY CreatedTime DESC")) {
 			for($i = 0; $i < $result->num_rows; $i++)
@@ -18,7 +18,7 @@ class Game {
 		return $data;
 	}
 
-	function load($id) {
+	public function load($id) {
 		$id = (int)$id;
 		if($result = $this->mysqli->query("SELECT * FROM $this->table WHERE ID = $id")) {
 			$data = $result->fetch_assoc();
