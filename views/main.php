@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="stylesheets/main.css" />
 	<link rel="stylesheet" href="modules/orbit/orbit.css" />
 	<link rel="stylesheet" href="modules/stickymenu/stickymenu.css" />
+	<link rel="stylesheet" href="modules/modal/modal.css" />
 	<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	<title>Pandora Store</title>
 </head>
@@ -52,11 +53,20 @@
 				<div class="cover">
 					<img />
 				</div>
-				<div class="details">
-					<p class="title">제목</p>
-					<p class="subtitle">부제목</p>
+				<div class="summary">
+					<p class="title"></p>
+					<p class="creator"></p>
 				</div>
 			</cast>
+		</div>
+		<div name="game-detail" class="modal-origin">
+			<div class="cover">
+				<img />
+			</div>
+			<div class="summary">
+				<p class="title"></p>
+				<p class="creator"></p>
+			</div>
 		</div>
 	</div>
 
@@ -72,6 +82,7 @@
 	<script src="libraries/jquery.js"></script>
 	<script src="modules/orbit/orbit.js"></script>
 	<script src="modules/stickymenu/stickymenu.js"></script>
+	<script src="modules/modal/modal.js"></script>
 	<script src="scripts/orbit.js"></script>
 	<script src="scripts/gamelist.js"></script>
 

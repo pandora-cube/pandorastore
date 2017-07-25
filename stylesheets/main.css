@@ -51,7 +51,7 @@ header ul.orbit button {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-#contents .game-list .subtitle {
+#contents .game-list .creator {
 	margin-top: .5em;
 	font-size: .9em;
 	overflow: hidden;
@@ -66,4 +66,22 @@ header ul.orbit button {
 	#contents h2 {
 		margin-bottom: 1.8rem;
 	}
+}
+
+#game-detail .cover {
+	display: inline-block;
+	width: 10em;
+	height: 10em;
+	line-height: 10em;
+	background-color: #e8e8e8;
+	overflow: hidden;
+	vertical-align: middle;
+}
+#game-detail .cover img {
+	width: 100%;
+	vertical-align: middle;
+}
+#game-detail .summary {
+	display: inline-block;
+	vertical-align: middle;
 }
