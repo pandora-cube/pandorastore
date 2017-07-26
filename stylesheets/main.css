@@ -68,12 +68,15 @@ header ul.orbit button {
 	}
 }
 
+#game-detail section.top {
+	display: grid;
+	grid-template-columns: 10em auto;
+	grid-column-gap: 1em;
+}
 #game-detail .cover {
-	display: inline-block;
-	width: 10em;
 	height: 10em;
 	line-height: 10em;
-	background-color: #e8e8e8;
+	border-radius: 2em;
 	overflow: hidden;
 	vertical-align: middle;
 }
@@ -82,6 +85,34 @@ header ul.orbit button {
 	vertical-align: middle;
 }
 #game-detail .summary {
-	display: inline-block;
-	vertical-align: middle;
+	position: relative;
+	min-height: 10em;
+	vertical-align: top;
+}
+#game-detail .summary p {
+	margin: .5em 0;
+}
+#game-detail .summary span {
+	font-weight: bold;
+}
+#game-detail .title {
+	font-size: 1.2em;
+}
+#game-detail .download {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: .7em;
+	font-size: .9em;
+	line-height: .9em;
+	font-weight: bold;
+	border-radius: .3em;
+	border: none;
+	background-color: SteelBlue;
+	color: White;
+	cursor: pointer;
+	transition: 1s;
+}
+#game-detail .download:hover {
+	background-color: LightSteelBlue;
 }

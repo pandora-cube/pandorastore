@@ -60,13 +60,17 @@
 			</cast>
 		</div>
 		<div name="game-detail" class="modal-origin">
-			<div class="cover">
-				<img />
-			</div>
-			<div class="summary">
-				<p class="title"></p>
-				<p class="creator"></p>
-			</div>
+			<section class="top">
+				<div class="cover">
+					<img />
+				</div>
+				<div class="summary">
+					<p class="title"></p>
+					<p>제작자: <span class="creator"></span></p>
+					<p>카테고리: <span class="categories"></span></p>
+					<button class="download">내려받기</button>
+				</div>
+			</section>
 		</div>
 	</div>
 

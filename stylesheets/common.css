@@ -37,6 +37,11 @@ a:hover {
 	color: #8badc9;
 }
 
+button {
+	background: none;
+	border: 1px solid gray;
+}
+
 cast {
 	display: none;
 }
