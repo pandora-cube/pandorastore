@@ -87,7 +87,6 @@ header ul.orbit button {
 }
 #game-detail .summary {
 	position: relative;
-	font-size: 1.2em;
 }
 #game-detail .summary p {
 	margin: .5em 0;
@@ -115,4 +114,9 @@ header ul.orbit button {
 }
 #game-detail .download:hover {
 	background-color: LightSteelBlue;
+}
+@media screen and (max-width: 70rem) { /* for Mobile */
+	#game-detail .summary {
+		font-size: 1.2em;
+	}
 }
