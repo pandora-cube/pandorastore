@@ -22,6 +22,10 @@ function loadGameData(data) {
 			$origin.find(".summary .creator").text(datum["Creator"]);
 			$origin.find(".summary .categories").text(categories);
 
+			$origin.find(".summary .download").on("click", function() {
+				window.open(datum["DownloadURL"]);
+			});
+
 			$origin.get(0).open();
 		}
 	}

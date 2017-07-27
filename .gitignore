@@ -1,6 +1,7 @@
 # Configuration files
 configs/
 images/
+uploadedfiles/
 
 # Windows image file caches
 Thumbs.db
