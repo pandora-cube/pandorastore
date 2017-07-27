@@ -71,7 +71,9 @@ header ul.orbit button {
 	display: grid;
 	grid-template-columns: 10em auto;
 	grid-template-rows: 10em;
-	grid-column-gap: 1em;
+	grid-column-gap: 2em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid LightGray;
 }
 #game-detail .cover {
 	height: 10em;
