@@ -2,6 +2,7 @@ function loadGameData(data) {
 	for(var datum of data) {
 		var $section = $("<section/>")
 			.html($("#contents .game-list cast").html())
+			.data("game-data", JSON.stringify(datum))
 			.on("click", openModal)
 			.appendTo("#contents .game-list");
 
@@ -10,6 +11,7 @@ function loadGameData(data) {
 		$section.find(".summary .creator").text(datum["Creator"]);
 
 		function openModal() {
+			var datum = JSON.parse($(this).data("game-data"));
 			var $origin = $(".modal-origin[name=game-detail]");
 
 			var categories = "";
