@@ -70,6 +70,7 @@ header ul.orbit button {
 #game-detail section.top {
 	display: grid;
 	grid-template-columns: 10em auto;
+	grid-template-rows: 10em;
 	grid-column-gap: 1em;
 }
 #game-detail .cover {
@@ -77,7 +78,6 @@ header ul.orbit button {
 	line-height: 10em;
 	border-radius: 2em;
 	overflow: hidden;
-	vertical-align: middle;
 }
 #game-detail .cover img {
 	width: 100%;
@@ -85,8 +85,7 @@ header ul.orbit button {
 }
 #game-detail .summary {
 	position: relative;
-	min-height: 10em;
-	vertical-align: top;
+	font-size: 1.2em;
 }
 #game-detail .summary p {
 	margin: .5em 0;
