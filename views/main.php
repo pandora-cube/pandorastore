@@ -17,7 +17,7 @@
 		<div class="headerArea">
 			<!-- 로고 -->
 			<h1>
-				<a href="index.html">판도라스토어</a>
+				<a href="http://store.p-cube.kr">판도라스토어</a>
 			</h1>
 			<!-- 링크 -->
 			<ul class="links">
