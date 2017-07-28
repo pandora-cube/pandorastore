@@ -26,11 +26,23 @@ function loadGameData(data) {
 			$origin.find(".summary .categories").text(categories);
 
 			$origin.find(".summary .download").off("click");
-			$origin.find(".summary .download").on("click", function() {
-				window.open(datum["DownloadURL"]);
-			});
+			$origin.find(".summary .download").on("click", function() { download(datum); });
 
 			$origin.get(0).open();
+		}
+
+		function download(datum) {
+			var columns = ["DownloadURL_Android", "DownloadURL_iOS", "DownloadURL"];
+			var os = getOSName();
+
+			if(os == "Android" && datum["DownloadURL_Android"].length != 0)
+				window.open(datum["DownloadURL_Android"]);
+			else if(os == "Mac/iOS" && datum["DownloadURL_iOS"].length != 0)
+				window.open(datum["DownloadURL_iOS"]);
+			else if(datum["DownloadURL"].length != 0)
+				window.open(datum["DownloadURL"]);
+			else
+				alert("파일이 등록되지 않았습니다.");
 		}
 	}
 }

@@ -89,6 +89,7 @@
 	<script src="modules/modal/modal.js"></script>
 	<script src="scripts/orbit.js"></script>
 	<script src="scripts/gamelist.js"></script>
+	<script src="scripts/clientinfo.js"></script>
 
 	<script>
 		$(document).ready(function() {
