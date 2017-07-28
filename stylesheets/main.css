@@ -72,6 +72,11 @@ header ul.orbit button {
 	grid-template-columns: 10em auto;
 	grid-template-rows: 10em;
 	grid-column-gap: 2em;
+
+	display: -ms-grid;
+	-ms-grid-columns: 10em 2em auto;
+	-ms-grid-rows: 10em;
+
 	padding-bottom: 1em;
 	border-bottom: 1px solid LightGray;
 }
@@ -87,6 +92,7 @@ header ul.orbit button {
 }
 #game-detail .summary {
 	position: relative;
+	-ms-grid-column: 3;
 }
 #game-detail .summary p {
 	margin: .5em 0;

@@ -1,5 +1,6 @@
 function loadGameData(data) {
-	for(var datum of data) {
+	for(var index in data) {
+		var datum = data[index];
 		var $section = $("<section/>")
 			.html($("#contents .game-list cast").html())
 			.data("game-data", JSON.stringify(datum))
@@ -15,8 +16,8 @@ function loadGameData(data) {
 			var $origin = $(".modal-origin[name=game-detail]");
 
 			var categories = "";
-			for(var c of datum["Categories"])
-				categories += c + ", ";
+			for(var c in datum["Categories"])
+				categories += datum["Categories"][c] + ", ";
 			categories = categories.substr(0, categories.length-2);
 
 			$origin.find(".cover img").attr("src", datum["Thumbnail"]);

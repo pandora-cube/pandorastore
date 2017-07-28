@@ -2,7 +2,8 @@ $(document).ready(function() {
 	$(".modal-origin").each(function() {
 		var origin = this;
 
-		this.open = function(closebutton=true) {
+		this.open = function(closebutton) {
+			closebutton = closebutton || true;
 			createModal(closebutton);
 			$("body").css("overflow", "hidden");
 		};

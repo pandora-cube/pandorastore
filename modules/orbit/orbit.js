@@ -39,7 +39,8 @@ $(document).ready(function() {
 		}
 
 		function applyData(data) {
-			for(var datum of data) {
+			for(var index in data) {
+				var datum = data[index];
 				var $slide = $("<li/>")
 					.data("image", datum["Image"])
 					.data("position", datum["Position"])
@@ -72,7 +73,9 @@ $(document).ready(function() {
 			});
 		}
 
-		function activeSlide(index, speed, interval=5000) {
+		function activeSlide(index, speed, interval) {
+			interval = interval || 5000;
+
 			clearTimeout(orbitTimer);
 
 			var $pre = $orbit.find("li.active");
