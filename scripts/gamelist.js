@@ -15,20 +15,26 @@ function loadGameData(data) {
 			var datum = JSON.parse($(this).data("game-data"));
 			var $origin = $(".modal-origin[name=game-detail]");
 
-			var categories = "";
-			for(var c in datum["Categories"])
-				categories += datum["Categories"][c] + ", ";
-			categories = categories.substr(0, categories.length-2);
+			var genres = getCategoriesText(datum["Genres"]);
+			var platforms = getCategoriesText(datum["Platforms"]);
 
 			$origin.find(".cover img").attr("src", datum["Thumbnail"]);
 			$origin.find(".summary .title").text(datum["Title"]);
 			$origin.find(".summary .creator").text(datum["Creator"]);
-			$origin.find(".summary .categories").text(categories);
+			$origin.find(".summary .genres").text(genres);
+			$origin.find(".summary .platforms").text(platforms);
 
 			$origin.find(".summary .download").off("click");
 			$origin.find(".summary .download").on("click", function() { download(datum); });
 
 			$origin.get(0).open();
+
+			function getCategoriesText(categories) {
+				var text = "";
+				for(var c in categories)
+					text += categories[c] + ", ";
+				return text.substr(0,text.length-2);
+			}
 		}
 
 		function download(datum) {

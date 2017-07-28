@@ -9,28 +9,37 @@ class Games {
 	}
 
 	public function load() {
-		$categories = $this->loadCategoriesName();
+		$this->loadCategories($genres, $platforms);
 		$data = array();
 		if($result = $this->mysqli->query(sprintf("SELECT * FROM %s ORDER BY CreatedTime DESC", $this->table["games"]))) {
 			for($i = 0; $i < $result->num_rows; $i++) {
 				$data[$i] = $result->fetch_assoc();
-				$this->getCategoriesName($data[$i]["Categories"], $categories);
+				$this->getCategoriesName($data[$i]["Genres"], $genres);
+				$this->getCategoriesName($data[$i]["Platforms"], $platforms);
 			}
 			$result->free();
 		}
 		return $data;
 	}
 
-	private function loadCategoriesName() {
-		$data = array();
-		if($result = $this->mysqli->query(sprintf("SELECT * FROM %s", $this->table["categories"]))) {
+	private function loadCategories(&$genres, &$platforms) {
+		$sql = "
+			SELECT *, \"Genre\" AS Type
+			FROM ".$this->table["genres"]."
+			UNION
+			SELECT *, \"Platform\" AS Type
+			FROM ".$this->table["platforms"];
+		$genres = $platforms = array();
+		if($result = $this->mysqli->query($sql)) {
 			for($i = 0; $i < $result->num_rows; $i++) {
-				$temp = $result->fetch_assoc();
-				$data[$temp["ID"]] = $temp["Name"];
+				$data = $result->fetch_assoc();
+				if($data["Type"] == "Genre")
+					$genres[$data["ID"]] = $data["Name"];
+				else if($data["Type"] == "Platform")
+					$platforms[$data["ID"]] = $data["Name"];
 			}
 			$result->free();
 		}
-		return $data;
 	}
 
 	private function getCategoriesName(&$data, $categories) {
