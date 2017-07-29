@@ -69,6 +69,8 @@
 					<p>제작: <span class="creator"></span></p>
 					<p>장르: <span class="genres"></span></p>
 					<p>환경: <span class="platforms"></span></p>
+				</div>
+				<div class="reason-set">
 					<button class="download">내려받기</button>
 				</div>
 			</section>

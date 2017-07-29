@@ -70,17 +70,23 @@ header ul.orbit button {
 #game-detail section.top {
 	display: grid;
 	grid-template-columns: 10em auto;
-	grid-template-rows: 10em;
 	grid-column-gap: 2em;
 
 	display: -ms-grid;
 	-ms-grid-columns: 10em 2em auto;
-	-ms-grid-rows: 10em;
 
 	padding-bottom: 1em;
 	border-bottom: 1px solid LightGray;
 }
 #game-detail .cover {
+	grid-row-start: 1;
+	grid-row-end: 3;
+	align-self: center;
+
+	-ms-grid-column: 1;
+	-ms-grid-row-span: 2;
+	-ms-grid-row-align: center;
+
 	height: 10em;
 	line-height: 10em;
 	border-radius: 2em;
@@ -91,8 +97,10 @@ header ul.orbit button {
 	vertical-align: middle;
 }
 #game-detail .summary {
-	position: relative;
+	align-self: flex-start;
+
 	-ms-grid-column: 3;
+	-ms-grid-row-align: start;
 }
 #game-detail .summary p {
 	margin: .5em 0;
@@ -103,10 +111,15 @@ header ul.orbit button {
 #game-detail .title {
 	font-size: 1.2em;
 }
+#game-detail .reason-set {
+	align-self: flex-end;
+
+	-ms-grid-column: 3;
+	-ms-grid-row: 2;
+	-ms-grid-row-align: end;
+}
 #game-detail .download {
-	position: absolute;
-	right: 0;
-	bottom: 0;
+	float: right;
 	padding: .7em;
 	font-size: .9em;
 	line-height: .9em;
@@ -124,5 +137,10 @@ header ul.orbit button {
 @media screen and (max-width: 70rem) { /* for Mobile */
 	#game-detail .summary {
 		font-size: 1.2em;
+	}
+}
+@media screen and (min-width: 70rem) { /* for Desktop */
+	#game-detail .summary {
+		padding-right: 2em;
 	}
 }
