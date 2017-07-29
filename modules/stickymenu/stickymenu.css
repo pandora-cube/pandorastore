@@ -6,14 +6,19 @@
 	top: 0;
 	left: 0;
 	right:0;
-	z-index: 1000;
+	z-index: 1001;
 }
+@media screen and (max-width: 70rem) { /* for Mobile */
+	.menuArea .menu {
+		text-align: center;
+	}
+}
+
 .menuArea.fixed .menu {
 	border-top: none;
 }
 .menuArea.enabled {
 	background-color: #555;
-	color: white;
 }
 .menuArea .menu {
 	list-style: none;
@@ -22,28 +27,53 @@
 	margin: 0 auto;
 	border-top: 1px solid #AAA;
 }
-.menuArea .menu li {
+
+.menuArea .menu > li {
+	position: relative;
 	display: inline-block;
 	height: 3em;
 	line-height: 3em;
+	cursor: pointer;
+	vertical-align: bottom;
+}
+.menuArea .menu > li.enabled {
+	background-color: #8badc9;
+}
+.menuArea .menu > li .title {
+	height: 100%;
+}
+.menuArea .menu > li .title a {
+	display: block;
 	font-weight: bold;
 	font-size: 1.1em;
-	cursor: pointer;
 }
-.menuArea .menu li.enabled {
-	background-color: #8badc9;
+.menuArea.enabled .menu > li .title a,
+.menuArea .menu > li.enabled .title a {
 	color: white;
 }
 @media screen and (max-width: 70rem) { /* for Mobile */
-	.menuArea .menu {
-		text-align: center;
-	}
-	.menuArea .menu li {
+	.menuArea .menu > li .title a {
 		padding: 0 1em;
 	}
 }
 @media screen and (min-width: 70rem) { /* for Desktop */
-	.menuArea .menu li {
+	.menuArea .menu > li .title a {
 		padding: 0 2em;
 	}
+}
+
+.menuArea .inner-menu {
+	position: absolute;
+	display: none;
+	z-index: 1000;
+	list-style: none;
+	white-space: nowrap;
+	background-color: white;
+}
+.menuArea .inner-menu.enabled {
+	display: block;
+}
+.menuArea .inner-menu li a {
+	display: block;
+	padding: 0 2em;
 }

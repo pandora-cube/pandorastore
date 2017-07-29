@@ -17,7 +17,7 @@
 		<div class="headerArea">
 			<!-- 로고 -->
 			<h1>
-				<a href="http://store.p-cube.kr">판도라스토어</a>
+				<a href="">판도라스토어</a>
 			</h1>
 			<!-- 링크 -->
 			<ul class="links">
@@ -36,10 +36,28 @@
 		<!-- 메뉴 -->
 		<div class="menuArea">
 			<ul class="menu">
-				<li href="#">홈</li>
-				<li href="#">소식</li>
-				<li href="#">게임</li>
-				<li href="#">소프트웨어</li>
+				<li>
+					<div class="title"><a href="">홈</a></div>
+				</li>
+				<li>
+					<div class="title"><a href="#">장르</a></div>
+					<ul class="inner-menu">
+						<li><a href="">타이쿤</a></li>
+						<li><a href="">어드벤처</a></li>
+						<li><a href="">소프트웨어</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="title"><a href="#">환경</a></div>
+					<ul class="inner-menu">
+						<li><a href="">Android</a></li>
+						<li><a href="">iOS</a></li>
+						<li><a href="">Windows</a></li>
+						<li><a href="">Linux</a></li>
+						<li><a href="">Mac OS</a></li>
+						<li><a href="">웹</a></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 		<!-- 이미지 슬라이드 -->
