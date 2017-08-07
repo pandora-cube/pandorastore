@@ -15,8 +15,8 @@ function loadGameData(data) {
 			var datum = JSON.parse($(this).data("game-data"));
 			var $origin = $(".modal-origin[name=game-detail]");
 
-			var genres = getCategoriesText(datum["Genres"]);
-			var platforms = getCategoriesText(datum["Platforms"]);
+			var genres = datum["Genres"].join(', ');
+			var platforms = datum["Platforms"].join(', ');
 
 			$origin.find(".cover img").attr("src", datum["Thumbnail"]);
 			$origin.find(".summary .title").text(datum["Title"]);
@@ -28,13 +28,6 @@ function loadGameData(data) {
 			$origin.find(".summary .download").on("click", function() { download(datum); });
 
 			$origin.get(0).open();
-
-			function getCategoriesText(categories) {
-				var text = "";
-				for(var c in categories)
-					text += categories[c] + ", ";
-				return text.substr(0,text.length-2);
-			}
 		}
 
 		function download(datum) {
