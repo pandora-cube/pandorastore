@@ -27,9 +27,13 @@ class Categories {
 		return $this->names;
 	}
 
-	public function parseName(&$data, $type) {
+	public function parseArray($origin, &$data, $type) {
+		$data[$type."sID"] = explode(',', $origin[$type.'s']);
+	}
+
+	public function parseName($origin, &$data, $type) {
 		$result = array();
-		foreach(explode(',', $data[$type.'s']) as $id)
+		foreach(explode(',', $origin[$type.'s']) as $id)
 			array_push($result, $this->names[$type][$id]);
 		$data[$type.'s'] = $result;
 	}
