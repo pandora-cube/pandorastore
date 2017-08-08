@@ -10,7 +10,7 @@ $orbit = new Orbit($mysqli, $dbconfig["table"]);
 $orbit = $orbit->load();
 
 $categories = new Categories($mysqli, $dbconfig["table"]);
-$games = new Games($mysqli, $dbconfig["table"], new Categories($mysqli, $dbconfig["table"]));
+$games = new Games($mysqli, $dbconfig["table"], $categories);
 $games = $games->load();
 
 $mysqli->close();
