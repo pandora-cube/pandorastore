@@ -15,8 +15,8 @@ function loadGameData(data) {
 			var datum = JSON.parse($(this).data("game-data"));
 			var $origin = $(".modal-origin[name=game-detail]");
 
-			var genres = datum["Genres"].join(', ');
-			var platforms = datum["Platforms"].join(', ');
+			var genres = datum["Genres"].join(", ");
+			var platforms = datum["Platforms"].join(", ");
 
 			$origin.find(".cover img").attr("src", datum["Thumbnail"]);
 			$origin.find(".summary .title").text(datum["Title"]);
