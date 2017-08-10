@@ -42,7 +42,7 @@ ul.orbit li .caption {
 	height: 100%;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0, 0, 0, 0.5);
 }
 ul.orbit li .caption .summary {
 	font-size: 2em;
