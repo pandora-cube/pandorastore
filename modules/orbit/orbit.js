@@ -60,7 +60,7 @@ $(document).ready(function() {
 				}
 				if(url.length > 0) {
 					$slide.on("click", { url: url }, function(e) {
-						location.href = e.data.url;
+						window.open(e.data.url);
 					});
 				}
 			}
