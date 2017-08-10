@@ -1,4 +1,5 @@
 <?php
+require("template.php");
 require("models/orbit.php");
 require("models/categories.php");
 require("models/games.php");
@@ -13,5 +14,8 @@ $mysqli = mysqli_connect($dbconfig["host"], $dbconfig["user"], $dbconfig["passwo
 	$games = $games->load();
 } $mysqli->close();
 
-require("views/main.php");
+$template = new Template();
+$template->setVariable("orbit", $orbit);
+$template->setVariable("games", $games);
+$template->loadView("main");
 ?>
