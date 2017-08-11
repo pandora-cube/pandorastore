@@ -10,8 +10,12 @@ class Template {
 	public function setVariable($name, $value) {
 		$this->variables[$name] = $value;
 	}
-	public function loadVariable($name) {
+	public function getVariable($name) {
 		return $this->variables[$name];
+	}
+
+	public function loadLayout($name) {
+		include("layouts/$name.php");
 	}
 
 	public function loadView($view) {
@@ -20,10 +24,6 @@ class Template {
 		$string = ob_get_clean();
 		$string = preg_replace("/\s\s+/", " ", $string);
 		echo($string);
-	}
-
-	public function getLayout($name) {
-		include("layouts/$name.php");
 	}
 }
 ?>

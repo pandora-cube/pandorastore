@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<?=$this->getLayout("head")?>
+	<?=$this->loadLayout("head")?>
 	<link rel="stylesheet" href="stylesheets/main.css" />
 	<link rel="stylesheet" href="modules/orbit/orbit.css" />
 	<link rel="stylesheet" href="modules/stickymenu/stickymenu.css" />
@@ -10,7 +10,7 @@
 
 <body>
 	<header>
-		<?=$this->getLayout("header")?>
+		<?=$this->loadLayout("header")?>
 	</header>
 
 	<div id="contents">
@@ -45,7 +45,7 @@
 	</div>
 
 	<footer>
-		<?=$this->getLayout("footer")?>
+		<?=$this->loadLayout("footer")?>
 	</footer>
 
 	<script src="libraries/jquery.js"></script>
@@ -58,8 +58,8 @@
 
 	<script>
 		$(document).ready(function() {
-			loadOrbitData(<?=json_encode($this->loadVariable("orbit"))?>);
-			loadGameData(<?=json_encode($this->loadVariable("games"))?>);
+			loadOrbitData(<?=json_encode($this->getVariable("orbit"))?>);
+			loadGameData(<?=json_encode($this->getVariable("games"))?>);
 		});
 	</script>
 </body>
