@@ -2,6 +2,7 @@
 class Template {
 	public $title;
 	private $variables;
+	private $disabled;
 
 	public function __construct($title = "Pandora Store") {
 		$this->title = $title;
@@ -14,8 +15,15 @@ class Template {
 		return $this->variables[$name];
 	}
 
-	public function loadLayout($name) {
-		include("layouts/$name.php");
+	public function disableArea($area) {
+		$this->disabled[$area] = true;
+	}
+	public function isEnabledArea($area) {
+		return $this->disabled[$area] !== true;
+	}
+
+	public function loadLayout($layout) {
+		include("layouts/$layout.php");
 	}
 
 	public function loadView($view) {
