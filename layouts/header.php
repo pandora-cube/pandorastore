@@ -45,4 +45,4 @@
 	</ul>
 </div>
 <!-- 이미지 슬라이드 -->
-<div class="orbitArea"></div>
+<div id="topOrbit" class="orbitArea"></div>

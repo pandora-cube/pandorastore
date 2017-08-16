@@ -52,13 +52,13 @@
 	<script src="modules/orbit/orbit.js"></script>
 	<script src="modules/stickymenu/stickymenu.js"></script>
 	<script src="modules/modal/modal.js"></script>
-	<script src="scripts/orbit.js"></script>
+	<script src="scripts/toporbit.js"></script>
 	<script src="scripts/gamelist.js"></script>
 	<script src="scripts/clientinfo.js"></script>
 
 	<script>
 		$(document).ready(function() {
-			loadOrbitData(<?=json_encode($this->getVariable("orbit"))?>);
+			loadTopOrbitData(<?=json_encode($this->getVariable("orbit"))?>);
 			loadGameData(<?=json_encode($this->getVariable("games"))?>);
 		});
 	</script>
