@@ -42,7 +42,7 @@ function Modal() {
 					if(e.target != this) return;
 					origin.close();
 				})
-				.html("x")
+				.html("&#10006;")
 				.prependTo($modal);
 
 		if(animation) {
