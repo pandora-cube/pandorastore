@@ -62,39 +62,24 @@
 }
 
 #game-detail .top {
-	display: grid;
-	grid-template-columns: 10em auto;
-	grid-column-gap: 2em;
-
-	display: -ms-grid;
-	-ms-grid-columns: 10em 2em auto;
-
 	padding-bottom: 1em;
-	border-bottom: 1px solid LightGray;
+	min-height: 10em;
 }
 #game-detail .top .cover {
-	grid-row-start: 1;
-	grid-row-end: 3;
-	align-self: center;
-
-	-ms-grid-column: 1;
-	-ms-grid-row-span: 2;
-	-ms-grid-row-align: center;
-
+	display: inline-block;
+	float: left;
+	width: 10em;
 	height: 10em;
 	line-height: 10em;
 	border-radius: 2em;
 	overflow: hidden;
+	margin-right: 2em;
 }
 #game-detail .top .cover img {
 	width: 100%;
 	vertical-align: middle;
 }
 #game-detail .top .summary {
-	align-self: flex-start;
-
-	-ms-grid-column: 3;
-	-ms-grid-row-align: start;
 }
 #game-detail .top .summary p {
 	margin: .5em 0;
@@ -105,15 +90,10 @@
 #game-detail .top .summary .title {
 	font-size: 1.2em;
 }
-#game-detail .top .reason-set {
-	align-self: flex-end;
-
-	-ms-grid-column: 3;
-	-ms-grid-row: 2;
-	-ms-grid-row-align: end;
+#game-detail .top .summary .reason-set {
+	text-align: right;
 }
-#game-detail .top .reason-set .download {
-	float: right;
+#game-detail .top .summary .reason-set .download {
 	padding: .7em;
 	font-size: .9em;
 	line-height: .9em;
@@ -126,7 +106,7 @@
 	cursor: pointer;
 	transition: 1s;
 }
-#game-detail .top .reason-set .download:hover {
+#game-detail .top .summary .reason-set .download:hover {
 	background-color: LightSteelBlue;
 }
 #game-detail .orbitArea {
@@ -140,8 +120,5 @@
 @media screen and (min-width: 70rem) { /* for Desktop */
 	#game-detail .modal {
 		min-width: 40rem;
-	}
-	#game-detail .top .summary {
-		padding-right: 2em;
 	}
 }
