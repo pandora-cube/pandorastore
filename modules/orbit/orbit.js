@@ -19,6 +19,11 @@ function Orbit() {
 		clearTimeout(orbitTimer);
 	};
 
+	this.kill = function() {
+		this.stop();
+		$orbit.remove();
+	};
+
 	function addButton(text, direction) {
 		var $button = $("<button/>")
 			.addClass(direction)
