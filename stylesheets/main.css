@@ -17,13 +17,11 @@
 }
 
 #contents .game-list {
-	white-space: nowrap;
-	overflow: hidden;
+	overflow-x: auto;
 	margin: -.5em 0;
 }
 #contents .game-list > section {
 	display: inline-block;
-	float: left;
 	width: 10em;
 	padding: 1em;
 	background-color: #e8e8e8;
