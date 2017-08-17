@@ -12,6 +12,7 @@ ul.orbit button {
 	font-size: 100%;
 	background-color: rgba(0, 0, 0, .3);
 	border: none;
+	outline: none;
 	cursor: pointer;
 }
 ul.orbit button.left {
