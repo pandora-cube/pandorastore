@@ -5,10 +5,11 @@ $(document).ready(function() {
 function Modal() {
 	var origin = this;
 
-	this.open = function(closebutton) {
+	this.open = function(closebutton, animation) {
 		closebutton = closebutton || true;
+		animation = animation || true;
 		$("body").css("overflow", "hidden");
-		return createModal(closebutton);
+		return createModal(closebutton, animation);
 	};
 
 	this.close = function() {
@@ -16,7 +17,7 @@ function Modal() {
 		destroyModal();
 	};
 
-	function createModal(closebutton) {
+	function createModal(closebutton, animation) {
 		var $area = $("<div/>")
 			.attr("id", $(origin).attr("name"))
 			.addClass("modalArea")
@@ -43,6 +44,10 @@ function Modal() {
 				})
 				.html("&#120684;")
 				.prependTo($modal);
+
+		if(animation) {
+			$modal.hide().slideDown("fast");
+		}
 
 		return $area;
 	}
