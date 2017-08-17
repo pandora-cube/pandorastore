@@ -44,12 +44,16 @@ function loadGameData(data) {
 		}
 
 		function loadOrbit($modal, gamedata) {
+			var data = new Array();
 			if(gamedata["Images"].indexOf(',') == -1) {
-				$modal.find(".orbitArea").hide();
+				var datum = new Object();
+				datum["ID"] = 0;
+				datum["Image"] = "images/dalchong.jpg";
+				datum["Summary"] = "등록된 이미지가 없습니다.";
+				datum["Actived"] = 1;
+				data.push(datum);
 			} else {
 				var images = gamedata["Images"].split(',');
-				var data = new Array();
-
 				for(var index in images) {
 					var datum = new Object();
 					datum["ID"] = index;
@@ -57,14 +61,14 @@ function loadGameData(data) {
 					datum["Actived"] = 1;
 					data.push(datum);
 				}
-
-				var orbit = $modal.find(".orbitArea").get(0);
-				(Orbit).call(orbit);
-				orbit.load(data);
-
-				updateOrbitHeight(orbit);
-				$(window).on("resize", function() { updateOrbitHeight(orbit); });
 			}
+
+			var orbit = $modal.find(".orbitArea").get(0);
+			(Orbit).call(orbit);
+			orbit.load(data);
+
+			updateOrbitHeight(orbit);
+			$(window).on("resize", function() { updateOrbitHeight(orbit); });
 		}
 
 		function updateOrbitHeight(orbit) {
