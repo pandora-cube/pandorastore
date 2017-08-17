@@ -8,12 +8,25 @@ function Modal() {
 	this.open = function(closebutton, animation) {
 		closebutton = closebutton || true;
 		animation = animation || true;
-		$("body").css("overflow", "hidden");
+
+		var scrollTop = $(window).scrollTop();
+		var height = $(document).height();
+		$(this).data("scrollTop", scrollTop);
+		$("html, body").addClass("notScroll");
+		$("body")
+			.css("top", -scrollTop)
+			.css("height", height);
+
 		return createModal(closebutton, animation);
 	};
 
 	this.close = function() {
-		$("body").css("overflow", "auto");
+		$("body")
+			.css("top", 0)
+			.css("height", "auto");
+		$("html, body").removeClass("notScroll");
+		$(window).scrollTop($(this).data("scrollTop"));
+
 		destroyModal();
 	};
 
