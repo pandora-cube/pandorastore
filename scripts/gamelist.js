@@ -63,12 +63,12 @@ function loadGameData(data) {
 				orbit.load(data);
 
 				updateOrbitHeight(orbit);
-				$(window).on("resize", function() { console.log(orbit); updateOrbitHeight(orbit); });
+				$(window).on("resize", function() { updateOrbitHeight(orbit); });
 			}
 		}
 
 		function updateOrbitHeight(orbit) {
-			$(orbit).height($(orbit).width() * 0.5);
+			$(orbit).height($(orbit).width() * 0.56);
 		}
 	}
 }

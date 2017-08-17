@@ -136,6 +136,9 @@
 	}
 }
 @media screen and (min-width: 70rem) { /* for Desktop */
+	#game-detail .modal {
+		min-width: 50rem;
+	}
 	#game-detail .summary {
 		padding-right: 2em;
 	}
