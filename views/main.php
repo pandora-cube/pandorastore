@@ -58,8 +58,8 @@
 
 	<script>
 		$(document).ready(function() {
-			loadTopOrbitData(<?=json_encode($this->getVariable("orbit"))?>);
-			loadGameData(<?=json_encode($this->getVariable("games"))?>);
+			loadTopOrbitData(<?=json_encode($this->getAttribute("orbit"))?>);
+			loadGameData(<?=json_encode($this->getAttribute("games"))?>);
 		});
 	</script>
 </body>

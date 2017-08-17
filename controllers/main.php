@@ -15,7 +15,7 @@ $mysqli = mysqli_connect($dbconfig["host"], $dbconfig["user"], $dbconfig["passwo
 } $mysqli->close();
 
 $template = new Template();
-$template->setVariable("orbit", $orbit);
-$template->setVariable("games", $games);
+$template->setAttribute("orbit", $orbit);
+$template->setAttribute("games", $games);
 $template->loadView("main");
 ?>
