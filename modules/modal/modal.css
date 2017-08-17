@@ -18,6 +18,7 @@
 }
 .modalArea .closebutton {
 	float: right;
+	font-weight: bolder;
 }
 @media screen and (max-width: 70rem) { /* for Mobile */
 	.modalArea .modal {
