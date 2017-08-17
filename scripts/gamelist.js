@@ -24,8 +24,8 @@ function loadGameData(data) {
 			$origin.find(".summary .genres").text(genres);
 			$origin.find(".summary .platforms").text(platforms);
 
-			$origin.find(".summary .download").off("click");
-			$origin.find(".summary .download").on("click", function() { download(datum); });
+			$origin.find(".download").off("click");
+			$origin.find(".download").on("click", function() { download(datum); });
 
 			$origin.get(0).open();
 		}
