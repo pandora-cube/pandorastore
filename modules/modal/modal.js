@@ -26,7 +26,8 @@ function Modal() {
 			})
 			.prependTo("body");
 
-		var $modal = $(origin).clone(true)
+		var $modal = $("<div/>")
+			.html($(origin).html())
 			.removeAttr("name")
 			.removeClass("modal-origin")
 			.addClass("modal")

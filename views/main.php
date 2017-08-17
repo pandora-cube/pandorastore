@@ -16,7 +16,7 @@
 	<div id="contents">
 		<h2>목록</h2>
 		<div class="game-list">
-			<cast>
+			<template>
 				<div class="cover">
 					<img />
 				</div>
@@ -24,9 +24,9 @@
 					<p class="title"></p>
 					<p class="creator"></p>
 				</div>
-			</cast>
+			</template>
 		</div>
-		<div name="game-detail" class="modal-origin">
+		<template name="game-detail" class="modal-origin">
 			<section class="top">
 				<div class="cover">
 					<img />
@@ -42,7 +42,7 @@
 				</div>
 			</section>
 			<div class="orbitArea"></div>
-		</div>
+		</template>
 	</div>
 
 	<footer>

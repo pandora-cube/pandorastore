@@ -2,7 +2,7 @@ function loadGameData(data) {
 	for(var index in data) {
 		var datum = data[index];
 		var $section = $("<section/>")
-			.html($("#contents .game-list cast").html())
+			.html($("#contents .game-list template").html())
 			.data("game-data", JSON.stringify(datum))
 			.on("click", openModal)
 			.appendTo("#contents .game-list");
