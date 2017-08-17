@@ -7,13 +7,13 @@ function Modal() {
 
 	this.open = function(closebutton) {
 		closebutton = closebutton || true;
-		createModal(closebutton);
 		$("body").css("overflow", "hidden");
+		return createModal(closebutton);
 	};
 
 	this.close = function() {
-		destroyModal();
 		$("body").css("overflow", "auto");
+		destroyModal();
 	};
 
 	function createModal(closebutton) {
@@ -42,6 +42,8 @@ function Modal() {
 				})
 				.html("&#120684;")
 				.prependTo($modal);
+
+		return $area;
 	}
 
 	function destroyModal() {
