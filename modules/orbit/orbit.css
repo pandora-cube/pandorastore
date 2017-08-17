@@ -7,10 +7,12 @@ ul.orbit button {
 	position: absolute;
 	z-index: 3;
 	height: 100%;
+	padding: 0 2%;
 	color: white;
-	font-size: 1.2em;
+	font-size: 100%;
 	background-color: rgba(0, 0, 0, .3);
 	border: none;
+	cursor: pointer;
 }
 ul.orbit button.left {
 	left: 0;
@@ -59,17 +61,11 @@ ul.orbit li .caption .description {
 	overflow: hidden;
 }
 @media screen and (max-width: 70rem) { /* for Mobile */
-	ul.orbit button {
-		padding: 0 1em;
-	}
 	ul.orbit li .caption {
 		width: 100%;
 	}
 }
 @media screen and (min-width: 70rem) { /* for Desktop */
-	ul.orbit button {
-		padding: 0 1.5em;
-	}
 	ul.orbit li .caption {
 		padding: 0 2rem;
 	}

@@ -1,7 +1,3 @@
-header ul.orbit li,
-header ul.orbit button {
-	cursor: pointer;
-}
 @media screen and (max-width: 70rem) { /* for Mobile */
 	header .orbitArea {
 		font-size: .8em;

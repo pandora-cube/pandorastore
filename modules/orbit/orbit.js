@@ -4,7 +4,6 @@ function Orbit() {
 
 	this.load = function(data) {
 		applyData(data);
-		applyImages();
 
 		if(data.length > 1) {
 			addButton("<", "left");
@@ -46,8 +45,8 @@ function Orbit() {
 		for(var index in data) {
 			var datum = data[index];
 			var $slide = $("<li/>")
-				.data("image", datum["Image"])
-				.data("position", datum["Position"])
+				.css("background-image", "url(\"" + datum["Image"] + "\")")
+				.css("background-position", datum["Position"])
 				.appendTo($orbit);
 
 			var summary = datum["Summary"] || "";
@@ -63,18 +62,14 @@ function Orbit() {
 					$("<div/>").addClass("description").text(description).appendTo($caption);
 			}
 			if(url.length > 0) {
+				$slide.css("cursor", "pointer");
 				$slide.on("click", { url: url }, function(e) {
 					window.open(e.data.url);
 				});
+			} else {
+				$slide.css("cursor", "unset");
 			}
 		}
-	}
-
-	function applyImages() {
-		$orbit.find("li").each(function() {
-			$(this).css("background-image", "url(\"" + $(this).data("image") + "\")");
-			$(this).css("background-position", $(this).data("position"));
-		});
 	}
 
 	function activeSlide(index, speed, interval) {
