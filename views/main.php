@@ -41,6 +41,7 @@
 					<button class="download">내려받기</button>
 				</div>
 			</section>
+			<div class="orbitArea"></div>
 		</div>
 	</div>
 

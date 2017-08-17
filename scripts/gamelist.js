@@ -14,20 +14,19 @@ function loadGameData(data) {
 		function openModal() {
 			var datum = JSON.parse($(this).data("game-data"));
 			var $origin = $(".modal-origin[name=game-detail]");
+			var $modal = $origin.get(0).open();
 
 			var genres = datum["Genres"].join(", ");
 			var platforms = datum["Platforms"].join(", ");
 
-			$origin.find(".cover img").attr("src", datum["Thumbnail"]);
-			$origin.find(".summary .title").text(datum["Title"]);
-			$origin.find(".summary .creator").text(datum["Creator"]);
-			$origin.find(".summary .genres").text(genres);
-			$origin.find(".summary .platforms").text(platforms);
+			$modal.find(".cover img").attr("src", datum["Thumbnail"]);
+			$modal.find(".summary .title").text(datum["Title"]);
+			$modal.find(".summary .creator").text(datum["Creator"]);
+			$modal.find(".summary .genres").text(genres);
+			$modal.find(".summary .platforms").text(platforms);
+			$modal.find(".download").on("click", function() { download(datum); });
 
-			$origin.find(".download").off("click");
-			$origin.find(".download").on("click", function() { download(datum); });
-
-			$origin.get(0).open();
+			loadOrbit($modal, datum);
 		}
 
 		function download(datum) {
@@ -42,6 +41,34 @@ function loadGameData(data) {
 				window.open(datum["DownloadURL"]);
 			else
 				alert("파일이 등록되지 않았습니다.");
+		}
+
+		function loadOrbit($modal, gamedata) {
+			if(gamedata["Images"].indexOf(',') == -1) {
+				$modal.find(".orbitArea").hide();
+			} else {
+				var images = gamedata["Images"].split(',');
+				var data = new Array();
+
+				for(var index in images) {
+					var datum = new Object();
+					datum["ID"] = index;
+					datum["Image"] = images[index];
+					datum["Actived"] = 1;
+					data.push(datum);
+				}
+
+				var orbit = $modal.find(".orbitArea").get(0);
+				(Orbit).call(orbit);
+				orbit.load(data);
+
+				updateOrbitHeight(orbit);
+				$(window).on("resize", function() { console.log(orbit); updateOrbitHeight(orbit); });
+			}
+		}
+
+		function updateOrbitHeight(orbit) {
+			$(orbit).height($(orbit).width() * 0.5);
 		}
 	}
 }
