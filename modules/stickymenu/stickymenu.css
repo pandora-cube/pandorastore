@@ -1,5 +1,9 @@
 .menuArea {
 	background-color: white;
+	transition: .5s;
+}
+.menuArea:hover {
+	background-color: #555;
 }
 .menuArea.fixed {
 	position: fixed;
@@ -8,17 +12,9 @@
 	right:0;
 	z-index: 1001;
 }
-@media screen and (max-width: 70rem) { /* for Mobile */
-	.menuArea .menu {
-		text-align: center;
-	}
-}
 
 .menuArea.fixed .menu {
 	border-top: none;
-}
-.menuArea.enabled {
-	background-color: #555;
 }
 .menuArea .menu {
 	list-style: none;
@@ -26,6 +22,11 @@
 	white-space: normal;
 	margin: 0 auto;
 	border-top: 1px solid #AAA;
+}
+@media screen and (max-width: 70rem) { /* for Mobile */
+	.menuArea .menu {
+		text-align: center;
+	}
 }
 
 .menuArea .menu > li {
@@ -35,8 +36,9 @@
 	line-height: 3em;
 	cursor: pointer;
 	vertical-align: bottom;
+	transition: .5s;
 }
-.menuArea .menu > li.enabled {
+.menuArea .menu > li:hover {
 	background-color: #8badc9;
 }
 .menuArea .menu > li .title {
@@ -47,8 +49,8 @@
 	font-weight: bold;
 	font-size: 1.1em;
 }
-.menuArea.enabled .menu > li .title a,
-.menuArea .menu > li.enabled .title a {
+.menuArea:hover .menu > li .title a,
+.menuArea .menu > li:hover .title a {
 	color: white;
 }
 @media screen and (max-width: 70rem) { /* for Mobile */
@@ -62,7 +64,7 @@
 	}
 }
 
-.menuArea .inner-menu {
+.menuArea .menu > li .inner-menu {
 	position: absolute;
 	display: none;
 	z-index: 1000;
@@ -70,10 +72,10 @@
 	white-space: nowrap;
 	background-color: white;
 }
-.menuArea .inner-menu.enabled {
+.menuArea .menu > li:hover .inner-menu {
 	display: block;
 }
-.menuArea .inner-menu li a {
+.menuArea .menu > li .inner-menu li a {
 	display: block;
 	padding: 0 2em;
 }
