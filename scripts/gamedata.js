@@ -40,7 +40,7 @@ function loadGameData(data) {
 			else if(datum["DownloadURL"].length != 0)
 				window.open(datum["DownloadURL"]);
 			else
-				alert("파일이 등록되지 않았습니다.");
+				alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
 		}
 
 		function loadOrbit($modal, gamedata) {
