@@ -5,9 +5,8 @@ $(document).ready(function() {
 function Modal() {
 	var origin = this;
 
-	this.open = function(closebutton, animation) {
+	this.open = function(closebutton) {
 		closebutton = closebutton || true;
-		animation = animation || true;
 
 		var scrollTop = $(window).scrollTop();
 		var height = $(document).height();
@@ -17,7 +16,7 @@ function Modal() {
 			.css("top", -scrollTop)
 			.css("height", height);
 
-		return createModal(closebutton, animation);
+		return createModal(closebutton);
 	};
 
 	this.close = function() {
@@ -30,7 +29,7 @@ function Modal() {
 		destroyModal();
 	};
 
-	function createModal(closebutton, animation) {
+	function createModal(closebutton) {
 		var $area = $("<div/>")
 			.attr("id", $(origin).attr("name"))
 			.addClass("modalArea")
@@ -57,10 +56,6 @@ function Modal() {
 				})
 				.html("&#10006;")
 				.prependTo($modal);
-
-		if(animation) {
-			$modal.hide().slideDown("fast");
-		}
 
 		return $area;
 	}
