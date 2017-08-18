@@ -16,6 +16,7 @@ class Categories {
 			UNION
 			SELECT *, \"Platform\" AS Type
 			FROM ".$this->table["platforms"];
+		
 		$this->names = array();
 		if($result = $this->mysqli->query($sql)) {
 			for($i = 0; $i < $result->num_rows; $i++) {

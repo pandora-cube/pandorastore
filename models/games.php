@@ -11,10 +11,18 @@ class Games {
 		$this->model_categories = $model_categories;
 	}
 
-	public function load() {
+	public function load($genre = NULL, $platform = NULL) {
+		$genre = ($genre == NULL) ? "TRUE" : "CONCAT(\",\", Genres, \",\") LIKE \"%,$genre,%\"";
+		$platform = ($platform == NULL) ? "TRUE" : "CONCAT(\",\", Platforms, \",\") LIKE \"%,$platform,%\"";
+		$sql = "
+			SELECT *
+			FROM ".$this->table["games"]."
+			WHERE $genre AND $platform
+			ORDER BY CreatedTime DESC";
+
 		$this->model_categories->load();
 		$this->games = array();
-		if($result = $this->mysqli->query(sprintf("SELECT * FROM %s ORDER BY CreatedTime DESC", $this->table["games"]))) {
+		if($result = $this->mysqli->query($sql)) {
 			for($i = 0; $i < $result->num_rows; $i++) {
 				$origin = $this->games[$i] = $result->fetch_assoc();
 
