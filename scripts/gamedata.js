@@ -48,7 +48,7 @@ function loadGameData(data) {
 			if(gamedata["Images"].indexOf(',') == -1) {
 				var datum = new Object();
 				datum["ID"] = 0;
-				datum["Image"] = "images/dalchong.jpg";
+				datum["Image"] = "/images/dalchong.jpg";
 				datum["Summary"] = "등록된 이미지가 없습니다.";
 				datum["Actived"] = 1;
 				data.push(datum);
