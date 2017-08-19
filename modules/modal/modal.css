@@ -26,7 +26,7 @@
 	float: right;
 	font-family: sans-serif;
 }
-@media screen and (max-width: 70rem) { /* for Mobile */
+@media screen and (max-width: 50rem) { /* for Mobile */
 	.modalArea .modal {
 		position: fixed;
 		top: 10%;
@@ -39,7 +39,7 @@
 		margin: -.7em -.5em 0 0;
 	}
 }
-@media screen and (min-width: 70rem) { /* for Desktop */
+@media screen and (min-width: 50rem) { /* for Desktop */
 	.modalArea {
 		display: flex;
 		align-items: center;

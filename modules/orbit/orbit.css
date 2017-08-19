@@ -61,12 +61,12 @@ ul.orbit li .caption .description {
 	white-space: pre-line;
 	overflow: hidden;
 }
-@media screen and (max-width: 70rem) { /* for Mobile */
+@media screen and (max-width: 50rem) { /* for Mobile */
 	ul.orbit li .caption {
 		width: 100%;
 	}
 }
-@media screen and (min-width: 70rem) { /* for Desktop */
+@media screen and (min-width: 50rem) { /* for Desktop */
 	ul.orbit li .caption {
 		padding: 0 2rem;
 	}
