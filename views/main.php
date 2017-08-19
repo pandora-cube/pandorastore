@@ -2,10 +2,10 @@
 <html>
 <head>
 	<?=$this->loadLayout("head")?>
-	<link rel="stylesheet" href="stylesheets/main.css" />
-	<link rel="stylesheet" href="modules/orbit/orbit.css" />
-	<link rel="stylesheet" href="modules/stickymenu/stickymenu.css" />
-	<link rel="stylesheet" href="modules/modal/modal.css" />
+	<link rel="stylesheet" href="/stylesheets/main.css" />
+	<link rel="stylesheet" href="/modules/orbit/orbit.css" />
+	<link rel="stylesheet" href="/modules/stickymenu/stickymenu.css" />
+	<link rel="stylesheet" href="/modules/modal/modal.css" />
 </head>
 
 <body>
@@ -49,13 +49,13 @@
 		<?=$this->loadLayout("footer")?>
 	</footer>
 
-	<script src="libraries/jquery.js"></script>
-	<script src="modules/orbit/orbit.js"></script>
-	<script src="modules/stickymenu/stickymenu.js"></script>
-	<script src="modules/modal/modal.js"></script>
-	<script src="scripts/toporbit.js"></script>
-	<script src="scripts/gamedata.js"></script>
-	<script src="scripts/clientinfo.js"></script>
+	<script src="/libraries/jquery.js"></script>
+	<script src="/modules/orbit/orbit.js"></script>
+	<script src="/modules/stickymenu/stickymenu.js"></script>
+	<script src="/modules/modal/modal.js"></script>
+	<script src="/scripts/toporbit.js"></script>
+	<script src="/scripts/gamedata.js"></script>
+	<script src="/scripts/clientinfo.js"></script>
 
 	<script>
 		$(document).ready(function() {

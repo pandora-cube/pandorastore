@@ -13,6 +13,6 @@
 		<?=$this->getLayout("footer")?>
 	</footer>
 
-	<script src="libraries/jquery.js"></script>
+	<script src="/libraries/jquery.js"></script>
 </body>
 </html>

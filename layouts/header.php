@@ -26,20 +26,20 @@
 		<li>
 			<div class="title"><a href="#">장르</a></div>
 			<ul class="inner-menu">
-				<li><a href="">타이쿤</a></li>
-				<li><a href="">어드벤처</a></li>
-				<li><a href="">소프트웨어</a></li>
+				<li><a href="/category/G1">타이쿤</a></li>
+				<li><a href="/category/G2">어드벤처</a></li>
+				<li><a href="/category/G3">소프트웨어</a></li>
 			</ul>
 		</li>
 		<li>
 			<div class="title"><a href="#">환경</a></div>
 			<ul class="inner-menu">
-				<li><a href="">Android</a></li>
-				<li><a href="">iOS</a></li>
-				<li><a href="">Windows</a></li>
-				<li><a href="">Linux</a></li>
-				<li><a href="">Mac OS</a></li>
-				<li><a href="">웹</a></li>
+				<li><a href="/category/P1">Android</a></li>
+				<li><a href="/category/P2">iOS</a></li>
+				<li><a href="/category/P3">Windows</a></li>
+				<li><a href="/category/P4">Linux</a></li>
+				<li><a href="/category/P5">Mac OS</a></li>
+				<li><a href="/category/P6">웹</a></li>
 			</ul>
 		</li>
 	</ul>
