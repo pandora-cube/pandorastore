@@ -1,7 +1,7 @@
 <div class="headerArea">
 	<!-- 로고 -->
 	<h1>
-		<a href="">판도라스토어</a>
+		<a href="/">판도라스토어</a>
 	</h1>
 	<!-- 링크 -->
 	<ul class="links">
@@ -21,7 +21,7 @@
 <div class="menuArea">
 	<ul class="menu">
 		<li>
-			<div class="title"><a href="">홈</a></div>
+			<div class="title"><a href="/">홈</a></div>
 		</li>
 		<li>
 			<div class="title"><a href="#">장르</a></div>
