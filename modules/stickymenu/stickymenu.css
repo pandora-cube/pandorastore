@@ -1,6 +1,6 @@
 .menuArea {
 	background-color: white;
-	transition: .5s;
+	transition: background-color .5s;
 }
 .menuArea:hover {
 	background-color: #555;
@@ -36,7 +36,7 @@
 	line-height: 3em;
 	cursor: pointer;
 	vertical-align: bottom;
-	transition: .5s;
+	transition: background-color .5s;
 }
 .menuArea .menu > li:hover {
 	background-color: #8badc9;
@@ -48,6 +48,7 @@
 	display: block;
 	font-weight: bold;
 	font-size: 1.1em;
+	transition: color .5s;
 }
 .menuArea:hover .menu > li .title a,
 .menuArea .menu > li:hover .title a {
