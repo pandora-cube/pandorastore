@@ -23,7 +23,7 @@
 	margin: 0 auto;
 	border-top: 1px solid #AAA;
 }
-@media screen and (max-width: 70rem) { /* for Mobile */
+@media screen and (max-width: 50rem) { /* for Mobile */
 	.menuArea .menu {
 		text-align: center;
 	}
@@ -54,12 +54,12 @@
 .menuArea .menu > li:hover .title a {
 	color: white;
 }
-@media screen and (max-width: 70rem) { /* for Mobile */
+@media screen and (max-width: 50rem) { /* for Mobile */
 	.menuArea .menu > li .title a {
 		padding: 0 1em;
 	}
 }
-@media screen and (min-width: 70rem) { /* for Desktop */
+@media screen and (min-width: 50rem) { /* for Desktop */
 	.menuArea .menu > li .title a {
 		padding: 0 2em;
 	}
