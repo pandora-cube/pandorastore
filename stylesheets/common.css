@@ -18,12 +18,12 @@ body {
 	font-family: "Nanum Gothic", sans-serif;
 }
 /* body를 제외한 모든 요소의 폰트 사이즈는 em단위 */
-@media screen and (max-width: 70rem) { /* for Mobile */
+@media screen and (max-width: 50rem) { /* for Mobile */
 	body {
 		font-size: .7rem;
 	}
 }
-@media screen and (min-width: 70rem) { /* for Desktop */
+@media screen and (min-width: 50rem) { /* for Desktop */
 	body {
 		font-size: 1rem;
 	}
@@ -79,7 +79,7 @@ header .subject {
 header .menuArea .menu {
 	max-width: 1400px;
 }
-@media screen and (max-width: 70rem) { /* for Mobile */
+@media screen and (max-width: 50rem) { /* for Mobile */
 	header {
 		padding-top: 2rem;
 	}
@@ -103,7 +103,7 @@ header .menuArea .menu {
 		text-align: center;
 	}
 }
-@media screen and (min-width: 70rem) { /* for Desktop */
+@media screen and (min-width: 50rem) { /* for Desktop */
 	header .blankArea {
 		height: 5rem;
 	}
@@ -146,12 +146,12 @@ header .menuArea .menu {
 	font-size: 1.7em;
 	font-weight: 500;
 }
-@media screen and (max-width: 70rem) { /* for Mobile */
+@media screen and (max-width: 50rem) { /* for Mobile */
 	#contents {
 		padding: 1rem;
 	}
 }
-@media screen and (min-width: 70rem) { /* for Desktop */
+@media screen and (min-width: 50rem) { /* for Desktop */
 	#contents {
 		padding: 2rem 5rem;
 	}
