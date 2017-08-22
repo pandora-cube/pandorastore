@@ -12,12 +12,12 @@ class Games {
 	}
 
 	public function load($genre = NULL, $platform = NULL) {
-		$genre = ($genre == NULL) ? "TRUE" : "CONCAT(\",\", Genres, \",\") LIKE \"%,$genre,%\"";
-		$platform = ($platform == NULL) ? "TRUE" : "CONCAT(\",\", Platforms, \",\") LIKE \"%,$platform,%\"";
+		$genre = ($genre == NULL) ? "TRUE" : "CONCAT(\",\", Genres, \",\") LIKE \"%,{$genre},%\"";
+		$platform = ($platform == NULL) ? "TRUE" : "CONCAT(\",\", Platforms, \",\") LIKE \"%,{$platform},%\"";
 		$sql = "
 			SELECT *
-			FROM ".$this->table["games"]."
-			WHERE $genre AND $platform
+			FROM {$this->table["games"]}
+			WHERE {$genre} AND {$platform}
 			ORDER BY CreatedTime DESC";
 
 		$this->model_categories->load();

@@ -12,11 +12,11 @@ class Categories {
 	public function load() {
 		$sql = "
 			SELECT *, \"Genre\" AS Type
-			FROM ".$this->table["genres"]."
+			FROM {$this->table["genres"]}
 			UNION
 			SELECT *, \"Platform\" AS Type
-			FROM ".$this->table["platforms"];
-		
+			FROM {$this->table["platforms"]}";
+
 		$this->names = array();
 		if($result = $this->mysqli->query($sql)) {
 			for($i = 0; $i < $result->num_rows; $i++) {
