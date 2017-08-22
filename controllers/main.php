@@ -12,16 +12,16 @@ $platform = (count($platform) < 2) ? NULL : $platform[1];
 
 $dbconfig = parse_ini_file("configs/database.ini");
 $mysqli = mysqli_connect($dbconfig["host"], $dbconfig["user"], $dbconfig["password"], $dbconfig["database"]); {
-	$orbit = new Orbit($mysqli, $dbconfig["table"]);
-	$orbit = $orbit->load();
+	$orbit_model = new Orbit($mysqli, $dbconfig["table"]);
+	$orbit_data = $orbit_model->load();
 
-	$categories = new Categories($mysqli, $dbconfig["table"]);
-	$games = new Games($mysqli, $dbconfig["table"], $categories);
-	$games = $games->load($genre, $platform);
+	$categories_model = new Categories($mysqli, $dbconfig["table"]);
+	$games_model = new Games($mysqli, $dbconfig["table"], $categories_model);
+	$games_data = $games_model->load($genre, $platform);
 } $mysqli->close();
 
 $template = new Template();
-$template->setAttribute("orbit", $orbit);
-$template->setAttribute("games", $games);
+$template->setAttribute("orbit", $orbit_data);
+$template->setAttribute("games", $games_data);
 $template->loadView("main");
 ?>
