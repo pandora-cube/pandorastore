@@ -14,7 +14,7 @@
 	</header>
 
 	<div id="contents">
-		<h2>목록</h2>
+		<h2><?=$this->getAttribute("category_name")?></h2>
 		<div class="game-list">
 			<template>
 				<div class="cover">
