@@ -7,8 +7,12 @@ uploadedfiles/
 Thumbs.db
 ehthumbs.db
 
-# Folder config file
+# Folder config files
 Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+
+# FTP config files
+.ftpconfig
+.ftpignore
