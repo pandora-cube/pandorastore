@@ -29,7 +29,7 @@ $mysqli = mysqli_connect($dbconfig["host"], $dbconfig["user"], $dbconfig["passwo
 	else if(isset($platform_name))
 		$category_name = $platform_name;
 	else
-		$category_name = "전체 목록";
+		$category_name = "전체 콘텐츠";
 } $mysqli->close();
 
 $template = new Template();
