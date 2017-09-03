@@ -1,7 +1,7 @@
 <?php
 class Orbit {
-	private $mysqli = NULL;
-	private $table = NULL;
+	private $mysqli;
+	private $table;
 
 	public function __construct($link, $table) {
 		$this->mysqli = $link;

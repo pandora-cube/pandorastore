@@ -1,8 +1,8 @@
 <?php
 class Categories {
-	private $mysqli = NULL;
-	private $table = NULL;
-	private $names = NULL;
+	private $mysqli;
+	private $table;
+	private $names;
 
 	public function __construct($link, $table) {
 		$this->mysqli = $link;
