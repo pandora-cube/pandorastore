@@ -12,6 +12,8 @@ class Template {
 		$this->attributes[$key] = $value;
 	}
 	public function getAttribute($key) {
+		if(!isset($this->attributes[$key]))
+			return "";
 		return $this->attributes[$key];
 	}
 

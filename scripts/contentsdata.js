@@ -1,19 +1,19 @@
-function loadGameData(data) {
+function loadContentsData(data) {
 	for(var index in data) {
 		var datum = data[index];
 		var $section = $("<section/>")
-			.html($("#contents .game-list template").html())
-			.data("game-data", JSON.stringify(datum))
+			.html($("#contents .contents-list template").html())
+			.data("contents-data", JSON.stringify(datum))
 			.on("click", openModal)
-			.appendTo("#contents .game-list");
+			.appendTo("#contents .contents-list");
 
 		$section.find(".cover img").attr("src", datum["Thumbnail"]);
 		$section.find(".summary .title").text(datum["Title"]);
 		$section.find(".summary .creator").text(datum["Creator"]);
 
 		function openModal() {
-			var datum = JSON.parse($(this).data("game-data"));
-			var $origin = $(".modal-origin[name=game-detail]");
+			var datum = JSON.parse($(this).data("contents-data"));
+			var $origin = $(".modal-origin[name=contents-detail]");
 			var $modal = $origin.get(0).open();
 
 			var genres = datum["Genres"].join(", ");
@@ -43,9 +43,9 @@ function loadGameData(data) {
 				alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
 		}
 
-		function loadOrbit($modal, gamedata) {
+		function loadOrbit($modal, contentsdata) {
 			var data = new Array();
-			if(gamedata["Images"].indexOf(',') == -1) {
+			if(contentsdata["Images"].length == 0) {
 				var datum = new Object();
 				datum["ID"] = 0;
 				datum["Image"] = "/images/dalchong.jpg";
@@ -53,7 +53,7 @@ function loadGameData(data) {
 				datum["Actived"] = 1;
 				data.push(datum);
 			} else {
-				var images = gamedata["Images"].split(',');
+				var images = contentsdata["Images"];
 				for(var index in images) {
 					var datum = new Object();
 					datum["ID"] = index;

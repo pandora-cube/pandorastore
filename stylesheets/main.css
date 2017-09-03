@@ -16,11 +16,11 @@
 	}
 }
 
-#contents .game-list {
+#contents .contents-list {
 	overflow-x: auto;
 	margin: -.5em 0;
 }
-#contents .game-list > section {
+#contents .contents-list > section {
 	display: inline-block;
 	width: 10em;
 	padding: 1em;
@@ -28,23 +28,23 @@
 	margin: .5em;
 	cursor: pointer;
 }
-#contents .game-list .cover {
+#contents .contents-list .cover {
 	width: 10em;
 	height: 10em;
 	line-height: 10em;
 	overflow: hidden;
 }
-#contents .game-list .cover img {
+#contents .contents-list .cover img {
 	width: 100%;
 	vertical-align: middle;
 }
-#contents .game-list .title {
+#contents .contents-list .title {
 	margin-top: .7em;
 	font-size: 1.1em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-#contents .game-list .creator {
+#contents .contents-list .creator {
 	margin-top: .5em;
 	font-size: .9em;
 	overflow: hidden;
@@ -61,11 +61,11 @@
 	}
 }
 
-#game-detail .top {
+#contents-detail .top {
 	padding-bottom: 1em;
 	min-height: 10em;
 }
-#game-detail .top .cover {
+#contents-detail .top .cover {
 	display: inline-block;
 	float: left;
 	width: 10em;
@@ -75,25 +75,25 @@
 	overflow: hidden;
 	margin-right: 2em;
 }
-#game-detail .top .cover img {
+#contents-detail .top .cover img {
 	width: 100%;
 	vertical-align: middle;
 }
-#game-detail .top .summary {
+#contents-detail .top .summary {
 }
-#game-detail .top .summary p {
+#contents-detail .top .summary p {
 	margin: .5em 0;
 }
-#game-detail .top .summary span {
+#contents-detail .top .summary span {
 	font-weight: bold;
 }
-#game-detail .top .summary .title {
+#contents-detail .top .summary .title {
 	font-size: 1.2em;
 }
-#game-detail .top .summary .reason-set {
+#contents-detail .top .summary .reason-set {
 	text-align: right;
 }
-#game-detail .top .summary .reason-set .download {
+#contents-detail .top .summary .reason-set .download {
 	padding: .7em;
 	font-size: .9em;
 	line-height: .9em;
@@ -106,19 +106,19 @@
 	cursor: pointer;
 	transition: 1s;
 }
-#game-detail .top .summary .reason-set .download:hover {
+#contents-detail .top .summary .reason-set .download:hover {
 	background-color: LightSteelBlue;
 }
-#game-detail .orbitArea {
+#contents-detail .orbitArea {
 	font-size: .7em;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
-	#game-detail .top .summary {
+	#contents-detail .top .summary {
 		font-size: 1.2em;
 	}
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
-	#game-detail .modal {
+	#contents-detail .modal {
 		min-width: 40rem;
 	}
 }

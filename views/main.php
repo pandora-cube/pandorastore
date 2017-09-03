@@ -15,7 +15,7 @@
 
 	<div id="contents">
 		<h2><?=$this->getAttribute("category_name")?></h2>
-		<div class="game-list">
+		<div class="contents-list">
 			<template>
 				<div class="cover">
 					<img />
@@ -26,7 +26,7 @@
 				</div>
 			</template>
 		</div>
-		<template name="game-detail" class="modal-origin">
+		<template name="contents-detail" class="modal-origin">
 			<section class="top">
 				<div class="cover">
 					<img />
@@ -54,13 +54,13 @@
 	<script src="/modules/stickymenu/stickymenu.js"></script>
 	<script src="/modules/modal/modal.js"></script>
 	<script src="/scripts/toporbit.js"></script>
-	<script src="/scripts/gamedata.js"></script>
+	<script src="/scripts/contentsdata.js"></script>
 	<script src="/scripts/clientinfo.js"></script>
 
 	<script>
 		$(document).ready(function() {
 			loadTopOrbitData(<?=json_encode($this->getAttribute("orbit"))?>);
-			loadGameData(<?=json_encode($this->getAttribute("games"))?>);
+			loadContentsData(<?=json_encode($this->getAttribute("contents"))?>);
 		});
 	</script>
 </body>
