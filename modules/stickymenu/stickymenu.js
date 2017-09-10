@@ -1,17 +1,17 @@
-$(document).ready(function() {
-	$(window).on("scroll", onScroll);
+$(document).ready(() => {
+    function onScroll() {
+        const scrolltop = $(window).scrollTop();
+        const $menuarea = $(".menuArea[class!=fixed]");
+        const menutop = $menuarea.position().top;
 
-	function onScroll() {
-		var scrolltop = $(window).scrollTop();
-		var $menuarea = $(".menuArea[class!=fixed]");
-		var menutop = $menuarea.position().top;
+        if (scrolltop > menutop && $(".menuArea.fixed").length === 0) {
+            $menuarea.clone(true)
+                .appendTo($menuarea.parent())
+                .addClass("fixed");
+        } else if (scrolltop < menutop) {
+            $(".menuArea.fixed").remove();
+        }
+    }
 
-		if(scrolltop > menutop && $(".menuArea.fixed").length == 0) {
-			$menuarea.clone(true)
-				.appendTo($menuarea.parent())
-				.addClass("fixed");
-		} else if(scrolltop < menutop) {
-			$(".menuArea.fixed").remove();
-		}
-	}
+    $(window).on("scroll", onScroll);
 });
