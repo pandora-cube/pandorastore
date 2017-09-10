@@ -25,6 +25,11 @@
 .modalArea .closebutton {
 	float: right;
 	font-family: sans-serif;
+	cursor: pointer;
+	border: none;
+}
+.modalArea .closebutton:hover {
+	color: #8badc9;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
 	.modalArea .modal {
