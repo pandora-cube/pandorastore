@@ -13,7 +13,7 @@ function loadContentsData(data) {
             alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
         }
     }
-    
+
     function loadOrbit($modal, contentsData) {
         const orbitData = [];
         if (contentsData.Images.length === 0) {
@@ -41,7 +41,7 @@ function loadContentsData(data) {
         updateOrbitHeight(orbit);
         $(window).on("resize", () => updateOrbitHeight(orbit));
     }
-    
+
     function openModal() {
         const datum = JSON.parse($(this).data("contents-data"));
         const $origin = $(".modal-origin[name=contents-detail]");
