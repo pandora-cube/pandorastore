@@ -1,117 +1,120 @@
 function Orbit() {
-	var $orbit = $("<ul/>").addClass("orbit").appendTo(this);
-	var orbitTimer;
+    const $orbit = $("<ul/>").addClass("orbit").appendTo(this);
+    let orbitTimer;
 
-	this.load = function(data) {
-		applyData(data);
+    function activeSlide(index, speed, interval_) {
+        const interval = interval_ || 5000;
 
-		if(data.length > 1) {
-			addButton("<", "left");
-			addButton(">", "right");
-			activeSlide(0, "slow");
-		} else {
-			activeSlide(0, 0, 0);
-		}
-	};
+        clearTimeout(orbitTimer);
 
-	this.stop = function() {
-		clearTimeout(orbitTimer);
-	};
+        const $pre = $orbit.find("li.active");
+        let $slide;
+        if ($orbit.find("li").length === 0) {
+            return;
+        } else if (index === -1) { // 뒤로
+            $slide = $pre.prev("li");
+            if ($slide.length === 0) {
+                $slide = $orbit.find("li").last();
+            }
+        } else if (index === -2) { // 앞으로
+            $slide = $pre.next("li");
+            if ($slide.length === 0) {
+                $slide = $orbit.find("li").first();
+            }
+        } else if (index >= 0) {
+            $slide = $orbit.find("li").eq(index);
+        } else {
+            $slide = $orbit.find("li").first();
+        }
 
-	this.kill = function() {
-		this.stop();
-		$orbit.remove();
-	};
+        $slide.addClass("active");
+        if ($pre.length === 0) {
+            $slide.css("display", "list-item");
+        } else if ($pre.get(0) !== $slide.get(0)) {
+            $pre.removeClass("active");
+            $slide.css("z-index", 2);
+            $slide.fadeIn(speed, () => {
+                $pre.css("z-index", 0);
+                $pre.css("display", "none");
+                $slide.css("z-index", 1);
+            });
+        }
 
-	function addButton(text, direction) {
-		var $button = $("<button/>")
-			.addClass(direction)
-			.text(text)
-			.appendTo($orbit);
+        // 타이머
+        if (interval > 0) {
+            orbitTimer = setTimeout(() => activeSlide(-2, "slow", interval), interval);
+        }
+    }
 
-		// 버튼 클릭 이벤트
-		var index = null;
-		if(direction == "left")
-			index = -1;
-		else if(direction == "right")
-			index = -2;
-		if(index != null)
-			$button.on("click", function() {
-				activeSlide(index, "fast");
-			});
-	}
+    function addButton(text, direction) {
+        const $button = $("<button/>")
+            .addClass(direction)
+            .text(text)
+            .appendTo($orbit);
 
-	function applyData(data) {
-		for(var index in data) {
-			var datum = data[index];
-			var $slide = $("<li/>")
-				.css("background-image", "url(\"" + datum["Image"] + "\")")
-				.css("background-position", datum["Position"])
-				.appendTo($orbit);
+        // 버튼 클릭 이벤트
+        let index = null;
+        if (direction === "left") {
+            index = -1;
+        } else if (direction === "right") {
+            index = -2;
+        }
+        if (index != null) {
+            $button.on("click", () => {
+                activeSlide(index, "fast");
+            });
+        }
+    }
 
-			var summary = datum["Summary"] || "";
-			var description = datum["Description"] || "";
-			var url = datum["URL"] || "";
-			if(summary.length > 0 || description.length > 0) {
-				var $wrapper = $("<div/>").addClass("caption-wrapper").appendTo($slide);
-				var $caption = $("<div/>").addClass("caption").appendTo($wrapper);
+    function applyData(data) {
+        for (let i = 0; i < data.length; i++) {
+            const datum = data[i];
+            const $slide = $("<li/>")
+                .css("background-image", `url("${datum.Image}")`)
+                .css("background-position", datum.Position)
+                .appendTo($orbit);
 
-				if(summary.length > 0)
-					$("<div/>").addClass("summary").text(summary).appendTo($caption);
-				if(description.length > 0)
-					$("<div/>").addClass("description").text(description).appendTo($caption);
-			}
-			if(url.length > 0) {
-				$slide.css("cursor", "pointer");
-				$slide.on("click", { url: url }, function(e) {
-					window.open(e.data.url);
-				});
-			} else {
-				$slide.css("cursor", "unset");
-			}
-		}
-	}
+            const summary = datum.Summary || "";
+            const description = datum.Description || "";
+            const url = datum.URL || "";
+            if (summary.length > 0 || description.length > 0) {
+                const $wrapper = $("<div/>").addClass("caption-wrapper").appendTo($slide);
+                const $caption = $("<div/>").addClass("caption").appendTo($wrapper);
 
-	function activeSlide(index, speed, interval) {
-		interval = interval || 5000;
+                if (summary.length > 0) {
+                    $("<div/>").addClass("summary").text(summary).appendTo($caption);
+                }
+                if (description.length > 0) {
+                    $("<div/>").addClass("description").text(description).appendTo($caption);
+                }
+            }
+            if (url.length > 0) {
+                $slide.css("cursor", "pointer");
+                $slide.on("click", { url }, e => window.open(e.data.url));
+            } else {
+                $slide.css("cursor", "unset");
+            }
+        }
+    }
 
-		clearTimeout(orbitTimer);
+    this.load = (data) => {
+        applyData(data);
 
-		var $pre = $orbit.find("li.active");
-		var $slide;
-		if($orbit.find("li").length == 0)
-			return;
-		else if(index == -1) { // 뒤로
-			$slide = $pre.prev("li");
-			if($slide.length == 0)
-				$slide = $orbit.find("li").last();
-		} else if(index == -2) { // 앞으로
-			$slide = $pre.next("li");
-			if($slide.length == 0)
-				$slide = $orbit.find("li").first();
-		} else if(index >= 0)
-			$slide = $orbit.find("li").eq(index);
-		else
-			$slide = $orbit.find("li").first();
+        if (data.length > 1) {
+            addButton("<", "left");
+            addButton(">", "right");
+            activeSlide(0, "slow");
+        } else {
+            activeSlide(0, 0, 0);
+        }
+    };
 
-		$slide.addClass("active");
-		if($pre.length == 0) {
-			$slide.css("display", "list-item");
-		} else if($pre.get(0) != $slide.get(0)) {
-			$pre.removeClass("active");
-			$slide.css("z-index", 2);
-			$slide.fadeIn(speed, function() {
-				$pre.css("z-index", 0);
-				$pre.css("display", "none");
-				$slide.css("z-index", 1);
-			});
-		}
+    this.stop = () => {
+        clearTimeout(orbitTimer);
+    };
 
-		// 타이머
-		if(interval > 0) {
-			orbitTimer = setTimeout(function() {
-				activeSlide(-2, "slow", interval);
-			}, interval);
-		}
-	}
+    this.kill = () => {
+        this.stop();
+        $orbit.remove();
+    };
 }
