@@ -46,7 +46,7 @@ function loadContentsData(data) {
         const datum = JSON.parse($(this).data("contents-data"));
         const $origin = $(".modal-origin[name=contents-detail]");
         const $modal = $origin.get(0).open();
-        const genres = datum.genres.join(", ");
+        const genres = datum.Genres.join(", ");
         const platforms = datum.Platforms.join(", ");
 
         $modal.find(".cover img").attr("src", datum.Thumbnail);
