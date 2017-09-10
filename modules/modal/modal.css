@@ -1,61 +1,61 @@
 .notScroll {
-	position: fixed;
-	overflow: hidden;
-	width: 100%;
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
 }
 
 .modal-origin {
-	display: none;
+    display: none;
 }
 
 .modalArea {
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	z-index: 1002;
-	background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1002;
+    background-color: rgba(0, 0, 0, 0.75);
 }
 .modalArea .modal {
-	background-color: white;
-	padding: 2em;
-	overflow: auto;
+    background-color: white;
+    padding: 2em;
+    overflow: auto;
 }
 .modalArea .closebutton {
-	float: right;
-	font-family: sans-serif;
-	cursor: pointer;
-	border: none;
+    float: right;
+    font-family: sans-serif;
+    cursor: pointer;
+    border: none;
 }
 .modalArea .closebutton:hover {
-	color: #8badc9;
+    color: #8badc9;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
-	.modalArea .modal {
-		position: fixed;
-		top: 10%;
-		right: 0;
-		left: 0;
-		bottom: 10%;
-	}
-	.modalArea .closebutton {
-		font-size: 1.2em;
-		margin: -.7em -.5em 0 0;
-	}
+    .modalArea .modal {
+        position: fixed;
+        top: 10%;
+        right: 0;
+        left: 0;
+        bottom: 10%;
+    }
+    .modalArea .closebutton {
+        font-size: 1.2em;
+        margin: -.7em -.5em 0 0;
+    }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
-	.modalArea {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.modalArea .modal {
-		display: inline-block;
-		max-width: 90%;
-		max-height: 90%;
-	}
-	.modalArea .closebutton {
-		margin: -1em -.7em 0 0;
-	}
+    .modalArea {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .modalArea .modal {
+        display: inline-block;
+        max-width: 90%;
+        max-height: 90%;
+    }
+    .modalArea .closebutton {
+        margin: -1em -.7em 0 0;
+    }
 }

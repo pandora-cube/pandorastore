@@ -1,73 +1,73 @@
 ul.orbit {
-	position: relative;
-	height: inherit;
-	list-style: none;
+    position: relative;
+    height: inherit;
+    list-style: none;
 }
 ul.orbit button {
-	position: absolute;
-	z-index: 3;
-	height: 100%;
-	padding: 0 2%;
-	color: white;
-	font-size: 100%;
-	background-color: rgba(0, 0, 0, .3);
-	border: none;
-	outline: none;
-	cursor: pointer;
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    padding: 0 2%;
+    color: white;
+    font-size: 100%;
+    background-color: rgba(0, 0, 0, .3);
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 ul.orbit button.left {
-	left: 0;
+    left: 0;
 }
 ul.orbit button.right {
-	right: 0;
+    right: 0;
 }
 ul.orbit li {
-	position: absolute;
-	display: none;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-position: center;
-	background-size: cover;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
 }
 ul.orbit li .caption-wrapper {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: inherit;
-	align-items: center;
-	color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: inherit;
+    align-items: center;
+    color: white;
 }
 ul.orbit li .caption {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	align-items: center;
-	justify-content: center;
-	background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 ul.orbit li .caption .summary {
-	font-size: 2em;
-	text-align: center;
-	white-space: pre-line;
-	overflow: hidden;
+    font-size: 2em;
+    text-align: center;
+    white-space: pre-line;
+    overflow: hidden;
 }
 ul.orbit li .caption .description {
-	border-top: 1px solid gray;
-	padding-top: 1rem;
-	margin-top: .5rem;
-	text-align: center;
-	white-space: pre-line;
-	overflow: hidden;
+    border-top: 1px solid gray;
+    padding-top: 1rem;
+    margin-top: .5rem;
+    text-align: center;
+    white-space: pre-line;
+    overflow: hidden;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
-	ul.orbit li .caption {
-		width: 100%;
-	}
+    ul.orbit li .caption {
+        width: 100%;
+    }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
-	ul.orbit li .caption {
-		padding: 0 2rem;
-	}
+    ul.orbit li .caption {
+        padding: 0 2rem;
+    }
 }

@@ -1,124 +1,124 @@
 @media screen and (max-width: 50rem) { /* for Mobile */
-	header .orbitArea {
-		font-size: .8em;
-	}
-	header ul.orbit {
-		max-width: 100%;
-	}
+    header .orbitArea {
+        font-size: .8em;
+    }
+    header ul.orbit {
+        max-width: 100%;
+    }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
-	header .orbitArea {
-		padding: 0 5rem 2rem 5rem;
-	}
-	header ul.orbit {
-		max-width: 1400px;
-		margin: 0 auto;
-	}
+    header .orbitArea {
+        padding: 0 5rem 2rem 5rem;
+    }
+    header ul.orbit {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
 }
 
 #contents .contents-list {
-	overflow-x: auto;
-	margin: -.5em 0;
+    overflow-x: auto;
+    margin: -.5em 0;
 }
 #contents .contents-list > section {
-	display: inline-block;
-	width: 10em;
-	padding: 1em;
-	background-color: #e8e8e8;
-	margin: .5em;
-	cursor: pointer;
+    display: inline-block;
+    width: 10em;
+    padding: 1em;
+    background-color: #e8e8e8;
+    margin: .5em;
+    cursor: pointer;
 }
 #contents .contents-list .cover {
-	width: 10em;
-	height: 10em;
-	line-height: 10em;
-	overflow: hidden;
+    width: 10em;
+    height: 10em;
+    line-height: 10em;
+    overflow: hidden;
 }
 #contents .contents-list .cover img {
-	width: 100%;
-	vertical-align: middle;
+    width: 100%;
+    vertical-align: middle;
 }
 #contents .contents-list .title {
-	margin-top: .7em;
-	font-size: 1.1em;
-	overflow: hidden;
-	text-overflow: ellipsis;
+    margin-top: .7em;
+    font-size: 1.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 #contents .contents-list .creator {
-	margin-top: .5em;
-	font-size: .9em;
-	overflow: hidden;
-	text-overflow: ellipsis;
+    margin-top: .5em;
+    font-size: .9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
-	#contents h2 {
-		margin-bottom: .9rem;
-	}
+    #contents h2 {
+        margin-bottom: .9rem;
+    }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
-	#contents h2 {
-		margin-bottom: 1.8rem;
-	}
+    #contents h2 {
+        margin-bottom: 1.8rem;
+    }
 }
 
 #contents-detail .top {
-	padding-bottom: 1em;
-	min-height: 10em;
+    padding-bottom: 1em;
+    min-height: 10em;
 }
 #contents-detail .top .cover {
-	display: inline-block;
-	float: left;
-	width: 10em;
-	height: 10em;
-	line-height: 10em;
-	border-radius: 2em;
-	overflow: hidden;
-	margin-right: 2em;
+    display: inline-block;
+    float: left;
+    width: 10em;
+    height: 10em;
+    line-height: 10em;
+    border-radius: 2em;
+    overflow: hidden;
+    margin-right: 2em;
 }
 #contents-detail .top .cover img {
-	width: 100%;
-	vertical-align: middle;
+    width: 100%;
+    vertical-align: middle;
 }
 #contents-detail .top .summary {
 }
 #contents-detail .top .summary p {
-	margin: .5em 0;
+    margin: .5em 0;
 }
 #contents-detail .top .summary span {
-	font-weight: bold;
+    font-weight: bold;
 }
 #contents-detail .top .summary .title {
-	font-size: 1.2em;
+    font-size: 1.2em;
 }
 #contents-detail .top .summary .reason-set {
-	text-align: right;
+    text-align: right;
 }
 #contents-detail .top .summary .reason-set .download {
-	padding: .7em;
-	font-size: .9em;
-	line-height: .9em;
-	font-weight: bold;
-	border-radius: .3em;
-	border: none;
-	outline: none;
-	background-color: SteelBlue;
-	color: White;
-	cursor: pointer;
-	transition: 1s;
+    padding: .7em;
+    font-size: .9em;
+    line-height: .9em;
+    font-weight: bold;
+    border-radius: .3em;
+    border: none;
+    outline: none;
+    background-color: SteelBlue;
+    color: White;
+    cursor: pointer;
+    transition: 1s;
 }
 #contents-detail .top .summary .reason-set .download:hover {
-	background-color: LightSteelBlue;
+    background-color: LightSteelBlue;
 }
 #contents-detail .orbitArea {
-	font-size: .7em;
+    font-size: .7em;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
-	#contents-detail .top .summary {
-		font-size: 1.2em;
-	}
+    #contents-detail .top .summary {
+        font-size: 1.2em;
+    }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
-	#contents-detail .modal {
-		min-width: 40rem;
-	}
+    #contents-detail .modal {
+        min-width: 40rem;
+    }
 }
