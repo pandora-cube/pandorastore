@@ -19,7 +19,7 @@ class Contents {
         $sql = "
             SELECT *
             FROM {$this->table["contents"]}
-            WHERE {$genre} AND {$platform}
+            WHERE {$genre} AND {$platform} AND Enabled = 1
             ORDER BY CreatedTime DESC";
 
         $this->categories_model->load();
