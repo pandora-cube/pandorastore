@@ -15,7 +15,7 @@ $config_contents = parse_ini_file("configs/contents.ini");
 $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]); {
     $orbit_model = new Orbit($mysqli, $config_db["table"]);
     $categories_model = new Categories($mysqli, $config_db["table"]);
-    $contents_model = new contents($mysqli, $config_db["table"], $config_contents, $categories_model);
+    $contents_model = new Contents($mysqli, $config_db["table"], $config_contents, $categories_model);
 
     $orbit_data = $orbit_model->load();
     $categories_data = $categories_model->load();
