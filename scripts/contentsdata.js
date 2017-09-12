@@ -43,7 +43,7 @@ function loadContentsData(data) {
     }
 
     function openModal() {
-        const datum = JSON.parse($(this).data("contents-data"));
+        const datum = data[parseInt($(this).data("contents-index"), 10)];
         const $origin = $(".modal-origin[name=contents-detail]");
         const $modal = $origin.get(0).open();
         const genres = datum.Genres.join(", ");
@@ -67,7 +67,7 @@ function loadContentsData(data) {
         const datum = data[i];
         const $section = $("<section/>")
             .html($("#contents .contents-list template").html())
-            .data("contents-data", JSON.stringify(datum))
+            .data("contents-index", i)
             .on("click", openModal)
             .appendTo("#contents .contents-list");
 
