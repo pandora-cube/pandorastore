@@ -1,17 +1,17 @@
 function loadContentsData(data) {
-    function download(datum) {
-        // const columns = ["DownloadURL_Android", "DownloadURL_iOS", "DownloadURL"];
-        const os = getOSName();
-
-        if (os === "Android" && datum.DownloadURL_Android.length !== 0) {
-            window.open(datum.DownloadURL_Android);
-        } else if (os === "Mac/iOS" && datum.DownloadURL_iOS.length !== 0) {
-            window.open(datum.DownloadURL_iOS);
-        } else if (datum.DownloadURL.length !== 0) {
-            window.open(datum.DownloadURL);
-        } else {
+    function download(id) {
+        console.log(id);
+        $.get("/functions/get_download_url.php", {
+            id,
+        }).done((url) => {
+            if (url.length !== 0) {
+                window.open(url);
+            } else {
+                alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
+            }
+        }).fail(() => {
             alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
-        }
+        });
     }
 
     function loadOrbit($modal, contentsData) {
@@ -54,7 +54,7 @@ function loadContentsData(data) {
         $modal.find(".summary .creator").text(datum.Creator);
         $modal.find(".summary .genres").text(genres);
         $modal.find(".summary .platforms").text(platforms);
-        $modal.find(".download").on("click", () => download(datum));
+        $modal.find(".download").on("click", () => download(datum.ID));
 
         loadOrbit($modal, datum);
     }

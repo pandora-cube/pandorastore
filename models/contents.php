@@ -13,13 +13,15 @@ class Contents {
         $this->categories_model = $categories_model;
     }
 
-    public function load($genre = NULL, $platform = NULL) {
-        $genre = ($genre == NULL) ? "TRUE" : "CONCAT(\",\", Genres, \",\") LIKE \"%,{$genre},%\"";
-        $platform = ($platform == NULL) ? "TRUE" : "CONCAT(\",\", Platforms, \",\") LIKE \"%,{$platform},%\"";
+    public function load($genre = NULL, $platform = NULL, $id = NULL) {
+        $con_genre = ($genre == NULL) ? "TRUE" : "CONCAT(\",\", Genres, \",\") LIKE \"%,{$genre},%\"";
+        $con_platform = ($platform == NULL) ? "TRUE" : "CONCAT(\",\", Platforms, \",\") LIKE \"%,{$platform},%\"";
+        $con_id = ($id == NULL) ? "TRUE" : "ID = {$id}";
+
         $sql = "
             SELECT *
             FROM {$this->table["contents"]}
-            WHERE {$genre} AND {$platform} AND Enabled = 1
+            WHERE {$con_genre} AND {$con_platform} AND {$con_id} AND Enabled = 1
             ORDER BY CreatedTime DESC";
 
         $this->categories_model->load();
