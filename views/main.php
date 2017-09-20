@@ -55,7 +55,6 @@
     <script src="/modules/modal/modal.js"></script>
     <script src="/scripts/toporbit.js"></script>
     <script src="/scripts/contentsdata.js"></script>
-    <script src="/scripts/clientinfo.js"></script>
 
     <script>
         $(document).ready(function() {

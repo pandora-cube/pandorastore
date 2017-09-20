@@ -1,6 +1,5 @@
 function loadContentsData(data) {
     function download(id) {
-        console.log(id);
         $.get("/functions/get_download_url.php", {
             id,
         }).done((url) => {
@@ -11,6 +10,19 @@ function loadContentsData(data) {
             }
         }).fail(() => {
             alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
+        });
+    }
+
+    function loadThumbnail($section, thumbnailURL) {
+        $.ajax({
+            type: "HEAD",
+            url: thumbnailURL,
+            success: () => {
+                $section.find(".cover img").attr("src", thumbnailURL);
+            },
+            error: () => {
+                $section.find(".cover img").attr("src", "/images/logo_dark.png");
+            },
         });
     }
 
@@ -49,13 +61,13 @@ function loadContentsData(data) {
         const genres = datum.Genres.join(", ");
         const platforms = datum.Platforms.join(", ");
 
-        $modal.find(".cover img").attr("src", datum.Thumbnail);
         $modal.find(".summary .title").text(datum.Title);
         $modal.find(".summary .creator").text(datum.Creator);
         $modal.find(".summary .genres").text(genres);
         $modal.find(".summary .platforms").text(platforms);
         $modal.find(".download").on("click", () => download(datum.ID));
 
+        loadThumbnail($modal, datum.Thumbnail);
         loadOrbit($modal, datum);
     }
 
@@ -71,8 +83,9 @@ function loadContentsData(data) {
             .on("click", openModal)
             .appendTo("#contents .contents-list");
 
-        $section.find(".cover img").attr("src", datum.Thumbnail);
         $section.find(".summary .title").text(datum.Title);
         $section.find(".summary .creator").text(datum.Creator);
+
+        loadThumbnail($section, datum.Thumbnail);
     }
 }
