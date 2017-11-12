@@ -9,10 +9,10 @@
         <li><a href="http://p-cube.kr">판도라큐브</a></li>
         <li><a href="http://seongbum.com">서성범</a></li>
     </ul>
-    <!-- 페이지 제목, 부제목 -->
+    <!-- 머리말 -->
     <div class="subject">
-        <h2>세종관318</h2>
-        <h3>판도라큐브 게임 스토어</h3>
+        <h2>같이 프로젝트 해요</h2>
+        <h3>판도라큐브 콘텐츠 스토어</h3>
     </div>
 </div>
 <!-- 여백 -->
