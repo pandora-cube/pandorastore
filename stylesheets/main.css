@@ -66,7 +66,7 @@
     min-height: 10em;
 }
 #contents-detail .top .cover {
-    display: inline-block;
+    display: block;
     float: left;
     width: 10em;
     height: 10em;
@@ -79,13 +79,8 @@
     width: 100%;
     vertical-align: middle;
 }
-#contents-detail .top .summary {
-}
 #contents-detail .top .summary p {
     margin: .5em 0;
-}
-#contents-detail .top .summary span {
-    font-weight: bold;
 }
 #contents-detail .top .summary .title {
     font-size: 1.2em;
