@@ -18,7 +18,7 @@ function Modal() {
             .removeAttr("name")
             .removeClass("modal-origin")
             .addClass("modal")
-            .fadeIn()
+            .fadeIn("slow")
             .prependTo($area);
 
         if (closebutton) {
