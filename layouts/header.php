@@ -29,6 +29,13 @@
                 <li><a href="/category/G1">타이쿤</a></li>
                 <li><a href="/category/G2">어드벤처</a></li>
                 <li><a href="/category/G3">소프트웨어</a></li>
+                <li><a href="/category/G4">전략</a></li>
+                <li><a href="/category/G5">퍼즐</a></li>
+                <li><a href="/category/G6">보드</a></li>
+                <li><a href="/category/G7">액션</a></li>
+                <li><a href="/category/G8">캐주얼</a></li>
+                <li><a href="/category/G9">아케이드</a></li>
+                <li><a href="/category/G10">시뮬레이션</a></li>
             </ul>
         </li>
         <li>
