@@ -15,7 +15,10 @@ class Categories {
             FROM {$this->table["genres"]}
             UNION
             SELECT *, \"Platform\" AS Type
-            FROM {$this->table["platforms"]}";
+            FROM {$this->table["platforms"]}
+            UNION
+            SELECT *, \"Tag\" AS Type
+            FROM {$this->table["tags"]}";
 
         $this->names = array();
         if($result = $this->mysqli->query($sql)) {

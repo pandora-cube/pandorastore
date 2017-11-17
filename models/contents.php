@@ -13,15 +13,16 @@ class Contents {
         $this->categories_model = $categories_model;
     }
 
-    public function load($genre = NULL, $platform = NULL, $id = NULL) {
+    public function load($genre = NULL, $platform = NULL, $tag = NULL, $id = NULL) {
         $con_genre = ($genre == NULL) ? "TRUE" : "CONCAT(\",\", Genres, \",\") LIKE \"%,{$genre},%\"";
         $con_platform = ($platform == NULL) ? "TRUE" : "CONCAT(\",\", Platforms, \",\") LIKE \"%,{$platform},%\"";
+        $con_tags = ($tag == NULL) ? "TRUE" : "CONCAT(\",\", Tags, \",\") LIKE \"%,{$tag},%\"";
         $con_id = ($id == NULL) ? "TRUE" : "ID = {$id}";
 
         $sql = "
             SELECT *
             FROM {$this->table["contents"]}
-            WHERE {$con_genre} AND {$con_platform} AND {$con_id} AND Enabled = 1
+            WHERE {$con_genre} AND {$con_platform} AND {$con_tags} AND {$con_id} AND Enabled = 1
             ORDER BY CreatedTime DESC";
 
         $this->categories_model->load();
@@ -41,6 +42,9 @@ class Contents {
                 // Platforms
                 $this->categories_model->parseArray($origin, $this->contents[$i], "Platform");
                 $this->categories_model->parseName($origin, $this->contents[$i], "Platform");
+                // Tags
+                $this->categories_model->parseArray($origin, $this->contents[$i], "Tag");
+                $this->categories_model->parseName($origin, $this->contents[$i], "Tag");
             }
             $result->free();
         }

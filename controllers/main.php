@@ -7,8 +7,10 @@ require("models/contents.php");
 $category = $_GET["category"];
 preg_match("/G([0-9]+)/", $category, $genre);
 preg_match("/P([0-9]+)/", $category, $platform);
+preg_match("/T([0-9]+)/", $category, $tag);
 $genre = (count($genre) < 2) ? NULL : $genre[1];
 $platform = (count($platform) < 2) ? NULL : $platform[1];
+$tag = (count($tag) < 2) ? NULL : $tag[1];
 
 $config_db = parse_ini_file("configs/database.ini");
 $config_contents = parse_ini_file("configs/contents.ini");
@@ -19,16 +21,19 @@ $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["pas
 
     $orbit_data = $orbit_model->load();
     $categories_data = $categories_model->load();
-    $contents_data = $contents_model->load($genre, $platform);
+    $contents_data = $contents_model->load($genre, $platform, $tag);
 
     $genre_name = &$categories_data["Genre"][$genre];
     $platform_name = &$categories_data["Platform"][$platform];
+    $tag_name = &$categories_data["Tag"][$tag];
     if(isset($genre_name) && isset($platform_name))
         $category_name = "{$genre_name} / {$platform_name}";
     else if(isset($genre_name))
         $category_name = $genre_name;
     else if(isset($platform_name))
         $category_name = $platform_name;
+    else if(isset($tag_name))
+        $category_name = $tag_name;
     else
         $category_name = "전체 콘텐츠";
 } $mysqli->close();
