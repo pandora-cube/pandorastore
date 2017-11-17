@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready(function onDocumentReady() {
     function onScroll() {
         const scrolltop = $(window).scrollTop();
         const $menuarea = $(".menuArea[class!=fixed]");

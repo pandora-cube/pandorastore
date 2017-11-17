@@ -33,7 +33,7 @@ function Modal() {
     }
 
     function destroyModal() {
-        $(`.modalArea#${$(origin).attr("name")}`).remove();
+        $(".modalArea#" + $(origin).attr("name")).remove();
     }
 
     this.open = function openModal(closebutton_) {
@@ -61,6 +61,6 @@ function Modal() {
     };
 }
 
-$(document).ready(() => {
+$(document).ready(function onDocumentReady() {
     $(".modal-origin").each(Modal);
 });

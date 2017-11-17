@@ -33,7 +33,7 @@ function Orbit() {
         } else if ($pre.get(0) !== $slide.get(0)) {
             $pre.removeClass("active");
             $slide.css("z-index", 2);
-            $slide.fadeIn(speed, () => {
+            $slide.fadeIn(speed, function () {
                 $pre.css("z-index", 0);
                 $pre.css("display", "none");
                 $slide.css("z-index", 1);
@@ -42,7 +42,7 @@ function Orbit() {
 
         // 타이머
         if (interval > 0) {
-            orbitTimer = setTimeout(() => activeSlide(-2, "slow", interval), interval);
+            orbitTimer = setTimeout(function () { activeSlide(-2, "slow", interval); }, interval);
         }
     }
 
@@ -60,7 +60,7 @@ function Orbit() {
             index = -2;
         }
         if (index != null) {
-            $button.on("click", () => {
+            $button.on("click", function () {
                 activeSlide(index, "fast");
             });
         }
@@ -70,7 +70,7 @@ function Orbit() {
         for (let i = 0; i < data.length; i++) {
             const datum = data[i];
             const $slide = $("<li/>")
-                .css("background-image", `url("${datum.Image}")`)
+                .css("background-image", "url(\"" + datum.Image + "\")")
                 .css("background-position", datum.Position)
                 .appendTo($orbit);
 
@@ -90,14 +90,16 @@ function Orbit() {
             }
             if (url.length > 0) {
                 $slide.css("cursor", "pointer");
-                $slide.on("click", { url }, e => window.open(e.data.url));
+                $slide.on("click", { url: url }, function (e) {
+                    window.open(e.data.url);
+                });
             } else {
                 $slide.css("cursor", "unset");
             }
         }
     }
 
-    this.load = (data) => {
+    this.load = function load(data) {
         applyData(data);
 
         if (data.length > 1) {
@@ -109,11 +111,11 @@ function Orbit() {
         }
     };
 
-    this.stop = () => {
+    this.stop = function stop() {
         clearTimeout(orbitTimer);
     };
 
-    this.kill = () => {
+    this.kill = function kill() {
         this.stop();
         $orbit.remove();
     };

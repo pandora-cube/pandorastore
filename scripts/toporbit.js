@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready(function onDocumentReady() {
     function updateOrbitHeight() {
         (function updateTopOrbitHeight() {
             $(this).height($(this).find("ul.orbit").width() * 0.4);

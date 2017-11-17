@@ -1,14 +1,14 @@
 function loadContentsData(data) {
     function download(id) {
         $.get("/functions/get_download_url.php", {
-            id,
-        }).done((url) => {
+            id: id,
+        }).done(function onSuccess(url) {
             if (url.length !== 0) {
                 window.open(url);
             } else {
                 alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
             }
-        }).fail(() => {
+        }).fail(function onFail() {
             alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
         });
     }
@@ -17,10 +17,10 @@ function loadContentsData(data) {
         $.ajax({
             type: "HEAD",
             url: thumbnailURL,
-            success: () => {
+            success: function onSuccess() {
                 $section.find(".cover img").attr("src", thumbnailURL);
             },
-            error: () => {
+            error: function onError() {
                 $section.find(".cover img").attr("src", "/images/logo_dark.png");
             },
         });
@@ -51,7 +51,7 @@ function loadContentsData(data) {
         orbit.load(orbitData);
 
         updateOrbitHeight(orbit);
-        $(window).on("resize", () => updateOrbitHeight(orbit));
+        $(window).on("resize", function () { updateOrbitHeight(orbit); });
     }
 
     function openModal() {
@@ -65,7 +65,7 @@ function loadContentsData(data) {
         $modal.find(".summary .creator").text(datum.Creator);
         $modal.find(".summary .genres").text(genres);
         $modal.find(".summary .platforms").text(platforms);
-        $modal.find(".download").on("click", () => download(datum.ID));
+        $modal.find(".download").on("click", function () { download(datum.ID); });
 
         loadThumbnail($modal, datum.Thumbnail);
         loadOrbit($modal, datum);
