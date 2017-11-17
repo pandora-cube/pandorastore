@@ -20,6 +20,8 @@
         "no-unused-vars": "warn",
         "constructor-super": "warn",
         "valid-typeof": "warn",
+        "func-names": 0,
+        "prefer-arrow-callback": 0,
 
         "indent": ["error", 4],
         "quotes": ["warn", "double"],
