@@ -1,14 +1,16 @@
 function Orbit() {
-    const $orbit = $("<ul/>").addClass("orbit").appendTo(this);
-    let orbitTimer;
+    var $orbit = $("<ul/>").addClass("orbit").appendTo(this);
+    var orbitTimer;
 
     function activeSlide(index, speed, interval_) {
-        const interval = interval_ || 5000;
+        var interval;
+        var $pre;
+        var $slide;
 
+        interval = interval_ || 5000;
         clearTimeout(orbitTimer);
 
-        const $pre = $orbit.find("li.active");
-        let $slide;
+        $pre = $orbit.find("li.active");
         if ($orbit.find("li").length === 0) {
             return;
         } else if (index === -1) { // 뒤로
@@ -47,13 +49,13 @@ function Orbit() {
     }
 
     function addButton(text, direction) {
-        const $button = $("<button/>")
+        var $button = $("<button/>")
             .addClass(direction)
             .text(text)
             .appendTo($orbit);
 
         // 버튼 클릭 이벤트
-        let index = null;
+        var index = null;
         if (direction === "left") {
             index = -1;
         } else if (direction === "right") {
@@ -67,19 +69,28 @@ function Orbit() {
     }
 
     function applyData(data) {
-        for (let i = 0; i < data.length; i++) {
-            const datum = data[i];
-            const $slide = $("<li/>")
+        var datum;
+        var $slide;
+        var summary;
+        var description;
+        var url;
+        var $wrapper;
+        var $caption;
+        var i;
+
+        for (i = 0; i < data.length; i++) {
+            datum = data[i];
+            $slide = $("<li/>")
                 .css("background-image", "url(\"" + datum.Image + "\")")
                 .css("background-position", datum.Position)
                 .appendTo($orbit);
 
-            const summary = datum.Summary || "";
-            const description = datum.Description || "";
-            const url = datum.URL || "";
+            summary = datum.Summary || "";
+            description = datum.Description || "";
+            url = datum.URL || "";
             if (summary.length > 0 || description.length > 0) {
-                const $wrapper = $("<div/>").addClass("caption-wrapper").appendTo($slide);
-                const $caption = $("<div/>").addClass("caption").appendTo($wrapper);
+                $wrapper = $("<div/>").addClass("caption-wrapper").appendTo($slide);
+                $caption = $("<div/>").addClass("caption").appendTo($wrapper);
 
                 if (summary.length > 0) {
                     $("<div/>").addClass("summary").text(summary).appendTo($caption);

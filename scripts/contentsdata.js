@@ -27,18 +27,23 @@ function loadContentsData(data) {
     }
 
     function loadOrbit($modal, contentsData) {
-        const orbitData = [];
+        var orbitData = [];
+        var datum;
+        var images;
+        var orbit;
+        var i;
+
         if (contentsData.Images.length === 0) {
-            const datum = {};
+            datum = {};
             datum.ID = 0;
             datum.Image = "/images/dalchong.jpg";
             datum.Summary = "등록된 이미지가 없습니다.";
             datum.Actived = 1;
             orbitData.push(datum);
         } else {
-            const images = contentsData.Images;
-            for (let i = 0; i < images.length; i++) {
-                const datum = {};
+            images = contentsData.Images;
+            for (i = 0; i < images.length; i++) {
+                datum = {};
                 datum.ID = i;
                 datum.Image = images[i];
                 datum.Actived = 1;
@@ -46,7 +51,7 @@ function loadContentsData(data) {
             }
         }
 
-        const orbit = $modal.find(".orbitArea").get(0);
+        orbit = $modal.find(".orbitArea").get(0);
         (Orbit).call(orbit);
         orbit.load(orbitData);
 
@@ -55,11 +60,11 @@ function loadContentsData(data) {
     }
 
     function openModal() {
-        const datum = data[parseInt($(this).data("contents-index"), 10)];
-        const $origin = $(".modal-origin[name=contents-detail]");
-        const $modal = $origin.get(0).open();
-        const genres = datum.Genres.join(", ");
-        const platforms = datum.Platforms.join(", ");
+        var datum = data[parseInt($(this).data("contents-index"), 10)];
+        var $origin = $(".modal-origin[name=contents-detail]");
+        var $modal = $origin.get(0).open();
+        var genres = datum.Genres.join(", ");
+        var platforms = datum.Platforms.join(", ");
 
         $modal.find(".summary .title").text(datum.Title);
         $modal.find(".summary .creator").text(datum.Creator);
@@ -75,17 +80,25 @@ function loadContentsData(data) {
         $(orbit).height($(orbit).width() * 0.56);
     }
 
-    for (let i = 0; i < data.length; i += 1) {
-        const datum = data[i];
-        const $section = $("<section/>")
-            .html($("#contents .contents-list template").html())
-            .data("contents-index", i)
-            .on("click", openModal)
-            .appendTo("#contents .contents-list");
+    function loadAllThumbnails() {
+        var datum;
+        var $section;
+        var i;
 
-        $section.find(".summary .title").text(datum.Title);
-        $section.find(".summary .creator").text(datum.Creator);
+        for (i = 0; i < data.length; i += 1) {
+            datum = data[i];
+            $section = $("<section/>")
+                .html($("#contents .contents-list template").html())
+                .data("contents-index", i)
+                .on("click", openModal)
+                .appendTo("#contents .contents-list");
 
-        loadThumbnail($section, datum.Thumbnail);
+            $section.find(".summary .title").text(datum.Title);
+            $section.find(".summary .creator").text(datum.Creator);
+
+            loadThumbnail($section, datum.Thumbnail);
+        }
     }
+
+    loadAllThumbnails();
 }

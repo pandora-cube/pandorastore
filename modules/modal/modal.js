@@ -1,5 +1,5 @@
 function Modal() {
-    const origin = this;
+    var origin = this;
 
     function onCloseButtonClicked(e) {
         if (e.target !== this) return;
@@ -7,13 +7,16 @@ function Modal() {
     }
 
     function createModal(closebutton) {
-        const $area = $("<div/>")
+        var $area;
+        var $modal;
+
+        $area = $("<div/>")
             .attr("id", $(origin).attr("name"))
             .addClass("modalArea")
             .on("click", onCloseButtonClicked)
             .prependTo("body");
 
-        const $modal = $("<div/>")
+        $modal = $("<div/>")
             .html($(origin).html())
             .removeAttr("name")
             .removeClass("modal-origin")
@@ -37,9 +40,9 @@ function Modal() {
     }
 
     this.open = function openModal(closebutton_) {
-        const closebutton = closebutton_ || true;
-        const scrollTop = $(window).scrollTop();
-        const height = $(document).height();
+        var closebutton = closebutton_ || true;
+        var scrollTop = $(window).scrollTop();
+        var height = $(document).height();
 
         $(this).data("scrollTop", scrollTop);
         $("html, body").addClass("notScroll");
