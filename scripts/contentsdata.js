@@ -1,4 +1,4 @@
-function loadContentsData(data) {
+function loadContentsData(data, categoryName, tags) {
     function download(id) {
         $.get("/functions/get_download_url.php", {
             id: id,
@@ -13,15 +13,15 @@ function loadContentsData(data) {
         });
     }
 
-    function loadThumbnail($section, thumbnailURL) {
+    function loadThumbnail($item, thumbnailURL) {
         $.ajax({
             type: "HEAD",
             url: thumbnailURL,
             success: function onSuccess() {
-                $section.find(".cover img").attr("src", thumbnailURL);
+                $item.find(".cover img").attr("src", thumbnailURL);
             },
             error: function onError() {
-                $section.find(".cover img").attr("src", "/images/logo_dark.png");
+                $item.find(".cover img").attr("src", "/images/logo_dark.png");
             },
         });
     }
@@ -80,25 +80,58 @@ function loadContentsData(data) {
         $(orbit).height($(orbit).width() * 0.56);
     }
 
-    function loadAllThumbnails() {
-        var datum;
-        var $section;
+    function loadContentsItem($list, index, datum) {
+        var $item;
+
+        $item = $("<div/>")
+            .html($("#contents template[name=contents-item]").html())
+            .data("contents-index", index)
+            .on("click", openModal)
+            .appendTo($list);
+
+        $item.find(".summary .title").text(datum.Title);
+        $item.find(".summary .creator").text(datum.Creator);
+
+        loadThumbnail($item, datum.Thumbnail);
+    }
+
+    function loadContentsList() {
+        var $list;
         var i;
+        var j;
 
-        for (i = 0; i < data.length; i += 1) {
-            datum = data[i];
-            $section = $("<section/>")
-                .html($("#contents .contents-list template").html())
-                .data("contents-index", i)
-                .on("click", openModal)
-                .appendTo("#contents .contents-list");
+        if (categoryName.length > 0) {
+            $("<h2/>")
+                .text(categoryName)
+                .appendTo("#contents");
+            $list = $("<section/>")
+                .addClass("contents-list")
+                .appendTo("#contents");
 
-            $section.find(".summary .title").text(datum.Title);
-            $section.find(".summary .creator").text(datum.Creator);
+            for (i = 0; i < data.length; i += 1) {
+                loadContentsItem($list, i, data[i]);
+            }
+        } else {
+            for (i = 0; i < tags.length; i += 1) {
+                $("<h2/>")
+                    .text(tags[i].Name)
+                    .appendTo("#contents");
+                $("<section/>")
+                    .attr("id", "tag-" + tags[i].ID)
+                    .addClass("contents-list")
+                    .appendTo("#contents");
+            }
 
-            loadThumbnail($section, datum.Thumbnail);
+            for (i = 0; i < data.length; i += 1) {
+                for (j = 0; j < data[i].TagsID.length; j += 1) {
+                    $list = $("#tag-" + data[i].TagsID[j]);
+                    if ($list.length > 0) {
+                        loadContentsItem($list, i, data[i]);
+                    }
+                }
+            }
         }
     }
 
-    loadAllThumbnails();
+    loadContentsList();
 }

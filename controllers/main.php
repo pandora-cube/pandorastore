@@ -21,6 +21,7 @@ $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["pas
 
     $orbit_data = $orbit_model->load();
     $categories_data = $categories_model->load();
+    $tags_data = $categories_model->loadTags();
     $contents_data = $contents_model->load($genre, $platform, $tag);
 
     $genre_name = &$categories_data["Genre"][$genre];
@@ -35,12 +36,13 @@ $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["pas
     else if(isset($tag_name))
         $category_name = $tag_name;
     else
-        $category_name = "전체 콘텐츠";
+        $category_name = NULL;
 } $mysqli->close();
 
 $template = new Template();
 $template->setAttribute("orbit", $orbit_data);
 $template->setAttribute("contents", $contents_data);
 $template->setAttribute("category_name", $category_name);
+$template->setAttribute("tags", $tags_data);
 $template->loadView("main");
 ?>

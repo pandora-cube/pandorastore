@@ -31,6 +31,22 @@ class Categories {
         return $this->names;
     }
 
+    public function loadTags() {
+        $sql = "
+            SELECT ID, Name 
+            FROM {$this->table["tags"]}
+            ORDER BY ID DESC";
+
+        $tags = array();
+        if($result = $this->mysqli->query($sql)) {
+            for($i = 0; $i < $result->num_rows; $i++) {
+                $tags[$i] = $result->fetch_assoc();
+            }
+            $result->free();
+        }
+        return $tags;
+    }
+
     public function parseArray($origin, &$data, $type) {
         $data[$type."sID"] = explode(',', $origin[$type.'s']);
     }

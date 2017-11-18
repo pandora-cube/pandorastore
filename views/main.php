@@ -14,18 +14,15 @@
     </header>
 
     <div id="contents">
-        <h2><?=$this->getAttribute("category_name")?></h2>
-        <div class="contents-list">
-            <template>
-                <div class="cover">
-                    <img />
-                </div>
-                <div class="summary">
-                    <p class="title"></p>
-                    <p class="creator"></p>
-                </div>
-            </template>
-        </div>
+        <template name="contents-item">
+            <div class="cover">
+                <img />
+            </div>
+            <div class="summary">
+                <p class="title"></p>
+                <p class="creator"></p>
+            </div>
+        </template>
         <template name="contents-detail" class="modal-origin">
             <section class="top">
                 <div class="cover">
@@ -59,7 +56,10 @@
     <script>
         $(document).ready(function() {
             loadTopOrbitData(<?=json_encode($this->getAttribute("orbit"))?>);
-            loadContentsData(<?=json_encode($this->getAttribute("contents"))?>);
+            loadContentsData(
+                <?=json_encode($this->getAttribute("contents"))?>,
+                <?=json_encode($this->getAttribute("category_name"))?>,
+                <?=json_encode($this->getAttribute("tags"))?>);
         });
     </script>
 </body>

@@ -20,7 +20,7 @@
     overflow-x: auto;
     margin: -.5em 0;
 }
-#contents .contents-list > section {
+#contents .contents-list > div {
     display: inline-block;
     width: 10em;
     padding: 1em;
@@ -51,13 +51,19 @@
     text-overflow: ellipsis;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
+    #contents {
+        margin-top: -.9rem;
+    }
     #contents h2 {
-        margin-bottom: .9rem;
+        margin: .9rem 0;
     }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
+    #contents {
+        margin-top: -1.8rem;
+    }
     #contents h2 {
-        margin-bottom: 1.8rem;
+        margin: 1.8rem 0;
     }
 }
 
