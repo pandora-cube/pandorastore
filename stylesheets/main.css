@@ -20,7 +20,7 @@
     overflow-x: auto;
     margin: -.5em 0;
 }
-#contents .contents-list > div {
+#contents  .contents-item {
     display: inline-block;
     width: 10em;
     padding: 1em;
@@ -28,23 +28,23 @@
     margin: .5em;
     cursor: pointer;
 }
-#contents .contents-list .cover {
+#contents .contents-item .cover {
     width: 10em;
     height: 10em;
     line-height: 10em;
     overflow: hidden;
 }
-#contents .contents-list .cover img {
+#contents .contents-item .cover img {
     width: 100%;
     vertical-align: middle;
 }
-#contents .contents-list .title {
+#contents .contents-item .title {
     margin-top: .7em;
     font-size: 1.1em;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-#contents .contents-list .creator {
+#contents .contents-item .creator {
     margin-top: .5em;
     font-size: .9em;
     overflow: hidden;

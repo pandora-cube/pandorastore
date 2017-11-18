@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     right:0;
-    z-index: 1001;
+    z-index: 1002;
 }
 
 .menuArea.fixed .menu {
@@ -68,13 +68,11 @@
 .menuArea .menu > li .inner-menu {
     position: absolute;
     display: none;
-    z-index: 1000;
+    z-index: 1001;
     list-style: none;
     white-space: nowrap;
     background-color: white;
-}
-.menuArea .menu > li:hover .inner-menu {
-    display: block;
+    border: 1px solid #555;
 }
 .menuArea .menu > li .inner-menu li a {
     display: block;

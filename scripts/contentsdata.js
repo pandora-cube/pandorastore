@@ -83,8 +83,9 @@ function loadContentsData(data, categoryName, tags) {
     function loadContentsItem($list, index, datum) {
         var $item;
 
-        $item = $("<div/>")
+        $item = $("<a/>")
             .html($("#contents template[name=contents-item]").html())
+            .addClass("contents-item")
             .data("contents-index", index)
             .on("click", openModal)
             .appendTo($list);
