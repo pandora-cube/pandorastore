@@ -31,6 +31,7 @@ body {
 a, a:link {
     color: inherit;
     text-decoration: none;
+    transition: color .5s;
 }
 a:hover {
     color: #8badc9;
