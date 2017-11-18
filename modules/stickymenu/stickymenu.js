@@ -17,17 +17,15 @@ $(document).ready(function onDocumentReady() {
     }
 
     function showInnerMenu() {
-        $(this).children(".inner-menu")
-            .slideDown(400);
+        $(this).addClass("on");
     }
     function hideInnerMenu() {
-        $(this).children(".inner-menu")
-            .css("z-index", 1000)
-            .slideUp(400, function () {
-                $(this).css("z-index", "");
-            });
+        $(this).removeClass("on");
     }
 
     $(window).on("scroll", onScroll);
-    $(".menuArea .menu > li").hover(showInnerMenu, hideInnerMenu);
+    $(".menuArea .menu > li")
+        .hover(showInnerMenu, hideInnerMenu)
+        .focusin(showInnerMenu)
+        .focusout(hideInnerMenu);
 });
