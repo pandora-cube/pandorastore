@@ -29,7 +29,7 @@
         <li>
             <div class="title"><a href="#">게임</a></div>
             <ul class="inner-menu">
-                <li><a href="/">전체</a></li>
+                <li><a href="/"><b>전체</b></a></li>
                 <li><a href="/category/G1">타이쿤</a></li>
                 <li><a href="/category/G2">어드벤처</a></li>
                 <li><a href="/category/G4">전략</a></li>
