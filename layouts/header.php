@@ -21,14 +21,17 @@
 <div class="menuArea">
     <ul class="menu">
         <li>
-            <div class="title"><a href="/">홈</a></div>
+            <div class="title"><a>판도라</a></div>
+            <ul class="inner-menu">
+                <li><a>준비중인 메뉴입니다.</a></li>
+            </ul>
         </li>
         <li>
-            <div class="title"><a href="#">장르</a></div>
+            <div class="title"><a href="#">게임</a></div>
             <ul class="inner-menu">
+                <li><a href="/">전체</a></li>
                 <li><a href="/category/G1">타이쿤</a></li>
                 <li><a href="/category/G2">어드벤처</a></li>
-                <li><a href="/category/G3">소프트웨어</a></li>
                 <li><a href="/category/G4">전략</a></li>
                 <li><a href="/category/G5">퍼즐</a></li>
                 <li><a href="/category/G6">보드</a></li>
@@ -39,15 +42,7 @@
             </ul>
         </li>
         <li>
-            <div class="title"><a href="#">환경</a></div>
-            <ul class="inner-menu">
-                <li><a href="/category/P1">Android</a></li>
-                <li><a href="/category/P2">iOS</a></li>
-                <li><a href="/category/P3">Windows</a></li>
-                <li><a href="/category/P4">Linux</a></li>
-                <li><a href="/category/P5">Mac OS</a></li>
-                <li><a href="/category/P6">웹</a></li>
-            </ul>
+            <div class="title"><a href="/category/G3">소프트웨어</a></div>
         </li>
     </ul>
 </div>
