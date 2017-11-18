@@ -21,13 +21,17 @@
 <div class="menuArea">
     <ul class="menu">
         <li>
-            <div class="title"><a>판도라</a></div>
+            <div class="title-wrapper" tabindex="0">
+                <span class="title">판도라</span>
+            </div>
             <ul class="inner-menu">
                 <li><a>준비중인 메뉴입니다.</a></li>
             </ul>
         </li>
         <li>
-            <div class="title"><a href="#">게임</a></div>
+            <div class="title-wrapper" tabindex="0">
+                <span class="title">게임</span>
+            </div>
             <ul class="inner-menu">
                 <li><a href="/"><b>전체</b></a></li>
                 <li><a href="/category/G1">타이쿤</a></li>
@@ -42,7 +46,9 @@
             </ul>
         </li>
         <li>
-            <div class="title"><a href="/category/G3">소프트웨어</a></div>
+            <div class="title-wrapper">
+                <a class="title" href="/category/G3">소프트웨어</a>
+            </div>
         </li>
     </ul>
 </div>

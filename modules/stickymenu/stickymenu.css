@@ -41,26 +41,26 @@
 .menuArea .menu > li:hover {
     background-color: #8badc9;
 }
-.menuArea .menu > li .title {
+.menuArea .menu > li .title-wrapper {
     height: 100%;
 }
-.menuArea .menu > li .title a {
+.menuArea .menu > li .title {
     display: block;
     font-weight: bold;
     font-size: 1.1em;
     transition: color .5s;
 }
-.menuArea:hover .menu > li .title a,
-.menuArea .menu > li:hover .title a {
+.menuArea:hover .menu > li .title,
+.menuArea .menu > li:hover .title {
     color: white;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
-    .menuArea .menu > li .title a {
+    .menuArea .menu > li .title {
         padding: 0 1em;
     }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
-    .menuArea .menu > li .title a {
+    .menuArea .menu > li .title {
         padding: 0 2em;
     }
 }
