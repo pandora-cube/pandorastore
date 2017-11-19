@@ -62,15 +62,22 @@ function loadContentsData(data, categoryName, tags) {
     function openModal() {
         var datum = data[parseInt($(this).data("contents-index"), 10)];
         var $origin = $(".modal-origin[name=contents-detail]");
-        var $modal = $origin.get(0).open();
+        var $modal = $origin.get(0).open().children(".modal");
         var genres = datum.Genres.join(", ");
         var platforms = datum.Platforms.join(", ");
+        var closecallback;
 
         $modal.find(".summary .title").text(datum.Title);
         $modal.find(".summary .creator").text(datum.Creator);
         $modal.find(".summary .genres").text(genres);
         $modal.find(".summary .platforms").text(platforms);
         $modal.find(".download").on("click", function () { download(datum.ID); });
+
+        closecallback = $modal.get(0).onClose;
+        $modal.get(0).onClose = function onModalClose() {
+            window.location.hash = "#_";
+            closecallback();
+        };
 
         loadThumbnail($modal, datum.Thumbnail);
         loadOrbit($modal, datum);
@@ -86,6 +93,8 @@ function loadContentsData(data, categoryName, tags) {
         $item = $("<a/>")
             .html($("#contents template[name=contents-item]").html())
             .addClass("contents-item")
+            .attr("id", "contents-anchor-" + datum.Identifier)
+            .attr("href", "#contents=" + datum.Identifier)
             .data("contents-index", index)
             .on("click", openModal)
             .appendTo($list);
@@ -134,5 +143,20 @@ function loadContentsData(data, categoryName, tags) {
         }
     }
 
+    function checkLocationHash() {
+        var hash = window.location.hash;
+        var identifier;
+        var $anchor;
+
+        if (hash.startsWith("#contents=")) {
+            identifier = hash.split("#contents=")[1];
+            $anchor = $("a#contents-anchor-" + identifier);
+            if ($anchor.length > 0) {
+                $anchor.click();
+            }
+        }
+    }
+
     loadContentsList();
+    checkLocationHash();
 }

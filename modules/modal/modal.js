@@ -1,5 +1,12 @@
 function Modal() {
+    this.onOpen = function onModalOpen() { };
+    this.onClose = function onModalClose() { };
+}
+
+function ModalOrigin() {
     var origin = this;
+    var $area;
+    var $modal;
 
     function onCloseButtonClicked(e) {
         if (e.target !== this) return;
@@ -7,9 +14,6 @@ function Modal() {
     }
 
     function createModal(closebutton) {
-        var $area;
-        var $modal;
-
         $area = $("<div/>")
             .attr("id", $(origin).attr("name"))
             .addClass("modalArea")
@@ -22,7 +26,8 @@ function Modal() {
             .removeClass("modal-origin")
             .addClass("modal")
             .fadeIn("slow")
-            .prependTo($area);
+            .prependTo($area)
+            .each(Modal);
 
         if (closebutton) {
             $("<button/>")
@@ -32,11 +37,14 @@ function Modal() {
                 .prependTo($modal);
         }
 
+        $modal.get(0).onOpen();
+
         return $area;
     }
 
     function destroyModal() {
-        $(".modalArea#" + $(origin).attr("name")).remove();
+        $modal.get(0).onClose();
+        $area.remove();
     }
 
     this.open = function openModal(closebutton_) {
@@ -65,5 +73,5 @@ function Modal() {
 }
 
 $(document).ready(function onDocumentReady() {
-    $(".modal-origin").each(Modal);
+    $(".modal-origin").each(ModalOrigin);
 });
