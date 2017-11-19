@@ -37,6 +37,7 @@
 #contents .contents-item .cover img {
     width: 100%;
     vertical-align: middle;
+    border: none;
 }
 #contents .contents-item .title {
     margin-top: .7em;

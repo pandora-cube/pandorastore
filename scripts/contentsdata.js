@@ -148,7 +148,7 @@ function loadContentsData(data, categoryName, tags) {
         var identifier;
         var $anchor;
 
-        if (hash.startsWith("#contents=")) {
+        if (hash.indexOf("#contents=") === 0) {
             identifier = hash.split("#contents=")[1];
             $anchor = $("a#contents-anchor-" + identifier);
             if ($anchor.length > 0) {
