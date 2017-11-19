@@ -18,7 +18,7 @@ function ModalOrigin() {
             .attr("id", $(origin).attr("name"))
             .addClass("modalArea")
             .on("click", onCloseButtonClicked)
-            .prependTo("body");
+            .appendTo("body");
 
         $modal = $("<div/>")
             .html($(origin).html())
