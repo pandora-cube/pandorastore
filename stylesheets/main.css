@@ -23,9 +23,10 @@
 #contents  .contents-item {
     display: inline-block;
     width: 10em;
-    padding: 1em;
-    background-color: #e8e8e8;
     margin: .5em;
+    padding: 1em;
+    background-color: white;
+    border: 1px solid #e1e1e1;
     cursor: pointer;
 }
 #contents .contents-item .cover {
