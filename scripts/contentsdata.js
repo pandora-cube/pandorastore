@@ -13,15 +13,19 @@ function loadContentsData(data, categoryName, tags) {
         });
     }
 
-    function loadThumbnail($item, thumbnailURL) {
+    function loadThumbnail($item, datum) {
         $.ajax({
             type: "HEAD",
-            url: thumbnailURL,
+            url: datum.Thumbnail,
             success: function onSuccess() {
-                $item.find(".cover img").attr("src", thumbnailURL);
+                $item.find(".cover img")
+                    .attr("src", datum.Thumbnail)
+                    .attr("alt", datum.Title + " 썸네일 이미지");
             },
             error: function onError() {
-                $item.find(".cover img").attr("src", "/images/logo_dark.png");
+                $item.find(".cover img")
+                    .attr("src", "/images/logo_dark.png")
+                    .attr("alt", datum.Title + " 썸네일 이미지 없음");
             },
         });
     }
@@ -79,7 +83,7 @@ function loadContentsData(data, categoryName, tags) {
             closecallback();
         };
 
-        loadThumbnail($modal, datum.Thumbnail);
+        loadThumbnail($modal, datum);
         loadOrbit($modal, datum);
     }
 
@@ -102,7 +106,7 @@ function loadContentsData(data, categoryName, tags) {
         $item.find(".summary .title").text(datum.Title);
         $item.find(".summary .creator").text(datum.Creator);
 
-        loadThumbnail($item, datum.Thumbnail);
+        loadThumbnail($item, datum);
     }
 
     function loadContentsList() {
