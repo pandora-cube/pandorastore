@@ -4,7 +4,6 @@
     <?=$this->loadLayout("head")?>
     <link rel="stylesheet" href="/stylesheets/main.css" />
     <link rel="stylesheet" href="/modules/orbit/orbit.css" />
-    <link rel="stylesheet" href="/modules/stickymenu/stickymenu.css" />
     <link rel="stylesheet" href="/modules/modal/modal.css" />
 </head>
 
