@@ -1,3 +1,6 @@
+<!-- 스킵 네비게이션 -->
+<a id="skip-nav" href="#contents">메뉴 건너뛰기</a>
+<!-- 헤더 -->
 <div class="headerArea">
     <!-- 로고 -->
     <h1>

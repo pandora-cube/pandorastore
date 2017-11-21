@@ -46,6 +46,20 @@ template {
     display: none;
 }
 
+#skip-nav {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    top: -25px;
+    text-align: center;
+    color: #555;
+    background-color: #F1F1F1;
+}
+#skip-nav:focus {
+	top: 0;
+}
+
 header {
     background-color: white;
     margin-top: 10px;
