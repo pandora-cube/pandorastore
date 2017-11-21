@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xml:lang="ko" lang="ko">
 <head>
 	<?=$this->getLayout("head")?>
 </head>
