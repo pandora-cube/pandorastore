@@ -11,6 +11,11 @@
     left: 0;
     right:0;
     z-index: 1001;
+    border-bottom: 1px solid #e1e1e1;
+    transition: border-bottom .5s;
+}
+.menuArea.fixed:hover {
+    border-bottom: 1px solid #555;
 }
 
 .menuArea.fixed .menu {
