@@ -35,6 +35,15 @@ class Contents {
         if ($search == NULL) {
             $con_search = "TRUE";
         } else {
+            $splited = preg_split("/('.*?'|\".*?\"|\s+)/", $search);
+
+            foreach ($splited as &$value) {
+                $option = substr($value, 0, 1);
+                if ($option != "-" && $option != "+")
+                    $value .= "*";
+            }
+            $search = implode(" ", $splited);
+
             $con_genre = $con_platform = $con_tag = $con_id = "TRUE";
             $con_search = "MATCH(Title, Identifier, Creator) AGAINST('{$search}*' IN BOOLEAN MODE)";
         }
