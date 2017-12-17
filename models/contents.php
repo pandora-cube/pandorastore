@@ -35,17 +35,18 @@ class Contents {
         if ($search == NULL) {
             $con_search = "TRUE";
         } else {
-            $splited = preg_split("/('.*?'|\".*?\"|\s+)/", $search);
+            preg_match_all('/(".*?"|\S+)/', $search, $matches);
+            $matches = $matches[0];
 
-            foreach ($splited as &$value) {
-                $option = substr($value, 0, 1);
-                if ($option != "-" && $option != "+")
+            foreach ($matches as &$value) {
+                $option = substr(stripslashes($value), 0, 1);
+                if ($option != "-" && $option != "+" && $option != "\"")
                     $value .= "*";
             }
-            $search = implode(" ", $splited);
+            $search = implode(" ", $matches);
 
             $con_genre = $con_platform = $con_tag = $con_id = "TRUE";
-            $con_search = "MATCH(Title, Identifier, Creator) AGAINST('{$search}*' IN BOOLEAN MODE)";
+            $con_search = "MATCH(Title, Identifier, Creator) AGAINST('{$search}' IN BOOLEAN MODE)";
         }
 
         $sql = "

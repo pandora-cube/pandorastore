@@ -48,6 +48,6 @@ $template->setAttribute("orbit", $orbit_data);
 $template->setAttribute("contents", $contents_data);
 $template->setAttribute("category_name", $category_name);
 $template->setAttribute("tags", $tags_data);
-$template->setAttribute("search", $search);
+$template->setAttribute("search", addslashes($search));
 $template->loadView("main");
 ?>
