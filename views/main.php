@@ -59,6 +59,7 @@
                 <?=json_encode($this->getAttribute("contents"))?>,
                 <?=json_encode($this->getAttribute("category_name"))?>,
                 <?=json_encode($this->getAttribute("tags"))?>);
+            $("input[name=search]").val("<?=$this->getAttribute("search")?>");
         });
     </script>
 </body>
