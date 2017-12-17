@@ -12,6 +12,8 @@ $genre = (count($genre) < 2) ? NULL : $genre[1];
 $platform = (count($platform) < 2) ? NULL : $platform[1];
 $tag = (count($tag) < 2) ? NULL : $tag[1];
 
+$search = $_GET["search"];
+
 $config_db = parse_ini_file("configs/database.ini");
 $config_contents = parse_ini_file("configs/contents.ini");
 $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]); {
@@ -22,12 +24,14 @@ $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["pas
     $orbit_data = $orbit_model->load();
     $categories_data = $categories_model->load();
     $tags_data = $categories_model->loadTags();
-    $contents_data = $contents_model->load($genre, $platform, $tag);
+    $contents_data = $contents_model->load($genre, $platform, $tag, NULL, $search);
 
     $genre_name = &$categories_data["Genre"][$genre];
     $platform_name = &$categories_data["Platform"][$platform];
     $tag_name = &$categories_data["Tag"][$tag];
-    if(isset($genre_name) && isset($platform_name))
+    if (isset($search))
+        $category_name = "검색 결과 - {$search}";
+    else if(isset($genre_name) && isset($platform_name))
         $category_name = "{$genre_name} / {$platform_name}";
     else if(isset($genre_name))
         $category_name = $genre_name;
