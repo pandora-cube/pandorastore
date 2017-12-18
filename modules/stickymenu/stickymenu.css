@@ -25,6 +25,9 @@
     white-space: normal;
     border-top: 1px solid #AAA;
 }
+.menuArea.fixed .menu {
+    border-top: none;
+}
 @media screen and (max-width: 50rem) { /* for Mobile */
     .menuArea .menu {
         text-align: center;
