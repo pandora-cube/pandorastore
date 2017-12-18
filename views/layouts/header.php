@@ -7,11 +7,11 @@
         <a href="/">판도라스토어</a>
     </h1>
     <!-- 링크 -->
-    <ul class="links">
+    <!--<ul class="links">
         <li><a href="http://sejong.ac.kr">세종대학교</a></li>
         <li><a href="http://p-cube.kr">판도라큐브</a></li>
         <li><a href="http://seongbum.com">서성범</a></li>
-    </ul>
+    </ul>-->
 </div>
 <!-- 메뉴 -->
 <div class="menuArea">
