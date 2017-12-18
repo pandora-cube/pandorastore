@@ -77,6 +77,34 @@ header h1 {
     margin: 0;
     font-size: 2em;
 }
+header .search {
+    float: left;
+    height: 2rem;
+    line-height: 2rem;
+    margin-left: 3rem;
+}
+header .search input[type=text] {
+    float: left;
+    width: 30rem;
+    height: calc(2rem - 2px);
+    padding-left: .7rem;
+    border: 1px solid #AAA;
+    border-right: none;
+}
+header .search input[type=submit] {
+    float: left;
+    width: 5rem;
+    height: 2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #AAA;
+    border: none;
+    cursor: pointer;
+    transition: background-color .5s;
+}
+header .search input[type=submit]:hover {
+    background-color: #8badc9;
+}
 header .links {
     list-style: none;
     display: inline-block;
@@ -134,10 +162,6 @@ header .menuArea .menu {
         text-align: center;
         font-size: 1em;
         font-weight: normal;
-    }
-    header .search {
-        display: block;
-        float: left;
     }
     header .links {
         float: right;
