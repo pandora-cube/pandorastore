@@ -6,6 +6,11 @@
     <h1>
         <a href="/">판도라스토어</a>
     </h1>
+    <!-- 검색 -->
+    <form class="search" action="/" method="get">
+        <input name="search" type="text" placeholder="검색어를 입력해 주세요." />
+        <input type="submit" value="검색" />
+    </form>
     <!-- 링크 -->
     <!--<ul class="links">
         <li><a href="http://sejong.ac.kr">세종대학교</a></li>

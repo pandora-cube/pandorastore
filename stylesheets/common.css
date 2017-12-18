@@ -108,6 +108,9 @@ header .menuArea .menu {
         text-align: center;
         margin: 0;
     }
+    header .search {
+        display: none;
+    }
     header .subject {
         display: none;
     }
@@ -134,6 +137,10 @@ header .menuArea .menu {
         text-align: center;
         font-size: 1em;
         font-weight: normal;
+    }
+    header .search {
+        display: block;
+        float: left;
     }
     header .links {
         float: right;
