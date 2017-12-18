@@ -97,11 +97,8 @@ header .menuArea .menu {
     max-width: 1400px;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
-    header {
-        padding-top: 2rem;
-    }
     header .headerArea {
-        padding: 0 2rem;
+        padding: 1rem 2rem;
         text-align: center;
     }
     header h1 {
