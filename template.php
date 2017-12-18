@@ -25,7 +25,7 @@ class Template {
     }
 
     public function loadLayout($layout) {
-        include("layouts/$layout.php");
+        include("views/layouts/$layout.php");
     }
 
     public function loadView($view) {
