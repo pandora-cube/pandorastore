@@ -12,14 +12,7 @@
         <li><a href="http://p-cube.kr">판도라큐브</a></li>
         <li><a href="http://seongbum.com">서성범</a></li>
     </ul>
-    <!-- 머리말 -->
-    <div class="subject">
-        <h2>콘텐츠 아이콘을 보내주세요!</h2>
-        <h3>판도라큐브 콘텐츠 스토어</h3>
-    </div>
 </div>
-<!-- 여백 -->
-<div class="blankArea"></div>
 <!-- 메뉴 -->
 <div class="menuArea">
     <ul class="menu">

@@ -66,9 +66,15 @@ header .headerArea {
     max-width: 1400px;
     margin: 0 auto;
 }
+header .headerArea::after {
+    content: '';
+    display: block;
+    clear: both;
+}
 header h1 {
     height: 2rem;
     line-height: 2rem;
+    margin: 0;
     font-size: 2em;
 }
 header .links {
@@ -77,7 +83,6 @@ header .links {
     margin: 0;
 }
 header .links li {
-    display: inline;
     float: left;
 }
 header .links li:nth-last-child(n+2)::after {
@@ -94,9 +99,6 @@ header .menuArea .menu {
 @media screen and (max-width: 50rem) { /* for Mobile */
     header {
         padding-top: 2rem;
-    }
-    header .blankArea {
-        height: 2rem;
     }
     header .headerArea {
         padding: 0 2rem;
@@ -116,15 +118,11 @@ header .menuArea .menu {
     }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
-    header .blankArea {
-        height: 5rem;
-    }
     header .headerArea {
         padding: 2rem 5rem;
     }
     header h1 {
         float: left;
-        margin: 0 0 5rem 0;
     }
     header h2 {
         text-align: center;
