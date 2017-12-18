@@ -1,5 +1,4 @@
 .menuArea {
-    margin: 0 auto;
     background-color: white;
     transition: background-color .5s;
 }
@@ -19,23 +18,17 @@
     border-bottom: 1px solid #555;
 }
 
-.menuArea .menu-wrapper {
+.menuArea .menu {
+    line-height: 3em;
+    margin: 0 auto;
+    list-style: none;
+    white-space: normal;
     border-top: 1px solid #AAA;
 }
-.menuArea.fixed .menu-wrapper {
-    border-top: none;
-}
 @media screen and (max-width: 50rem) { /* for Mobile */
-    .menuArea .menu-wrapper {
+    .menuArea .menu {
         text-align: center;
     }
-}
-
-.menuArea .menu {
-    display: inline-block;
-    list-style: none;
-    line-height: 3em;
-    white-space: normal;
 }
 
 .menuArea .menu > li {

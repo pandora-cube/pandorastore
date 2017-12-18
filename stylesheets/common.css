@@ -88,7 +88,7 @@ header .links li:nth-last-child(n+2)::after {
 header .subject {
     clear: both;
 }
-header .menuArea {
+header .menuArea .menu {
     max-width: 1400px;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
