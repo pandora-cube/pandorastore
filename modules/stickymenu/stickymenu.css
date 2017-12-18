@@ -89,16 +89,3 @@
     display: block;
     padding: 0 2em;
 }
-
-.menuArea .search {
-    float: right;
-    height: 3em;
-}
-.menuArea .search input[type=text] {
-    
-}
-@media screen and (max-width: 50rem) { /* for Mobile */
-    .menuArea .search {
-        display: none;
-    }
-}
