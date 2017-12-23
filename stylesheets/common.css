@@ -162,7 +162,24 @@ header .menuArea .menu {
         margin: 0;
     }
     header .search {
+        float: none;
         display: none;
+        height: auto;
+        line-height: normal;
+        margin: 0 -1rem -1rem -1rem;
+        padding: 1rem;
+    }
+    header .search::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    header .search input[type=text] {
+        width: calc(100% - .5rem - 3rem - 1px);
+        padding-left: .5rem;
+    }
+    header .search input[type=submit] {
+        width: 3rem;
     }
     header .subject {
         display: none;
@@ -190,6 +207,9 @@ header .menuArea .menu {
         text-align: center;
         font-size: 1em;
         font-weight: normal;
+    }
+    header .search {
+        display: block !important;
     }
     header .links {
         float: right;

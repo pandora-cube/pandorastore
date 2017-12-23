@@ -51,6 +51,7 @@
     <script src="/modules/modal/modal.js"></script>
     <script src="/scripts/toporbit.js"></script>
     <script src="/scripts/contentsdata.js"></script>
+    <script src="/scripts/header.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -59,7 +60,7 @@
                 <?=json_encode($this->getAttribute("contents"))?>,
                 <?=json_encode($this->getAttribute("category_name"))?>,
                 <?=json_encode($this->getAttribute("tags"))?>);
-            $("input[name=search]").val("<?=$this->getAttribute("search")?>");
+            setSearchText(<?=json_encode($this->getAttribute("search"))?>);
         });
     </script>
 </body>
