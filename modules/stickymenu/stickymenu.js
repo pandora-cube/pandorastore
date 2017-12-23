@@ -8,6 +8,7 @@ $(document).ready(function onDocumentReady() {
             $menuarea.clone(true)
                 .appendTo($menuarea.parent())
                 .addClass("fixed")
+                .attr("id", "")
                 .find(".inner-menu")
                 .css("display", "")
                 .css("z-index", "");
@@ -23,9 +24,14 @@ $(document).ready(function onDocumentReady() {
         $(this).removeClass("on");
     }
 
+    function close() {
+        window.location.hash = "#_";
+    }
+
     $(window).on("scroll", onScroll);
     $(".menuArea .menu > li")
         .hover(showInnerMenu, hideInnerMenu)
         .focusin(showInnerMenu)
         .focusout(hideInnerMenu);
+    $(".menuArea .background").click(close);
 });

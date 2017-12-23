@@ -2,6 +2,10 @@
 <a id="skip-nav" href="#contents">메뉴 건너뛰기</a>
 <!-- 헤더 -->
 <div class="headerArea">
+    <!-- 모바일용 메뉴 열기 버튼 -->
+    <a class="open-menu" href="#whole-menu" title="메뉴" role="button"></a>
+    <!-- 모바일용 검색폼 열기 버튼 -->
+    <button class="open-search" title="검색"></button>
     <!-- 로고 -->
     <h1>
         <a href="/">판도라스토어</a>
@@ -11,15 +15,10 @@
         <input name="search" type="text" placeholder="검색어를 입력해 주세요." />
         <input type="submit" value="검색" />
     </form>
-    <!-- 링크 -->
-    <!--<ul class="links">
-        <li><a href="http://sejong.ac.kr">세종대학교</a></li>
-        <li><a href="http://p-cube.kr">판도라큐브</a></li>
-        <li><a href="http://seongbum.com">서성범</a></li>
-    </ul>-->
 </div>
 <!-- 메뉴 -->
-<div class="menuArea">
+<div id="whole-menu" class="menuArea">
+    <div class="background"></div>
     <ul class="menu">
         <li>
             <div class="title-wrapper" tabindex="0">

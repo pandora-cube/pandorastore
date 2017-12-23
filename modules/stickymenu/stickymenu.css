@@ -17,7 +17,28 @@
 .menuArea.fixed:hover {
     border-bottom: 1px solid #555;
 }
+@media screen and (max-width: 50rem) { /* for Mobile */
+    .menuArea {
+        display: none;
+        position: fixed;
+        width: 200px;
+        max-width: calc(100% - 50px);
+        height: 100%;
+        top: 0;
+        z-index: 3;
+        background-color: white !important;
+    }
+    .menuArea:target {
+        display: block;
+    }
+    .menuArea.fixed {
+        display: none;
+    }
+}
 
+.menuArea .background {
+    display: none;
+}
 .menuArea .menu {
     line-height: 3em;
     margin: 0 auto;
@@ -29,8 +50,22 @@
     border-top: none;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
+    .menuArea .background {
+        position: fixed;
+        display: block;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: black;
+        opacity: 0.4;
+    }
     .menuArea .menu {
-        text-align: center;
+        height: 100%;
+        margin: 0;
+        text-align: left;
+        overflow-y: auto;
+        background-color: white;
+        border-top: none;
     }
 }
 
@@ -51,22 +86,29 @@
 }
 .menuArea .menu > li .title {
     display: block;
+    padding: 0 2rem;
     font-weight: bold;
     font-size: 1.1em;
     transition: color .5s;
 }
-.menuArea:hover .menu > li .title,
-.menuArea .menu > li:hover .title {
-    color: white;
-}
 @media screen and (max-width: 50rem) { /* for Mobile */
+    .menuArea .menu > li {
+        position: static;
+        display: block;
+        height: auto;
+        background-color: inherit !important;
+    }
     .menuArea .menu > li .title {
-        padding: 0 1em;
+        font-size: 1.2em;
+    }
+    .menuArea .menu > li .title:hover {
+        color: #8badc9;
     }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
-    .menuArea .menu > li .title {
-        padding: 0 2em;
+    .menuArea:hover .menu > li .title,
+    .menuArea .menu > li:hover .title {
+        color: white;
     }
 }
 
@@ -87,5 +129,14 @@
 }
 .menuArea .menu > li .inner-menu li a {
     display: block;
-    padding: 0 2em;
+    padding: 0 2rem;
+}
+@media screen and (max-width: 50rem) { /* for Mobile */
+    .menuArea .menu > li .inner-menu {
+        position: static;
+        visibility: visible;
+        z-index: 0;
+        background-color: #f1f1f1;
+        opacity: 1;
+    }
 }

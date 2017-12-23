@@ -71,6 +71,30 @@ header .headerArea::after {
     display: block;
     clear: both;
 }
+header .open-menu {
+    display: none;
+    float: left;
+    width: 2rem;
+    height: 2rem;
+    background-image: url("/images/icons/menu.png");
+    background-size: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+}
+header .open-search {
+    display: none;
+    float: right;
+    width: 2rem;
+    height: 2rem;
+    background-image: url("/images/icons/search.png");
+    background-size: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+}
 header h1 {
     height: 2rem;
     line-height: 2rem;
@@ -126,8 +150,12 @@ header .menuArea .menu {
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
     header .headerArea {
-        padding: 1rem 2rem;
+        padding: 1rem;
         text-align: center;
+    }
+    header .open-menu,
+    header .open-search {
+        display: inline-block;
     }
     header h1 {
         text-align: center;
