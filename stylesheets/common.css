@@ -44,6 +44,11 @@ template {
     display: none;
 }
 
+input {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
 #skip-nav {
     position: absolute;
     width: 100%;
