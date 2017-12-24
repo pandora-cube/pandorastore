@@ -1,0 +1,11 @@
+.calendar {
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    border-width: 0;
+}
+@media screen and (max-width: 50rem) { /* for Mobile */
+    .calendar {
+        height: 500px;
+    }
+}

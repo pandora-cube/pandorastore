@@ -25,7 +25,7 @@
                 <span class="title">판도라</span>
             </div>
             <ul class="inner-menu">
-                <li><a>준비중인 메뉴입니다.</a></li>
+                <li><a href="/pandora/calendar">일정</a></li>
             </ul>
         </li>
         <li>
@@ -53,4 +53,6 @@
     </ul>
 </div>
 <!-- 이미지 슬라이드 -->
-<div id="topOrbit" class="orbitArea"></div>
+<?php if ($this->isEnabledArea("topOrbit")): ?>
+    <div id="topOrbit" class="orbitArea"></div>
+<?php endif; ?>
