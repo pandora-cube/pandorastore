@@ -25,8 +25,8 @@
                 <span class="title">판도라</span>
             </div>
             <ul class="inner-menu">
-                <li><a href="http://p-cube.kr" target="_blank">판도라큐브</a></li>
-                <li><a href="/pandora/calendar">일정</a></li>
+                <li><a href="http://p-cube.kr" target="_blank">판도라큐브 카페</a></li>
+                <li><a href="/pandora/calendar">판도라큐브 일정</a></li>
             </ul>
         </li>
         <li>
