@@ -45,6 +45,7 @@ template {
 }
 
 input {
+    font-size: 1em;
     -webkit-appearance: none;
     border-radius: 0;
 }
@@ -134,21 +135,19 @@ header .search input[type=submit] {
 header .search input[type=submit]:hover {
     background-color: #8badc9;
 }
-header .links {
-    list-style: none;
-    display: inline-block;
-    margin: 0;
+header .signin {
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 1em;
+    font-size: 1.1em;
+    color: #8badc9;
+    border: 1px solid #8badc9;
+    transition: color .5s, background-color .5s;
 }
-header .links li {
-    float: left;
-}
-header .links li:nth-last-child(n+2)::after {
-    content: "|";
-    margin: 0 1em;
-    color: #AAA;
-}
-header .subject {
-    clear: both;
+header .signin:hover {
+    color: white;
+    background-color: #8badc9;
 }
 header .menuArea .menu {
     max-width: 1400px;
@@ -186,13 +185,8 @@ header .menuArea .menu {
     header .search input[type=submit] {
         width: 3rem;
     }
-    header .subject {
+    header .signin {
         display: none;
-    }
-    header .links {
-        height: 1rem;
-        line-height: 1rem;
-        text-align: center;
     }
 }
 @media screen and (min-width: 50rem) { /* for Desktop */
@@ -216,13 +210,8 @@ header .menuArea .menu {
     header .search {
         display: block !important;
     }
-    header .links {
-        float: right;
-        height: 2rem;
-        line-height: 2rem;
-    }
-    header .subject {
-        margin-top: 2rem;
+    header .search input {
+        font-size: .8em;
     }
     header .menuArea {
         padding: 0 5rem;

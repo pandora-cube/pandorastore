@@ -15,6 +15,8 @@
         <input name="search" type="text" placeholder="검색어를 입력해 주세요." />
         <input type="submit" value="검색" />
     </form>
+    <!-- 로그인 버튼 -->
+    <a class="signin" href="/signin">로그인</a>
 </div>
 <!-- 메뉴 -->
 <div id="whole-menu" class="menuArea">
