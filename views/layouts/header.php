@@ -16,7 +16,7 @@
         <input type="submit" value="검색" />
     </form>
     <!-- 로그인 버튼 -->
-    <a class="signin" href="/signin">로그인</a>
+    <a class="signin" href="/accounts/signin">로그인</a>
 </div>
 <!-- 메뉴 -->
 <div id="whole-menu" class="menuArea">
