@@ -15,8 +15,16 @@
         <input name="search" type="text" placeholder="검색어를 입력해 주세요." />
         <input type="submit" value="검색" />
     </form>
-    <!-- 로그인 버튼 -->
-    <a class="signin" href="/accounts/signin">로그인</a>
+
+    <?php if ($this->isEnabledArea("signin")): ?>
+        <!-- 로그인 버튼 -->
+        <a class="accounts signin" href="/accounts/signin">로그인</a>
+    <?php endif; ?>
+
+    <?php if ($this->isEnabledArea("user-button")): ?>
+        <!-- 사용자 버튼 -->
+        <button class="accounts user"><b><?=$this->getAttribute("Nickname")?></b> 님</button>
+    <?php endif; ?>
 </div>
 <!-- 메뉴 -->
 <div id="whole-menu" class="menuArea">

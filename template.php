@@ -25,6 +25,8 @@ class Template {
     }
 
     public function loadLayout($layout) {
+        if (is_file("controllers/layouts/$layout.php"))
+            require("controllers/layouts/$layout.php");
         include("views/layouts/$layout.php");
     }
 

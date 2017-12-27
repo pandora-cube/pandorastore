@@ -135,7 +135,7 @@ header .search input[type=submit] {
 header .search input[type=submit]:hover {
     background-color: #8badc9;
 }
-header .signin {
+header .accounts {
     float: right;
     height: 30px;
     line-height: 30px;
@@ -144,8 +144,9 @@ header .signin {
     color: #8badc9;
     border: 1px solid #8badc9;
     transition: color .5s, background-color .5s;
+    cursor: pointer;
 }
-header .signin:hover {
+header .accounts:hover {
     color: white;
     background-color: #8badc9;
 }
@@ -185,7 +186,7 @@ header .menuArea .menu {
     header .search input[type=submit] {
         width: 3rem;
     }
-    header .signin {
+    header .accounts {
         display: none;
     }
 }

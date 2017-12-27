@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require("models/user.php");
 
 $userID = $_POST["UserID"];
