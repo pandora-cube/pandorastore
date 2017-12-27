@@ -11,10 +11,10 @@
     </header>
 
     <div id="contents">
-        <form class="signin-form" method="post">
+        <form class="signin-form" action="/accounts/authentication" method="post">
             <h2>환영합니다.</h2>
-            <input type="text" placeholder="아이디"/>
-            <input type="password" placeholder="비밀번호" />
+            <input name="UserID" type="text" placeholder="아이디"/>
+            <input name="Password" type="password" placeholder="비밀번호" />
             <input type="submit" value="로그인" />
         </form>
     </div>
