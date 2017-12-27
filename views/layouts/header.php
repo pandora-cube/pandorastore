@@ -20,7 +20,6 @@
         <!-- 로그인 버튼 -->
         <a class="accounts signin" href="/accounts/signin">로그인</a>
     <?php endif; ?>
-
     <?php if ($this->isEnabledArea("user-button")): ?>
         <!-- 사용자 버튼 -->
         <button class="accounts user"><b><?=$this->getAttribute("Nickname")?></b> 님</button>
@@ -30,6 +29,20 @@
 <div id="whole-menu" class="menuArea">
     <div class="background"></div>
     <ul class="menu">
+        <?php if ($this->isEnabledArea("signin")): ?>
+            <li>
+                <div class="title-wrapper">
+                    <a class="title" href="/accounts/signin">로그인</a>
+                </div>
+            </li>
+        <?php endif; ?>
+        <?php if ($this->isEnabledArea("user-button")): ?>
+            <li>
+                <div class="title-wrapper" tabindex="0">
+                    <span class="title"><b><?=$this->getAttribute("Nickname")?></b> 님</span>
+                </div>
+            </li>
+        <?php endif; ?>
         <li>
             <div class="title-wrapper" tabindex="0">
                 <span class="title">판도라</span>
