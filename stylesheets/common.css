@@ -50,6 +50,12 @@ input {
     border-radius: 0;
 }
 
+@media screen and (min-width: 50rem) { /* for Desktop */
+    .show-for-mobile {
+        display: none !important;
+    }
+}
+
 #skip-nav {
     position: absolute;
     width: 100%;
@@ -137,6 +143,10 @@ header .search input[type=submit]:hover {
 }
 header .accounts {
     float: right;
+    position: relative;
+}
+header .accounts .signin {
+    display: inline-block;
     height: 30px;
     line-height: 30px;
     padding: 0 1em;
@@ -144,11 +154,62 @@ header .accounts {
     color: #8badc9;
     border: 1px solid #8badc9;
     transition: color .5s, background-color .5s;
+}
+header .accounts .user-menu-button {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 1em;
+    font-size: 1.1em;
+    color: #8badc9;
+    border: 1px solid #8badc9;
+    transition: color .5s, background-color .5s;
     cursor: pointer;
 }
-header .accounts:hover {
+header .accounts .signin:hover,
+header .accounts .user-menu-button:hover {
     color: white;
     background-color: #8badc9;
+}
+header .accounts .user-menu {
+    display: none;
+    position: absolute;
+    width: 10em;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: .7em;
+    color: #aaa;
+    background-color: white;
+    border: 1px solid #aaa;
+}
+header .accounts .user-menu .arrow > div {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    left: 50%;
+    margin-top: -.5em;
+    border-left: .5em solid transparent;
+    border-right: .5em solid transparent;
+}
+header .accounts .user-menu .arrow > .line {
+    transform: translate(-50%, 0);
+    border-bottom: .5em solid #aaa;
+}
+header .accounts .user-menu .arrow > .background {
+    transform: translate(-50%, 1px);
+    border-bottom: .5em solid white;
+}
+header .accounts .user-menu .container {
+    list-style: none;
+}
+header .accounts .user-menu .container > li > a {
+    display: block;
+    padding: .3em 0;
+    text-align: center;
+}
+header .accounts .user-menu.on {
+    display: block;
 }
 header .menuArea .menu {
     max-width: 1400px;
