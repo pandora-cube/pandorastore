@@ -5,13 +5,14 @@ $(document).ready(function onDocumentReady() {
 
     // 사용자 메뉴
     $(".user-menu-button").click(function openUserMenu() {
-        $(this).siblings(".user-menu").fadeToggle();
+        var $menu = $(this).siblings(".user-menu");
+        if ($menu.css("display") !== "block") { // 사용자메뉴가 닫혀 있는 경우
+            $menu.fadeIn();
+        }
     });
     $(document).mouseup(function closeUserMenu(e) {
         var $menu = $(".user-menu");
-        if ($menu.css("display") === "block" // 메뉴가 열려 있는 경우
-            && $menu.has(e.target).length === 0 // 메뉴 바깥을 클릭한 경우
-            && $(".user-menu-button").has(e.target).length === 0) { // 메뉴 버튼 바깥을 클릭한 경우
+        if ($menu.css("display") === "block" && $menu.has(e.target).length === 0) { // 열려 있는 사용자 메뉴 바깥을 클릭한 경우
             $menu.fadeOut();
         }
     });
