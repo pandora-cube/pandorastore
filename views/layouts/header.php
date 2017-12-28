@@ -21,7 +21,7 @@
             <!-- 로그인 버튼 -->
             <a class="signin" href="/accounts/signin">로그인</a>
         <?php endif; ?>
-        <?php if ($this->isEnabledArea("user-menu")): ?>
+        <?php if ($this->isEnabledArea("user-button")): ?>
             <!-- 사용자 메뉴 버튼 -->
             <button class="user-menu-button"><b><?=$this->getAttribute("Nickname")?></b> 님</button>
             <!-- 사용자 메뉴 -->
