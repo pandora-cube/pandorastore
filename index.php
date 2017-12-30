@@ -15,12 +15,12 @@ if (!$mysqli) { // 실패 시
 
 loop:
 if(is_file("controllers/$action.php")) {
-    require("controllers/$action.php");
-
     // 페이징 로그
     $user = new User($mysqli, $config_db["table"]);
     $logger = new Logger($mysqli, $config_db["table"], $user);
     $logger->logPaging();
+
+    require("controllers/$action.php");
 } else {
     $action = "main";
     goto loop;
