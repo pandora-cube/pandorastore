@@ -1,5 +1,5 @@
 <?php
-require("models/user.php");
+require_once("models/user.php");
 
 $userID = $_POST["UserID"];
 $password = $_POST["Password"];

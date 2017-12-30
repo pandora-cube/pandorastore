@@ -1,8 +1,8 @@
 <?php
-require("template.php");
-require("models/orbit.php");
-require("models/categories.php");
-require("models/contents.php");
+require_once("template.php");
+require_once("models/orbit.php");
+require_once("models/categories.php");
+require_once("models/contents.php");
 
 $category = $_GET["category"];
 preg_match("/G([0-9]+)/", $category, $genre);

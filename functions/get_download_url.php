@@ -1,6 +1,6 @@
 <?php
-require('../models/categories.php');
-require('../models/contents.php');
+require_once('../models/categories.php');
+require_once('../models/contents.php');
 
 $id = $_GET['id'];
 
