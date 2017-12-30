@@ -11,7 +11,7 @@ $mysqli = mysqli_connect($config_db['host'], $config_db['user'], $config_db['pas
     $contents_model = new Contents($mysqli, $config_db['table'], $config_contents, $categories_model);
 
     $categories_data = $categories_model->load();
-    $contents_data = $contents_model->load(NULL, NULL, $id);
+    $contents_data = $contents_model->load(null, null, $id);
     $datum = $contents_data[0];
 
     $os = getOSName();

@@ -13,18 +13,18 @@ class Contents {
         $this->categories_model = $categories_model;
     }
 
-    public function load($genre = NULL, $platform = NULL, $tag = NULL, $id = NULL, $search = NULL) {
+    public function load($genre = null, $platform = null, $tag = null, $id = null, $search = null) {
         $genre = $this->mysqli->escape_string($genre);
         $platform = $this->mysqli->escape_string($platform);
         $tag = $this->mysqli->escape_string($tag);
         $id = $this->mysqli->escape_string($id);
         $search = $this->mysqli->escape_string($search);
 
-        $con_genre = ($genre == NULL) ? "TRUE" : "CONCAT(\",\", Genres, \",\") LIKE \"%,{$genre},%\"";
-        $con_platform = ($platform == NULL) ? "TRUE" : "CONCAT(\",\", Platforms, \",\") LIKE \"%,{$platform},%\"";
-        $con_tag = ($tag == NULL) ? "TRUE" : "CONCAT(\",\", Tags, \",\") LIKE \"%,{$tag},%\"";
-        $con_id = ($id == NULL) ? "TRUE" : "ID = {$id}";
-        /*$con_search = ($search == NULL) ? "TRUE" : "
+        $con_genre = ($genre == null) ? "TRUE" : "CONCAT(\",\", Genres, \",\") LIKE \"%,{$genre},%\"";
+        $con_platform = ($platform == null) ? "TRUE" : "CONCAT(\",\", Platforms, \",\") LIKE \"%,{$platform},%\"";
+        $con_tag = ($tag == null) ? "TRUE" : "CONCAT(\",\", Tags, \",\") LIKE \"%,{$tag},%\"";
+        $con_id = ($id == null) ? "TRUE" : "ID = {$id}";
+        /*$con_search = ($search == null) ? "TRUE" : "
             REGEXP_REPLACE(
                 REGEXP_REPLACE(
                     TRIM(LOWER(Identifier)),
@@ -32,7 +32,7 @@ class Contents {
                 \"[[:space:]]{1,}\", \" \")
             LIKE TRIM(LOWER(\"%{$search}%\"))";*/
 
-        if ($search == NULL) {
+        if ($search == null) {
             $con_search = "TRUE";
         } else {
             preg_match_all('/(".*?"|\S+)/', $search, $matches);

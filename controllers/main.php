@@ -8,9 +8,9 @@ $category = $_GET["category"];
 preg_match("/G([0-9]+)/", $category, $genre);
 preg_match("/P([0-9]+)/", $category, $platform);
 preg_match("/T([0-9]+)/", $category, $tag);
-$genre = (count($genre) < 2) ? NULL : $genre[1];
-$platform = (count($platform) < 2) ? NULL : $platform[1];
-$tag = (count($tag) < 2) ? NULL : $tag[1];
+$genre = (count($genre) < 2) ? null : $genre[1];
+$platform = (count($platform) < 2) ? null : $platform[1];
+$tag = (count($tag) < 2) ? null : $tag[1];
 
 $search = $_GET["search"];
 
@@ -24,7 +24,7 @@ $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["pas
     $orbit_data = $orbit_model->load();
     $categories_data = $categories_model->load();
     $tags_data = $categories_model->loadTags();
-    $contents_data = $contents_model->load($genre, $platform, $tag, NULL, $search);
+    $contents_data = $contents_model->load($genre, $platform, $tag, null, $search);
 
     $genre_name = &$categories_data["Genre"][$genre];
     $platform_name = &$categories_data["Platform"][$platform];
@@ -40,7 +40,7 @@ $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["pas
     else if(isset($tag_name))
         $category_name = $tag_name;
     else
-        $category_name = NULL;
+        $category_name = null;
 } $mysqli->close();
 
 $template = new Template();
