@@ -2,7 +2,7 @@
 <html xml:lang="ko" lang="ko">
 <head>
     <?=$this->loadLayout("head")?>
-    <link rel="stylesheet" href="/stylesheets/accounts/signin.css" />
+    <link rel="stylesheet" href="/stylesheets/accounts.css" />
 </head>
 
 <body>
