@@ -46,6 +46,11 @@ template {
 
 input {
     font-size: 1em;
+}
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=submit] {
     -webkit-appearance: none;
     border-radius: 0;
 }
