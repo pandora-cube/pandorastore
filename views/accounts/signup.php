@@ -15,14 +15,14 @@
             <h2>판도라스토어 회원 가입</h2>
             <label for="LastName">성명</label>
             <span class="multi">
-                <input id="LastName" name="LastName" type="text" placeholder="성" />
-                <input name="FirstName" type="text" placeholder="이름" />
+                <input id="LastName" name="LastName" type="text" placeholder="성" required />
+                <input name="FirstName" type="text" placeholder="이름" required />
             </span>
             <label for="UserID">이메일</label>
-            <input id="UserID" name="UserID" type="email" />
+            <input id="UserID" name="UserID" type="email" required />
             <label for="Password">비밀번호</label>
-            <input id="Password" name="Password" type="password" placeholder="비밀번호 생성" />
-            <input name="PasswordAgain" type="password" placeholder="비밀번호 확인" />
+            <input id="Password" name="Password" type="password" placeholder="비밀번호 생성" required />
+            <input name="PasswordAgain" type="password" placeholder="비밀번호 확인" required />
             <input type="submit" value="회원 가입" />
         </form>
     </div>
