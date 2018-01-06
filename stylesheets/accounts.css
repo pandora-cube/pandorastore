@@ -12,6 +12,18 @@
     display: block;
     margin-bottom: -.5em;
     text-align: left;
+    transition: color .5s;
+}
+#contents form label.warning {
+    color: #FF5555;
+}
+#contents form label.satisfy {
+    color: #00CC00;
+}
+#contents form label .alert {
+    margin-left: .5em;
+    font-size: .9em;
+    font-weight: bold;
 }
 #contents form input {
     display: block;
