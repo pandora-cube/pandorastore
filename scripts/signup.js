@@ -32,10 +32,34 @@ $(document).ready(function onDocumentReady() {
     }
 
     function checkPassword() {
+        var password = $("#Password").val();
+        var passwordAgain = $("#PasswordAgain").val();
+
+        if (password === passwordAgain) {
+            $("#labelPassword")
+                .removeClass("warning")
+                .addClass("satisfy")
+                .find(".alert")
+                .text("");
+        } else if (passwordAgain.length > 0) {
+            $("#labelPassword")
+                .removeClass("satisfy")
+                .addClass("warning")
+                .find(".alert")
+                .text("비밀번호를 다시 확인해 주세요.");
+        } else {
+            $("#labelPassword")
+                .removeClass("satisfy")
+                .removeClass("warning")
+                .find(".alert")
+                .text("");
+        }
     }
 
     $("#UserID")
         .on("change", checkUserID)
         .on("keyup", checkUserID);
-    $("#Password, #PasswordAgain").change(checkPassword);
+    $("#Password, #PasswordAgain")
+        .on("change", checkPassword)
+        .on("keyup", checkPassword);
 });
