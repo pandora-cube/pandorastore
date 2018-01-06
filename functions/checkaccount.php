@@ -15,7 +15,7 @@ if (strlen($userID) < 1) {
     $config_db = parse_ini_file("../configs/database.ini");
     $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]); {
         $users_model = new Users($mysqli, $config_db["table"]);
-        $users_data = $users_model->load([["UserID", "=", $userID]]);
+        $users_data = $users_model->load([["EMail", "=", $userID]]);
     } $mysqli->close();
 
     if (!is_null($users_data)) {
