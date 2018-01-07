@@ -35,10 +35,22 @@ $(document).ready(function onDocumentReady() {
         var password = $("#Password").val();
         var passwordAgain = $("#PasswordAgain").val();
 
-        if (password === passwordAgain) {
+        if (password.length === 0 && passwordAgain.length === 0) {
+            $("#labelPassword")
+                .removeClass("satisfy")
+                .removeClass("warning")
+                .find(".alert")
+                .text("");
+        } else if (password === passwordAgain) {
             $("#labelPassword")
                 .removeClass("warning")
                 .addClass("satisfy")
+                .find(".alert")
+                .text("");
+        } else if (password.indexOf(passwordAgain) === 0) {
+            $("#labelPassword")
+                .removeClass("satisfy")
+                .removeClass("warning")
                 .find(".alert")
                 .text("");
         } else if (passwordAgain.length > 0) {
