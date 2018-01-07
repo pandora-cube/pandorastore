@@ -23,7 +23,7 @@
         <?php endif; ?>
         <?php if ($this->isEnabledArea("user-button")): ?>
             <!-- 사용자 메뉴 버튼 -->
-            <button class="user-menu-button"><b><?=$this->getAttribute("Nickname")?></b> 님</button>
+            <button class="user-menu-button"><?=$this->getAttribute("Nickname")?> 님</button>
             <!-- 사용자 메뉴 -->
             <div class="user-menu">
                 <div class="arrow">
