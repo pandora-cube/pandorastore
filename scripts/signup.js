@@ -68,10 +68,22 @@ $(document).ready(function onDocumentReady() {
         }
     }
 
+    function toggleInnerForm() {
+        var $form = $(".inner-form");
+        var toggle = $("#PCubeMember").is(":checked");
+
+        $form.slideToggle(toggle);
+        $form.find("input").each(function toggleRequired() {
+            this.required = toggle;
+        });
+    }
+
     $("#UserID")
         .on("change", checkUserID)
         .on("keyup", checkUserID);
     $("#Password, #PasswordAgain")
         .on("change", checkPassword)
         .on("keyup", checkPassword);
+    $("#PCubeMember")
+        .on("change", toggleInnerForm);
 });
