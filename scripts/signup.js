@@ -1,30 +1,36 @@
 $(document).ready(function onDocumentReady() {
-    function checkUserID() {
+    function checkAccount() {
+        var id = this.id;
+
         $.post("/functions/checkaccount.php", {
-            UserID: $("#UserID").val(),
+            key: id,
+            value: this.value,
         }).done(function onSuccess(json) {
             var data = $.parseJSON(json);
+            var $label = $("label[for=" + id + "]");
 
             if (data[0] === 0) { // 사용 불가능한 계정인 경우
-                $("#labelUserID")
+                $label
                     .removeClass("satisfy")
                     .addClass("warning")
                     .find(".alert")
                     .text(data[1]);
             } else if (data[0] === 1) { // 사용 가능한 계정인 경우
-                $("#labelUserID")
+                $label
                     .removeClass("warning")
                     .addClass("satisfy")
                     .find(".alert")
                     .text(data[1]);
             } else { // 잘못된 값이 반환된 경우
-                $("#labelUserID")
+                $label
                     .removeClass("satisfy")
                     .removeClass("warning")
                     .find(".alert")
                     .text("");
                 if (data[1] !== undefined) {
-                    $("#labelUserID").find(".alert").text(data[1]);
+                    $label
+                        .find(".alert")
+                        .text(data[1]);
                 }
             }
         }).fail(function onFail() {
@@ -78,9 +84,9 @@ $(document).ready(function onDocumentReady() {
         });
     }
 
-    $("#UserID")
-        .on("change", checkUserID)
-        .on("keyup", checkUserID);
+    $("#Nickname, #UserID")
+        .on("change", checkAccount)
+        .on("keyup", checkAccount);
     $("#Password, #PasswordAgain")
         .on("change", checkPassword)
         .on("keyup", checkPassword);
