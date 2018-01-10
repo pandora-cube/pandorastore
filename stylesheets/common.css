@@ -155,7 +155,7 @@ header .accounts .signin {
     height: 30px;
     line-height: 30px;
     padding: 0 1em;
-    font-size: 1.1em;
+    font-size: 1em;
     color: #8badc9;
     border: 1px solid #8badc9;
     transition: color .5s, background-color .5s;
@@ -164,7 +164,7 @@ header .accounts .user-menu-button {
     height: 32px;
     line-height: 32px;
     padding: 0 1em;
-    font-size: 1.1em;
+    font-size: 1em;
     color: #8badc9;
     border: 1px solid #8badc9;
     transition: color .5s, background-color .5s;
