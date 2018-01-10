@@ -22,7 +22,7 @@
 
             <label id="labelPassword" for="Password">비밀번호 <span class="alert"></span></label>
             <input id="Password" name="Password" type="password" placeholder="비밀번호 생성" required />
-            <input id="PasswordAgain" name="PasswordAgain" type="password" placeholder="비밀번호 확인" required />
+            <input id="PasswordCheck" name="PasswordCheck" type="password" placeholder="비밀번호 확인" required />
 
             <div>
                 <input id="PCubeMember" name="PCubeMember" type="checkbox" />

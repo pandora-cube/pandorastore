@@ -1,10 +1,23 @@
 $(document).ready(function onDocumentReady() {
     function checkAccount() {
         var id = this.id;
+        var $sibling = $(this).siblings("#" + id + "Check");
+        var value = this.value;
+        var valueCheck = null;
+
+        if ($sibling.length > 0) {
+            valueCheck = $sibling.val();
+        } else if (id.substr(-5, 5) === "Check") {
+            id = id.substr(0, id.length - 5);
+            $sibling = $(this).siblings("#" + id);
+            valueCheck = value;
+            value = $sibling.val();
+        }
 
         $.post("/functions/checkaccount.php", {
-            key: id,
-            value: this.value,
+            Key: id,
+            Value: value,
+            ValueCheck: valueCheck,
         }).done(function onSuccess(json) {
             var data = $.parseJSON(json);
             var $label = $("label[for=" + id + "]");
@@ -37,43 +50,6 @@ $(document).ready(function onDocumentReady() {
         });
     }
 
-    function checkPassword() {
-        var password = $("#Password").val();
-        var passwordAgain = $("#PasswordAgain").val();
-
-        if (password.length === 0 && passwordAgain.length === 0) {
-            $("#labelPassword")
-                .removeClass("satisfy")
-                .removeClass("warning")
-                .find(".alert")
-                .text("");
-        } else if (password === passwordAgain) {
-            $("#labelPassword")
-                .removeClass("warning")
-                .addClass("satisfy")
-                .find(".alert")
-                .text("");
-        } else if (password.indexOf(passwordAgain) === 0) {
-            $("#labelPassword")
-                .removeClass("satisfy")
-                .removeClass("warning")
-                .find(".alert")
-                .text("");
-        } else if (passwordAgain.length > 0) {
-            $("#labelPassword")
-                .removeClass("satisfy")
-                .addClass("warning")
-                .find(".alert")
-                .text("비밀번호를 다시 확인해 주세요.");
-        } else {
-            $("#labelPassword")
-                .removeClass("satisfy")
-                .removeClass("warning")
-                .find(".alert")
-                .text("");
-        }
-    }
-
     function toggleInnerForm() {
         var $form = $(".inner-form");
         var toggle = $("#PCubeMember").is(":checked");
@@ -84,12 +60,9 @@ $(document).ready(function onDocumentReady() {
         });
     }
 
-    $("#Nickname, #UserID")
+    $("#Nickname, #UserID, #Password, #PasswordCheck")
         .on("change", checkAccount)
         .on("keyup", checkAccount);
-    $("#Password, #PasswordAgain")
-        .on("change", checkPassword)
-        .on("keyup", checkPassword);
     $("#PCubeMember")
         .on("change", toggleInnerForm);
 });

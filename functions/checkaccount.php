@@ -1,8 +1,9 @@
 <?php
 require_once("../models/users.php");
 
-$key = $_POST["key"];
-$value = $_POST["value"];
+$key = $_POST["Key"];
+$value = $_POST["Value"];
+$valueCheck = $_POST["ValueCheck"];
 
 $config_db = parse_ini_file("../configs/database.ini");
 
@@ -27,7 +28,7 @@ switch ($key) {
             }
         }
         break;
-    case "UserID":
+    case "UserID": // 이메일 검사
         if (strlen($value) < 1) {
             $data = [-1, "어서 작성해 주세요."];
         } else if (strlen($value) > 320) {
@@ -45,6 +46,19 @@ switch ($key) {
             } else {
                 $data = [1, "좋습니다."];
             }
+        }
+        break;
+    case "Password": // 비밀번호 검사
+        if (strlen($value) < 1 || strlen($valueCheck) < 1) {
+            $data = [-1, ""];
+        } else if ($value === $valueCheck) {
+            $data = [1, ""];
+        } else if (strpos($value, $valueCheck) === 0) {
+            $data = [-1, ""];
+        } else if (strlen($valueCheck) > 0) {
+            $data = [0, "비밀번호를 다시 확인해 주세요."];
+        } else {
+            $data = [-1, ""];
         }
         break;
 }
