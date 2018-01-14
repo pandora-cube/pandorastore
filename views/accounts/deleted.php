@@ -31,6 +31,7 @@
 			color: white;
 			background-color: #8badc9;
 		}
+		
 	</style>
 </head>
 
