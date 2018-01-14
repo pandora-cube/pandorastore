@@ -19,10 +19,10 @@
 			padding: .5em 1em;
 			font-size: 1em;
  			font-weight: bolder;
-  		color: #8badc9;
-  		background-color: #e7eef4;
-  		border: 1px solid #8badc9;
-  		border-radius: 1em;
+  			color: #8badc9;
+  			background-color: #e7eef4;
+  			border: 1px solid #8badc9;
+  			border-radius: 1em;
  			cursor: pointer;
 			transition: background-color .5s, color .5s;
 		}
@@ -35,17 +35,16 @@
 </head>
 
 <body>
-    <header>
-        <?=$this->loadLayout("header")?>
-    </header>
+	<header>
+		<?=$this->loadLayout("header")?>
+	</header>
 
-    <div id="contents">
-      <div id="gotohome">
-			  <h2>탈퇴되었습니다.</h2> 
-			
-			  <a href="http://store.p-cube.kr/">홈으로 이동</a>
-		  </div>
-    </div>
+	<div id="contents">
+	    <div id="gotohome">
+	      <h2>탈퇴되었습니다.</h2>
+	      <a href="http://store.p-cube.kr/">홈으로 이동</a>
+	    </div>
+	</div>
 
     <footer>
         <?=$this->loadLayout("footer")?>
