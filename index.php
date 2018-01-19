@@ -1,4 +1,20 @@
 <?php
+/*
+ *      [Pandora Cube contents store]
+ * 
+ *          Pandora Store
+ *          v1.03.2
+ * 
+ *      First Release:  2017.06.18
+ *      Last Update:    2017.12.30
+ * 
+ *      Coded by Seongbum @ All rights reserved.
+ *          sBum.Seo@gmail.com
+ *          http://seongbum.com
+ *          http://store.p-cube.kr
+ * 
+ */
+
 require_once("logger.php");
 require_once("models/user.php");
 
