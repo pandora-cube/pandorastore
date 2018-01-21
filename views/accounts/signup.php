@@ -11,7 +11,7 @@
     </header>
 
     <div id="contents">
-        <form class="signup-form" action="/accounts/requestsignup" method="post">
+        <form class="signup-form" action="/accounts/signup_request" method="post">
             <h2>판도라스토어 회원 가입</h2>
 
             <label id="labelNickname" for="Nickname">닉네임 <span class="alert"></span></label>
@@ -32,8 +32,8 @@
             <div class="inner-form">
                 <label id="labelLastName" for="LastName">성명 <span class="alert"></span></label>
                 <span class="multi">
-                    <input id="LastName" name="LastName" type="text" placeholder="성" required />
-                    <input id="FirstName" name="FirstName" type="text" placeholder="이름" required />
+                    <input id="LastName" name="LastName" type="text" placeholder="성" />
+                    <input id="FirstName" name="FirstName" type="text" placeholder="이름" />
                 </span>
 
                 <label id="labelUniv" for="Univ">소속 대학 및 학번<span class="alert"></span></label>
