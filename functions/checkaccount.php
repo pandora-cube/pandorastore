@@ -63,5 +63,6 @@ switch ($key) {
         break;
 }
 
-print(json_encode($data));
+if ($printData !== false)
+    print(json_encode($data));
 ?>
