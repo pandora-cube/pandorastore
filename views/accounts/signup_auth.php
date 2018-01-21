@@ -1,4 +1,5 @@
-<p>판도라스토어 회원 가입 인증 코드는 다음과 같습니다.</p>
+<p>안녕하세요.</p>
+<p>판도라스토어 회원 가입 인증코드는 다음과 같습니다.</p>
 <div style="display: inline-block; margin: 10px; padding: 10px; border: 2px solid #aaa;">
     <?=$this->getAttribute("auth_code")?>
 </div>
