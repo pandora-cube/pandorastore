@@ -12,7 +12,7 @@ class Template {
         $this->attributes[$key] = $value;
     }
     public function getAttribute($key) {
-        if(!isset($this->attributes[$key]))
+        if (!isset($this->attributes[$key]))
             return "";
         return $this->attributes[$key];
     }
@@ -30,12 +30,15 @@ class Template {
         include("views/layouts/$layout.php");
     }
 
-    public function loadView($view) {
+    public function loadView($view, $print = true) {
         ob_start();
         require("views/$view.php");
         $string = ob_get_clean();
         $string = preg_replace("/\s\s+/", " ", $string);
-        echo($string);
+
+        if ($print === true)
+            print($string);
+        return $string;
     }
 }
 ?>
