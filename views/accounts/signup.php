@@ -11,7 +11,7 @@
     </header>
 
     <div id="contents">
-        <form class="signup-form" action="/accounts/signup_request" method="post">
+        <form id="signup-form" action="/accounts/signup_request" method="post">
             <h2>판도라스토어 회원 가입</h2>
 
             <label id="labelNickname" for="Nickname">닉네임 <span class="alert"></span></label>

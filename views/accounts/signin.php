@@ -11,7 +11,7 @@
     </header>
 
     <div id="contents">
-        <form class="signin-form" action="/accounts/signin_auth" method="post">
+        <form id="signin-form" action="/accounts/signin_auth" method="post">
             <h2>환영합니다.</h2>
             <input name="UserID" type="text" placeholder="아이디" required />
             <input name="Password" type="password" placeholder="비밀번호" required />
