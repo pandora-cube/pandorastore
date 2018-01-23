@@ -28,5 +28,46 @@ class User {
         }
         return $this->data;
     }
+
+    public function request($inputData, $authCode) {
+        $nickname = $this->mysqli->escape_string($inputData["Nickname"]);
+        $userID = $this->mysqli->escape_string($inputData["UserID"]);
+        $password = $this->mysqli->escape_string($inputData["Password"]);
+
+        // 중복 계정 확인
+        $sql = "
+            SELECT UserNumber, Authenticated
+            FROM {$this->table["users"]}
+            WHERE UserID = '{$userID}'
+            ORDER BY CreatedTime DESC";
+        $result = $this->mysqli->query($sql);
+
+        // 중복 계정이 존재하는 경우
+        if ($result->num_rows > 0) {
+            $userData = $result->fetch_row();
+
+            // 중복 계정이 인증까지 완료된 계정인 경우
+            if ($userData[1] == 1)
+                return;
+
+            // 중복 계정의 정보 업데이트
+            $sql = "
+                UPDATE {$this->table["users"]} SET
+                    Nickname = '{$nickname}',
+                    Password = SHA1('{$password}'),
+                    AuthCode = '{$authCode}'
+                WHERE UserNumber = {$userData[0]}";
+            $this->mysqli->query($sql);
+            return;
+        }
+
+        // 계정 요청
+        $sql = "
+            INSERT INTO {$this->table["users"]}
+                (Nickname, UserID, Email, Password, AuthCode)
+            VALUES
+                ('{$nickname}', '{$userID}', '{$userID}', SHA1('{$password}'), '{$authCode}')";
+        $this->mysqli->query($sql);
+    }
 }
 ?>

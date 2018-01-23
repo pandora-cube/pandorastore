@@ -18,7 +18,7 @@ class Users {
             $sql .= " WHERE";
             foreach ($conditions as $condition) {
                 $value = $this->mysqli->escape_string($condition[2]);
-                $sql .= " ({$condition[0]} {$condition[1]} \"{$value}\")";
+                $sql .= " ({$condition[0]} {$condition[1]} '{$value}')";
             }
         }
         
