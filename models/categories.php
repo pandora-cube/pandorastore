@@ -11,13 +11,13 @@ class Categories {
 
     public function load() {
         $sql = "
-            SELECT *, \"Genre\" AS Type
+            SELECT *, 'Genre' AS Type
             FROM {$this->table["genres"]}
             UNION
-            SELECT *, \"Platform\" AS Type
+            SELECT *, 'Platform' AS Type
             FROM {$this->table["platforms"]}
             UNION
-            SELECT *, \"Tag\" AS Type
+            SELECT *, 'Tag' AS Type
             FROM {$this->table["tags"]}";
 
         $this->names = array();

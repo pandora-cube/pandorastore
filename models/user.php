@@ -13,12 +13,12 @@ class User {
         $userID = $this->mysqli->escape_string($userID);
         $password = $this->mysqli->escape_string($password);
 
-        $con_password = ($encrypt) ? "Password = SHA1(\"{$password}\")" : "Password = \"{$password}\"";
+        $con_password = ($encrypt) ? "Password = SHA1('{$password}')" : "Password = '{$password}'";
 
         $sql = "
             SELECT *
             FROM {$this->table["users"]}
-            WHERE UserID = \"{$userID}\" AND {$con_password}";
+            WHERE UserID = '{$userID}' AND {$con_password}";
 
         $this->data = null;
         if ($result = $this->mysqli->query($sql)) {
