@@ -15,10 +15,10 @@ class Users {
             FROM {$this->table["users"]}";
         
         if (count($conditions) > 0) {
-            $sql .= " WHERE";
+            $sql .= " WHERE TRUE";
             foreach ($conditions as $condition) {
                 $value = $this->mysqli->escape_string($condition[2]);
-                $sql .= " ({$condition[0]} {$condition[1]} '{$value}')";
+                $sql .= " AND ({$condition[0]} {$condition[1]} '{$value}')";
             }
         }
         

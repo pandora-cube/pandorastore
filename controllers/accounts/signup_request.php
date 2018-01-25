@@ -5,28 +5,24 @@ require_once("functions/mail.php");
 
 $config_db = parse_ini_file("configs/database.ini");
 $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]); {
-    // 입력 정보 검사 PHP의 데이터 출력 모드 해제
+    // 입력 정보 해쉬맵 구성
+    $input = [];
+    foreach ($_POST as $key => $value)
+        $input[$key] = $value;
+
+    // 입력 정보 검사
     $printData = false;
+    $checkAll = true;
+    require("checkaccount.php");
 
-    // 입력 정보 검사 및 해쉬맵 구성
-    $checkList = ["Nickname", "UserID", "Password"];
-    $inputData = [];
-    foreach ($item as $checkList) {
-        $_POST["Key"] = $item;
-        $_POST["Value"] = $_POST[$item];
-        $_POST["ValueCheck"] = $_POST["{$item}Check"];
-        require("functions/checkaccount.php"); // 검사 요청
-
-        // 해쉬맵에 추가
-        $inputData[$item] = $_POST[$item];
-
-        if (count($data) === 0) { // 검사에 통과하지 못한 경우
-            $mysqli->close();
-            header("Location: /accounts/signup"); // 회원가입 페이지로 연결
-            return;
-        }
+    // 검사에 통과하지 못한 경우
+    if ($result !== 1) {
+        $mysqli->close();
+        setcookie("Error", json_encode($result), 0, "/accounts/");
+        header("Location: /accounts/signup"); // 회원가입 페이지로 연결
+        return;
     }
-    
+
     // 인증코드 생성
     $authCode = rand(100000, 999999); // 6자리 난수
 
@@ -46,7 +42,7 @@ $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["pas
 
     // 가입 요청
     $users_model = new User($mysqli, $config_db["table"]);
-    $users_model->request($inputData, $authCode);
+    $users_model->request($input, $authCode);
 
     // 인증코드 입력 페이지로 연결
 

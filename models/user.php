@@ -48,7 +48,7 @@ class User {
 
             // 중복 계정이 인증까지 완료된 계정인 경우
             if ($userData[1] == 1)
-                return;
+                return false;
 
             // 중복 계정의 정보 업데이트
             $sql = "
@@ -58,7 +58,7 @@ class User {
                     AuthCode = '{$authCode}'
                 WHERE UserNumber = {$userData[0]}";
             $this->mysqli->query($sql);
-            return;
+            return true;
         }
 
         // 계정 요청
@@ -68,6 +68,7 @@ class User {
             VALUES
                 ('{$nickname}', '{$userID}', '{$userID}', SHA1('{$password}'), '{$authCode}')";
         $this->mysqli->query($sql);
+        return true;
     }
 }
 ?>

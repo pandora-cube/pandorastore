@@ -65,5 +65,13 @@
     <script src="/modules/stickymenu/stickymenu.js"></script>
     <script src="/scripts/header.js"></script>
     <script src="/scripts/signup.js"></script>
+
+    <?php if ($this->isEnabledArea("error-script")): ?>
+        <script>
+            $(document).ready(function() {
+                onAccountCheckResponse("<?=$this->getAttribute("error_item")?>", "<?=$this->getAttribute("error_data")?>", true); 
+            });
+        </script>
+    <?php endif; ?>
 </body>
 </html>
