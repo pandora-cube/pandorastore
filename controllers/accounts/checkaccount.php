@@ -13,8 +13,8 @@ function checkAccount($key, $input) {
             } else if (strlen($value) > 16) {
                 $data = [0, "너무 깁니다."];
             } else {
-                $users_model = new Users();
-                $users_data = $users_model->load([["Nickname", "=", $value], ["Authenticated", "=", 1]]);
+                $users_model = new Users([["Nickname", "=", $value], ["Authenticated", "=", 1]]);
+                $users_data = $users_model->getData();
 
                 if (count($users_data) > 0) {
                     $data = [0, "이미 사용중인 닉네임입니다."];
@@ -31,8 +31,8 @@ function checkAccount($key, $input) {
             } else if (strpos($value, "@") === false) {
                 $data = [-1, "도메인까지 작성해 주세요~"];
             } else {
-                $users_model = new Users();
-                $users_data = $users_model->load([["EMail", "=", $value], ["Authenticated", "=", 1]]);
+                $users_model = new Users([["EMail", "=", $value], ["Authenticated", "=", 1]]);
+                $users_data = $users_model->getData();
 
                 if (count($users_data) > 0) {
                     $data = [0, "해당 이메일로 가입된 계정이 존재합니다."];
