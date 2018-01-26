@@ -45,6 +45,7 @@ $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["pas
     $users_model->request($input, $authCode);
 
     // 인증코드 입력 페이지로 연결
-
+    setcookie("EMail", $_POST["UserID"], 0, "/accounts/");
+    header("Location: /accounts/signup_auth_input?email={$_POST["UserID"]}");
 } $mysqli->close();
 ?>

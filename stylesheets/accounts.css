@@ -3,23 +3,34 @@
     text-align: center;
 }
 
-#contents form {
+#signin-form,
+#signup-form {
     max-width: 500px;
     margin: 100px auto;
 }
+
+#contents.wrapper {
+    padding: 100px 0;
+    text-align: center;
+}
+#signup-auth-form {
+    display: inline-block;
+    text-align: left;
+}
+
 #contents form label {
     display: block;
     margin-bottom: -.5em;
     text-align: left;
     transition: color .5s;
 }
-#contents form label.warning {
+#contents form .warning {
     color: #FF5555;
 }
-#contents form label.satisfy {
+#contents form .satisfy {
     color: #00BB00;
 }
-#contents form label .alert {
+#contents form  .alert {
     margin-left: .5em;
     font-size: .9em;
     font-weight: bold;
@@ -111,4 +122,12 @@
 #contents form .inner-form {
     display: none;
     padding: 1em 0;
+}
+
+#contents .description-wrapper {
+    text-align: center;
+}
+#contents .description {
+    display: inline-block;
+    text-align: left;
 }
