@@ -124,10 +124,3 @@
     padding: 1em 0;
 }
 
-#contents .description-wrapper {
-    text-align: center;
-}
-#contents .description {
-    display: inline-block;
-    text-align: left;
-}
