@@ -38,6 +38,10 @@ class Users {
         return $this->data;
     }
 
+    public function getData() {
+        return $this->data;
+    }
+
     public function request($inputData, $authCode) {
         $nickname = $this->mysqli->escape_string($inputData["Nickname"]);
         $userID = $this->mysqli->escape_string($inputData["UserID"]);
