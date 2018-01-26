@@ -2,11 +2,19 @@
 class User {
     private $mysqli;
     private $table;
+    private $userID;
+    private $password;
+    private $encrypt;
     private $data;
 
-    public function __construct($link, $table) {
-        $this->mysqli = $link;
-        $this->table = $table;
+    public function __construct($userID, $password, $encrypt) {
+        $config_db = parse_ini_file("configs/database.ini");
+
+        $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);
+        $this->table = $config_db["table"];
+
+        if ($this->mysqli)
+            $this->load($userID, $password, $encrypt);
     }
 
     public function load($userID, $password, $encrypt) {
@@ -26,6 +34,10 @@ class User {
                 $this->data = $result->fetch_assoc();
             $result->free();
         }
+        return $this->data;
+    }
+
+    public function getData() {
         return $this->data;
     }
 

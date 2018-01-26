@@ -4,11 +4,8 @@ require_once("models/user.php");
 $userID = $_POST["UserID"];
 $password = $_POST["Password"];
 
-$config_db = parse_ini_file("configs/database.ini");
-$mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]); {
-    $user_model = new User($mysqli, $config_db["table"]);
-    $user_data = $user_model->load($userID, $password, true);
-} $mysqli->close();
+$user_model = new User($userID, $password, true);
+$user_data = $user_model->getData();
     
 session_start();
 if (is_null($user_data)) { // 로그인 실패 시
