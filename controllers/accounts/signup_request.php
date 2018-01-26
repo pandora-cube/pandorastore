@@ -1,6 +1,6 @@
 <?php
 require_once("template.php");
-require_once("models/user.php");
+require_once("models/users.php");
 require_once("functions/mail.php");
 
 $config_db = parse_ini_file("configs/database.ini");
@@ -41,7 +41,7 @@ $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["pas
     $mail->send();
 
     // 가입 요청
-    $users_model = new User($mysqli, $config_db["table"]);
+    $users_model = new Users();
     $users_model->request($input, $authCode);
 
     // 인증코드 입력 페이지로 연결
