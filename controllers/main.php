@@ -15,11 +15,10 @@ $tag = (count($tag) < 2) ? null : $tag[1];
 $search = $_GET["search"];
 
 $config_db = parse_ini_file("configs/database.ini");
-$config_contents = parse_ini_file("configs/contents.ini");
 $mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]); {
     $orbit_model = new Orbit($mysqli, $config_db["table"]);
     $categories_model = new Categories($mysqli, $config_db["table"]);
-    $contents_model = new Contents($mysqli, $config_db["table"], $config_contents, $categories_model);
+    $contents_model = new Contents();
 
     $orbit_data = $orbit_model->load();
     $categories_data = $categories_model->load();

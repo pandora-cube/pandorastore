@@ -7,11 +7,8 @@ $id = $_GET['id'];
 $config_db = parse_ini_file("../configs/database.ini");
 $config_contents = parse_ini_file("../configs/contents.ini");
 $mysqli = mysqli_connect($config_db['host'], $config_db['user'], $config_db['password'], $config_db['database']); {
-    $categories_model = new Categories($mysqli, $config_db['table']);
-    $contents_model = new Contents($mysqli, $config_db['table'], $config_contents, $categories_model);
-
-    $categories_data = $categories_model->load();
-    $contents_data = $contents_model->load(null, null, $id);
+    $contents_model = new Contents(null, null, $id);
+    $contents_data = $contents_model->getContents();
     $datum = $contents_data[0];
 
     $os = getOSName();

@@ -1,16 +1,21 @@
 <?php
+require_once("models/categories.php");
+
 class Contents {
     private $mysqli;
     private $table;
     private $config;
     private $contents;
-    private $categories_model;
 
-    public function __construct($link, $table, $config, $categories_model) {
-        $this->mysqli = $link;
-        $this->table = $table;
-        $this->config = $config;
-        $this->categories_model = $categories_model;
+    public function __construct($genre = null, $platform = null, $tag = null, $id = null, $search = null) {
+        $config_db = parse_ini_file("configs/database.ini");
+
+        $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);
+        $this->table = $config_db["table"];
+        $this->config = parse_ini_file("configs/contents.ini");
+
+        if ($this->mysqli)
+            $this->load($genre, $platform, $tag, $id, $search);
     }
 
     public function load($genre = null, $platform = null, $tag = null, $id = null, $search = null) {
@@ -55,7 +60,7 @@ class Contents {
             WHERE {$con_genre} AND {$con_platform} AND {$con_tag} AND {$con_id} AND {$con_search} AND Enabled = 1
             ORDER BY CreatedTime DESC";
 
-        $this->categories_model->load();
+        $categories_model = new Categories($this->mysqli, $config_db["table"]);
         $this->contents = array();
         if($result = $this->mysqli->query($sql)) {
             for($i = 0; $i < $result->num_rows; $i++) {
@@ -67,17 +72,21 @@ class Contents {
                 // Images
                 $this->contents[$i]["Images"] = $this->getImages($identifier);
                 // Genres
-                $this->categories_model->parseArray($origin, $this->contents[$i], "Genre");
-                $this->categories_model->parseName($origin, $this->contents[$i], "Genre");
+                $categories_model->parseArray($origin, $this->contents[$i], "Genre");
+                $categories_model->parseName($origin, $this->contents[$i], "Genre");
                 // Platforms
-                $this->categories_model->parseArray($origin, $this->contents[$i], "Platform");
-                $this->categories_model->parseName($origin, $this->contents[$i], "Platform");
+                $categories_model->parseArray($origin, $this->contents[$i], "Platform");
+                $categories_model->parseName($origin, $this->contents[$i], "Platform");
                 // Tags
-                $this->categories_model->parseArray($origin, $this->contents[$i], "Tag");
-                $this->categories_model->parseName($origin, $this->contents[$i], "Tag");
+                $categories_model->parseArray($origin, $this->contents[$i], "Tag");
+                $categories_model->parseName($origin, $this->contents[$i], "Tag");
             }
             $result->free();
         }
+        return $this->contents;
+    }
+
+    public function getContents() {
         return $this->contents;
     }
 
