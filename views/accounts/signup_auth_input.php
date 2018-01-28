@@ -21,7 +21,8 @@
             <?php if ($this->isEnabledArea("auth-input")): ?>
                 <p><strong><?=$this->getAttribute("email")?></strong>으로 인증코드를 발송하였습니다.</p>
                 <p>인증코드를 입력하여 회원 가입을 완료해 주십시오.</p>
-                <input id="AuthCode" name="AuthCode" type="text" placeholder="인증코드" />
+                <input name="email" type="hidden" value="<?=$this->getAttribute("email")?>" />
+                <input id="AuthCode" name="authcode" type="text" placeholder="인증코드" />
                 <input type="submit" value="인증" />
             <?php endif; ?>
             

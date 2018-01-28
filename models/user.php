@@ -2,22 +2,19 @@
 class User {
     private $mysqli;
     private $table;
-    private $userID;
-    private $password;
-    private $encrypt;
     private $data;
 
-    public function __construct($userID, $password, $encrypt) {
+    public function __construct($userID, $password, $encrypt, $compel = false) {
         $config_db = parse_ini_file("configs/database.ini");
 
         $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);
         $this->table = $config_db["table"];
 
         if ($this->mysqli)
-            $this->load($userID, $password, $encrypt);
+            $this->load($userID, $password, $encrypt, $compel);
     }
 
-    public function load($userID, $password, $encrypt) {
+    public function load($userID, $password, $encrypt, $compel) {
         $userID = $this->mysqli->escape_string($userID);
         $password = $this->mysqli->escape_string($password);
 
@@ -26,7 +23,9 @@ class User {
         $sql = "
             SELECT *
             FROM {$this->table["users"]}
-            WHERE UserID = '{$userID}' AND {$con_password}";
+            WHERE UserID = '{$userID}'";
+        if ($compel !== true)
+            $sql .= " AND {$con_password}";
 
         $this->data = null;
         if ($result = $this->mysqli->query($sql)) {
@@ -41,11 +40,25 @@ class User {
         return $this->data;
     }
 
-    public function update($userID, $inputData) {
+    public function update($inputData) {
+        if (count($inputData) < 1 || is_null($this->data)) {
+            return false;
+        }
 
+        $sql = "
+            UPDATE {$this->table["users"]} SET
+                UpdatedTime = CURRENT_TIMESTAMP";
 
         foreach ($inputData as $key => $value) {
+            if (gettype($value) === "string")
+                $value = "'{$value}'";
+            $key = $this->mysqli->escape_string($key);
+            $value = $this->mysqli->escape_string($value);
+            $sql .= ", {$key} = {$value}";
         }
+        $sql .= " WHERE UserNumber = {$this->data["UserNumber"]}";
+
+        return $this->mysqli->query($sql);
     }
 }
 ?>

@@ -13,7 +13,8 @@
     padding: 100px 0;
     text-align: center;
 }
-#signup-auth-form {
+#signup-auth-form,
+#signup-complete {
     display: inline-block;
     text-align: left;
 }

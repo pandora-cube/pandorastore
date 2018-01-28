@@ -10,8 +10,9 @@ if ($_SESSION["signup_auth_try"] > 3) { // 3회 이상 실패 시
     $template->disableArea("email-error");
 } else {
     $template->disableArea("auth-ban");
-    if (is_null($_GET["reinput"])) { // 재시도 시
+    if (isset($_GET["reinput"])) { // 재시도 시
         $template->setAttribute("count", $_SESSION["signup_auth_try"]);
+    } else {
         $template->disableArea("auth-reinput");
     }
     if (isset($_GET["email"])) { // 이메일 전달 유무
