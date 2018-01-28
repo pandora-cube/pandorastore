@@ -60,7 +60,7 @@ class Contents {
             WHERE {$con_genre} AND {$con_platform} AND {$con_tag} AND {$con_id} AND {$con_search} AND Enabled = 1
             ORDER BY CreatedTime DESC";
 
-        $categories_model = new Categories($this->mysqli, $config_db["table"]);
+        $categories_model = new Categories();
         $this->contents = array();
         if($result = $this->mysqli->query($sql)) {
             for($i = 0; $i < $result->num_rows; $i++) {

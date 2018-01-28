@@ -3,13 +3,21 @@ class Categories {
     private $mysqli;
     private $table;
     private $names;
+    private $tags;
 
-    public function __construct($link, $table) {
-        $this->mysqli = $link;
-        $this->table = $table;
+    public function __construct() {
+        $config_db = parse_ini_file("configs/database.ini");
+
+        $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);
+        $this->table = $config_db["table"];
+
+        if ($this->mysqli) {
+            $this->loadNames();
+            $this->loadTags();
+        }
     }
 
-    public function load() {
+    public function loadNames() {
         $sql = "
             SELECT *, 'Genre' AS Type
             FROM {$this->table["genres"]}
@@ -37,25 +45,33 @@ class Categories {
             FROM {$this->table["tags"]}
             ORDER BY ID DESC";
 
-        $tags = array();
+        $this->tags = array();
         if($result = $this->mysqli->query($sql)) {
             for($i = 0; $i < $result->num_rows; $i++) {
-                $tags[$i] = $result->fetch_assoc();
+                $this->tags[$i] = $result->fetch_assoc();
             }
             $result->free();
         }
-        return $tags;
+        return $this->tags;
+    }
+
+    public function getNames() {
+        return $this->names;
+    }
+
+    public function getTags() {
+        return $this->tags;
     }
 
     public function parseArray($origin, &$data, $type) {
-        $data[$type."sID"] = explode(',', $origin[$type.'s']);
+        $data["{$type}sID"] = explode(',', $origin["{$type}s"]);
     }
 
     public function parseName($origin, &$data, $type) {
         $result = array();
-        foreach(explode(',', $origin[$type.'s']) as $id)
+        foreach(explode(',', $origin["{$type}s"]) as $id)
             array_push($result, $this->names[$type][$id]);
-        $data[$type.'s'] = $result;
+        $data["{$type}s"] = $result;
     }
 }
 ?>
