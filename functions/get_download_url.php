@@ -4,26 +4,24 @@ require_once('../models/contents.php');
 
 $id = $_GET['id'];
 
-$config_db = parse_ini_file("../configs/database.ini");
 $config_contents = parse_ini_file("../configs/contents.ini");
-$mysqli = mysqli_connect($config_db['host'], $config_db['user'], $config_db['password'], $config_db['database']); {
-    $contents_model = new Contents(null, null, $id);
-    $contents_data = $contents_model->getContents();
-    $datum = $contents_data[0];
 
-    $os = getOSName();
-    if ($os == 'Android' && strlen($datum['DownloadURL_Android']) !== 0) {
-        print($datum['DownloadURL_Android']);
-    } else if ($os == 'Mac/iOS' && strlen($datum['DownloadURL_iOS']) !== 0) {
-        print($datum['DownloadURL_iOS']);
-    } else if (strlen($datum['DownloadURL']) !== 0) {
-        if(file_exists("{$_SERVER['DOCUMENT_ROOT']}{$config_contents['path']['root']}/{$datum['Identifier']}/{$datum['DownloadURL']}")) {
-            print("{$config_contents['path']['root']}/{$datum['Identifier']}/{$datum['DownloadURL']}");
-        } else {
-            print($datum['DownloadURL']);
-        }
+$contents_model = new Contents(null, null, $id);
+$contents_data = $contents_model->getContents();
+$datum = $contents_data[0];
+
+$os = getOSName();
+if ($os == 'Android' && strlen($datum['DownloadURL_Android']) !== 0) {
+    print($datum['DownloadURL_Android']);
+} else if ($os == 'Mac/iOS' && strlen($datum['DownloadURL_iOS']) !== 0) {
+    print($datum['DownloadURL_iOS']);
+} else if (strlen($datum['DownloadURL']) !== 0) {
+    if(file_exists("{$_SERVER['DOCUMENT_ROOT']}{$config_contents['path']['root']}/{$datum['Identifier']}/{$datum['DownloadURL']}")) {
+        print("{$config_contents['path']['root']}/{$datum['Identifier']}/{$datum['DownloadURL']}");
+    } else {
+        print($datum['DownloadURL']);
     }
-} $mysqli->close();
+}
 
 function getOSName() {
     $userAgent = $_SERVER['HTTP_USER_AGENT'];

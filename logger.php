@@ -10,9 +10,11 @@ class Logger {
     private $table;
     private $user_data;
 
-    public function __construct($link, $table) {
-        $this->mysqli = $link;
-        $this->table = $table;
+    public function __construct() {
+        $config_db = parse_ini_file("configs/database.ini");
+
+        $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);
+        $this->table = $config_db["table"];
 
         session_start();
         if (isset($_SESSION["UserID"]) && isset($_SESSION["Password"])) {
