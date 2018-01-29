@@ -71,21 +71,22 @@ function checkAccount($key, $input, &$checkList, $checkAll) {
             }
             break;
         case "Univ": // 소속 대학
-            if (strlen($value) < 1 || strlen($input["StudentID"]) < 1) {
-                $data = ["Univ", -1, ""];
-            } else if (strlen($value) > 32) {
-                $data = ["Univ", 0, "대학명이 너무 깁니다."];
-            } else {
-                $data = ["Univ", 1, ""];
-            }
-            break;
         case "StudentID": // 학번
-            if (strlen($value) < 1 || strlen($input["Univ"]) < 1) {
+            if (strlen($input["Univ"]) < 1 || strlen($input["StudentID"]) < 1) {
                 $data = ["Univ", -1, ""];
-            } else if (strlen($value) > 12) {
+            } else if (strlen($input["Univ"]) > 32) {
+                $data = ["Univ", 0, "대학명이 너무 깁니다."];
+            } else if (strlen($input["StudentID"]) > 12) {
                 $data = ["Univ", 0, "학번이 너무 깁니다."];
             } else {
-                $data = ["Univ", 1, ""];
+                $users_model = new Users([["University", "=", $input["Univ"]], ["StudentID", "=", $input["StudentID"]], ["Authenticated", "=", 1]]);
+                $users_data = $users_model->getData();
+
+                if (count($users_data) > 0) {
+                    $data = ["Univ", 0, "해당 대학 및 학번으로 가입된 계정이 존재합니다."];
+                } else {
+                    $data = ["Univ", 1, ""];
+                }
             }
             break;
         case "ProgrammingPart": // 파트
