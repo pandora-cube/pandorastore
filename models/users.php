@@ -71,13 +71,15 @@ class Users {
             // 판도라큐브 회원 체크한 경우
             if ($pcubemember) {
                 $sql_pcube = ",
+                    PCubeMember = 2,
                     Name = '{$name}',
                     University = '{$university}',
                     StudentID = {$studentID},
                     PCubePart = '{$part}'
                     ";
             } else {
-                $sql_pcube = "";
+                $sql_pcube = ",
+                    PCubeMember = 0";
             }
 
             // 중복 계정의 정보 업데이트
@@ -85,8 +87,7 @@ class Users {
                 UPDATE {$this->table["users"]} SET
                     Nickname = '{$nickname}',
                     Password = SHA1('{$password}'),
-                    AuthCode = '{$authCode}',
-                    PCubeMember = 0
+                    AuthCode = '{$authCode}'
                     {$sql_pcube}
                 WHERE UserNumber = {$userData[0]}";
             $this->mysqli->query($sql);
@@ -95,8 +96,8 @@ class Users {
 
         // 판도라큐브 회원 체크한 경우
         if ($pcubemember) {
-            $col_pcube = ", Name, University, StudentID, PCubePart";
-            $val_pcube = ", '{$name}', '{$university}', $studentID, '{$part}'";
+            $col_pcube = ", PCubeMember, Name, University, StudentID, PCubePart";
+            $val_pcube = ", 2, '{$name}', '{$university}', $studentID, '{$part}'";
         } else {
             $col_pcube = "";
             $val_pcube = "";

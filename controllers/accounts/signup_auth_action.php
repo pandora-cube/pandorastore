@@ -23,6 +23,10 @@ if ($user_data["Authenticated"] != 0) { // 이미 가입된 계정인 경우
     $user->update(["Authenticated" => 1]);
     $template->setAttribute("nickname", $user_data["Nickname"]);
     $template->disableArea("already-authenticated");
+
+    if ($user_data["PCubeMember"] != 2) { // 판도라큐브 회원 체크하지 않았을 시
+        $template->disableArea("pcube-member-inform");
+    }
 } else { // 인증 실패 시
     if (is_null($_SESSION["signup_auth_try"])) {
         $_SESSION["signup_auth_try"] = 1;
