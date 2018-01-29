@@ -21,34 +21,36 @@
             <input id="UserID" name="UserID" type="email" required />
 
             <label id="labelPassword" for="Password">비밀번호 <span class="alert"></span></label>
-            <input id="Password" name="Password" type="password" placeholder="비밀번호 생성" required />
-            <input id="PasswordCheck" name="PasswordCheck" type="password" placeholder="비밀번호 확인" required />
+            <div class="siblings">
+                <input id="Password" name="Password" type="password" placeholder="비밀번호 생성" required />
+                <input id="PasswordCheck" name="PasswordCheck" type="password" placeholder="비밀번호 확인" required />
+            </div>
 
             <div>
-                <input id="PCubeMember" name="PCubeMember" type="checkbox" />
+                <input id="PCubeMember" name="PCubeMember" type="checkbox" class="not-check" />
                 <label for="PCubeMember">판도라큐브 회원입니다.</label>
             </div>
 
             <div class="inner-form">
-                <label id="labelLastName" for="LastName">성명 <span class="alert"></span></label>
-                <span class="multi">
+                <label id="labelName" for="LastName">성명 <span class="alert"></span></label>
+                <span class="multi siblings">
                     <input id="LastName" name="LastName" type="text" placeholder="성" />
                     <input id="FirstName" name="FirstName" type="text" placeholder="이름" />
                 </span>
 
                 <label id="labelUniv" for="Univ">소속 대학 및 학번<span class="alert"></span></label>
-                <span class="multi">
+                <span class="multi siblings">
                     <input id="Univ" name="Univ" type="text" placeholder="대학명 (ex. 판도라대학교)" />
                     <input id="StudentID" name="StudentID" type="number" placeholder="학번 (ex. 180108)" />
                 </span>
                 
                 <label id="labelPart">파트 <span class="alert"></span></label>
                 <div class="parts">
-                    <input id="ProgrammingPart" name="Part" type="radio" value="Programming" />
+                    <input id="ProgrammingPart" name="Part" type="radio" value="프로그래밍" />
                     <label for="ProgrammingPart">프로그래밍</label>
-                    <input id="DesignPart" name="Part" type="radio" value="Design" />
+                    <input id="DesignPart" name="Part" type="radio" value="디자인" />
                     <label for="DesignPart">디자인</label>
-                    <input id="ArtPart" name="Part" type="radio" value="Art" />
+                    <input id="ArtPart" name="Part" type="radio" value="아트" />
                     <label for="ArtPart">아트</label>
                 </div>
             </div>

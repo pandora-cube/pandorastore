@@ -1,34 +1,37 @@
-function onAccountCheckResponse(name, json, focus = false) {
+function onAccountCheckResponse(id, json, focus = false) {
     var data = $.parseJSON(json);
-    var $label = $("label[for=" + name + "]");
-    var $dest = $("#" + name);
+    var $label = $("#label" + data[0]);
+    var $dest = $("#" + id);
 
-    if (data[0] === 0) { // 사용 불가능한 계정인 경우
+    if (data[1] === 0) { // 사용 불가능한 계정인 경우
         $label
             .removeClass("satisfy")
             .addClass("warning")
             .find(".alert")
-            .text(data[1]);
-        $dest.data("checked", false);
-    } else if (data[0] === 1) { // 사용 가능한 계정인 경우
+            .text(data[2]);
+        $dest.data("checked", false)
+            .siblings("input").not(".not-check").data("checked", false);
+    } else if (data[1] === 1) { // 사용 가능한 계정인 경우
         $label
             .removeClass("warning")
             .addClass("satisfy")
             .find(".alert")
-            .text(data[1]);
-        $dest.data("checked", true);
+            .text(data[2]);
+        $dest.data("checked", true)
+            .siblings("input").not(".not-check").data("checked", true);
     } else { // 잘못된 값이 반환된 경우
         $label
             .removeClass("satisfy")
             .removeClass("warning")
             .find(".alert")
             .text("");
-        if (data[1] !== undefined) {
+        if (data[2] !== undefined) {
             $label
                 .find(".alert")
-                .text(data[1]);
+                .text(data[2]);
         }
-        $dest.removeData("checked");
+        $dest.removeData("checked")
+            .siblings("input").not(".not-check").removeData("checked");
     }
 
     if (focus === true) {
@@ -38,28 +41,30 @@ function onAccountCheckResponse(name, json, focus = false) {
 
 $(document).ready(function onDocumentReady() {
     function checkAccount() {
-        var name = this.name;
-        var $sibling = $(this).siblings("#" + name + "Check");
+        var id = this.id;
         var value = this.value;
-        var valueCheck = null;
+        var data = {};
 
-        if ($sibling.length > 0) {
-            valueCheck = $sibling.val();
-        } else if (name.substr(-5, 5) === "Check") {
-            name = name.substr(0, name.length - 5);
-            $sibling = $(this).siblings("#" + name);
-            valueCheck = value;
-            value = $sibling.val();
+        if (this.type === "radio") {
+            value = this.checked;
+        }
+
+        data[id] = value;
+        if ($(this).parent().hasClass("siblings")) {
+            $(this).siblings("input").not(".not-check").each(function addSibling() {
+                if (this.type === "radio") {
+                    data[this.id] = this.checked;
+                } else {
+                    data[this.id] = this.value;
+                }
+            });
         }
 
         $.post("/accounts/checkaccount", {
-            Key: name,
-            Data: {
-                [name]: value,
-                [name + "Check"]: valueCheck,
-            },
+            Key: id,
+            Data: data,
         }).done(function onSuccess(json) {
-            onAccountCheckResponse(name, json);
+            onAccountCheckResponse(id, json);
         });
     }
 
@@ -67,31 +72,35 @@ $(document).ready(function onDocumentReady() {
         var $form = $(".inner-form");
         var toggle = $("#PCubeMember").is(":checked");
 
-        $form.slideToggle(toggle);
+        if (toggle) {
+            $form.slideDown();
+        } else {
+            $form.slideUp();
+        }
         $form.find("input").each(function toggleRequired() {
             this.required = toggle;
         });
     }
 
     function onSubmit(event) {
-        $("#signup-form input").each(function checkInput() {
-            if (this.name.substr(-5, 5) === "Check") {
-                return;
-            }
-
+        $("#signup-form input").not(".not-check").each(function checkInput() {
             if ((this.required === true && $(this).data("checked") !== true)
             || $(this).data("checked") === false) {
-                $(this).focus();
+                if (this.type !== "radio") {
+                    $(this).focus();
+                }
                 event.preventDefault();
             }
         });
     }
 
-    $("#Nickname, #UserID, #Password, #PasswordCheck")
+    $("#signup-form input").not(".not-check")
         .on("change", checkAccount)
-        .on("keyup", checkAccount);
+        .on("keyup", checkAccount)
+        .each(checkAccount);
     $("#PCubeMember")
-        .on("change", toggleInnerForm);
+        .on("change", toggleInnerForm)
+        .each(toggleInnerForm);
     $("#signup-form")
         .on("submit", onSubmit);
 });

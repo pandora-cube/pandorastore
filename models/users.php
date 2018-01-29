@@ -46,6 +46,11 @@ class Users {
         $nickname = $this->mysqli->escape_string($inputData["Nickname"]);
         $userID = $this->mysqli->escape_string($inputData["UserID"]);
         $password = $this->mysqli->escape_string($inputData["Password"]);
+        $pcubemember = ($inputData["PCubeMember"] === "on");
+        $name = $this->mysqli->escape_string($inputData["LastName"].$inputData["FirstName"]);
+        $university = $this->mysqli->escape_string($inputData["Univ"]);
+        $studentID = intval($inputData["StudentID"]);
+        $part = $this->mysqli->escape_string($inputData["Part"]);
 
         // 중복 계정 확인
         $sql = "
@@ -63,23 +68,45 @@ class Users {
             if ($userData[1] == 1)
                 return false;
 
+            // 판도라큐브 회원 체크한 경우
+            if ($pcubemember) {
+                $sql_pcube = ",
+                    Name = '{$name}',
+                    University = '{$university}',
+                    StudentID = {$studentID},
+                    PCubePart = '{$part}'
+                    ";
+            } else {
+                $sql_pcube = "";
+            }
+
             // 중복 계정의 정보 업데이트
             $sql = "
                 UPDATE {$this->table["users"]} SET
                     Nickname = '{$nickname}',
                     Password = SHA1('{$password}'),
                     AuthCode = '{$authCode}'
+                    {$sql_pcube}
                 WHERE UserNumber = {$userData[0]}";
             $this->mysqli->query($sql);
             return true;
         }
 
+        // 판도라큐브 회원 체크한 경우
+        if ($pcubemember) {
+            $col_pcube = ", Name, University, StudentID, PCubePart";
+            $val_pcube = ", '{$name}', '{$university}', $studentID, '{$part}'";
+        } else {
+            $col_pcube = "";
+            $val_pcube = "";
+        }
+
         // 계정 요청
         $sql = "
             INSERT INTO {$this->table["users"]}
-                (Nickname, UserID, Email, Password, AuthCode)
+                (Nickname, UserID, Email, Password, AuthCode {$col_pcube})
             VALUES
-                ('{$nickname}', '{$userID}', '{$userID}', SHA1('{$password}'), '{$authCode}')";
+                ('{$nickname}', '{$userID}', '{$userID}', SHA1('{$password}'), '{$authCode}' {$val_pcube})";
         $this->mysqli->query($sql);
         return true;
     }
