@@ -85,7 +85,8 @@ class Users {
                 UPDATE {$this->table["users"]} SET
                     Nickname = '{$nickname}',
                     Password = SHA1('{$password}'),
-                    AuthCode = '{$authCode}'
+                    AuthCode = '{$authCode}',
+                    PCubeMember = 0
                     {$sql_pcube}
                 WHERE UserNumber = {$userData[0]}";
             $this->mysqli->query($sql);
