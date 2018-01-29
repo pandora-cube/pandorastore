@@ -120,13 +120,15 @@ header h1 {
 }
 header .search {
     float: left;
+    max-width: 30rem;
+    width: calc(100% - 25rem);
     height: 2rem;
     line-height: 2rem;
     margin-left: 3rem;
 }
 header .search input[type=text] {
     float: left;
-    width: 30rem;
+    width: calc(100% - .7rem - 2px - 5rem);
     height: calc(2rem - 2px);
     padding-left: .7rem;
     border: 1px solid #AAA;
@@ -235,6 +237,7 @@ header .menuArea .menu {
     header .search {
         float: none;
         display: none;
+        max-width: none;
         height: auto;
         line-height: normal;
         margin: 0 -1rem -1rem -1rem;
