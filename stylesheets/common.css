@@ -121,7 +121,7 @@ header h1 {
 header .search {
     float: left;
     max-width: 30rem;
-    width: calc(100% - 25rem);
+    width: calc(100% - 27rem);
     height: 2rem;
     line-height: 2rem;
     margin-left: 3rem;
@@ -162,6 +162,15 @@ header .accounts .signin {
     border: 1px solid #8badc9;
     transition: color .5s, background-color .5s;
 }
+header .accounts .signup {
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 1em;
+    font-size: 1em;
+    color: #8badc9;
+    transition: color .5s, background-color .5s;
+}
 header .accounts .user-menu-button {
     height: 32px;
     line-height: 32px;
@@ -173,6 +182,7 @@ header .accounts .user-menu-button {
     cursor: pointer;
 }
 header .accounts .signin:hover,
+header .accounts .signup:hover,
 header .accounts .user-menu-button:hover {
     color: white;
     background-color: #8badc9;

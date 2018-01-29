@@ -20,6 +20,7 @@
         <?php if ($this->isEnabledArea("signin")): ?>
             <!-- 로그인 버튼 -->
             <a class="signin" href="/accounts/signin">로그인</a>
+            <a class="signup" href="/accounts/signup">회원가입</a>
         <?php endif; ?>
         <?php if ($this->isEnabledArea("user-button")): ?>
             <!-- 사용자 메뉴 버튼 -->
@@ -44,8 +45,12 @@
         <li class="show-for-mobile">
             <?php if ($this->isEnabledArea("signin")): ?>
                 <div class="title-wrapper">
-                    <a class="title" href="/accounts/signin">로그인</a>
+                    <span class="title">계정</span>
                 </div>
+                <ul class="inner-menu">
+                    <li><a href="/accounts/signin">로그인</a></li>
+                    <li><a href="/accounts/signup">회원가입</a></li>
+                </ul>
             <?php endif; ?>
             <?php if ($this->isEnabledArea("user-button")): ?>
                 <div class="title-wrapper" tabindex="0">
