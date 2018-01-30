@@ -1,4 +1,19 @@
 <?php
+/*
+ *      [Framework for Managing Design and Data on Websites]
+ * 
+ *          Fadow (파도)
+ *          v1.02
+ * 
+ *      First Release:  2017.06.18
+ *      Last Update:    2018.01.29
+ * 
+ *      Coded by Seongbum @ All rights reserved.
+ *          sBum.Seo@gmail.com
+ *          http://seongbum.com
+ * 
+ */
+
 class Template {
     public $title;
     private $attributes;
