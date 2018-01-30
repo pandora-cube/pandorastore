@@ -17,8 +17,8 @@
             <label id="labelNickname" for="Nickname">닉네임 <span class="alert"></span></label>
             <input id="Nickname" name="Nickname" type="text" required />
 
-            <label id="labelUserID" for="UserID">이메일 <span class="alert"></span></label>
-            <input id="UserID" name="UserID" type="email" required />
+            <label id="labelEMail" for="EMail">이메일 <span class="alert"></span></label>
+            <input id="EMail" name="EMail" type="email" required />
 
             <label id="labelPassword" for="Password">비밀번호 <span class="alert"></span></label>
             <div class="siblings">

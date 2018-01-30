@@ -32,7 +32,7 @@ $mailView = $mailTemplate->loadView("accounts/signup_auth", false);
 // 인증 메일 발송
 $mail = new Mail();
 $mail->setSender("판도라스토어", "store@p-cube.kr");
-$mail->setReceiver($_POST["Nickname"], $_POST["UserID"]);
+$mail->setReceiver($_POST["Nickname"], $_POST["EMail"]);
 $mail->setSubject("판도라스토어 인증 코드입니다.");
 $mail->setMessage($mailView);
 $mail->send();
@@ -42,6 +42,6 @@ $users_model = new Users();
 $users_model->request($input, $authCode);
 
 // 인증코드 입력 페이지로 연결
-setcookie("EMail", $_POST["UserID"], 0, "/accounts/");
-header("Location: /accounts/signup_auth_input?email={$_POST["UserID"]}");
+setcookie("EMail", $_POST["EMail"], 0, "/accounts/");
+header("Location: /accounts/signup_auth_input?email={$_POST["EMail"]}");
 ?>

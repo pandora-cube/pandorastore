@@ -22,21 +22,21 @@ function checkAccount($key, $input, &$checkList, $checkAll) {
                 }
             }
             break;
-        case "UserID": // 이메일 검사
+        case "EMail": // 이메일 검사
             if (strlen($value) < 1) {
-                $data = ["UserID", -1, ""];
+                $data = ["EMail", -1, ""];
             } else if (strlen($value) > 320) {
-                $data = ["UserID", 0, "너무 깁니다."];
+                $data = ["EMail", 0, "너무 깁니다."];
             } else if (strpos($value, "@") === false) {
-                $data = ["UserID", -1, "도메인까지 작성해 주세요~"];
+                $data = ["EMail", -1, "도메인까지 작성해 주세요~"];
             } else {
                 $users_model = new Users([["EMail", "=", $value], ["Authenticated", "=", 1]]);
                 $users_data = $users_model->getData();
 
                 if (count($users_data) > 0) {
-                    $data = ["UserID", 0, "해당 이메일로 가입된 계정이 존재합니다."];
+                    $data = ["EMail", 0, "해당 이메일로 가입된 계정이 존재합니다."];
                 } else {
-                    $data = ["UserID", 1, "좋습니다."];
+                    $data = ["EMail", 1, "좋습니다."];
                 }
             }
             break;
@@ -104,7 +104,7 @@ function checkAccount($key, $input, &$checkList, $checkAll) {
     return $data;
 }
 
-$checkList = ["Nickname", "UserID", "Password", "PasswordCheck", "PCubeMember"];
+$checkList = ["Nickname", "EMail", "Password", "PasswordCheck", "PCubeMember"];
 if (is_null($checkAll)) { // 개별 검사
     $result = checkAccount($_POST["Key"], $_POST["Data"], $checkList, false);
 } else { // 전체 검사

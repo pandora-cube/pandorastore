@@ -23,7 +23,7 @@ class User {
         $sql = "
             SELECT *
             FROM {$this->table["users"]}
-            WHERE UserID = '{$userID}'";
+            WHERE EMail = '{$userID}' OR Nickname = '{$userID}'";
         if ($compel !== true)
             $sql .= " AND {$con_password}";
 

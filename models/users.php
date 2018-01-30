@@ -44,7 +44,7 @@ class Users {
 
     public function request($inputData, $authCode) {
         $nickname = $this->mysqli->escape_string($inputData["Nickname"]);
-        $userID = $this->mysqli->escape_string($inputData["UserID"]);
+        $email = $this->mysqli->escape_string($inputData["EMail"]);
         $password = $this->mysqli->escape_string($inputData["Password"]);
         $pcubemember = ($inputData["PCubeMember"] === "on");
         $name = $this->mysqli->escape_string($inputData["LastName"].$inputData["FirstName"]);
@@ -56,7 +56,7 @@ class Users {
         $sql = "
             SELECT UserNumber, Authenticated
             FROM {$this->table["users"]}
-            WHERE UserID = '{$userID}'
+            WHERE EMail = '{$userID}' OR Nickname = '{$userID}'
             ORDER BY CreatedTime DESC";
         $result = $this->mysqli->query($sql);
 
@@ -85,6 +85,7 @@ class Users {
             // 중복 계정의 정보 업데이트
             $sql = "
                 UPDATE {$this->table["users"]} SET
+                    EMail = '{$email}',
                     Nickname = '{$nickname}',
                     Password = SHA1('{$password}'),
                     AuthCode = '{$authCode}'
@@ -106,9 +107,9 @@ class Users {
         // 계정 요청
         $sql = "
             INSERT INTO {$this->table["users"]}
-                (Nickname, UserID, Email, Password, AuthCode {$col_pcube})
+                (EMail, Nickname, Password, AuthCode {$col_pcube})
             VALUES
-                ('{$nickname}', '{$userID}', '{$userID}', SHA1('{$password}'), '{$authCode}' {$val_pcube})";
+                ('{$email}', '{$nickname}', SHA1('{$password}'), '{$authCode}' {$val_pcube})";
         $this->mysqli->query($sql);
         return true;
     }
