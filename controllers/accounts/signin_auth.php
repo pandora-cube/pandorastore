@@ -15,7 +15,7 @@ if (is_null($user_data)) { // 로그인 실패 시
 }
 
 unset($_SESSION["signin_try"]);
-$_SESSION["UserID"] = $user_data["UserID"];
+$_SESSION["UserID"] = $user_data["EMail"];
 $_SESSION["Password"] = $user_data["Password"];
 header("Location: /");
 ?>
