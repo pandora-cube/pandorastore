@@ -1,7 +1,11 @@
-function onAccountCheckResponse(id, json, focus = false) {
+function onAccountCheckResponse(id, json, focus) {
     var data = $.parseJSON(json);
     var $label = $("#label" + data[0]);
     var $dest = $("#" + id);
+
+    if (focus === undefined) {
+        focus = false;
+    }
 
     if (data[1] === 0) { // 사용 불가능한 계정인 경우
         $label
