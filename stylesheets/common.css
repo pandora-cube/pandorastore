@@ -249,6 +249,7 @@ header .menuArea .menu {
         float: none;
         display: none;
         max-width: none;
+        width: auto;
         height: auto;
         line-height: normal;
         margin: 0 -1rem -1rem -1rem;
