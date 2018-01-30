@@ -46,7 +46,7 @@ class Users {
         $email = $this->mysqli->escape_string($inputData["EMail"]);
         $nickname = $this->mysqli->escape_string($inputData["Nickname"]);
         $password = $this->mysqli->escape_string($inputData["Password"]);
-        $pcubemember = ($inputData["PCubeMember"] === "on");
+        $pcubemember = ($inputData["PCubeMember"] == 2);
         $name = $this->mysqli->escape_string($inputData["LastName"].$inputData["FirstName"]);
         $university = $this->mysqli->escape_string($inputData["Univ"]);
         $studentID = intval($inputData["StudentID"]);

@@ -27,7 +27,7 @@
             </div>
 
             <div>
-                <input id="PCubeMember" name="PCubeMember" type="checkbox" class="not-check" />
+                <input id="PCubeMember" name="PCubeMember" type="checkbox" class="not-check" value="2" />
                 <label for="PCubeMember">판도라큐브 회원입니다.</label>
             </div>
 
