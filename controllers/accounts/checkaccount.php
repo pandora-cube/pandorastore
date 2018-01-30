@@ -1,6 +1,8 @@
 <?php
 require_once("models/users.php");
 
+$logEnabled = false;
+
 function checkAccount($key, $input, &$checkList, $checkAll) {
     $data = [];
     $value = $input[$key];

@@ -21,11 +21,12 @@ $action = $_GET["action"];
 
 loop:
 if(is_file("controllers/$action.php")) {
-    // 페이징 로그
-    $logger = new Logger();
-    $logger->logPaging();
-
+    $logEnabled = true;
     require("controllers/$action.php");
+    if ($logEnabled) {
+        $logger = new Logger();
+        $logger->logPaging();
+    }
 } else {
     $action = "main";
     goto loop;
