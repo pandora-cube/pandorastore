@@ -43,8 +43,8 @@ class Users {
     }
 
     public function request($inputData, $authCode) {
-        $nickname = $this->mysqli->escape_string($inputData["Nickname"]);
         $email = $this->mysqli->escape_string($inputData["EMail"]);
+        $nickname = $this->mysqli->escape_string($inputData["Nickname"]);
         $password = $this->mysqli->escape_string($inputData["Password"]);
         $pcubemember = ($inputData["PCubeMember"] === "on");
         $name = $this->mysqli->escape_string($inputData["LastName"].$inputData["FirstName"]);
@@ -56,7 +56,7 @@ class Users {
         $sql = "
             SELECT UserNumber, Authenticated
             FROM {$this->table["users"]}
-            WHERE EMail = '{$userID}' OR Nickname = '{$userID}'
+            WHERE EMail = '{$email}' OR Nickname = '{$nickname}'
             ORDER BY CreatedTime DESC";
         $result = $this->mysqli->query($sql);
 
