@@ -3,10 +3,10 @@
  *      [Pandora Cube contents store]
  * 
  *          Pandora Store
- *          v1.03.4
+ *          v1.04
  * 
  *      First Release:  2017.06.18
- *      Last Update:    2018.01.29
+ *      Last Update:    2018.01.31
  * 
  *      Coded by Seongbum @ All rights reserved.
  *          sBum.Seo@gmail.com
