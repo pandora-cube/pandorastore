@@ -2,7 +2,8 @@
 <html xml:lang="ko" lang="ko">
 <head>
     <?=$this->loadLayout("head")?>
-    <link rel="stylesheet" href="/stylesheets/accounts.css" />
+    <link rel="stylesheet" href="/pages/accounts/stylesheet.css" />
+    <script src="/pages/accounts/signup/script.js"></script>
 </head>
 
 <body>
@@ -62,11 +63,6 @@
     <footer>
         <?=$this->loadLayout("footer")?>
     </footer>
-
-    <script src="/libraries/jquery.js"></script>
-    <script src="/modules/stickymenu/stickymenu.js"></script>
-    <script src="/scripts/header.js"></script>
-    <script src="/scripts/signup.js"></script>
 
     <?php if ($this->isEnabledArea("error-script")): ?>
         <script>

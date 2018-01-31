@@ -2,9 +2,11 @@
 <html xml:lang="ko" lang="ko">
 <head>
     <?=$this->loadLayout("head")?>
-    <link rel="stylesheet" href="/stylesheets/main.css" />
-    <link rel="stylesheet" href="/modules/orbit/orbit.css" />
+    <link rel="stylesheet" href="/pages/main/stylesheet.css" />
     <link rel="stylesheet" href="/modules/modal/modal.css" />
+    <script src="/modules/modal/modal.js"></script>
+    <script src="/scripts/toporbit.js"></script>
+    <script src="/scripts/contentsdata.js"></script>
 </head>
 
 <body>
@@ -44,14 +46,6 @@
     <footer>
         <?=$this->loadLayout("footer")?>
     </footer>
-
-    <script src="/libraries/jquery.js"></script>
-    <script src="/modules/orbit/orbit.js"></script>
-    <script src="/modules/stickymenu/stickymenu.js"></script>
-    <script src="/modules/modal/modal.js"></script>
-    <script src="/scripts/toporbit.js"></script>
-    <script src="/scripts/contentsdata.js"></script>
-    <script src="/scripts/header.js"></script>
 
     <script>
         $(document).ready(function() {

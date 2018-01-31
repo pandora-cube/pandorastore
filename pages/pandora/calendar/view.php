@@ -2,7 +2,7 @@
 <html xml:lang="ko" lang="ko">
 <head>
     <?=$this->loadLayout("head")?>
-    <link rel="stylesheet" href="/stylesheets/pandora/calendar.css" />
+    <link rel="stylesheet" href="/pages/pandora/calendar/stylesheet.css" />
 </head>
 
 <body>
@@ -19,9 +19,5 @@
     <footer>
         <?=$this->loadLayout("footer")?>
     </footer>
-
-    <script src="/libraries/jquery.js"></script>
-    <script src="/modules/stickymenu/stickymenu.js"></script>
-    <script src="/scripts/header.js"></script>
 </body>
 </html>

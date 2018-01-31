@@ -2,7 +2,7 @@
 <html xml:lang="ko" lang="ko">
 <head>
 	<?=$this->loadLayout("head")?>
-    	<link rel="stylesheet" href="/stylesheets/accounts.css" />
+	<link rel="stylesheet" href="/pages/accounts/stylesheet.css" />
 	
 	<!-- inner style sheet-->
 	<style>
@@ -116,6 +116,6 @@
 
     <script src="/libraries/jquery.js"></script>
     <script src="/modules/stickymenu/stickymenu.js"></script>
-    <script src="/scripts/header.js"></script>
+    <script src="/layouts/header/script.js"></script>
 </body>
 </html>

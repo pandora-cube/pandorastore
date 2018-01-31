@@ -40,14 +40,14 @@ class Template {
     }
 
     public function loadLayout($layout) {
-        if (is_file("controllers/layouts/$layout.php"))
-            require("controllers/layouts/$layout.php");
-        include("views/layouts/$layout.php");
+        if (is_file("layouts/$layout/controller.php"))
+            require("layouts/$layout/controller.php");
+        include("layouts/$layout/view.php");
     }
 
     public function loadView($view, $print = true) {
         ob_start();
-        require("views/$view.php");
+        require("pages/$view/view.php");
         $string = ob_get_clean();
         $string = preg_replace("/\s\s+/", " ", $string);
 

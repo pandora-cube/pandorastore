@@ -20,9 +20,9 @@ require_once("logger.php");
 $action = $_GET["action"];
 
 loop:
-if(is_file("controllers/$action.php")) {
+if(is_file("pages/$action/controller.php")) {
     $logEnabled = true;
-    require("controllers/$action.php");
+    require("pages/$action/controller.php");
     if ($logEnabled) {
         $logger = new Logger();
         $logger->logPaging();

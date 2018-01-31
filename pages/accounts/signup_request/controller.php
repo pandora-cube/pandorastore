@@ -11,7 +11,7 @@ foreach ($_POST as $key => $value)
 // 입력 정보 검사
 $printData = false;
 $checkAll = true;
-require("checkaccount.php");
+require("pages/accounts/checkaccount/controller.php");
 
 // 검사에 통과하지 못한 경우
 if ($result !== 1) {

@@ -1,3 +1,9 @@
+<link rel="stylesheet" href="/modules/stickymenu/stickymenu.css" />
+<link rel="stylesheet" href="/modules/orbit/orbit.css" />
+<script src="/modules/stickymenu/stickymenu.js"></script>
+<script src="/modules/orbit/orbit.js"></script>
+<script src="/layouts/header/script.js"></script>
+
 <!-- 스킵 네비게이션 -->
 <a id="skip-nav" href="#contents">메뉴 건너뛰기</a>
 <!-- 헤더 -->
