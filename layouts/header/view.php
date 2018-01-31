@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="/modules/stickymenu/stickymenu.css" />
-<link rel="stylesheet" href="/modules/orbit/orbit.css" />
-<script src="/modules/stickymenu/stickymenu.js"></script>
-<script src="/modules/orbit/orbit.js"></script>
+<link rel="stylesheet" href="/libraries/modules/stickymenu/stickymenu.css" />
+<link rel="stylesheet" href="/libraries/modules/orbit/orbit.css" />
+<script src="/libraries/modules/stickymenu/stickymenu.js"></script>
+<script src="/libraries/modules/orbit/orbit.js"></script>
 <script src="/layouts/header/script.js"></script>
 
 <!-- 스킵 네비게이션 -->

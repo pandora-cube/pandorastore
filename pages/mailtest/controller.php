@@ -1,5 +1,5 @@
 <?php
-require_once("functions/mail.php");
+require_once("libraries/functions/mail.php");
 
 $mail = new Mail();
 $mail->setSender("판도라스토어", "store@p-cube.kr");

@@ -3,10 +3,10 @@
 <head>
     <?=$this->loadLayout("head")?>
     <link rel="stylesheet" href="/pages/main/stylesheet.css" />
-    <link rel="stylesheet" href="/modules/modal/modal.css" />
-    <script src="/modules/modal/modal.js"></script>
-    <script src="/scripts/toporbit.js"></script>
-    <script src="/scripts/contentsdata.js"></script>
+    <link rel="stylesheet" href="/libraries/modules/modal/modal.css" />
+    <script src="/libraries/modules/modal/modal.js"></script>
+    <script src="/libraries/scripts/toporbit.js"></script>
+    <script src="/libraries/scripts/contentsdata.js"></script>
 </head>
 
 <body>

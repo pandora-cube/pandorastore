@@ -1,10 +1,10 @@
 <?php
-require_once('../models/categories.php');
-require_once('../models/contents.php');
+require_once('models/categories.php');
+require_once('models/contents.php');
 
 $id = $_GET['id'];
 
-$config_contents = parse_ini_file("../configs/contents.ini");
+$config_contents = parse_ini_file("configs/contents.ini");
 
 $contents_model = new Contents(null, null, $id);
 $contents_data = $contents_model->getContents();

@@ -1,6 +1,6 @@
 function loadContentsData(data, categoryName, tags) {
     function download(id) {
-        $.get("/functions/get_download_url.php", {
+        $.get("/libraries/functions/get_download_url.php", {
             id: id,
         }).done(function onSuccess(url) {
             if (url.length !== 0) {

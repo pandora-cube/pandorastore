@@ -113,9 +113,5 @@
     <footer>
         <?=$this->loadLayout("footer")?>
     </footer>
-
-    <script src="/libraries/jquery.js"></script>
-    <script src="/modules/stickymenu/stickymenu.js"></script>
-    <script src="/layouts/header/script.js"></script>
 </body>
 </html>
