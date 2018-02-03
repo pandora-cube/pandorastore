@@ -3,7 +3,7 @@
 <head>
 	<?=$this->loadLayout("head")?>
 	<link rel="stylesheet" href="/pages/accounts/stylesheet.css" />
-    <script src="/pages/accounts/deleteaccount/script.js"></script>
+    <script src="/pages/accounts/leave/script.js"></script>
 </head>
 
 <body>
