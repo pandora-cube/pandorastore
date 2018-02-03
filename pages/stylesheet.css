@@ -56,6 +56,10 @@ input[type=submit] {
     border-radius: 0;
 }
 
+textarea {
+    font-family: inherit;
+}
+
 @media screen and (min-width: 50rem) { /* for Desktop */
     .show-for-mobile {
         display: none !important;

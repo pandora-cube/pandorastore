@@ -46,7 +46,7 @@
                 </span>
                 
                 <label id="labelPart">파트 <span class="alert"></span></label>
-                <div class="parts">
+                <div class="radio-wrapper">
                     <input id="ProgrammingPart" name="Part" type="radio" value="프로그래밍" />
                     <label for="ProgrammingPart">프로그래밍</label>
                     <input id="DesignPart" name="Part" type="radio" value="디자인" />

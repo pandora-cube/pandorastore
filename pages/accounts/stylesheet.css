@@ -4,7 +4,8 @@
 }
 
 #signin-form,
-#signup-form {
+#signup-form,
+#leave-form {
     max-width: 500px;
     margin: 100px auto;
 }
@@ -25,17 +26,18 @@
     text-align: left;
     transition: color .5s;
 }
-#contents form .warning {
+#contents form label.warning {
     color: #FF5555;
 }
-#contents form .satisfy {
+#contents form label.satisfy {
     color: #00BB00;
 }
-#contents form  .alert {
+#contents form label span.alert {
     margin-left: .5em;
     font-size: .9em;
     font-weight: bold;
 }
+
 #contents form input {
     display: block;
 }
@@ -52,6 +54,26 @@
 #contents form input[type=checkbox],
 #contents form input[type=checkbox] + label {
     display: inline-block;
+}
+#contents form input[type=radio] {
+    display: none;
+}
+#contents form input[type=radio] + label {
+    display: inline-block;
+    margin: 5px 0;
+    padding: 5px 20px;
+    font-size: .9em;
+    text-align: center;
+    border: 1px solid #AAA;
+    cursor: pointer;
+    transition: background-color .5s, color .5s;
+}
+#contents form input[type=radio] + label:hover {
+    background-color: #AAA;
+}
+#contents form input[type=radio]:checked + label {
+    color: white;
+    background-color: #AAA;
 }
 #contents form input[type=submit] {
     width: 100%;
@@ -71,6 +93,15 @@
     color: white;
     background-color: #8badc9;
 }
+#contents form input[type=submit].alert {
+    color: #c98bad;
+    background-color: #f4e7ee;
+    border: 1px solid #c98bad;
+}
+#contents form input[type=submit].alert:hover {
+    color: white;
+    background-color: #c98bad;
+}
 
 #contents form .multi input {
     width: calc(50% - 1em - 2px);
@@ -87,42 +118,43 @@
     clear: both;
 }
 
-#contents form .parts {
+#contents form .radio-wrapper {
     width: 100%;
-    height: 2rem;
-    line-height: calc(2rem - 2px);
+    line-height: 2rem;
     margin-top: 1em;
     text-align: center;
 }
-#contents form .parts input[type=radio] {
-    display: none;
+#contents form .radio-wrapper::after {
+    display: block;
+    clear: both;
+    content: '';
 }
-#contents form .parts input[type=radio] + label {
-    display: inline-block;
-    width: calc(100% / 3 - 1em);
-    height: calc(100% - 2px);
-    font-size: .9em;
-    text-align: center;
-    border: 1px solid #AAA;
-    cursor: pointer;
-    transition: background-color .5s, color .5s;
-}
-#contents form .parts input[type=radio] + label:hover {
-    background-color: #AAA;
-}
-#contents form .parts input[type=radio]:checked + label {
-    color: white;
-    background-color: #AAA;
-}
-#contents form .parts input[type=radio] + label:first-of-type {
+#contents form .radio-wrapper input[type=radio] + label {
     float: left;
+    width: calc(100% / 3 - 2px - .2em);
+    height: calc(100% - 2px);
+    margin: 0 0 0 .3em;
+    padding: 0;
 }
-#contents form .parts input[type=radio] + label:last-of-type {
-    float: right;
+#contents form .radio-wrapper input[type=radio] + label:nth-of-type(3n+1) {
+    margin-left: 0;
+}
+#contents form .radio-wrapper input[type=radio] + label:nth-of-type(n+4) {
+    margin-top: .3em;
+}
+
+#contents form textarea {
+    display: block;
+    width: calc(100% - 1em - 2px);
+    height: 3em;
+    margin: 1em 0;
+    padding: .5em;
+    background-color: white;
+    border: 1px solid #aaa;
+    resize: none;
 }
 
 #contents form .inner-form {
     display: none;
     padding: 1em 0;
 }
-
