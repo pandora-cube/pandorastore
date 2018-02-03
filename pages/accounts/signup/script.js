@@ -64,7 +64,7 @@ $(document).ready(function onDocumentReady() {
             });
         }
 
-        $.post("/accounts/checkaccount", {
+        $.post("/accounts/signup_check", {
             Key: id,
             Data: data,
         }).done(function onSuccess(json) {
