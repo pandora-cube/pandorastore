@@ -14,14 +14,20 @@ function ModalOrigin() {
     }
 
     function createModal(closebutton) {
+        var originName = origin.getAttribute("name");
+
+        if ($("#" + originName).length > 0) {
+            origin.close();
+        }
+
         $area = $("<div/>")
-            .attr("id", $(origin).attr("name"))
+            .attr("id", originName)
             .addClass("modalArea")
             .on("click", onCloseButtonClicked)
             .appendTo("body");
 
         $modal = $("<div/>")
-            .html($(origin).html())
+            .html(origin.innerHTML)
             .removeAttr("name")
             .removeClass("modal-origin")
             .addClass("modal")
