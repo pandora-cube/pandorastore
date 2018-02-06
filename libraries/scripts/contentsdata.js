@@ -1,6 +1,6 @@
 function loadContentsData(data, categoryName, tags) {
     function download(id) {
-        $.get("/libraries/functions/get_download_url.php", {
+        $.get("/contents_download", {
             id: id,
         }).done(function onSuccess(url) {
             if (url.length !== 0) {
@@ -9,7 +9,7 @@ function loadContentsData(data, categoryName, tags) {
                 alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
             }
         }).fail(function onFail() {
-            alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
+            alert("오류가 발생하여 콘텐츠를 내려받을 수 없습니다.");
         });
     }
 
