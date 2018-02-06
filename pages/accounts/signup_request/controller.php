@@ -1,7 +1,7 @@
 <?php
-require_once("template.php");
-require_once("models/users.php");
+require_once("libraries/functions/template.php");
 require_once("libraries/functions/mail.php");
+require_once("models/users.php");
 
 // 입력 정보 해쉬맵 구성
 $input = [];

@@ -1,5 +1,5 @@
 <?php
-require_once("template.php");
+require_once("libraries/functions/template.php");
 require_once("models/orbit.php");
 require_once("models/categories.php");
 require_once("models/contents.php");

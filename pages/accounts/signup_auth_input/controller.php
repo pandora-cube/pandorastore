@@ -1,5 +1,5 @@
 <?php
-require_once("template.php");
+require_once("libraries/functions/template.php");
 
 session_start();
 

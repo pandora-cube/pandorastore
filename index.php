@@ -15,7 +15,7 @@
  * 
  */
 
-require_once("logger.php");
+require_once("libraries/functions/logger.php");
 
 $action = $_GET["action"];
 
