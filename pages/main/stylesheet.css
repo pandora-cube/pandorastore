@@ -114,6 +114,7 @@
     background-color: SteelBlue;
     background-image: url("/images/icons/download.png");
     background-repeat: no-repeat;
+    background-size: .9em;
     background-position: .7em center;
     color: White;
     cursor: pointer;
