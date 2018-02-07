@@ -1,18 +1,4 @@
 function loadContentsData(data, categoryName, tags) {
-    function download(id) {
-        $.get("/contents_download", {
-            id: id,
-        }).done(function onSuccess(url) {
-            if (url.length !== 0) {
-                window.open(url);
-            } else {
-                alert("이용중인 기기에서 지원하지 않는 콘텐츠입니다.");
-            }
-        }).fail(function onFail() {
-            alert("오류가 발생하여 콘텐츠를 내려받을 수 없습니다.");
-        });
-    }
-
     function loadThumbnail($item, datum) {
         $.ajax({
             type: "HEAD",
@@ -75,7 +61,26 @@ function loadContentsData(data, categoryName, tags) {
         $modal.find(".summary .creator").text(datum.Creator);
         $modal.find(".summary .genres").text(genres);
         $modal.find(".summary .platforms").text(platforms);
-        $modal.find(".download").on("click", function () { download(datum.ID); });
+        // $modal.find(".download button").on("click", function () { download(datum.ID); });
+
+        if (datum.DownloadURL_Android.length > 0) {
+            $("<a>")
+                .text("Android")
+                .attr("href", datum.DownloadURL_Android)
+                .appendTo($modal.find(".download"));
+        }
+        if (datum.DownloadURL_iOS.length > 0) {
+            $("<a>")
+                .text("iOS")
+                .attr("href", datum.DownloadURL_iOS)
+                .appendTo($modal.find(".download"));
+        }
+        if (datum.DownloadURL.length > 0) {
+            $("<a>")
+                .text("기타OS")
+                .attr("href", datum.DownloadURL)
+                .appendTo($modal.find(".download"));
+        }
 
         closecallback = $modal.get(0).onClose;
         $modal.get(0).onClose = function onModalClose() {

@@ -25,7 +25,7 @@
             </div>
         </template>
         <template name="contents-detail" class="modal-origin">
-            <section class="top">
+            <div class="top">
                 <div class="cover">
                     <img />
                 </div>
@@ -34,11 +34,10 @@
                     <p>제작: <span class="creator"></span></p>
                     <p>장르: <span class="genres"></span></p>
                     <p>환경: <span class="platforms"></span></p>
-                    <div class="reason-set">
-                        <button class="download">내려받기</button>
-                    </div>
                 </div>
-            </section>
+            </div>
+            <div class="download">
+            </div>
             <div class="orbitArea"></div>
         </template>
     </div>

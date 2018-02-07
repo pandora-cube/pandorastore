@@ -78,7 +78,6 @@
 }
 
 #contents-detail .top {
-    padding-bottom: 1em;
     min-height: 10em;
 }
 #contents-detail .top .cover {
@@ -101,23 +100,30 @@
 #contents-detail .top .summary .title {
     font-size: 1.2em;
 }
-#contents-detail .top .summary .reason-set {
+#contents-detail .download {
+    margin-bottom: 1em;
     text-align: right;
 }
-#contents-detail .top .summary .reason-set .download {
-    padding: .7em;
+#contents-detail .download a {
+    display: inline-block;
+    padding: .7em .7em .7em 2em;
     font-size: .9em;
     line-height: .9em;
-    font-weight: bold;
     border-radius: .3em;
     border: none;
     background-color: SteelBlue;
+    background-image: url("/images/icons/download.png");
+    background-repeat: no-repeat;
+    background-position: .7em center;
     color: White;
     cursor: pointer;
     transition: 1s;
 }
-#contents-detail .top .summary .reason-set .download:hover {
+#contents-detail .download a:hover {
     background-color: LightSteelBlue;
+}
+#contents-detail .download a:nth-of-type(n+2) {
+    margin-left: .5em;
 }
 #contents-detail .orbitArea {
     font-size: .7em;
