@@ -31,8 +31,8 @@ class Users {
         
         $this->data = [];
         if ($result = $this->mysqli->query($sql)) {
-            if ($result->num_rows > 0)
-                array_push($this->data, $result->fetch_assoc());
+            while ($datum = $result->fetch_assoc())
+                array_push($this->data, $datum);
             $result->free();
         }
         return $this->data;
