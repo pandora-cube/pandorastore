@@ -1,6 +1,6 @@
 # Configuration files
-configs/
-contents/
+/configs/
+/contents/
 
 # Windows image file caches
 Thumbs.db
