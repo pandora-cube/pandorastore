@@ -1,3 +1,4 @@
+/*
 function Modal() {
     this.onOpen = function onModalOpen() { };
     this.onClose = function onModalClose() { };
@@ -77,7 +78,79 @@ function ModalOrigin() {
         destroyModal();
     };
 }
+*/
 
-$(document).ready(function onDocumentReady() {
-    $(".modal-origin").each(ModalOrigin);
-});
+function Modal(name, url) {
+    var $area;
+    var $modal;
+
+    function ModalInner(openModal_, destroyModal_) {
+        this.onPrepared = function onModalPrepared() { };
+        this.onOpen = function onModalOpen() { };
+        this.onClose = function onModalClose() { };
+
+        this.open = function open() {
+            openModal_();
+        };
+
+        this.close = function close() {
+            destroyModal_();
+        };
+    }
+
+    function onCloseButtonClicked(e) {
+        if (e.target !== this) return;
+        $area.get(0).close();
+    }
+
+    function createModal(html) {
+        $modal = $("<div>")
+            .html(html)
+            .addClass("modal")
+            .prependTo($area);
+
+        $("<button>")
+            .addClass("closebutton")
+            .on("click", onCloseButtonClicked)
+            .html("&#10006;")
+            .prependTo($modal);
+
+        return $modal;
+    }
+
+    function openModal(html) {
+        if ($("#" + name).length > 0) {
+            $("#" + name).get(0).close();
+        }
+
+        $area
+            .appendTo("body")
+            .fadeIn("slow")
+            .get(0).onOpen();
+    }
+
+    function destroyModal() {
+        $area.get(0).onClose();
+        $area.remove();
+    }
+
+    function createArea() {
+        $area = $("<div>")
+            .attr("id", name)
+            .addClass("modalArea")
+            .on("click", onCloseButtonClicked)
+            .each(function applyInnerClass() {
+                ModalInner.call(this, openModal, destroyModal);
+            });
+        
+        return $area;
+    }
+
+    createArea();
+    $.get(url).done(function prepare(html) {
+        createModal(html);
+        $area.get(0).onPrepared();
+    });
+
+    return $area;
+}

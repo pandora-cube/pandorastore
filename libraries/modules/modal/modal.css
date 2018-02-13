@@ -4,12 +4,9 @@
     width: 100%;
 }
 
-.modal-origin {
-    display: none;
-}
-
 .modalArea {
     position: fixed;
+    display: none;
     top: 0;
     right: 0;
     left: 0;
