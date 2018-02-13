@@ -51,45 +51,45 @@ function loadContentsData(data, categoryName, tags) {
 
     function openModal() {
         var datum = data[parseInt($(this).data("contents-index"), 10)];
-        var $origin = $(".modal-origin[name=contents-detail]");
-        var $modal = $origin.get(0).open().children(".modal");
+        var $modal = Modal("contents-detail", "/contents/detail");
         var genres = datum.Genres.join(", ");
         var platforms = datum.Platforms.join(", ");
-        var closecallback;
 
-        $modal.find(".summary .title").text(datum.Title);
-        $modal.find(".summary .creator").text(datum.Creator);
-        $modal.find(".summary .genres").text(genres);
-        $modal.find(".summary .platforms").text(platforms);
-        // $modal.find(".download button").on("click", function () { download(datum.ID); });
+        $modal.get(0).onPrepared = function onModalPrepared() {
+            $modal.find(".summary .title").text(datum.Title);
+            $modal.find(".summary .creator").text(datum.Creator);
+            $modal.find(".summary .genres").text(genres);
+            $modal.find(".summary .platforms").text(platforms);
+            // $modal.find(".download button").on("click", function () { download(datum.ID); });
 
-        if (datum.DownloadURL_Android.length > 0) {
-            $("<a>")
-                .text("Android")
-                .attr("href", datum.DownloadURL_Android)
-                .appendTo($modal.find(".download"));
-        }
-        if (datum.DownloadURL_iOS.length > 0) {
-            $("<a>")
-                .text("iOS")
-                .attr("href", datum.DownloadURL_iOS)
-                .appendTo($modal.find(".download"));
-        }
-        if (datum.DownloadURL.length > 0) {
-            $("<a>")
-                .text("기타OS")
-                .attr("href", datum.DownloadURL)
-                .appendTo($modal.find(".download"));
-        }
+            if (datum.DownloadURL_Android.length > 0) {
+                $("<a>")
+                    .text("Android")
+                    .attr("href", datum.DownloadURL_Android)
+                    .appendTo($modal.find(".download"));
+            }
+            if (datum.DownloadURL_iOS.length > 0) {
+                $("<a>")
+                    .text("iOS")
+                    .attr("href", datum.DownloadURL_iOS)
+                    .appendTo($modal.find(".download"));
+            }
+            if (datum.DownloadURL.length > 0) {
+                $("<a>")
+                    .text("기타OS")
+                    .attr("href", datum.DownloadURL)
+                    .appendTo($modal.find(".download"));
+            }
 
-        closecallback = $modal.get(0).onClose;
-        $modal.get(0).onClose = function onModalClose() {
-            window.location.hash = "#_";
-            closecallback();
+            $modal.get(0).onClose = function onModalClose() {
+                window.location.hash = "#_";
+            };
+
+            $modal.get(0).open();
+
+            loadThumbnail($modal, datum);
+            loadOrbit($modal, datum);
         };
-
-        loadThumbnail($modal, datum);
-        loadOrbit($modal, datum);
     }
 
     function updateOrbitHeight(orbit) {
