@@ -1,0 +1,110 @@
+#contents-detail .top {
+    min-height: 10em;
+}
+#contents-detail .top .cover {
+    display: block;
+    float: left;
+    width: 10em;
+    height: 10em;
+    line-height: 10em;
+    border-radius: 2em;
+    overflow: hidden;
+    margin-right: 2em;
+}
+#contents-detail .top .cover img {
+    width: 100%;
+    vertical-align: middle;
+}
+#contents-detail .top .summary p {
+    margin: .5em 0;
+}
+#contents-detail .top .summary .title {
+    font-size: 1.2em;
+}
+#contents-detail .download {
+    margin-bottom: 1em;
+    text-align: right;
+}
+#contents-detail .download a {
+    display: inline-block;
+    padding: .7em .7em .7em 2em;
+    font-size: .9em;
+    line-height: .9em;
+    border-radius: .3em;
+    border: none;
+    background-color: SteelBlue;
+    background-image: url("/images/icons/download.png");
+    background-repeat: no-repeat;
+    background-size: .9em;
+    background-position: .7em center;
+    color: White;
+    cursor: pointer;
+    transition: 1s;
+}
+#contents-detail .download a:hover {
+    background-color: LightSteelBlue;
+}
+#contents-detail .download a:nth-of-type(n+2) {
+    margin-left: .5em;
+}
+#contents-detail .orbitArea {
+    font-size: .7em;
+}
+#contents-detail .reviewArea {
+    margin-top: 1em;
+}
+#contents-detail .reviewArea .header {
+    padding: 0 .5em .2em .5em;
+    border-bottom: 1px solid #AAA;
+}
+#contents-detail .reviewArea .header .text {
+    font-size: 1.2em;
+}
+#contents-detail .reviewArea .header .num-reviews {
+    margin-left: .5em;
+    font-size: .9em;
+    font-weight: bold;
+    color: #999;
+}
+#contents-detail .reviewArea .input {
+    margin-top: 1em;
+}
+#contents-detail .reviewArea .input::after {
+    display: block;
+    clear: both;
+    content: '';
+}
+#contents-detail .reviewArea .input textarea {
+    float: left;
+    width: calc(100% - 5em - 1em - 1px);
+    height: calc(5em - 2px);
+    padding: 0 .5em;
+    font-size: .9em;
+    border: 1px solid #aaa;
+    border-right: none;
+    resize: none;
+}
+#contents-detail .reviewArea .input button {
+    float: left;
+    width: 5em;
+    height: 5em;
+    font-size: .9em;
+    color: White;
+    background-color: SteelBlue;
+    border: none;
+    cursor: pointer;
+    transition: background-color 1s;
+}
+#contents-detail .reviewArea .input button:hover {
+    background-color: lightsteelblue;
+}
+@media screen and (max-width: 50rem) { /* for Mobile */
+    #contents-detail .top .summary {
+        font-size: 1.2em;
+    }
+}
+@media screen and (min-width: 50rem) { /* for Desktop */
+    #contents-detail .modal {
+        min-width: 40rem;
+    }
+}

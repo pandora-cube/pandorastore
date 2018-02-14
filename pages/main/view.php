@@ -3,6 +3,7 @@
 <head>
     <?=$this->loadLayout("head")?>
     <link rel="stylesheet" href="/pages/main/stylesheet.css" />
+    <link rel="stylesheet" href="/pages/contents/detail/stylesheet.css" />
     <link rel="stylesheet" href="/libraries/modules/modal/modal.css" />
     <script src="/libraries/modules/modal/modal.js"></script>
     <script src="/libraries/scripts/toporbit.js"></script>
