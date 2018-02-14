@@ -25,6 +25,7 @@
         "prefer-arrow-callback": "off",
         "prefer-template": "off",
         "object-shorthand": "off",
+        "linebreak-style": "off",
 
         "indent": ["error", 4],
         "quotes": ["warn", "double"],
