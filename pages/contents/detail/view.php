@@ -29,7 +29,7 @@
     <!-- 리뷰 입력 -->
     <div class="input">
         <textarea></textarea>
-        <button>입력</button>
+        <button>등록</button>
     </div>
     <!-- 리뷰 목록 -->
     <div class="reviews">
