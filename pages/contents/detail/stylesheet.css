@@ -112,7 +112,7 @@
 #contents-detail .reviewArea .input button:hover {
     background-color: lightsteelblue;
 }
-#contents-detail .reviewArea .reviews .review:nth-child(n+2) {
+#contents-detail .reviewArea .reviews .review {
     margin-top: 1em;
 }
 #contents-detail .reviewArea .reviews .review .writer {
