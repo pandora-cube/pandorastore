@@ -27,11 +27,15 @@
         <span class="num-reviews"></span>
     </div>
     <!-- 리뷰 등록 -->
-    <form class="write" action="/contents/reviews/write" method="post">
-        <input name="content" type="hidden" />
-        <textarea name="result"></textarea>
-        <input type="submit" value="등록" />
-    </form>
+    <?php if ($this->isEnabledArea("review-write")): ?>
+        <form class="write" action="/contents/reviews/write" method="post">
+            <input name="content" type="hidden" />
+            <textarea name="result"></textarea>
+            <input type="submit" value="등록" />
+        </form>
+    <?php else: ?>
+        <p class="write-disabled">판도라큐브 회원만 리뷰를 등록할 수 있습니다.</p>
+    <?php endif; ?>
     <!-- 리뷰 목록 -->
     <div class="reviews">
         <template class="review">

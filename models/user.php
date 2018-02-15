@@ -5,6 +5,13 @@ class User {
     private $data;
 
     public function __construct($userID, $password, $encrypt, $compel = false) {
+        if (is_null($userID) && is_null($password)) {
+            session_start();
+            $userID = $_SESSION["UserID"];
+            $password = $_SESSION["Password"];
+            $encrypt = false;
+        }
+
         $config_db = parse_ini_file("configs/database.ini");
 
         $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);

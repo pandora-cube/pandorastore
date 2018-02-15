@@ -6,6 +6,7 @@ class Reviews {
     private $table;
     private $data;
     private $content;
+    private $isPCubeMember;
     private $userNumber;
     private $userIP;
 
@@ -23,6 +24,7 @@ class Reviews {
             $user_data = $user_model->getData();
         }
         $this->content = $this->mysqli->escape_string($content);
+        $this->isPCubeMember = ($user_data["PCubeMember"] == 1);
         $this->userNumber = ($user_data !== null) ? $user_data["UserNumber"] : "NULL";
         $this->userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]);
 
@@ -51,6 +53,9 @@ class Reviews {
     }
 
     public function write($result) {
+        if (!$this->isPCubeMember)
+            return false;
+
         $result = $this->mysqli->escape_string($result);
 
         $sql = "
