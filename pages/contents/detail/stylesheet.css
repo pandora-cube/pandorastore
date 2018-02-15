@@ -112,3 +112,24 @@
 #contents-detail .reviewArea .input button:hover {
     background-color: lightsteelblue;
 }
+#contents-detail .reviewArea .reviews .review:nth-child(n+2) {
+    margin-top: 1em;
+}
+#contents-detail .reviewArea .reviews .review .writer {
+    float: left;
+    width: calc(100% - 5em);
+    text-align: left;
+    font-weight: bold;
+}
+#contents-detail .reviewArea .reviews .review .writer.unknown {
+    color: #aaa;
+}
+#contents-detail .reviewArea .reviews .review .date {
+    float: right;
+    width: 5em;
+    text-align: right;
+    color: #aaa;
+}
+#contents-detail .reviewArea .reviews .review .result {
+    clear: both;
+}

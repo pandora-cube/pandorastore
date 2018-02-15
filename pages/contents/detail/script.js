@@ -9,22 +9,31 @@ $(document).ready(function onDocumentReady() {
         var $reviews = $modal.find(".reviews");
         var $review;
         var i;
+        var nickname;
+        var splitedTime;
         var date;
         var year;
         var month;
         var day;
 
         for (i = 0; i < data.length; i++) {
-            date = new Date(data[i].WritedTime);
-            year = ("0000" + date.getFullYear()).slice(-4);
-            month = ("00" + date.getMonth()).slice(-2);
-            day = ("00" + date.getDay()).slice(-2);
-
             $review = $("<div>")
                 .addClass("review")
                 .html($reviews.find("template.review").html());
 
-            $review.find(".writer").text(data[i].UserNickname);
+            nickname = data[i].UserNickname;
+            if (nickname === null) {
+                nickname = "미상";
+                $review.find(".writer").addClass("unknown");
+            }
+
+            splitedTime = data[i].WritedTime.split(/[- :]/);
+            date = new Date(Date.UTC(splitedTime[0], splitedTime[1] - 1, splitedTime[2]));
+            year = ("0000" + date.getFullYear()).slice(-4);
+            month = ("00" + (date.getMonth() + 1)).slice(-2);
+            day = ("00" + date.getDate()).slice(-2);
+
+            $review.find(".writer").text(nickname);
             $review.find(".date").text(year + "." + month + "." + day);
             $review.find(".result").text(data[i].Result);
             $review.appendTo($reviews);
