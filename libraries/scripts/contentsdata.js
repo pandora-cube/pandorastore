@@ -61,7 +61,7 @@ function loadContentsData(data, categoryName, tags) {
             $modal.find(".summary .creator").text(datum.Creator);
             $modal.find(".summary .genres").text(genres);
             $modal.find(".summary .platforms").text(platforms);
-            // $modal.find(".download button").on("click", function () { download(datum.ID); });
+            $modal.find(".reviewArea .write input[name=content]").val(datum.Identifier);
 
             if (datum.DownloadURL_Android.length > 0) {
                 $("<a>")

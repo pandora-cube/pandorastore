@@ -26,11 +26,12 @@
         <span class="text">리뷰</span>
         <span class="num-reviews"></span>
     </div>
-    <!-- 리뷰 입력 -->
-    <div class="input">
-        <textarea></textarea>
-        <button>등록</button>
-    </div>
+    <!-- 리뷰 등록 -->
+    <form class="write" action="/contents/reviews/write" method="post">
+        <input name="content" type="hidden" />
+        <textarea name="result"></textarea>
+        <input type="submit" value="등록" />
+    </form>
     <!-- 리뷰 목록 -->
     <div class="reviews">
         <template class="review">

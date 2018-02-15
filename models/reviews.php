@@ -39,7 +39,7 @@ class Reviews {
             LEFT JOIN {$this->table["users"]} b
                 ON a.UserNumber = b.UserNumber
             WHERE a.Content = '{$this->content}' AND a.Deleted = 0
-            ORDER BY a.WritedTime ASC";
+            ORDER BY a.WritedTime DESC";
 
         $this->data = [];
         if ($result = $this->mysqli->query($sql)) {

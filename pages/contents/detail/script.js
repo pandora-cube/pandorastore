@@ -49,5 +49,15 @@ $(document).ready(function onDocumentReady() {
         });
     }
 
+    function writeReview(event) {
+        event.preventDefault();
+
+        $.ajax(this.action, {
+            method: this.method,
+            data: $(this).serialize(),
+        }).done(loadReviews);
+    }
+
     loadReviews();
+    $modal.find(".write").on("submit", writeReview);
 });

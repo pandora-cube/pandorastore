@@ -80,15 +80,15 @@
     font-weight: bold;
     color: #999;
 }
-#contents-detail .reviewArea .input {
+#contents-detail .reviewArea .write {
     margin-top: 1em;
 }
-#contents-detail .reviewArea .input::after {
+#contents-detail .reviewArea .write::after {
     display: block;
     clear: both;
     content: '';
 }
-#contents-detail .reviewArea .input textarea {
+#contents-detail .reviewArea .write textarea {
     float: left;
     width: calc(100% - 5em - 1em - 1px);
     height: calc(5em - 2px);
@@ -98,7 +98,7 @@
     border-right: none;
     resize: none;
 }
-#contents-detail .reviewArea .input button {
+#contents-detail .reviewArea .write input[type=submit] {
     float: left;
     width: 5em;
     height: 5em;
@@ -109,7 +109,7 @@
     cursor: pointer;
     transition: background-color 1s;
 }
-#contents-detail .reviewArea .input button:hover {
+#contents-detail .reviewArea .write input[type=submit]:hover {
     background-color: lightsteelblue;
 }
 #contents-detail .reviewArea .reviews .review {
