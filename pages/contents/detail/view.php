@@ -1,3 +1,5 @@
+<script src="/pages/contents/detail/script.js"></script>
+
 <div class="top">
     <!-- 아이콘 -->
     <div class="cover">
@@ -31,9 +33,10 @@
     </div>
     <!-- 리뷰 목록 -->
     <div class="reviews">
-        <div class="review">
+        <template class="review">
             <p class="writer"></p>
+            <p class="date"></p>
             <p class="result"></p>
-        </div>
+        </template>
     </div>
 </div>

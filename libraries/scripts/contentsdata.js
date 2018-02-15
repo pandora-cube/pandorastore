@@ -55,6 +55,7 @@ function loadContentsData(data, categoryName, tags) {
         var genres = datum.Genres.join(", ");
         var platforms = datum.Platforms.join(", ");
 
+        $modal.data("identifier", datum.Identifier);
         $modal.get(0).onPrepared = function onModalPrepared() {
             $modal.find(".summary .title").text(datum.Title);
             $modal.find(".summary .creator").text(datum.Creator);

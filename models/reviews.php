@@ -5,11 +5,11 @@ class Reviews {
     private $mysqli;
     private $table;
     private $data;
-    private $contentID;
+    private $content;
     private $userNumber;
     private $userIP;
 
-    public function __construct($contentID) {
+    public function __construct($content) {
 
         $config_db = parse_ini_file("configs/database.ini");
 
@@ -22,7 +22,7 @@ class Reviews {
             $user_model = new User($_SESSION["UserID"], $_SESSION["Password"], false);
             $user_data = $user_model->getData();
         }
-        $this->contentID = $this->mysqli->escape_string($contentID);
+        $this->content = $this->mysqli->escape_string($content);
         $this->userNumber = ($user_data !== null) ? $user_data["UserNumber"] : "NULL";
         $this->userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]);
 
@@ -32,9 +32,14 @@ class Reviews {
 
     public function load() {
         $sql = "
-            SELECT *
-            FROM {$this->table["reviews"]}
-            WHERE ContentID = {$this->contentID} AND Deleted = 0";
+            SELECT
+                a.*,
+                b.Nickname AS UserNickname
+            FROM {$this->table["reviews"]} a
+            LEFT JOIN {$this->table["users"]} b
+                ON a.UserNumber = b.UserNumber
+            WHERE a.Content = '{$this->content}' AND a.Deleted = 0
+            ORDER BY a.WritedTime ASC";
 
         $this->data = [];
         if ($result = $this->mysqli->query($sql)) {
@@ -50,9 +55,9 @@ class Reviews {
 
         $sql = "
             INSERT INTO {$this->table["reviews"]}
-                (ContentID, UserNumber, UserIP, Result)
+                (Content, UserNumber, UserIP, Result)
             VALUES
-                ({$this->contentID}, {$this->userNumber}, '{$this->userIP}', '{$result}')";
+                ('{$this->content}', {$this->userNumber}, '{$this->userIP}', '{$result}')";
         $this->mysqli->query($sql);
     }
 
