@@ -1,3 +1,9 @@
+@media screen and (min-width: 50rem) { /* for Desktop */
+    #contents-detail .modal {
+        min-width: 40rem;
+    }
+}
+
 #contents-detail .top {
     min-height: 10em;
 }
@@ -21,6 +27,12 @@
 #contents-detail .top .summary .title {
     font-size: 1.2em;
 }
+@media screen and (max-width: 50rem) { /* for Mobile */
+    #contents-detail .top .summary {
+        font-size: 1.2em;
+    }
+}
+
 #contents-detail .download {
     margin-bottom: 1em;
     text-align: right;
@@ -47,9 +59,11 @@
 #contents-detail .download a:nth-of-type(n+2) {
     margin-left: .5em;
 }
+
 #contents-detail .orbitArea {
     font-size: .7em;
 }
+
 #contents-detail .reviewArea {
     margin-top: 1em;
 }
@@ -97,14 +111,4 @@
 }
 #contents-detail .reviewArea .input button:hover {
     background-color: lightsteelblue;
-}
-@media screen and (max-width: 50rem) { /* for Mobile */
-    #contents-detail .top .summary {
-        font-size: 1.2em;
-    }
-}
-@media screen and (min-width: 50rem) { /* for Desktop */
-    #contents-detail .modal {
-        min-width: 40rem;
-    }
 }
