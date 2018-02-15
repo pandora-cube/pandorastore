@@ -91,8 +91,8 @@
 #contents-detail .reviewArea .write textarea {
     float: left;
     width: calc(100% - 5em - 1em - 1px);
-    height: calc(5em - 2px);
-    padding: 0 .5em;
+    height: calc(5em - 2px - .4em);
+    padding: .2em .5em;
     font-size: .9em;
     border: 1px solid #aaa;
     border-right: none;
@@ -111,6 +111,12 @@
 }
 #contents-detail .reviewArea .write input[type=submit]:hover {
     background-color: lightsteelblue;
+}
+#contents-detail .reviewArea .write-disabled {
+    padding: 2em 0;
+    text-align: center;
+    font-size: .9em;
+    font-style: italic;
 }
 #contents-detail .reviewArea .reviews .review {
     margin-top: 1em;
