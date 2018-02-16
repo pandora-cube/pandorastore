@@ -124,20 +124,10 @@
     margin-top: 1em;
     text-align: center;
 }
-#contents form .radio-wrapper::after {
-    display: block;
-    clear: both;
-    content: '';
-}
 #contents form .radio-wrapper input[type=radio] + label {
-    float: left;
-    width: calc(100% / 3 - 2px - .2em);
+    width: calc(100% / 3 - 3px - .2em);
     height: calc(100% - 2px);
-    margin: 0 0 0 .3em;
     padding: 0;
-}
-#contents form .radio-wrapper input[type=radio] + label:nth-of-type(3n+1) {
-    margin-left: 0;
 }
 #contents form .radio-wrapper input[type=radio] + label:nth-of-type(n+4) {
     margin-top: .3em;
