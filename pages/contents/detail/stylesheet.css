@@ -136,10 +136,15 @@
 }
 #contents-detail .reviewArea .reviews .review .writer {
     text-align: left;
-    font-weight: bold;
+    font-weight: 500;
+    color: #777;
 }
 #contents-detail .reviewArea .reviews .review .writer.unknown {
-    color: #aaa;
+    font-weight: normal;
+    font-style: italic;
+}
+#contents-detail .reviewArea .reviews .review .result {
+    color: #777;
 }
 #contents-detail .reviewArea .reviews .review .date {
     text-align: right;
@@ -151,15 +156,15 @@
 #contents-detail .reviewArea .reviews .review .wrapper button {
     width: 100%;
     font-size: .8em;
-    color: #555;
+    color: #777;
     border: none;
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid #777;
     cursor: pointer;
     transition: background-color 1s, color 1s;
 }
 #contents-detail .reviewArea .reviews .review .wrapper button:hover {
     color: White;
-    background-color: #555;
+    background-color: #777;
 }
 #contents-detail .reviewArea .reviews .review .edit {
     float: left;
