@@ -29,10 +29,11 @@ class Logger {
         $userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]);
         $userNumber = ($this->user_data !== null) ? $this->user_data["UserNumber"] : "NULL";
         $url = $this->mysqli->escape_string("{$_SERVER["HTTP_HOST"]}{$_SERVER["REQUEST_URI"]}");
+        $browser = get_browser(null, true)["parent"];
 
         $sql = "
-            INSERT INTO {$this->table["log_paging"]} (UserIP, UserNumber, URL)
-            VALUES (\"{$userIP}\", {$userNumber}, \"{$url}\")";
+            INSERT INTO {$this->table["log_paging"]} (UserIP, UserNumber, URL, Browser)
+            VALUES ('{$userIP}', {$userNumber}, '{$url}', '{$browser}')";
         
         $this->mysqli->query($sql);
     }
