@@ -6,6 +6,7 @@ class Reviews {
     private $table;
     private $data;
     private $isPCubeMember;
+    private $adminLevel;
     private $userNumber;
     private $userIP;
 
@@ -24,6 +25,7 @@ class Reviews {
             $user_data = $user_model->getData();
         }
         $this->isPCubeMember = ($user_data["PCubeMember"] == 1); // 판도라큐브 회원 여부
+        $this->adminLevel = $user_data["AdminLevel"];
         $this->userNumber = ($user_data !== null) ? $user_data["UserNumber"] : "NULL"; // 유저 번호
         $this->userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]); // 유저 아이피
 
@@ -47,8 +49,11 @@ class Reviews {
 
         $this->data = [];
         if ($result = $this->mysqli->query($sql)) {
-            while ($datum = $result->fetch_assoc())
+            while ($datum = $result->fetch_assoc()) {
+                $datum["DeletePermission"] = ($this->adminLevel >= 1 || $this->userNumber === $datum["UserNumber"]);
+
                 array_push($this->data, $datum);
+            }
             $result->free();
         }
         return $this->data;
@@ -84,12 +89,17 @@ class Reviews {
     }
 
     public function delete($reviewID) {
+        // 관리자, 작성자만 삭제 가능
+        $conWriter = "";
+        if ($this->adminLevel < 1)
+            $conWriter = "AND UserNumber = {$this->userNumber}";
+
         $reviewID = $this->mysqli->escape_string($reviewID); // 리뷰 번호
 
         $sql = "
             UPDATE {$this->table["reviews"]} SET
                 Deleted = 1
-            WHERE ID = {$reviewID}";
+            WHERE ID = {$reviewID} {$conWriter}";
         $this->mysqli->query($sql);
     }
 

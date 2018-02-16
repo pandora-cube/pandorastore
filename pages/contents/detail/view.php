@@ -39,9 +39,15 @@
     <!-- 리뷰 목록 -->
     <div class="reviews">
         <template class="review">
-            <p class="writer"></p>
-            <p class="date"></p>
-            <p class="result"></p>
+            <div class="left">
+                <p class="writer"></p>
+                <p class="result"></p>
+            </div>
+            <div class="right">
+                <p class="date"></p>
+                <div class="wrapper edit"></div>
+                <div class="wrapper delete"></div>
+            </div>
         </template>
     </div>
 </div>

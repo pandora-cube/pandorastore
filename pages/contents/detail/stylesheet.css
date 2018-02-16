@@ -1,6 +1,6 @@
 @media screen and (min-width: 50rem) { /* for Desktop */
     #contents-detail .modal {
-        min-width: 40rem;
+        width: 40rem;
     }
 }
 
@@ -121,9 +121,20 @@
 #contents-detail .reviewArea .reviews .review {
     margin-top: 1em;
 }
-#contents-detail .reviewArea .reviews .review .writer {
+#contents-detail .reviewArea .reviews .review::after {
+    display: block;
+    clear: both;
+    content: '';
+}
+#contents-detail .reviewArea .reviews .left {
     float: left;
     width: calc(100% - 5em);
+}
+#contents-detail .reviewArea .reviews .right {
+    float: right;
+    width: 5em;
+}
+#contents-detail .reviewArea .reviews .review .writer {
     text-align: left;
     font-weight: bold;
 }
@@ -131,11 +142,28 @@
     color: #aaa;
 }
 #contents-detail .reviewArea .reviews .review .date {
-    float: right;
-    width: 5em;
     text-align: right;
     color: #aaa;
 }
-#contents-detail .reviewArea .reviews .review .result {
-    clear: both;
+#contents-detail .reviewArea .reviews .review .wrapper {
+    width: 2.5em;
+}
+#contents-detail .reviewArea .reviews .review .wrapper button {
+    width: 100%;
+    font-size: .8em;
+    color: #555;
+    border: none;
+    border-bottom: 1px solid #555;
+    cursor: pointer;
+    transition: background-color 1s, color 1s;
+}
+#contents-detail .reviewArea .reviews .review .wrapper button:hover {
+    color: White;
+    background-color: #555;
+}
+#contents-detail .reviewArea .reviews .review .edit {
+    float: left;
+}
+#contents-detail .reviewArea .reviews .review .delete {
+    float: right;
 }
