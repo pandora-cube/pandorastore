@@ -5,13 +5,11 @@ class Reviews {
     private $mysqli;
     private $table;
     private $data;
-    private $content;
     private $isPCubeMember;
     private $userNumber;
     private $userIP;
 
-    public function __construct($content) {
-
+    public function __construct($content = null) {
         $config_db = parse_ini_file("configs/database.ini");
 
         $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);
@@ -23,16 +21,17 @@ class Reviews {
             $user_model = new User($_SESSION["UserID"], $_SESSION["Password"], false);
             $user_data = $user_model->getData();
         }
-        $this->content = $this->mysqli->escape_string($content);
         $this->isPCubeMember = ($user_data["PCubeMember"] == 1);
         $this->userNumber = ($user_data !== null) ? $user_data["UserNumber"] : "NULL";
         $this->userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]);
 
-        if ($this->mysqli)
-            $this->load();
+        if ($this->mysqli && $content !== null)
+            $this->load($content);
     }
 
-    public function load() {
+    public function load($content) {
+        $content = $this->mysqli->escape_string($content);
+
         $sql = "
             SELECT
                 a.*,
@@ -40,7 +39,7 @@ class Reviews {
             FROM {$this->table["reviews"]} a
             LEFT JOIN {$this->table["users"]} b
                 ON a.UserNumber = b.UserNumber
-            WHERE a.Content = '{$this->content}' AND a.Deleted = 0
+            WHERE a.Content = '{$content}' AND a.Deleted = 0
             ORDER BY a.WritedTime DESC";
 
         $this->data = [];
@@ -52,17 +51,18 @@ class Reviews {
         return $this->data;
     }
 
-    public function write($result) {
+    public function write($content, $result) {
         if (!$this->isPCubeMember)
             return false;
 
+        $content = $this->mysqli->escape_string($content);
         $result = $this->mysqli->escape_string($result);
 
         $sql = "
             INSERT INTO {$this->table["reviews"]}
                 (Content, UserNumber, UserIP, Result)
             VALUES
-                ('{$this->content}', {$this->userNumber}, '{$this->userIP}', '{$result}')";
+                ('{$content}', {$this->userNumber}, '{$this->userIP}', '{$result}')";
         $this->mysqli->query($sql);
     }
 
