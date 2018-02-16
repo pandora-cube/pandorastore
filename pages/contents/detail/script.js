@@ -69,7 +69,10 @@ $(document).ready(function onDocumentReady() {
         $.ajax(this.action, {
             method: this.method,
             data: $(this).serialize(),
-        }).done(loadReviews);
+        }).done(function onSuccess() {
+            loadReviews();
+            $modal.find(".reviewArea .write textarea").val("");
+        });
     }
 
     function deleteReview() {
