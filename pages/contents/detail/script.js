@@ -1,6 +1,42 @@
 $(document).ready(function onDocumentReady() {
     var $modal = $("#contents-detail");
 
+    function activeEdit() {
+        var $review = $(this).parents(".review");
+        var $result = $review.find(".result");
+        var $input = $review.find(".edit-input");
+
+        $input
+            .css("display", "block")
+            .val($result.text())
+            .height($input.get(0).scrollHeight)
+            .focus();
+
+        $review.find(".edit-wrapper .edit-cancel")
+            .css("display", "block"); // 취소 버튼 활성화
+        $review.find(".edit-wrapper .edit-submit")
+            .css("display", "block"); // 확인 버튼 활성화
+        $review.find(".edit-wrapper .edit")
+            .css("display", "none"); // 수정 버튼 비활성화
+        $result
+            .css("display", "none");
+    }
+
+    function cancelEdit() {
+        var $review = $(this).parents(".review");
+
+        $review.find(".result")
+            .css("display", "block");
+        $review.find(".edit-wrapper .edit")
+            .css("display", "block");
+        $review.find(".edit-wrapper .edit-cancel")
+            .css("display", "none");
+        $review.find(".edit-wrapper .edit-submit")
+            .css("display", "none");
+        $review.find(".edit-input")
+            .css("display", "none");
+    }
+
     function resetReviews() {
         $modal.find(".reviewArea .reviews div.review").remove();
     }
@@ -36,13 +72,22 @@ $(document).ready(function onDocumentReady() {
             month = ("00" + (date.getMonth() + 1)).slice(-2);
             day = ("00" + date.getDate()).slice(-2);
 
+            // 수정 권한이 있는 경우
+            if (data[i].EditPermission === true) {
+                $review.find(".edit-wrapper .edit")
+                    .on("click", activeEdit)
+                    .css("display", "block");
+                $review.find(".edit-wrapper .edit-cancel")
+                    .on("click", cancelEdit);
+                $review.find(".edit-wrapper .edit-submit")
+                    .on("click", editReview);
+            }
+
             // 삭제 권한이 있는 경우
             if (data[i].DeletePermission === true) {
-                // 삭제 버튼 추가
-                $("<button>")
+                $review.find(".delete-wrapper .delete")
                     .on("click", deleteReview)
-                    .text("삭제")
-                    .appendTo($review.find(".delete"));
+                    .css("display", "block");
             }
 
             // 데이터 적용 및 리뷰 영역 추가
@@ -73,6 +118,13 @@ $(document).ready(function onDocumentReady() {
             loadReviews();
             $modal.find(".reviewArea .write textarea").val("");
         });
+    }
+
+    function editReview() {
+        $.post("/contents/reviews/edit", {
+            review: $(this).parents(".review").data("review-id"),
+            result: $(this).parents(".review").find(".edit-input").val(),
+        }).done(loadReviews);
     }
 
     function deleteReview() {

@@ -42,11 +42,18 @@
             <div class="left">
                 <p class="writer"></p>
                 <p class="result"></p>
+                <textarea class="edit-input"></textarea>
             </div>
             <div class="right">
                 <p class="date"></p>
-                <div class="wrapper edit"></div>
-                <div class="wrapper delete"></div>
+                <div class="wrapper edit-wrapper">
+                    <button class="edit">수정</button>
+                    <button class="edit-cancel">취소</button>
+                    <button class="edit-submit">확인</button>
+                </div>
+                <div class="wrapper delete-wrapper">
+                    <button class="delete">삭제</button>
+                </div>
             </div>
         </template>
     </div>

@@ -50,6 +50,7 @@ class Reviews {
         $this->data = [];
         if ($result = $this->mysqli->query($sql)) {
             while ($datum = $result->fetch_assoc()) {
+                $datum["EditPermission"] = ($this->userNumber === $datum["UserNumber"]);
                 $datum["DeletePermission"] = ($this->adminLevel >= 1 || $this->userNumber === $datum["UserNumber"]);
 
                 array_push($this->data, $datum);
@@ -76,7 +77,7 @@ class Reviews {
     }
 
     public function edit($reviewID, $result) {
-        $reviewID = $this->mysqli->escape_string($reviewID); // 리뷰 번호
+        $reviewID = intval($reviewID); // 리뷰 번호
         $result = $this->mysqli->escape_string($result); // 리뷰 내용
 
         $sql = "
@@ -84,7 +85,7 @@ class Reviews {
                 UserIP = '{$this->userIP}',
                 Result = '{$result}',
                 EditedTime = CURRENT_TIMESTAMP
-            WHERE ID = {$reviewID}";
+            WHERE ID = {$reviewID} AND UserNumber = {$this->userNumber}";
         $this->mysqli->query($sql);
     }
 
@@ -94,7 +95,7 @@ class Reviews {
         if ($this->adminLevel < 1)
             $conWriter = "AND UserNumber = {$this->userNumber}";
 
-        $reviewID = $this->mysqli->escape_string($reviewID); // 리뷰 번호
+        $reviewID = intval($reviewID); // 리뷰 번호
 
         $sql = "
             UPDATE {$this->table["reviews"]} SET
