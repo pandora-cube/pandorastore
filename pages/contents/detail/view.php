@@ -24,7 +24,7 @@
 <div class="reviewArea">
     <div class="header">
         <span class="text">리뷰</span>
-        <span class="num-reviews"></span>
+        <span class="num-reviews">불러오는 중</span>
     </div>
     <!-- 리뷰 등록 -->
     <?php if ($this->isEnabledArea("review-write")): ?>

@@ -97,6 +97,9 @@ $(document).ready(function onDocumentReady() {
             $review.find(".result").text(data[i].Result);
             $review.appendTo($reviews);
         }
+
+        $modal.find(".reviewArea .num-reviews")
+            .text(data.length + "개");
     }
 
     function loadReviews() {
