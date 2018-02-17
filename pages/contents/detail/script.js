@@ -103,6 +103,9 @@ $(document).ready(function onDocumentReady() {
     }
 
     function loadReviews() {
+        $modal.find(".reviewArea .num-reviews")
+            .text("불러오는 중");
+
         $.get("/contents/reviews/load", {
             content: $modal.data("identifier"),
         }).done(function onSuccess(json) {
