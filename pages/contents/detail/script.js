@@ -37,6 +37,28 @@ $(document).ready(function onDocumentReady() {
             .css("display", "none");
     }
 
+    function activeDelete() {
+        var $review = $(this).parents(".review");
+
+        $review.find(".delete-wrapper .delete-cancel")
+            .css("display", "block");
+        $review.find(".delete-wrapper .delete-submit")
+            .css("display", "block");
+        $review.find(".delete-wrapper .delete")
+            .css("display", "none");
+    }
+
+    function cancelDelete() {
+        var $review = $(this).parents(".review");
+
+        $review.find(".delete-wrapper .delete")
+            .css("display", "block");
+        $review.find(".delete-wrapper .delete-cancel")
+            .css("display", "none");
+        $review.find(".delete-wrapper .delete-submit")
+            .css("display", "none");
+    }
+
     function resetReviews() {
         $modal.find(".reviewArea .reviews div.review").remove();
     }
@@ -86,8 +108,12 @@ $(document).ready(function onDocumentReady() {
             // 삭제 권한이 있는 경우
             if (data[i].DeletePermission === true) {
                 $review.find(".delete-wrapper .delete")
-                    .on("click", deleteReview)
+                    .on("click", activeDelete)
                     .css("display", "block");
+                $review.find(".delete-wrapper .delete-cancel")
+                    .on("click", cancelDelete);
+                $review.find(".delete-wrapper .delete-submit")
+                    .on("click", deleteReview);
             }
 
             // 데이터 적용 및 리뷰 영역 추가

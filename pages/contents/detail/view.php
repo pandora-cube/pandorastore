@@ -53,6 +53,8 @@
                 </div>
                 <div class="wrapper delete-wrapper">
                     <button class="delete">삭제</button>
+                    <button class="delete-cancel">취소</button>
+                    <button class="delete-submit">삭제</button>
                 </div>
             </div>
         </template>
