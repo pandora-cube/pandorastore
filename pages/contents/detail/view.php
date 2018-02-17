@@ -49,7 +49,7 @@
                 <div class="wrapper edit-wrapper">
                     <button class="edit">수정</button>
                     <button class="edit-cancel">취소</button>
-                    <button class="edit-submit">확인</button>
+                    <button class="edit-submit">수정</button>
                 </div>
                 <div class="wrapper delete-wrapper">
                     <button class="delete">삭제</button>

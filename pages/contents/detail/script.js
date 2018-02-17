@@ -4,12 +4,12 @@ $(document).ready(function onDocumentReady() {
     function activeEdit() {
         var $review = $(this).parents(".review");
         var $result = $review.find(".result");
-        var $input = $review.find(".edit-input");
 
-        $input
-            .css("display", "block")
+        $review.find(".edit-input")
             .val($result.text())
-            .height($input.get(0).scrollHeight)
+            .height($result.height())
+            .css("display", "block")
+            .css("overflow", "auto")
             .focus();
 
         $review.find(".edit-wrapper .edit-cancel")
