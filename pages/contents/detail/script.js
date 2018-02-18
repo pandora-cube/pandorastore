@@ -1,6 +1,7 @@
 $(document).ready(function onDocumentReady() {
     var $modal = $("#contents-detail");
 
+    // 수정 활성화
     function activeEdit() {
         var $review = $(this).parents(".review");
         var $result = $review.find(".result");
@@ -22,6 +23,7 @@ $(document).ready(function onDocumentReady() {
             .css("display", "none");
     }
 
+    // 수정 취소
     function cancelEdit() {
         var $review = $(this).parents(".review");
 
@@ -37,6 +39,7 @@ $(document).ready(function onDocumentReady() {
             .css("display", "none");
     }
 
+    // 삭제 활성화
     function activeDelete() {
         var $review = $(this).parents(".review");
 
@@ -48,6 +51,7 @@ $(document).ready(function onDocumentReady() {
             .css("display", "none");
     }
 
+    // 삭제 취소
     function cancelDelete() {
         var $review = $(this).parents(".review");
 
@@ -59,10 +63,12 @@ $(document).ready(function onDocumentReady() {
             .css("display", "none");
     }
 
+    // 리뷰 영역 초기화
     function resetReviews() {
         $modal.find(".reviewArea .reviews div.review").remove();
     }
 
+    // 리뷰 데이터 불러오기
     function loadReviews() {
         $modal.find(".reviewArea .num-reviews")
             .text("불러오는 중");
@@ -75,6 +81,7 @@ $(document).ready(function onDocumentReady() {
         });
     }
 
+    // 리뷰 작성
     function writeReview(event) {
         event.preventDefault();
 
@@ -87,6 +94,7 @@ $(document).ready(function onDocumentReady() {
         });
     }
 
+    // 리뷰 수정
     function editReview() {
         $.post("/contents/reviews/edit", {
             review: $(this).parents(".review").data("review-id"),
@@ -94,12 +102,14 @@ $(document).ready(function onDocumentReady() {
         }).done(loadReviews);
     }
 
+    // 리뷰 삭제
     function deleteReview() {
         $.post("/contents/reviews/delete", {
             review: $(this).parents(".review").data("review-id"),
         }).done(loadReviews);
     }
 
+    // 리뷰 데이터 적용
     function applyReviews(data) {
         var $reviews = $modal.find(".reviewArea .reviews");
         var $review;
@@ -165,9 +175,11 @@ $(document).ready(function onDocumentReady() {
             $review.appendTo($reviews);
         }
 
+        // 리뷰 개수 출력
         $modal.find(".reviewArea .num-reviews")
             .text(data.length + "개");
 
+        // 리뷰 갱신 버튼
         $modal.find(".reviewArea .refresh").on("click", loadReviews);
     }
 
