@@ -110,6 +110,7 @@ $(document).ready(function onDocumentReady() {
         var year;
         var month;
         var day;
+        var result;
 
         for (i = 0; i < data.length; i++) {
             // 리뷰 영역 생성
@@ -153,11 +154,14 @@ $(document).ready(function onDocumentReady() {
                     .on("click", deleteReview);
             }
 
+            // 개행문자를 줄바꿈으로 변환
+            result = data[i].Result.replace(/\n/gi, "<br>");
+
             // 데이터 적용 및 리뷰 영역 추가
             $review.data("review-id", data[i].ID);
             $review.find(".writer").text(nickname);
             $review.find(".date").text(year + "." + month + "." + day);
-            $review.find(".result").text(data[i].Result);
+            $review.find(".result").html(result);
             $review.appendTo($reviews);
         }
 

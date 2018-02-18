@@ -52,6 +52,7 @@ class Reviews {
             while ($datum = $result->fetch_assoc()) {
                 $datum["EditPermission"] = ($this->userNumber === $datum["UserNumber"]);
                 $datum["DeletePermission"] = ($this->adminLevel >= 1 || $this->userNumber === $datum["UserNumber"]);
+                $datum["Result"] = htmlspecialchars($datum["Result"]);
 
                 array_push($this->data, $datum);
             }
