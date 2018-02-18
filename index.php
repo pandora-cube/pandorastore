@@ -25,7 +25,7 @@ if(is_file("pages/$action/controller.php")) {
     require("pages/$action/controller.php");
     if ($logEnabled) {
         $logger = new Logger();
-        $logger->logPaging();
+        $logger->logNavigation();
     }
 } else {
     $action = "main";
