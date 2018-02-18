@@ -155,7 +155,7 @@ $(document).ready(function onDocumentReady() {
             }
 
             // 개행문자를 줄바꿈으로 변환
-            result = data[i].Result.replace(/\n/gi, "<br>");
+            result = data[i].Result.replace(/\n/gi, "\n<br>");
 
             // 데이터 적용 및 리뷰 영역 추가
             $review.data("review-id", data[i].ID);
