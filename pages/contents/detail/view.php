@@ -25,6 +25,9 @@
     <div class="header">
         <span class="text">리뷰</span>
         <span class="num-reviews"></span>
+        <div class="right">
+            <button class="refresh">갱신</button>
+        </div>
     </div>
     <!-- 리뷰 등록 -->
     <?php if ($this->isEnabledArea("review-write")): ?>

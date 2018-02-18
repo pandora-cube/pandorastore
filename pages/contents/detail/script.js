@@ -63,6 +63,43 @@ $(document).ready(function onDocumentReady() {
         $modal.find(".reviewArea .reviews div.review").remove();
     }
 
+    function loadReviews() {
+        $modal.find(".reviewArea .num-reviews")
+            .text("불러오는 중");
+
+        $.get("/contents/reviews/load", {
+            content: $modal.data("identifier"),
+        }).done(function onSuccess(json) {
+            resetReviews();
+            applyReviews(JSON.parse(json));
+        });
+    }
+
+    function writeReview(event) {
+        event.preventDefault();
+
+        $.ajax(this.action, {
+            method: this.method,
+            data: $(this).serialize(),
+        }).done(function onSuccess() {
+            loadReviews();
+            $modal.find(".reviewArea .write textarea").val("");
+        });
+    }
+
+    function editReview() {
+        $.post("/contents/reviews/edit", {
+            review: $(this).parents(".review").data("review-id"),
+            result: $(this).parents(".review").find(".edit-input").val(),
+        }).done(loadReviews);
+    }
+
+    function deleteReview() {
+        $.post("/contents/reviews/delete", {
+            review: $(this).parents(".review").data("review-id"),
+        }).done(loadReviews);
+    }
+
     function applyReviews(data) {
         var $reviews = $modal.find(".reviewArea .reviews");
         var $review;
@@ -126,43 +163,8 @@ $(document).ready(function onDocumentReady() {
 
         $modal.find(".reviewArea .num-reviews")
             .text(data.length + "개");
-    }
 
-    function loadReviews() {
-        $modal.find(".reviewArea .num-reviews")
-            .text("불러오는 중");
-
-        $.get("/contents/reviews/load", {
-            content: $modal.data("identifier"),
-        }).done(function onSuccess(json) {
-            resetReviews();
-            applyReviews(JSON.parse(json));
-        });
-    }
-
-    function writeReview(event) {
-        event.preventDefault();
-
-        $.ajax(this.action, {
-            method: this.method,
-            data: $(this).serialize(),
-        }).done(function onSuccess() {
-            loadReviews();
-            $modal.find(".reviewArea .write textarea").val("");
-        });
-    }
-
-    function editReview() {
-        $.post("/contents/reviews/edit", {
-            review: $(this).parents(".review").data("review-id"),
-            result: $(this).parents(".review").find(".edit-input").val(),
-        }).done(loadReviews);
-    }
-
-    function deleteReview() {
-        $.post("/contents/reviews/delete", {
-            review: $(this).parents(".review").data("review-id"),
-        }).done(loadReviews);
+        $modal.find(".reviewArea .refresh").on("click", loadReviews);
     }
 
     loadReviews();
