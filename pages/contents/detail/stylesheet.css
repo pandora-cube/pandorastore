@@ -166,8 +166,8 @@
     height: 0;
     font-size: 1em;
     overflow: hidden;
+    background-color: #e8f4f8;
     border: none;
-    outline: 1px solid lightblue;
     resize: none;
 }
 #contents-detail .reviewArea .reviews .review .date {
