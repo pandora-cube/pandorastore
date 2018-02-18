@@ -167,6 +167,7 @@
     font-size: 1em;
     overflow: hidden;
     border: none;
+    outline: 1px solid lightblue;
     resize: none;
 }
 #contents-detail .reviewArea .reviews .review .date {
@@ -179,12 +180,16 @@
 #contents-detail .reviewArea .reviews .review .wrapper button {
     display: none;
     width: 100%;
+    height: 2em;
     font-size: .8em;
     color: #777;
     border: none;
     border-bottom: 1px solid #777;
     cursor: pointer;
     transition: background-color 1s, color 1s;
+}
+#contents-detail .reviewArea .reviews .review .wrapper button:nth-child(3) {
+    margin-top: .5em;
 }
 #contents-detail .reviewArea .reviews .review .wrapper button:hover {
     color: White;
