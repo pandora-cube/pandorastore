@@ -131,7 +131,9 @@
     font-style: italic;
 }
 #contents-detail .reviewArea .reviews .review {
-    margin-top: 1em;
+    margin-top: 2em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid #ccc;
 }
 #contents-detail .reviewArea .reviews .review::after {
     display: block;
