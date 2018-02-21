@@ -15,7 +15,7 @@
  * 
  */
 
-require_once("libraries/functions/logger.php");
+require_once("models/log.php");
 
 $action = $_GET["action"];
 
@@ -24,8 +24,8 @@ if(is_file("pages/$action/controller.php")) {
     $logEnabled = true;
     require("pages/$action/controller.php");
     if ($logEnabled) {
-        $logger = new Logger();
-        $logger->logNavigation();
+        $log = new Log();
+        $log->logNavigation();
     }
 } else {
     $action = "main";

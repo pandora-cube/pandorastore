@@ -1,5 +1,6 @@
 <?php
 require_once("models/user.php");
+require_once("models/log.php");
 
 $userID = $_POST["UserID"];
 $password = $_POST["Password"];
@@ -10,14 +11,14 @@ $user_data = $user_model->getData();
 $user_compel_model = new User($userID, null, null, true);
 $user_compel_data = $user_compel_model->getData();
 
-$logger = new Logger();
+$log = new Log();
     
 session_start();
 if (is_null($user_data)) { // 로그인 실패 시
     if (is_null($user_compel_data))
-        $logger->logSignIn(null, false);
+        $log->logSignIn(null, false);
     else
-        $logger->logSignIn($user_compel_data["UserNumber"], false);
+        $log->logSignIn($user_compel_data["UserNumber"], false);
 
     $_SESSION["signin_try"]++;
     header("Location: /accounts/signin");
@@ -27,7 +28,7 @@ if (is_null($user_data)) { // 로그인 실패 시
     return;
 }
 
-$logger->logSignIn($user_data["UserNumber"], true);
+$log->logSignIn($user_data["UserNumber"], true);
 
 unset($_SESSION["signin_try"]);
 $_SESSION["UserID"] = $user_data["EMail"];

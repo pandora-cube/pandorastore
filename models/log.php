@@ -1,11 +1,7 @@
 <?php
 require_once("models/user.php");
 
-/**
- * 전체 사이트에서 광범위하게 사용되는 로그 기능
- * 특정 범위에서만 사용되는 로그는 해당 모듈 내에 별도 구현
- */
-class Logger {
+class Log {
     private $mysqli;
     private $table;
     private $data;
