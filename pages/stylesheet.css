@@ -51,7 +51,8 @@ input[type=text],
 input[type=password],
 input[type=email],
 input[type=number],
-input[type=submit] {
+input[type=submit],
+textarea {
     -webkit-appearance: none;
     border-radius: 0;
 }
