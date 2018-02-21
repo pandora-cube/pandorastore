@@ -72,9 +72,14 @@ class Log {
         $success = intval($success);
         $host = $this->mysqli->escape_string($_SERVER["HTTP_HOST"]);
 
+        // 로그인 국가
+        include_once("libraries/modules/GeoIP/geoip.inc");
+        $geoip = geoip_open("libraries/modules/GeoIP/GeoIP.dat", GEOIP_STANDARD);
+        $country = geoip_country_name_by_addr($geoip, $_SERVER["REMOTE_ADDR"]);
+
         $sql = "
-            INSERT INTO {$this->table["log_signin"]} (UserNumber, UserIP, Success, Host, Browser, Platform)
-            VALUES ({$userNumber}, '{$this->userIP}', {$success}, '{$host}', '{$this->browser}', '{$this->platform}')";
+            INSERT INTO {$this->table["log_signin"]} (UserNumber, UserIP, Success, Host, Browser, Platform, Country)
+            VALUES ({$userNumber}, '{$this->userIP}', {$success}, '{$host}', '{$this->browser}', '{$this->platform}', '{$country}')";
         
         $this->mysqli->query($sql);
     }
