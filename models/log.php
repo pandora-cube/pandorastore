@@ -8,9 +8,11 @@ class Log {
     private $userIP;
     private $userNumber;
     private $browser;
+    private $platform;
 
     public function __construct() {
         $config_db = parse_ini_file("configs/database.ini");
+        $browser = get_browser(null, true);
 
         $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);
         $this->table = $config_db["table"];
@@ -23,7 +25,8 @@ class Log {
         }
         $this->userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]);
         $this->userNumber = ($user_data !== null) ? $user_data["UserNumber"] : "NULL";
-        $this->browser = get_browser(null, true)["parent"];
+        $this->browser = $browser["parent"];
+        $this->platform = $browser["platform"];
     }
 
     public function load($table, $conditions) {
@@ -32,12 +35,14 @@ class Log {
             FROM {$this->table[$table]}";
 
         if (count($conditions) > 0) {
-            $sql = " WHERE TRUE";
+            $sql .= " WHERE TRUE";
             foreach ($conditions as $condition) {
                 $value = $this->mysqli->escape_string($condition[2]);
                 $sql .= " AND ({$condition[0]} {$condition[1]} '{$value}')";
             }
         }
+
+        $sql .= " ORDER BY Time DESC";
 
         $this->data = [];
         if ($result = $this->mysqli->query($sql)) {
@@ -68,8 +73,8 @@ class Log {
         $host = $this->mysqli->escape_string($_SERVER["HTTP_HOST"]);
 
         $sql = "
-            INSERT INTO {$this->table["log_signin"]} (UserNumber, UserIP, Success, Host, Browser)
-            VALUES ({$userNumber}, '{$this->userIP}', {$success}, '{$host}', '{$this->browser}')";
+            INSERT INTO {$this->table["log_signin"]} (UserNumber, UserIP, Success, Host, Browser, Platform)
+            VALUES ({$userNumber}, '{$this->userIP}', {$success}, '{$host}', '{$this->browser}', '{$this->platform}')";
         
         $this->mysqli->query($sql);
     }
