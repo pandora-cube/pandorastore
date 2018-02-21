@@ -89,6 +89,24 @@ textarea {
     overflow: hidden;
 }
 
+.table_style_1 {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid #aaa;
+    border-collapse: collapse;
+}
+.table_style_1 th {
+    padding: 1em 0;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #aaa;
+}
+.table_style_1 td {
+    padding: .7em 0;
+    border-bottom: 1px solid #aaa;
+}
+
 header {
     background-color: white;
     margin-top: 10px;

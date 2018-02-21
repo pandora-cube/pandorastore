@@ -2,7 +2,7 @@
 <html xml:lang="ko" lang="ko">
 <head>
     <?=$this->loadLayout("head")?>
-    <!--<link rel="stylesheet" href="/pages/accounts/stylesheet.css" />-->
+    <link rel="stylesheet" href="/pages/accounts/signin_log/stylesheet.css" />
 </head>
 
 <body>
@@ -13,7 +13,9 @@
     <div id="contents">
         <h2>로그인 내역</h2>
 
-        <table>
+        <p class="notice">로그인 내역은 통신비밀보호법에 의거하여 <u>최대 90일</u>까지만 보관됩니다.</p>
+
+        <table class="table_style_1">
             <caption class="blind">로그인 내역</caption>
             <colgroup>
             </colgroup>
