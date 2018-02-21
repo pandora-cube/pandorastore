@@ -38,6 +38,7 @@
                     <div class="background"></div>
                 </div>
                 <ul class="container">
+                    <li><a href="/accounts/signin_log">로그인 내역</a></li>
                     <li><a href="/accounts/signout">로그아웃</a></li>
                 </ul>
             </div>
@@ -63,6 +64,7 @@
                     <span class="title"><?=$this->getAttribute("Nickname")?> 님</span>
                 </div>
                 <ul class="inner-menu">
+                    <li><a href="/accounts/signin_log">로그인 내역</a></li>
                     <li><a href="/accounts/signout">로그아웃</a></li>
                 </ul>
             <?php endif; ?>
