@@ -8,6 +8,7 @@ require_once("models/user.php");
 class Logger {
     private $mysqli;
     private $table;
+    private $data;
     private $userIP;
     private $userNumber;
     private $browser;
@@ -27,6 +28,32 @@ class Logger {
         $this->userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]);
         $this->userNumber = ($user_data !== null) ? $user_data["UserNumber"] : "NULL";
         $this->browser = get_browser(null, true)["parent"];
+    }
+
+    public function load($table, $conditions) {
+        $sql = "
+            SELECT *
+            FROM {$this->table[$table]}";
+
+        if (count($conditions) > 0) {
+            $sql = " WHERE TRUE";
+            foreach ($conditions as $condition) {
+                $value = $this->mysqli->escape_string($condition[2]);
+                $sql .= " AND ({$condition[0]} {$condition[1]} '{$value}')";
+            }
+        }
+
+        $this->data = [];
+        if ($result = $this->mysqli->query($sql)) {
+            while ($datum = $result->fetch_assoc())
+                array_push($this->data, $datum);
+            $result->free();
+        }
+        return $this->data;
+    }
+
+    public function getData() {
+        return $this->data;
     }
 
     public function logNavigation() {
