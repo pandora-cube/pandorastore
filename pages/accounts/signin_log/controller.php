@@ -1,11 +1,12 @@
 <?php
+require_once("libraries/functions/template.php");
 require_once("models/log.php");
 
-$user_model = new User();
-$user_data = $user_model->getData();
+$log_model = new Log();
+$log_data = $log_model->loadSignIn();
 
-if (isset($user_data)) {
-    $log_model = new Log();
-    $log_data = $log_model->load("log_signin", [["UserNumber", "=", $user_data["UserNumber"]]]);
-}
+$template = new Template();
+$template->setAttribute("log_data", $log_data);
+$template->disableArea("topOrbit");
+$template->loadView("accounts/signin_log");
 ?>

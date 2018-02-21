@@ -53,6 +53,32 @@ class Log {
         return $this->data;
     }
 
+    public function loadSignIn() {
+        if ($this->userNumber == "NULL")
+            return [];
+
+        // 최근 90일 이내 로그인 성공 내역 불러오기
+        $sql = "
+            SELECT *
+            FROM {$this->table["log_signin"]}
+            WHERE
+                UserNumber = {$this->userNumber}
+                AND Success = 1
+                AND Time >= DATE_ADD(NOW(), INTERVAL -90 DAY)
+            ORDER BY Time DESC";
+
+        $this->data = [];
+        if ($result = $this->mysqli->query($sql)) {
+            while ($datum = $result->fetch_assoc()) {
+                $datum["Date"] = date("Y.m.d h:i", strtotime($datum["Time"]));
+                
+                array_push($this->data, $datum);
+            }
+            $result->free();
+        }
+        return $this->data;
+    }
+
     public function getData() {
         return $this->data;
     }
@@ -78,7 +104,7 @@ class Log {
         $country = geoip_country_name_by_addr($geoip, $_SERVER["REMOTE_ADDR"]);
 
         $sql = "
-            INSERT INTO {$this->table["log_signin"]} (UserNumber, UserIP, Success, Host, Browser, Platform, Country)
+            INSERT INTO {$this->table["log_signin"]} (UserNumber, IP, Success, Host, Browser, Platform, Country)
             VALUES ({$userNumber}, '{$this->userIP}', {$success}, '{$host}', '{$this->browser}', '{$this->platform}', '{$country}')";
         
         $this->mysqli->query($sql);
