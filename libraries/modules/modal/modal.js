@@ -81,8 +81,10 @@ function ModalOrigin() {
 */
 
 function Modal(name, url) {
+    var $bodyWrapper;
     var $area;
     var $modal;
+    var scrollTop;
 
     function ModalInner(openModal_, destroyModal_) {
         this.onPrepared = function onModalPrepared() { };
@@ -119,30 +121,47 @@ function Modal(name, url) {
     }
 
     function openModal(html) {
-        if ($("#" + name).length > 0) {
-            $("#" + name).get(0).close();
-        }
-
         $area
-            .appendTo("body")
             .fadeIn("slow")
             .get(0).onOpen();
+
+        scrollTop = window.pageYOffset;
+        $("html, body").addClass("scrollLock");
+        $bodyWrapper.css("top", -scrollTop);
     }
 
     function destroyModal() {
+        $("html, body").removeClass("scrollLock");
+        window.scrollTo(0, scrollTop);
+
+        $bodyWrapper.children()
+            .prependTo("body");
+        $bodyWrapper.remove();
+
         $area.get(0).onClose();
         $area.remove();
     }
 
     function createArea() {
+        if ($("#" + name).length > 0) {
+            $("#" + name).get(0).close();
+        }
+
+        $bodyWrapper = $("<div>")
+            .addClass("body-wrapper")
+            .prependTo("body");
+        $("body > *").not($bodyWrapper)
+            .prependTo($bodyWrapper);
+
         $area = $("<div>")
             .attr("id", name)
             .addClass("modalArea")
             .on("click", onCloseButtonClicked)
+            .appendTo("body")
             .each(function applyInnerClass() {
                 ModalInner.call(this, openModal, destroyModal);
             });
-        
+
         return $area;
     }
 
