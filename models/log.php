@@ -87,8 +87,8 @@ class Log {
         $url = $this->mysqli->escape_string("{$_SERVER["HTTP_HOST"]}{$_SERVER["REQUEST_URI"]}");
 
         $sql = "
-            INSERT INTO {$this->table["log_navigation"]} (UserNumber, UserIP, URL, Browser)
-            VALUES ({$this->userNumber}, '{$this->userIP}', '{$url}', '{$this->browser}')";
+            INSERT INTO {$this->table["log_navigation"]} (UserNumber, UserIP, URL, Browser, Platform)
+            VALUES ({$this->userNumber}, '{$this->userIP}', '{$url}', '{$this->browser}', '{$this->platform}')";
         
         $this->mysqli->query($sql);
     }
