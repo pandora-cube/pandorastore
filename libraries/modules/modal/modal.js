@@ -52,9 +52,12 @@ function Modal(name, url) {
         $("html, body").removeClass("scrollLock");
         window.scrollTo(0, scrollTop);
 
+        /*
         $bodyWrapper.children()
             .prependTo("body");
         $bodyWrapper.remove();
+        */
+        $bodyWrapper.css("top", "");
 
         $area.get(0).onClose();
         $area.remove();
@@ -65,11 +68,15 @@ function Modal(name, url) {
             $("#" + name).get(0).close();
         }
 
-        $bodyWrapper = $("<div>")
-            .addClass("body-wrapper")
-            .prependTo("body");
-        $("body > *").not($bodyWrapper)
-            .prependTo($bodyWrapper);
+        if ($(".body-wrapper").length === 0) {
+            $bodyWrapper = $("<div>")
+                .addClass("body-wrapper")
+                .prependTo("body");
+            $("body > *").not($bodyWrapper).not(".modalArea")
+                .prependTo($bodyWrapper);
+        } else {
+            $bodyWrapper = $(".body-wrapper");
+        }
 
         $area = $("<div>")
             .attr("id", name)
