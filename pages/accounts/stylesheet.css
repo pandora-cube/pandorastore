@@ -45,8 +45,8 @@
 #contents form input[type=email],
 #contents form input[type=password],
 #contents form input[type=number] {
-    width: calc(100% - .5em - 2px);
-    height: calc(2rem - 2px);
+    width: 100%;
+    height: 2rem;
     margin: 1em 0;
     padding-left: .5em;
     border: 1px solid #AAA;
@@ -104,7 +104,7 @@
 }
 
 #contents form .multi input {
-    width: calc(50% - 1em - 2px);
+    width: calc(50% - .5em);
 }
 #contents form .multi input:nth-child(2n+1) {
     float: left;
@@ -125,8 +125,8 @@
     text-align: center;
 }
 #contents form .radio-wrapper input[type=radio] + label {
-    width: calc(100% / 3 - 3px - .2em);
-    height: calc(100% - 2px);
+    width: calc(100% / 3 - .5em);
+    height: 100%;
     padding: 0;
 }
 #contents form .radio-wrapper input[type=radio] + label:nth-of-type(n+4) {
@@ -135,7 +135,7 @@
 
 #contents form textarea {
     display: block;
-    width: calc(100% - 1em - 2px);
+    width: 100%;
     height: 3em;
     margin: 1em 0;
     padding: .5em;

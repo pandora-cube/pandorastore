@@ -1,6 +1,7 @@
-@media screen and (min-width: 50rem) { /* for Desktop */
+@media screen and (min-width: 800px) { /* for Desktop */
     #contents-detail .modal {
-        width: 40rem;
+        box-sizing: content-box;
+        width: 700px;
     }
 }
 
@@ -12,7 +13,6 @@
     float: left;
     width: 10em;
     height: 10em;
-    line-height: 10em;
     border-radius: 2em;
     overflow: hidden;
     margin-right: 2em;
@@ -102,8 +102,8 @@
 }
 #contents-detail .reviewArea .write textarea {
     float: left;
-    width: calc(100% - 5em - 1em - 1px);
-    height: calc(5em - 2px - .4em);
+    width: calc(100% - 5em);
+    height: 5em;
     padding: .2em .5em;
     font-size: .9em;
     border: 1px solid #aaa;

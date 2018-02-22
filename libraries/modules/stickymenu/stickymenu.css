@@ -73,7 +73,6 @@
     position: relative;
     display: inline-block;
     height: 3em;
-    line-height: 3em;
     cursor: pointer;
     vertical-align: bottom;
     transition: background-color .5s;

@@ -23,6 +23,7 @@
     border-bottom: 2px solid #cdcece;
 }
 #contents  .contents-item {
+    box-sizing: content-box;
     display: inline-block;
     width: 10em;
     margin: .5em;
