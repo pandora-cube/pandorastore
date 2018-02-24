@@ -79,14 +79,15 @@
 				<div id="topOrbit" class="orbitArea">
 					<ul class="orbit">
 						<div class="slider">
+							<!-- 슬라이드의 이미지는 가로0.4:세로1 비율로 잘라서 업로드 해야 함-->
 							<!-- 슬라이드 1 -->
 							<li>
-								<img src="/WebTest/images/timg1.jpg" title="프로젝트 구독 안내" alt="ALT데이터"/>
+								<img src="이미지 주소" title="Test Slide 1" alt="This is test slide image."/>
 							</li>
 							
-							<!-- 슬라이드 1 -->
+							<!-- 슬라이드 2 -->
 							<li>
-								<img src="/WebTest/images/timg2.jpg" title="테스트 슬라이드" alt="ALT데이터" />
+								<img src="이미지 주소" title="Test Slide 2" alt="This is test slide image." />
 							</li>
 						</div>
 					</ul>
