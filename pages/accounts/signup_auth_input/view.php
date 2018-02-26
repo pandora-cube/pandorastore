@@ -26,7 +26,7 @@
                 <input id="AuthCode" name="authcode" type="text" placeholder="인증코드" />
                 <input type="submit" value="인증" />
             <?php endif; ?>
-            
+
             <?php if ($this->isEnabledArea("email-error")): ?>
                 <p>오류가 발생하여 인증 과정에 차질이 생겼습니다.</p>
                 <p>인증코드를 이메일로 받으신 경우 동봉된 링크를 통해 회원 가입을 완료해 주십시오.</p>
