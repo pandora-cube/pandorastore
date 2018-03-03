@@ -1,16 +1,22 @@
-$(document).ready(function onDocumentReady() {
-    function updateOrbitHeight() {
-        (function updateTopOrbitHeight() {
-            $(this).height($(this).find("ul.orbit").width() * 0.4);
-        }).call($("#topOrbit").get(0));
+function loadTopOrbitData(data) {
+    var $slideWrapper = $("header .slideArea .slideWrapper");
+    var i;
+
+    for (i = 0; i < data.length; i++) {
+        $("<img>")
+            .appendTo($("<div>")
+                .appendTo($slideWrapper)
+                .addClass("imageWrapper"))
+            .addClass("align-" + data[i].Position)
+            .attr("src", data[i].Image)
+            .attr("title", data[i].Summary)
+            .attr("alt", data[i].Description);
     }
 
-    (Orbit).call($("#topOrbit").get(0));
-
-    updateOrbitHeight();
-    $(window).on("resize", updateOrbitHeight);
-});
-
-function loadTopOrbitData(data) {
-    $("#topOrbit").get(0).load(data);
+    $slideWrapper.bxSlider({
+        auto: true,
+        autoControls: true,
+        stopAutoOnClick: true,
+        captions: true,
+    });
 }

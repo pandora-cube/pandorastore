@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/libraries/modules/stickymenu/stickymenu.css" />
-<link rel="stylesheet" href="/libraries/modules/orbit/orbit.css" />
+<link rel="stylesheet" href="/libraries/modules/bxSlider/jquery.bxslider.min.css" />
 <script src="/libraries/modules/stickymenu/stickymenu.js"></script>
-<script src="/libraries/modules/orbit/orbit.js"></script>
+<script src="/libraries/modules/bxSlider/jquery.bxslider.min.js"></script>
 <script src="/layouts/header/script.js"></script>
 
 <!-- 스킵 네비게이션 -->
@@ -105,5 +105,7 @@
 </div>
 <!-- 이미지 슬라이드 -->
 <?php if ($this->isEnabledArea("topOrbit")): ?>
-    <div id="topOrbit" class="orbitArea"></div>
+    <div class="slideArea">
+        <div class="slideWrapper"></div>
+    </div>
 <?php endif; ?>

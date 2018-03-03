@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/libraries/modules/bxSlider/jquery.bxslider.min.css" />
+<script src="/libraries/modules/bxSlider/jquery.bxslider.min.js"></script>
 <script src="/pages/contents/detail/script.js"></script>
 
 <div class="top">
@@ -18,7 +20,7 @@
 <div class="download"></div>
 
 <!-- 이미지 슬라이드 -->
-<div class="orbitArea"></div>
+<div class="slideArea"></div>
 
 <!-- 리뷰 -->
 <div class="reviewArea">

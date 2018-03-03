@@ -27,6 +27,7 @@ body {
     }
 }
 
+/* 링크, 버튼 UI */
 a, a:link {
     color: inherit;
     text-decoration: none;
@@ -35,7 +36,6 @@ a, a:link {
 a:hover {
     color: #8badc9;
 }
-
 button {
     background: none;
     border: 1px solid gray;
@@ -45,6 +45,7 @@ template {
     display: none;
 }
 
+/* 입력 폼 */
 input {
     font-size: 1em;
 }
@@ -57,17 +58,11 @@ textarea {
     -webkit-appearance: none;
     border-radius: 0;
 }
-
 textarea {
     font-family: inherit;
 }
 
-@media screen and (min-width: 50rem) { /* for Desktop */
-    .show-for-mobile {
-        display: none !important;
-    }
-}
-
+/* 웹 접근성 */
 #skip-nav {
     position: fixed;
     width: 100%;
@@ -80,7 +75,6 @@ textarea {
 #skip-nav:focus {
 	top: 0;
 }
-
 .blind {
     position: absolute;
     clip: rect(0 0 0 0);
@@ -89,7 +83,13 @@ textarea {
     margin: -1px;
     overflow: hidden;
 }
+@media screen and (min-width: 50rem) { /* for Desktop */
+    .show-for-mobile {
+        display: none !important;
+    }
+}
 
+/* 표 */
 .table_style_1 {
     width: 100%;
     max-width: 1000px;
@@ -108,6 +108,68 @@ textarea {
     border-bottom: 1px solid #aaa;
 }
 
+/* bxSlider */
+body .bx-wrapper {
+    margin-bottom: 20px;
+    text-align: center;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+body .bx-wrapper .bx-viewport .bx-caption {
+    position: absolute;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: inherit;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0);
+}
+body .bx-wrapper .bx-viewport .bx-caption span {
+    display: flex;
+    height: 100%;
+    padding: 0 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 2em;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+body .bx-wrapper .bx-viewport img {
+    width: 100%;
+    height: 100%;
+}
+body .bx-wrapper .bx-controls {
+    display: inline-block;
+}
+body .bx-wrapper .bx-controls .bx-controls-direction a {
+    z-index: 0 !important;
+}
+body .bx-wrapper .bx-controls .bx-pager,
+body .bx-wrapper .bx-controls .bx-controls-auto {
+    position: static;
+    width: auto !important;
+    height: 1em;
+    padding-top: 10px;
+}
+body .bx-wrapper .bx-controls .bx-pager {
+    float: left;
+}
+body .bx-wrapper .bx-controls .bx-pager .bx-pager-item {
+    vertical-align: top;
+}
+body .bx-wrapper .bx-controls .bx-controls-auto {
+    float: right;
+}
+body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
+    vertical-align: top;
+}
+
+/* 헤더 */
 header {
     background-color: white;
     margin-top: 10px;
@@ -329,6 +391,7 @@ header .menuArea .menu {
     }
 }
 
+/* 콘텐츠 */
 #contents {
     box-sizing: content-box;
     max-width: 1400px;
@@ -349,6 +412,7 @@ header .menuArea .menu {
     }
 }
 
+/* 푸터 */
 footer {
     background-color: #333;
 }

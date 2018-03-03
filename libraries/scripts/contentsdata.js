@@ -16,37 +16,41 @@ function loadContentsData(data, categoryName, tags) {
         });
     }
 
-    function loadOrbit($modal, contentsData) {
-        var orbitData = [];
-        var datum;
-        var images;
-        var orbit;
+    function loadSlide($modal, contentsData) {
+        var $slideArea = $modal.find(".slideArea");
+        var images = contentsData.Images;
         var i;
 
-        if (contentsData.Images.length === 0) {
-            datum = {};
-            datum.ID = 0;
-            datum.Image = "/images/dalchong.jpg";
-            datum.Summary = "등록된 이미지가 없습니다.";
-            datum.Actived = 1;
-            orbitData.push(datum);
+        if (images.length === 0) {
+            // 콘텐츠 이미지가 없을 시
+            $("<img>")
+                .appendTo($("<div>")
+                    .appendTo($slideArea)
+                    .addClass("imageWrapper"))
+                .attr("src", "/images/dalchong.jpg")
+                .attr("title", "등록된 이미지가 없습니다.");
+
+            $slideArea.bxSlider({
+                touchEnabled: false,
+                pager: false,
+                captions: true,
+            });
         } else {
-            images = contentsData.Images;
+            // 콘텐츠 이미지가 있을 시
             for (i = 0; i < images.length; i++) {
-                datum = {};
-                datum.ID = i;
-                datum.Image = images[i];
-                datum.Actived = 1;
-                orbitData.push(datum);
+                $("<img>")
+                    .appendTo($("<div>")
+                        .appendTo($slideArea)
+                        .addClass("imageWrapper"))
+                    .attr("src", images[i]);
             }
+
+            $slideArea.bxSlider({
+                auto: true,
+                autoControls: true,
+                stopAutoOnClick: true,
+            });
         }
-
-        orbit = $modal.find(".orbitArea").get(0);
-        (Orbit).call(orbit);
-        orbit.load(orbitData);
-
-        updateOrbitHeight(orbit);
-        $(window).on("resize", function () { updateOrbitHeight(orbit); });
     }
 
     function openModal() {
@@ -89,12 +93,8 @@ function loadContentsData(data, categoryName, tags) {
             $modal.get(0).open();
 
             loadThumbnail($modal, datum);
-            loadOrbit($modal, datum);
+            loadSlide($modal, datum);
         };
-    }
-
-    function updateOrbitHeight(orbit) {
-        $(orbit).height($(orbit).width() * 0.56);
     }
 
     function loadContentsItem($list, index, datum) {
