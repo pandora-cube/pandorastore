@@ -1,7 +1,7 @@
 @media screen and (min-width: 800px) { /* for Desktop */
     #contents-detail .modal {
         box-sizing: content-box;
-        width: 700px;
+        width: 720px;
     }
 }
 
