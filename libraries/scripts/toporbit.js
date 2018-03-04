@@ -6,7 +6,7 @@ function loadTopOrbitData(data) {
         $("<img>")
             .appendTo($("<div>")
                 .appendTo($slideWrapper)
-                .addClass("imageWrapper"))
+                .addClass("image-wrapper"))
             .addClass("align-" + data[i].Position)
             .attr("src", data[i].Image)
             .attr("title", data[i].Summary)

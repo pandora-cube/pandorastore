@@ -7,26 +7,14 @@ header .slideArea .bx-wrapper {
     margin-left: auto;
     margin-right: auto;
 }
-header .slideArea .imageWrapper::before {
-    content: '';
-    display: block;
-    padding-top: 40%;
+header .slideArea .bx-wrapper .bx-viewport .image-wrapper::before {
+    padding-top: 40%; /* 종횡비 5:2 */
 }
-header .slideArea .imageWrapper img {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: auto;
+header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-middle {
+    margin-top: 20%; /* 종횡비 5:2 */
 }
-header .slideArea .imageWrapper img.align-middle {
-    margin-top: 20%; /* 40% / 2 */
-    transform: translate(0, calc(-100% / 2));
-}
-header .slideArea .imageWrapper img.align-bottom {
-    margin-top: 40%;
-    transform: translate(0, -100%);
+header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
+    margin-top: 40%; /* 종횡비 5:2 */
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
     header .slideArea {

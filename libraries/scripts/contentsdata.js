@@ -17,7 +17,7 @@ function loadContentsData(data, categoryName, tags) {
     }
 
     function loadSlide($modal, contentsData) {
-        var $slideArea = $modal.find(".slideArea");
+        var $slideWrapper = $modal.find(".slideArea .slideWrapper");
         var images = contentsData.Images;
         var i;
 
@@ -25,12 +25,13 @@ function loadContentsData(data, categoryName, tags) {
             // 콘텐츠 이미지가 없을 시
             $("<img>")
                 .appendTo($("<div>")
-                    .appendTo($slideArea)
-                    .addClass("imageWrapper"))
+                    .appendTo($slideWrapper)
+                    .addClass("image-wrapper"))
+                .addClass("align-middle")
                 .attr("src", "/images/dalchong.jpg")
                 .attr("title", "등록된 이미지가 없습니다.");
 
-            $slideArea.bxSlider({
+            $slideWrapper.bxSlider({
                 touchEnabled: false,
                 pager: false,
                 captions: true,
@@ -40,12 +41,13 @@ function loadContentsData(data, categoryName, tags) {
             for (i = 0; i < images.length; i++) {
                 $("<img>")
                     .appendTo($("<div>")
-                        .appendTo($slideArea)
-                        .addClass("imageWrapper"))
+                        .appendTo($slideWrapper)
+                        .addClass("image-wrapper"))
+                    .addClass("align-middle")
                     .attr("src", images[i]);
             }
 
-            $slideArea.bxSlider({
+            $slideWrapper.bxSlider({
                 auto: true,
                 autoControls: true,
                 stopAutoOnClick: true,

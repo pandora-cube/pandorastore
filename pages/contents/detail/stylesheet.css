@@ -61,8 +61,14 @@
     margin-left: .5em;
 }
 
-#contents-detail .orbitArea {
+#contents-detail .slideArea {
     font-size: .7em;
+}
+#contents-detail .slideArea .bx-wrapper .bx-viewport .image-wrapper::before {
+    padding-top: 56.25%; /* 종횡비 16:9 */
+}
+#contents-detail .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-middle {
+    margin-top: 28.125%; /* 종횡비 16:9 */
 }
 
 #contents-detail .reviewArea {

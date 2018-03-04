@@ -20,7 +20,9 @@
 <div class="download"></div>
 
 <!-- 이미지 슬라이드 -->
-<div class="slideArea"></div>
+<div class="slideArea">
+    <div class="slideWrapper"></div>
+</div>
 
 <!-- 리뷰 -->
 <div class="reviewArea">
