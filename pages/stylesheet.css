@@ -83,6 +83,11 @@ textarea {
     margin: -1px;
     overflow: hidden;
 }
+@media screen and (max-width: 50rem) { /* for Mobile */
+    .show-for-desktop {
+        display: none !important;
+    }
+}
 @media screen and (min-width: 50rem) { /* for Desktop */
     .show-for-mobile {
         display: none !important;
@@ -246,7 +251,7 @@ header .search {
 }
 header .search input[type=text] {
     float: left;
-    width: calc(100% - 5rem);
+    width: calc(100% - 2rem);
     height: 2rem;
     padding-left: .7rem;
     border: 1px solid #AAA;
@@ -254,9 +259,10 @@ header .search input[type=text] {
 }
 header .search input[type=submit] {
     float: left;
-    width: 5rem;
+    width: 2rem;
     height: 2rem;
-    font-weight: bold;
+    font-family: 'Material Icons';
+    font-size: 1.5em;
     color: white;
     background-color: #AAA;
     border: none;
@@ -390,6 +396,8 @@ header .menuArea .menu {
     }
     header .search input[type=submit] {
         width: 3rem;
+        font-size: 1em;
+        font-weight: bold;
     }
     header .accounts {
         display: none;

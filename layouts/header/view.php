@@ -17,7 +17,8 @@
     <!-- 검색 -->
     <form class="search" action="/" method="get">
         <input name="search" type="text" placeholder="검색어를 입력해 주세요." />
-        <input type="submit" value="검색" />
+        <input type="submit" class="show-for-desktop" value="&#xE8B6;" />
+        <input type="submit" class="show-for-mobile" value="검색" />
     </form>
 
     <div class="accounts">
