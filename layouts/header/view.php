@@ -13,9 +13,7 @@
     <!-- 모바일용 검색폼 열기 버튼 -->
     <button class="open-search" title="검색"></button>
     <!-- 로고 -->
-    <h1>
-        <a href="/">판도라스토어<i class="material-icons">&#xE545;</i></a>
-    </h1>
+    <h1><a href="/"><i class="material-icons">&#xE545;</i>판도라스토어</a></h1>
     <!-- 검색 -->
     <form class="search" action="/" method="get">
         <input name="search" type="text" placeholder="검색어를 입력해 주세요." />
@@ -30,12 +28,8 @@
         <?php endif; ?>
         <?php if ($this->isEnabledArea("user-button")): ?>
             <!-- 사용자 메뉴 버튼 -->
-            <button class="user-menu-button closed">
-                <i class="material-icons">&#xE813;</i>
-            </button>
-            <button class="user-menu-button opened">
-                <i class="material-icons">&#xE815;</i>
-            </button>
+            <button class="user-menu-button closed"><i class="material-icons">&#xE813;</i></button>
+            <button class="user-menu-button opened"><i class="material-icons">&#xE815;</i></button>
             <!-- 사용자 메뉴 -->
             <div class="user-menu">
                 <div class="arrow">
