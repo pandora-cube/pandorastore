@@ -14,7 +14,7 @@
     <button class="open-search" title="검색"></button>
     <!-- 로고 -->
     <h1>
-        <a href="/">판도라스토어</a>
+        <a href="/">판도라스토어<i class="material-icons">&#xE545;</i></a>
     </h1>
     <!-- 검색 -->
     <form class="search" action="/" method="get">
