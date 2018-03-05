@@ -293,6 +293,7 @@ header .accounts .signup:hover {
     background-color: #8badc9;
 }
 header .accounts .user-menu-button {
+    font-size: 2rem;
     border: none;
     transition: color .5s, background-color .5s;
     cursor: pointer;
@@ -308,8 +309,7 @@ header .accounts .user-menu-button.opened {
     color: #8badc9;
 }
 header .accounts .user-menu-button i {
-    font-size: 2rem;
-    vertical-align: middle;
+    display: block;
 }
 header .accounts .user-menu {
     display: none;
