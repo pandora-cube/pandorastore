@@ -287,23 +287,29 @@ header .accounts .signup {
     color: #8badc9;
     transition: color .5s, background-color .5s;
 }
-header .accounts .user-menu-button {
-    width: 32px;
-    height: 32px;
-    text-indent: -9999px;
-    background-image: url("/images/icons/user.png");
-    background-size: 32px;
-    background-repeat: no-repeat;
-    background-color: #aaa;
-    border: none;
-    transition: background-color .5s;
-    cursor: pointer;
-}
 header .accounts .signin:hover,
-header .accounts .signup:hover,
-header .accounts .user-menu-button:hover {
+header .accounts .signup:hover {
     color: white;
     background-color: #8badc9;
+}
+header .accounts .user-menu-button {
+    border: none;
+    transition: color .5s, background-color .5s;
+    cursor: pointer;
+}
+header .accounts .user-menu-button.closed {
+    color: #aaa;
+}
+header .accounts .user-menu-button.closed:hover {
+    color: #8badc9;
+}
+header .accounts .user-menu-button.opened {
+    display: none;
+    color: #8badc9;
+}
+header .accounts .user-menu-button i {
+    font-size: 2rem;
+    vertical-align: middle;
 }
 header .accounts .user-menu {
     display: none;

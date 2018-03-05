@@ -5,6 +5,7 @@
 
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="/fonts/NotoSansKR/NotoSansKR-Hestia.css" />
+<link rel="stylesheet" href="/fonts/MaterialIcons/MaterialIcons.css" />
 <link rel="stylesheet" href="/pages/stylesheet.css" />
 
 <script src="/libraries/jquery.js"></script>
