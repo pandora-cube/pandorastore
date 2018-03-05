@@ -295,6 +295,7 @@ header .accounts .signup:hover {
 header .accounts .user-menu-button {
     font-size: 2rem;
     border: none;
+    outline: none;
     transition: color .5s, background-color .5s;
     cursor: pointer;
 }
