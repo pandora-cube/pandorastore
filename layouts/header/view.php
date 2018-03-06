@@ -28,11 +28,11 @@
             <a class="signup" href="/accounts/signup">회원가입</a>
         <?php endif; ?>
         <?php if ($this->isEnabledArea("user-button")): ?>
-            <!-- 사용자 메뉴 버튼 -->
-            <button class="user-menu-button closed"><i class="material-icons">&#xE813;</i></button>
-            <button class="user-menu-button opened"><i class="material-icons">&#xE815;</i></button>
-            <!-- 사용자 메뉴 -->
-            <div class="user-menu">
+            <!-- 계정 버튼 -->
+            <button class="accounts-menu-button closed"><i class="material-icons">&#xE813;</i></button>
+            <button class="accounts-menu-button opened"><i class="material-icons">&#xE815;</i></button>
+            <!-- 계정 메뉴 -->
+            <div class="accounts-menu user-overlay">
                 <div class="arrow">
                     <div class="line"></div>
                     <div class="background"></div>

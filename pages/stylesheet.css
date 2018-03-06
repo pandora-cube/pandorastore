@@ -298,27 +298,27 @@ header .accounts .signup:hover {
     color: white;
     background-color: #8badc9;
 }
-header .accounts .user-menu-button {
+header .accounts .accounts-menu-button {
     font-size: 2rem;
     border: none;
     outline: none;
     transition: color .5s, background-color .5s;
     cursor: pointer;
 }
-header .accounts .user-menu-button.closed {
+header .accounts .accounts-menu-button.closed {
     color: #aaa;
 }
-header .accounts .user-menu-button.closed:hover {
+header .accounts .accounts-menu-button.closed:hover {
     color: #8badc9;
 }
-header .accounts .user-menu-button.opened {
+header .accounts .accounts-menu-button.opened {
     display: none;
     color: #8badc9;
 }
-header .accounts .user-menu-button i {
+header .accounts .accounts-menu-button i {
     display: block;
 }
-header .accounts .user-menu {
+header .accounts .user-overlay {
     display: none;
     position: absolute;
     width: 10em;
@@ -329,7 +329,7 @@ header .accounts .user-menu {
     background-color: white;
     border: 1px solid #aaa;
 }
-header .accounts .user-menu .arrow > div {
+header .accounts .user-overlay .arrow > div {
     display: block;
     position: absolute;
     content: '';
@@ -340,23 +340,23 @@ header .accounts .user-menu .arrow > div {
     border-left: .5em solid transparent;
     border-right: .5em solid transparent;
 }
-header .accounts .user-menu .arrow > .line {
+header .accounts .user-overlay .arrow > .line {
     transform: translate(-50%, 0);
     border-bottom: .5em solid #aaa;
 }
-header .accounts .user-menu .arrow > .background {
+header .accounts .user-overlay .arrow > .background {
     transform: translate(-50%, 1px);
     border-bottom: .5em solid white;
 }
-header .accounts .user-menu .container {
+header .accounts .user-overlay .container {
     list-style: none;
 }
-header .accounts .user-menu .container > li > a {
+header .accounts .user-overlay .container > li > a {
     display: block;
     padding: .3em 0;
     text-align: center;
 }
-header .accounts .user-menu.on {
+header .accounts .user-overlay.on {
     display: block;
 }
 header .menuArea .menu {

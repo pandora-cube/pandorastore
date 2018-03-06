@@ -4,19 +4,19 @@ $(document).ready(function onDocumentReady() {
     });
 
     // 사용자 메뉴
-    $(".user-menu-button").click(function openUserMenu() {
-        var $menu = $(this).siblings(".user-menu");
+    $(".accounts-menu-button").click(function openUserMenu() {
+        var $menu = $(this).siblings(".accounts-menu");
         if ($menu.css("display") !== "block") { // 사용자메뉴가 닫혀 있는 경우
-            $(".user-menu-button.closed").hide();
-            $(".user-menu-button.opened").show();
+            $(".accounts-menu-button.closed").hide();
+            $(".accounts-menu-button.opened").show();
             $menu.fadeIn();
         }
     });
     $(document).mouseup(function closeUserMenu(e) {
-        var $menu = $(".user-menu");
+        var $menu = $(".accounts-menu");
         if ($menu.css("display") === "block" && $menu.has(e.target).length === 0) { // 열려 있는 사용자 메뉴 바깥을 클릭한 경우
-            $(".user-menu-button.closed").show();
-            $(".user-menu-button.opened").hide();
+            $(".accounts-menu-button.closed").show();
+            $(".accounts-menu-button.opened").hide();
             $menu.fadeOut();
         }
     });
