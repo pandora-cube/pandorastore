@@ -60,6 +60,14 @@ function loadContentsData(data, categoryName, tags) {
         var $modal = Modal("contents-detail", "/contents/detail");
         var genres = datum.Genres.join(", ");
         var platforms = datum.Platforms.join(", ");
+        var i;
+        var url;
+        var text;
+        var downloadData = [
+            ["DownloadURL_Android", "Android"],
+            ["DownloadURL_iOS", "iOS"],
+            ["DownloadURL", "기타OS"],
+        ];
 
         $modal.data("identifier", datum.Identifier);
         $modal.get(0).onPrepared = function onModalPrepared() {
@@ -69,23 +77,20 @@ function loadContentsData(data, categoryName, tags) {
             $modal.find(".summary .platforms").text(platforms);
             $modal.find(".reviewArea .write input[name=content]").val(datum.Identifier);
 
-            if (datum.DownloadURL_Android.length > 0) {
-                $("<a>")
-                    .text("Android")
-                    .attr("href", datum.DownloadURL_Android)
-                    .appendTo($modal.find(".download"));
-            }
-            if (datum.DownloadURL_iOS.length > 0) {
-                $("<a>")
-                    .text("iOS")
-                    .attr("href", datum.DownloadURL_iOS)
-                    .appendTo($modal.find(".download"));
-            }
-            if (datum.DownloadURL.length > 0) {
-                $("<a>")
-                    .text("기타OS")
-                    .attr("href", datum.DownloadURL)
-                    .appendTo($modal.find(".download"));
+            for (i = 0; i < downloadData.length; i++) {
+                url = datum[downloadData[i][0]];
+                text = downloadData[i][1];
+
+                if (url.length > 0) {
+                    if (url.indexOf("http://") !== 0 && url.indexOf("https://") !== 0) {
+                        url = "/contents/" + datum.Identifier + "/" + url;
+                    }
+
+                    $("<a>")
+                        .text(text)
+                        .attr("href", url)
+                        .appendTo($modal.find(".download"));
+                }
             }
 
             $modal.get(0).onClose = function onModalClose() {
