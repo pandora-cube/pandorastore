@@ -13,7 +13,7 @@
     <!-- 모바일용 검색폼 열기 버튼 -->
     <button class="open-search" title="검색"></button>
     <!-- 로고 -->
-    <h1><a href="/">판도라스토어</a></h1>
+    <h1><a href="/"><?=$this->getAttribute("LogoText")?></a></h1>
     <!-- 검색 -->
     <form class="search" action="/" method="get">
         <input name="search" type="text" placeholder="검색어를 입력해 주세요." />
