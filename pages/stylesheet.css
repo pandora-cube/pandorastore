@@ -325,6 +325,7 @@ header .user-menu button i {
 header .user-menu .overlay {
     display: none;
     position: absolute;
+    z-index: 1;
     transform: translate(-100%, 0);
     margin-top: 40px;
     white-space: nowrap;
