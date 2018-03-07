@@ -24,13 +24,17 @@ class Messages {
 
     public function load($receiverNumber, $onlyUnread) {
         $receiverNumber = (isset($receiverNumber)) ? intval($receiverNumber) : $this->userNumber;
-        $conRead = ($onlyUnread) ? "`Read` = 0" : "TRUE";
+        $conRead = ($onlyUnread) ? "a.Read = 0" : "TRUE";
 
         $sql = "
-            SELECT *
-            FROM {$this->table["messages"]}
-            WHERE ReceiverNumber = {$receiverNumber} AND {$conRead} AND Deleted = 0
-            ORDER BY SendedTime DESC";
+            SELECT
+                a.*,
+                b.Nickname AS SenderNickname
+            FROM {$this->table["messages"]} a
+            LEFT JOIN {$this->table["users"]} b
+                ON a.SenderNumber = b.UserNumber
+            WHERE a.ReceiverNumber = {$receiverNumber} AND {$conRead} AND a.Deleted = 0
+            ORDER BY a.SendedTime DESC";
 
         $this->data = [];
         if ($result = $this->mysqli->query($sql)) {

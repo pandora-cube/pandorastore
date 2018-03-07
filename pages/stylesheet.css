@@ -355,13 +355,16 @@ header .user-menu .overlay .arrow > .background {
 header .user-menu .overlay .container {
     list-style: none;
 }
-header .user-menu .overlay .container > li > a {
+header .user-menu .overlay .container > li > a,
+header .user-menu .overlay .container > li > span {
     display: block;
     padding: .3em .7em;
-    text-align: center;
 }
 header .user-menu .overlay.on {
     display: block;
+}
+header .user-menu .accounts-menu .container {
+    text-align: center;
 }
 header .menuArea .menu {
     max-width: 1400px;
