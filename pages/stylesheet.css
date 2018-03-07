@@ -325,8 +325,7 @@ header .user-menu button i {
 header .user-menu .overlay {
     display: none;
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-100%, 0);
     margin-top: 40px;
     white-space: nowrap;
     color: #aaa;
@@ -339,7 +338,6 @@ header .user-menu .overlay .arrow > div {
     content: '';
     width: 0;
     height: 0;
-    left: 50%;
     margin-top: -.5em;
     border-left: .5em solid transparent;
     border-right: .5em solid transparent;
@@ -363,8 +361,18 @@ header .user-menu .overlay .container > li > span {
 header .user-menu .overlay.on {
     display: block;
 }
-header .user-menu .accounts-menu .container {
+header .user-menu .message-overlay {
+    left: 4rem;
+}
+header .user-menu .message-overlay .arrow > div {
+    right: calc(2rem - 1px);
+}
+header .user-menu .accounts-menu {
+    left: 2rem;
     text-align: center;
+}
+header .user-menu .accounts-menu .arrow > div {
+    right: -1px;
 }
 header .menuArea .menu {
     max-width: 1400px;
