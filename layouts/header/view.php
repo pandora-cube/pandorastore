@@ -21,26 +21,43 @@
         <input type="submit" class="show-for-mobile" value="검색" />
     </form>
 
-    <div class="accounts">
+    <div class="user-menu">
         <?php if ($this->isEnabledArea("signin")): ?>
             <!-- 로그인 버튼 -->
             <a class="signin" href="/accounts/signin">로그인</a>
             <a class="signup" href="/accounts/signup">회원가입</a>
         <?php endif; ?>
         <?php if ($this->isEnabledArea("user-button")): ?>
-            <!-- 계정 버튼 -->
-            <button class="accounts-menu-button closed"><i class="material-icons">&#xE813;</i></button>
-            <button class="accounts-menu-button opened"><i class="material-icons">&#xE815;</i></button>
-            <!-- 계정 메뉴 -->
-            <div class="accounts-menu user-overlay">
-                <div class="arrow">
-                    <div class="line"></div>
-                    <div class="background"></div>
+            <div class="user-menu-item">
+                <!-- 메시지 버튼 -->
+                <button class="message-button closed"><i class="material-icons">&#xE7F5;</i></button>
+                <button class="message-button opened"><i class="material-icons">&#xE7F5;</i></button>
+                <!-- 메시지 오버레이 -->
+                <div class="message-overlay overlay">
+                    <div class="arrow">
+                        <div class="line"></div>
+                        <div class="background"></div>
+                    </div>
+                    <ul class="container">
+                    </ul>
                 </div>
-                <ul class="container">
-                    <li><a href="/accounts/signin_log">로그인 내역</a></li>
-                    <li><a href="/accounts/signout">로그아웃</a></li>
-                </ul>
+            </div>
+
+            <div class="user-menu-item">
+                <!-- 계정 버튼 -->
+                <button class="accounts-menu-button closed"><i class="material-icons">&#xE813;</i></button>
+                <button class="accounts-menu-button opened"><i class="material-icons">&#xE815;</i></button>
+                <!-- 계정 메뉴 -->
+                <div class="accounts-menu overlay">
+                    <div class="arrow">
+                        <div class="line"></div>
+                        <div class="background"></div>
+                    </div>
+                    <ul class="container">
+                        <li><a href="/accounts/signin_log">로그인 내역</a></li>
+                        <li><a href="/accounts/signout">로그아웃</a></li>
+                    </ul>
+                </div>
             </div>
         <?php endif; ?>
     </div>

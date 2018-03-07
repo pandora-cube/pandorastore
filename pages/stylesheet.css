@@ -272,11 +272,14 @@ header .search input[type=submit] {
 header .search input[type=submit]:hover {
     background-color: #8badc9;
 }
-header .accounts {
+header .user-menu {
     float: right;
+}
+header .user-menu .user-menu-item {
+    float: left;
     position: relative;
 }
-header .accounts .signin {
+header .user-menu .signin {
     display: inline-block;
     line-height: calc(2rem - 2px);
     padding: 0 1em;
@@ -285,7 +288,7 @@ header .accounts .signin {
     border: 1px solid #8badc9;
     transition: color .5s, background-color .5s;
 }
-header .accounts .signup {
+header .user-menu .signup {
     display: inline-block;
     line-height: 2rem;
     padding: 0 1em;
@@ -293,43 +296,44 @@ header .accounts .signup {
     color: #8badc9;
     transition: color .5s, background-color .5s;
 }
-header .accounts .signin:hover,
-header .accounts .signup:hover {
+header .user-menu .signin:hover,
+header .user-menu .signup:hover {
     color: white;
     background-color: #8badc9;
 }
-header .accounts .accounts-menu-button {
+header .user-menu button {
+    float: left;
     font-size: 2rem;
     border: none;
     outline: none;
     transition: color .5s, background-color .5s;
     cursor: pointer;
 }
-header .accounts .accounts-menu-button.closed {
+header .user-menu button.closed {
     color: #aaa;
 }
-header .accounts .accounts-menu-button.closed:hover {
+header .user-menu button.closed:hover {
     color: #8badc9;
 }
-header .accounts .accounts-menu-button.opened {
+header .user-menu button.opened {
     display: none;
     color: #8badc9;
 }
-header .accounts .accounts-menu-button i {
+header .user-menu button i {
     display: block;
 }
-header .accounts .user-overlay {
+header .user-menu .overlay {
     display: none;
     position: absolute;
-    width: 10em;
     left: 50%;
     transform: translate(-50%, 0);
-    margin-top: .7em;
+    margin-top: 40px;
+    white-space: nowrap;
     color: #aaa;
     background-color: white;
     border: 1px solid #aaa;
 }
-header .accounts .user-overlay .arrow > div {
+header .user-menu .overlay .arrow > div {
     display: block;
     position: absolute;
     content: '';
@@ -340,23 +344,23 @@ header .accounts .user-overlay .arrow > div {
     border-left: .5em solid transparent;
     border-right: .5em solid transparent;
 }
-header .accounts .user-overlay .arrow > .line {
+header .user-menu .overlay .arrow > .line {
     transform: translate(-50%, 0);
     border-bottom: .5em solid #aaa;
 }
-header .accounts .user-overlay .arrow > .background {
+header .user-menu .overlay .arrow > .background {
     transform: translate(-50%, 1px);
     border-bottom: .5em solid white;
 }
-header .accounts .user-overlay .container {
+header .user-menu .overlay .container {
     list-style: none;
 }
-header .accounts .user-overlay .container > li > a {
+header .user-menu .overlay .container > li > a {
     display: block;
-    padding: .3em 0;
+    padding: .3em .7em;
     text-align: center;
 }
-header .accounts .user-overlay.on {
+header .user-menu .overlay.on {
     display: block;
 }
 header .menuArea .menu {
@@ -399,7 +403,7 @@ header .menuArea .menu {
         font-size: 1em;
         font-weight: bold;
     }
-    header .accounts {
+    header .user-menu {
         display: none;
     }
 }
