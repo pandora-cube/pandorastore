@@ -43,7 +43,7 @@
 	<div id="contents">
 	    <div id="gotohome">
 	      <h2>탈퇴되었습니다.</h2>
-	      <a href="http://store.p-cube.kr/">홈으로 이동</a>
+	      <a href="http://p-store.kr/">홈으로 이동</a>
 	    </div>
 	</div>
 

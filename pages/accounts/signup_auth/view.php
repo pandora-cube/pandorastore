@@ -17,7 +17,7 @@
     <p style="margin: 0;">서성범 올림.</p>
 </div>
 <div style="width: 580px; margin: 0 auto; padding: 15px 10px; text-align: center; color: #aaa; background-color: #333;">
-    <img src="http://store.p-cube.kr/images/logo_dark.png" alt="판도라스토어 로고" style="width: 200px;" />
+    <img src="http://p-store.kr/images/logo_dark.png" alt="판도라스토어 로고" style="width: 200px;" />
     <p style="margin: 0;">Copyright ⓒ2017 teamVENT. All rights reserved.</p>
 </div>
 </div>

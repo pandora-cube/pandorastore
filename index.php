@@ -11,7 +11,7 @@
  *      Coded by Seongbum @ All rights reserved.
  *          sBum.Seo@gmail.com
  *          http://seongbum.com
- *          http://store.p-cube.kr
+ *          http://p-store.kr
  * 
  */
 
