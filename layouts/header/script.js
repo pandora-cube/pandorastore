@@ -60,7 +60,7 @@ $(document).ready(function onDocumentReady() {
 
                 $container
                     .append(
-                        $("<li>").append($("<span>").html("<b>" + nickname + "</b>: " + data[i].Subject)));
+                        $("<li>").append($("<span>").html("<b>" + nickname + "</b>: " + data[i].Result)));
             }
 
             if (data.length === 0) {

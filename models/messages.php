@@ -45,17 +45,16 @@ class Messages {
         return $this->data;
     }
 
-    public function send($receiverNumber, $subject, $result, $replyEnabled = true) {
+    public function send($receiverNumber, $result, $replyEnabled = true) {
         $receiverNumber = intval($receiverNumber);
-        $subject = $this->mysqli->escape_string($subject);
         $result = $this->mysqli->escape_string($result);
         $replyEnabled = intval($replyEnabled);
 
         $sql = "
             INSERT INTO {$this->table["messages"]}
-                (SenderNumber, SenderIP, ReceiverNumber, Subject, Result, ReplyEnabled)
+                (SenderNumber, SenderIP, ReceiverNumber, Result, ReplyEnabled)
             VALUES
-                ({$this->userNumber}, '{$this->userIP}', '{$receiverNumber}', '{$subject}', '{$result}', {$replyEnabled})";
+                ({$this->userNumber}, '{$this->userIP}', '{$receiverNumber}', '{$result}', {$replyEnabled})";
         $this->mysqli->query($sql);
     }
 
