@@ -36,7 +36,7 @@ $mailView = $mailTemplate->loadView("accounts/signup_auth", false);
 
 // 인증 메일 발송
 $mail = new Mail();
-$mail->setSender("판도라스토어", "store@p-cube.kr");
+$mail->setSender("판도라스토어", "authentication@p-store.kr");
 $mail->setReceiver($_POST["Nickname"], $_POST["EMail"]);
 $mail->setSubject("판도라스토어 인증 코드입니다.");
 $mail->setMessage($mailView);
