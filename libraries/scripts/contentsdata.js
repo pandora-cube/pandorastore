@@ -60,6 +60,7 @@ function loadContentsData(data, categoryName, tags) {
         var $modal = Modal("contents-detail", "/contents/detail");
         var genres = datum.Genres.join(", ");
         var platforms = datum.Platforms.join(", ");
+        var originalTitle = $("title").text();
         var i;
         var url;
         var text;
@@ -71,6 +72,8 @@ function loadContentsData(data, categoryName, tags) {
 
         $modal.data("identifier", datum.Identifier);
         $modal.get(0).onPrepared = function onModalPrepared() {
+            $("title").text(datum.Title + " - " + originalTitle);
+
             $modal.find(".summary .title").text(datum.Title);
             $modal.find(".summary .creator").text(datum.Creator);
             $modal.find(".summary .genres").text(genres);
@@ -95,6 +98,7 @@ function loadContentsData(data, categoryName, tags) {
 
             $modal.get(0).onClose = function onModalClose() {
                 window.location.hash = "#_";
+                $("title").text(originalTitle);
             };
 
             $modal.get(0).open();
