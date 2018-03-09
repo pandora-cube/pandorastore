@@ -113,6 +113,21 @@ textarea {
     border-bottom: 1px solid #aaa;
 }
 
+/* 뱃지 */
+.badge {
+    padding: .2em;
+    font-size: .8em;
+    color: white;
+    background-color: #ff0000;
+    border-radius: 1em;
+}
+.badge.attached {
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+}
+
 /* bxSlider */
 body .bx-wrapper {
     margin-bottom: 20px;
