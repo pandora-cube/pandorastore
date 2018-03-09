@@ -115,10 +115,10 @@ textarea {
 
 /* 뱃지 */
 .badge {
-    padding: .2em;
+    padding: .1em .4em;
     font-size: .8em;
     color: white;
-    background-color: #ff0000;
+    background-color: #f9838c;
     border-radius: 1em;
 }
 .badge.attached {
@@ -319,14 +319,13 @@ header .user-menu .signup:hover {
 header .user-menu button {
     float: left;
     border: none;
-    outline: none;
     transition: color .5s, background-color .5s;
     cursor: pointer;
 }
-header .user-menu button.closed {
+header .user-menu button i.closed {
     color: #aaa;
 }
-header .user-menu button.closed:hover {
+header .user-menu button:hover i.closed {
     color: #8badc9;
 }
 header .user-menu button i {

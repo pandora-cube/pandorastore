@@ -33,7 +33,6 @@
                 <button class="message-button">
                     <i class="material-icons closed">&#xE7F5;</i>
                     <i class="material-icons opened">&#xE7F5;</i>
-                    <span class="badge attached">10</span>
                 </button>
                 <!-- 메시지 오버레이 -->
                 <div class="message-overlay overlay">
@@ -48,7 +47,7 @@
 
             <div class="user-menu-item">
                 <!-- 계정 버튼 -->
-                <button class="accounts-menu-button closed">
+                <button class="accounts-menu-button">
                     <i class="material-icons closed">&#xE813;</i>
                     <i class="material-icons opened">&#xE815;</i>
                 </button>

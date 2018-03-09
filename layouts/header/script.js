@@ -72,7 +72,13 @@ $(document).ready(function onDocumentReady() {
                     $("<li>").append(
                         $("<span>").text("새 메시지가 없습니다.")));
             } else {
+                // 기존 뱃지 삭제
+                $(".user-menu .message-button .badge").remove();
                 // 새 메시지 수 뱃지 추가
+                $(".user-menu .message-button").append(
+                    $("<span>")
+                        .addClass("badge attached")
+                        .text(data.length));
             }
         }).fail(function onFail() {
             $container.empty().append(
