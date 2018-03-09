@@ -30,8 +30,11 @@
         <?php if ($this->isEnabledArea("user-button")): ?>
             <div class="user-menu-item">
                 <!-- 메시지 버튼 -->
-                <button class="message-button closed"><i class="material-icons">&#xE7F5;</i></button>
-                <button class="message-button opened"><i class="material-icons">&#xE7F5;</i></button>
+                <button class="message-button">
+                    <i class="material-icons closed">&#xE7F5;</i>
+                    <i class="material-icons opened">&#xE7F5;</i>
+                    <span class="badge attached">10</span>
+                </button>
                 <!-- 메시지 오버레이 -->
                 <div class="message-overlay overlay">
                     <div class="arrow">
@@ -45,8 +48,10 @@
 
             <div class="user-menu-item">
                 <!-- 계정 버튼 -->
-                <button class="accounts-menu-button closed"><i class="material-icons">&#xE813;</i></button>
-                <button class="accounts-menu-button opened"><i class="material-icons">&#xE815;</i></button>
+                <button class="accounts-menu-button closed">
+                    <i class="material-icons closed">&#xE813;</i>
+                    <i class="material-icons opened">&#xE815;</i>
+                </button>
                 <!-- 계정 메뉴 -->
                 <div class="accounts-menu overlay">
                     <div class="arrow">

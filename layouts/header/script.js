@@ -6,14 +6,14 @@ $(document).ready(function onDocumentReady() {
     // 사용자 메뉴 공통 콜백
     function openUserOverlay($overlay) {
         if ($overlay.css("display") !== "block") { // 오버레이가 닫혀 있는 경우
-            $overlay.siblings("button.closed").hide();
-            $overlay.siblings("button.opened").show();
+            $overlay.siblings("button").find("i.closed").hide();
+            $overlay.siblings("button").find("i.opened").show();
             $overlay.addClass("opened").fadeIn();
         }
     }
     function closeUserOverlay($overlay) {
-        $overlay.siblings("button.closed").show();
-        $overlay.siblings("button.opened").hide();
+        $overlay.siblings("button").find("i.closed").show();
+        $overlay.siblings("button").find("i.opened").hide();
         $overlay.removeClass("opened").fadeOut();
     }
 
@@ -67,11 +67,12 @@ $(document).ready(function onDocumentReady() {
                         $("<span>").html("<b>" + nickname + "</b>: " + result)));
             }
 
-            // 새 메시지가 없는 경우
-            if (data.length === 0) {
+            if (data.length === 0) { // 새 메시지가 없는 경우
                 $container.append(
                     $("<li>").append(
                         $("<span>").text("새 메시지가 없습니다.")));
+            } else {
+                // 새 메시지 수 뱃지 추가
             }
         }).fail(function onFail() {
             $container.empty().append(
