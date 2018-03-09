@@ -34,10 +34,9 @@ $(document).ready(function onDocumentReady() {
             return;
         }
 
-        $container
-            .empty()
-            .append(
-                $("<li>").append($("<span>").text("메시지를 불러오는 중입니다.")));
+        $container.empty().append(
+            $("<li>").append(
+                $("<span>").text("메시지를 불러오는 중입니다.")));
 
         if (open) {
             openUserOverlay($overlay);
@@ -49,6 +48,7 @@ $(document).ready(function onDocumentReady() {
             var data = JSON.parse(json);
             var i;
             var nickname;
+            var result;
 
             $container.empty();
 
@@ -58,21 +58,22 @@ $(document).ready(function onDocumentReady() {
                     nickname = "미상";
                 }
 
-                $container
-                    .append(
-                        $("<li>").append($("<span>").html("<b>" + nickname + "</b>: " + data[i].Result)));
+                result = data[i].Result.split("\n")[0];
+
+                $container.append(
+                    $("<li>").append(
+                        $("<span>").html("<b>" + nickname + "</b>: " + result)));
             }
 
             if (data.length === 0) {
-                $container
-                    .append(
-                        $("<li>").append($("<span>").text("새 메시지가 없습니다.")));
+                $container.append(
+                    $("<li>").append(
+                        $("<span>").text("새 메시지가 없습니다.")));
             }
         }).fail(function onFail() {
-            $container
-                .empty()
-                .append(
-                    $("<li>").append($("<span>").text("메시지를 불러오지 못하였습니다.")));
+            $container.empty().append(
+                $("<li>").append(
+                    $("<span>").text("메시지를 불러오지 못하였습니다.")));
         });
     }
     $(".user-menu .message-button").on("click", function onClick() { loadUnreadMessages(true); });
