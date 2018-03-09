@@ -53,18 +53,21 @@ $(document).ready(function onDocumentReady() {
             $container.empty();
 
             for (i = 0; i < data.length; i++) {
+                // 닉네임 전처리
                 nickname = data[i].SenderNickname;
                 if (nickname === null) {
                     nickname = "미상";
                 }
-
+                // 내용 전처리
                 result = data[i].Result.split("\n")[0];
 
+                // 메시지 추가
                 $container.append(
                     $("<li>").append(
                         $("<span>").html("<b>" + nickname + "</b>: " + result)));
             }
 
+            // 새 메시지가 없는 경우
             if (data.length === 0) {
                 $container.append(
                     $("<li>").append(
