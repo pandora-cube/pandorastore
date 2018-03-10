@@ -1,5 +1,6 @@
 <?php
 require_once("libraries/functions/template.php");
+require_once("models/user.php");
 
 $user = new User();
 $user_data = $user->getData();
