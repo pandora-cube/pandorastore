@@ -14,10 +14,10 @@
         <?=$this->getAttribute("auth_code")?>
     </div>
     <p style="margin: 0;">이용해 주셔서 감사합니다.</p>
-    <p style="margin: 0;">서성범 올림.</p>
+    <p style="margin: 0;">판도라스토어 드림.</p>
 </div>
 <div style="width: 580px; margin: 0 auto; padding: 15px 10px; text-align: center; color: #aaa; background-color: #333;">
     <img src="http://p-store.kr/images/logo_dark.png" alt="판도라스토어 로고" style="width: 200px;" />
-    <p style="margin: 0;">Copyright ⓒ2017 teamVENT. All rights reserved.</p>
+    <p style="margin: 0;">Copyright ⓒ 서성범. All rights reserved.</p>
 </div>
 </div>
