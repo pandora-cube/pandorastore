@@ -23,13 +23,12 @@ function loadContentsData(data, categoryName, tags) {
 
         if (images.length === 0) {
             // 콘텐츠 이미지가 없을 시
-            $("<img>")
-                .appendTo($("<div>")
-                    .appendTo($slideWrapper)
-                    .addClass("image-wrapper"))
-                .addClass("align-middle")
-                .attr("src", "/images/dalchong.jpg")
-                .attr("title", "등록된 이미지가 없습니다.");
+            $slideWrapper.append(
+                $("<div>").addClass("image-wrapper").append(
+                    $("<img>")
+                        .addClass("align-middle")
+                        .attr("src", "/images/dalchong.jpg")
+                        .attr("title", "등록된 이미지가 없습니다.")));
 
             $slideWrapper.bxSlider({
                 touchEnabled: false,
@@ -39,12 +38,11 @@ function loadContentsData(data, categoryName, tags) {
         } else {
             // 콘텐츠 이미지가 있을 시
             for (i = 0; i < images.length; i++) {
-                $("<img>")
-                    .appendTo($("<div>")
-                        .appendTo($slideWrapper)
-                        .addClass("image-wrapper"))
-                    .addClass("align-middle")
-                    .attr("src", images[i]);
+                $slideWrapper.append(
+                    $("<div>").addClass("image-wrapper").append(
+                        $("<img>")
+                            .addClass("align-middle")
+                            .attr("src", images[i])));
             }
 
             $slideWrapper.bxSlider({

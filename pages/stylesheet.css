@@ -163,6 +163,9 @@ body .bx-wrapper .bx-viewport img {
     width: 100%;
     height: 100%;
 }
+body .bx-wrapper .bx-viewport .image-wrapper {
+    display: block;
+}
 body .bx-wrapper .bx-viewport .image-wrapper::before {
     content: '';
     display: block;
