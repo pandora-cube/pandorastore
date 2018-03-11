@@ -43,7 +43,7 @@ $(document).ready(function onDocumentReady() {
         }
 
         $.get("/message/load", {
-            onlyUnread: true,
+            recents: true,
         }).done(function onSuccess(json) {
             var data = JSON.parse(json);
             var i;

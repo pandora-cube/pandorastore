@@ -22,18 +22,35 @@ class Messages {
         $this->userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]);
     }
 
-    public function load($receiverNumber, $onlyUnread) {
+    public function loadRecents($receiverNumber) {
         $receiverNumber = (isset($receiverNumber)) ? intval($receiverNumber) : $this->userNumber;
-        $conRead = ($onlyUnread) ? "a.Read = 0" : "TRUE";
 
-        $sql = "
-            SELECT
+        $sql =
+            "SELECT
                 a.*,
-                b.Nickname AS SenderNickname
+                c.Recents,
+                d.Nickname AS SenderNickname
             FROM {$this->table["messages"]} a
-            LEFT JOIN {$this->table["users"]} b
-                ON a.SenderNumber = b.UserNumber
-            WHERE a.ReceiverNumber = {$receiverNumber} AND {$conRead} AND a.Deleted = 0
+            JOIN /* 발신자당 가장 최근의 1개 메시지만 로드 */
+                (
+                    SELECT MAX(SendedTime) AS RecentTime
+                    FROM {$this->table["messages"]}
+                    WHERE ReceiverNumber = {$receiverNumber} AND Deleted = 0
+                    GROUP BY SenderNumber
+                ) b
+                ON a.SendedTime = b.RecentTime
+            LEFT JOIN /* 해당 발신자의 메시지 중 읽지 않은 것 개수 */
+                (
+                    SELECT SenderNumber, COALESCE(SUM(`Read` = 0), 0) AS Recents
+                    FROM {$this->table["messages"]}
+                    WHERE ReceiverNumber = {$receiverNumber} AND Deleted = 0
+                    GROUP BY SenderNumber
+                ) c
+                ON a.SenderNumber = c.SenderNumber
+            LEFT JOIN /* 발신자 닉네임 로드 */
+                {$this->table["users"]} d
+                ON a.SenderNumber = d.UserNumber
+            WHERE a.ReceiverNumber = {$receiverNumber} AND a.Deleted = 0
             ORDER BY a.SendedTime DESC";
 
         $this->data = [];

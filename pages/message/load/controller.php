@@ -1,9 +1,12 @@
 <?php
 require_once("models/messages.php");
 
-$onlyUnread = $_GET["onlyUnread"];
+$recents = $_GET["recents"];
 
 $messages = new Messages();
-$messages->load(null, $onlyUnread);
+if ($recents)
+    $messages->loadRecents(null);
+else
+    $messages->load(null);
 print(json_encode($messages->getData()));
 ?>
