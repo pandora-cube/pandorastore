@@ -22,6 +22,32 @@ class Messages {
         $this->userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]);
     }
 
+    public function load($receiverNumber, $senderNumber) {
+        $receiverNumber = (isset($receiverNumber)) ? intval($receiverNumber) : $this->userNumber;
+
+        $sql =
+            "SELECT
+                a.*,
+                b.Nickname AS SenderNickname
+            FROM {$this->table["messages"]} a
+            LEFT JOIN /* 발신자 닉네임 로드 */
+                {$this->table["users"]} b
+                ON a.SenderNumber = b.UserNumber
+            WHERE
+                a.SenderNumber = {$senderNumber}
+                AND a.ReceiverNumber = {$receiverNumber}
+                AND a.Deleted = 0
+            ORDER BY a.SendedTime DESC";
+
+        $this->data = [];
+        if ($result = $this->mysqli->query($sql)) {
+            while ($datum = $result->fetch_assoc())
+                array_push($this->data, $datum);
+            $result->free();
+        }
+        return $this->data;
+    }
+
     public function loadRecents($receiverNumber) {
         $receiverNumber = (isset($receiverNumber)) ? intval($receiverNumber) : $this->userNumber;
 
