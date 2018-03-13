@@ -24,6 +24,11 @@ class Messages {
 
     public function load($receiverNumber, $senderNumber) {
         $receiverNumber = (isset($receiverNumber)) ? intval($receiverNumber) : $this->userNumber;
+        
+        if ($senderNumber != null)
+            $conSenderNumber = "a.SenderNumber = ".intval($senderNumber);
+        else
+            $conSenderNumber = "TRUE";
 
         $sql =
             "SELECT
@@ -34,7 +39,7 @@ class Messages {
                 {$this->table["users"]} b
                 ON a.SenderNumber = b.UserNumber
             WHERE
-                a.SenderNumber = {$senderNumber}
+                {$conSenderNumber}
                 AND a.ReceiverNumber = {$receiverNumber}
                 AND a.Deleted = 0
             ORDER BY a.SendedTime DESC";

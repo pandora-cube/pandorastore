@@ -9,6 +9,9 @@
     background-color: rgba(153, 255, 0, .3);
 }
 
+html {
+    height: 100%;
+}
 body {
     background-color: #F1F1F1;
     margin: 0;

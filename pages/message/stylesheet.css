@@ -1,0 +1,15 @@
+#contents::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#message-list {
+    float: left;
+    width: 50%;
+}
+
+#message-view {
+    float: left;
+    width: 50%;
+}
