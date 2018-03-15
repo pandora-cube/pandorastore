@@ -22,7 +22,7 @@ class Messages {
         $this->userIP = $this->mysqli->escape_string($_SERVER["REMOTE_ADDR"]);
     }
 
-    public function load($receiverNumber, $senderNumber) {
+    public function load($receiverNumber, $senderNumber, $updateToRead) {
         $receiverNumber = (isset($receiverNumber)) ? intval($receiverNumber) : $this->userNumber;
         
         if ($senderNumber != null)
@@ -30,19 +30,23 @@ class Messages {
         else
             $conSenderNumber = "TRUE";
 
-        $sql =
-            "SELECT
-                a.*,
-                b.Nickname AS SenderNickname
-            FROM {$this->table["messages"]} a
+        $from = "
+            {$this->table["messages"]} a
             LEFT JOIN /* 발신자 닉네임 로드 */
                 {$this->table["users"]} b
-                ON a.SenderNumber = b.UserNumber
-            WHERE
-                {$conSenderNumber}
-                AND a.ReceiverNumber = {$receiverNumber}
-                AND a.Deleted = 0
-            ORDER BY a.SendedTime DESC";
+                ON a.SenderNumber = b.UserNumber";
+        $where = "
+            {$conSenderNumber}
+            AND a.ReceiverNumber = {$receiverNumber}
+            AND a.Deleted = 0";
+
+        $sql = "
+            SELECT
+                a.*,
+                b.Nickname AS SenderNickname
+            FROM {$from}
+            WHERE {$where}
+            ORDER BY a.SendedTime ASC";
 
         $this->data = [];
         if ($result = $this->mysqli->query($sql)) {
@@ -50,6 +54,17 @@ class Messages {
                 array_push($this->data, $datum);
             $result->free();
         }
+
+        if ($updateToRead) {
+            $sql = "
+                UPDATE {$from}
+                SET
+                    a.Read = 1,
+                    a.ReadTime = CURRENT_TIMESTAMP
+                WHERE {$where}";
+            $this->mysqli->query($sql);
+        }
+
         return $this->data;
     }
 
