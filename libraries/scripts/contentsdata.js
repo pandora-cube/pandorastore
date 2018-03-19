@@ -133,12 +133,15 @@ function loadContentsData(data, categoryName, tags) {
         filtered = parseInt($("#filtered").val(), 10);
 
         if (categoryName.length > 0) {
-            $("<h2/>")
-                .text(categoryName)
-                .appendTo("#contents");
-            $list = $("<section/>")
-                .addClass("contents-list")
-                .appendTo("#contents");
+            $list = $("<section>");
+
+            $("#contents")
+                .append($("<div>")
+                    .addClass("tag-name")
+                    .append($("<h2>")
+                        .text(categoryName)))
+                .append($list
+                    .addClass("contents-list"));
                 
             if (filtered === 0) {
                 $list.addClass("row");
@@ -149,13 +152,21 @@ function loadContentsData(data, categoryName, tags) {
             }
         } else {
             for (i = 0; i < tags.length; i += 1) {
-                $("<h2/>")
-                    .text(tags[i].Name)
-                    .appendTo("#contents");
-                $list = $("<section/>")
-                    .attr("id", "tag-" + tags[i].ID)
-                    .addClass("contents-list")
-                    .appendTo("#contents");
+                $list = $("<section>");
+
+                $("#contents")
+                    .append($("<div>")
+                        .addClass("tag-name")
+                        .append($("<h2>")
+                            .text(tags[i].Name))
+                        .append($("<a>")
+                            .attr("href", "/category/T" + tags[i].ID)
+                            .addClass("show-all")
+                            .append($("<span>")
+                                .text("모두 보기"))))
+                    .append($list
+                        .attr("id", "tag-" + tags[i].ID)
+                        .addClass("contents-list"));
                 
                 if (filtered === 0) {
                     $list.addClass("row");

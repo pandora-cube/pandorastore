@@ -25,15 +25,38 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
 #contents {
     padding-top: 0;
 }
-#contents h2 {
+#contents .tag-name {
+    position: relative;
     padding: 1em 0;
 }
-#contents h2:nth-of-type(n+2) {
+#contents .tag-name:nth-of-type(n+2) {
     margin-top: 1em;
     border-top: 2px solid #cdcece;
 }
+#contents .tag-name h2 {
+    line-height: 1em;
+}
+#contents .tag-name .show-all {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    line-height: 1.7em;
+    margin: 1em 0;
+    padding: 0 .3em;
+    color: White;
+    background-color: SteelBlue;
+    transition: background-color 1s;
+}
+#contents .tag-name .show-all:hover {
+    background-color: LightSteelBlue;
+}
+#contents .tag-name .show-all span {
+    display: block;
+    font-size: .9em;
+}
 #contents .contents-list {
-    margin: -.5em 0;
+    margin-top: -.5em;
     overflow: hidden;
 }
 #contents .contents-list.row {
