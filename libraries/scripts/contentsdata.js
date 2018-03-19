@@ -126,8 +126,11 @@ function loadContentsData(data, categoryName, tags) {
 
     function loadContentsList() {
         var $list;
+        var filtered;
         var i;
         var j;
+
+        filtered = parseInt($("#filtered").val(), 10);
 
         if (categoryName.length > 0) {
             $("<h2/>")
@@ -136,6 +139,10 @@ function loadContentsData(data, categoryName, tags) {
             $list = $("<section/>")
                 .addClass("contents-list")
                 .appendTo("#contents");
+                
+            if (filtered === 0) {
+                $list.addClass("row");
+            }
 
             for (i = 0; i < data.length; i += 1) {
                 loadContentsItem($list, i, data[i]);
@@ -145,10 +152,14 @@ function loadContentsData(data, categoryName, tags) {
                 $("<h2/>")
                     .text(tags[i].Name)
                     .appendTo("#contents");
-                $("<section/>")
+                $list = $("<section/>")
                     .attr("id", "tag-" + tags[i].ID)
                     .addClass("contents-list")
                     .appendTo("#contents");
+                
+                if (filtered === 0) {
+                    $list.addClass("row");
+                }
             }
 
             for (i = 0; i < data.length; i += 1) {

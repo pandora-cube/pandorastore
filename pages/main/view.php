@@ -16,6 +16,7 @@
     </header>
 
     <div id="contents">
+        <input id="filtered" type="hidden" value="<?=$this->getAttribute("filtered")?>" />
         <template name="contents-item">
             <div class="cover">
                 <img />

@@ -13,6 +13,8 @@ require_once("models/contents.php");
     $platform = (count($platform) < 2) ? null : $platform[1];
     $tag = (count($tag) < 2) ? null : $tag[1];
 
+    $filtered = (int)(isset($genre) || isset($platform) || isset($tag));
+
     $search = $_GET["search"];
 }
 
@@ -49,6 +51,7 @@ require_once("models/contents.php");
     $template->setAttribute("contents", $contents_data);
     $template->setAttribute("category_name", $category_name);
     $template->setAttribute("tags", $category_tags);
+    $template->setAttribute("filtered", $filtered);
     $template->setAttribute("search", addslashes($search));
     $template->loadView("main");
 }
