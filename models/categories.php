@@ -41,7 +41,7 @@ class Categories {
 
     public function loadTags() {
         $sql = "
-            SELECT ID, Name 
+            SELECT *
             FROM {$this->table["tags"]}
             ORDER BY ID DESC";
 

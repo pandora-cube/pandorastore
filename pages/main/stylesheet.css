@@ -33,8 +33,22 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
     margin-top: 1em;
     border-top: 2px solid #cdcece;
 }
+#contents .tag-name::after {
+    content: '';
+    display: block;
+    clear: both;
+}
 #contents .tag-name h2 {
+    float: left;
     line-height: 1em;
+}
+#contents .tag-name .info {
+    float: left;
+    margin-left: .5em;
+}
+#contents .tag-name .info i {
+    color: steelblue;
+    font-size: 1.5em;
 }
 #contents .tag-name .show-all {
     position: absolute;

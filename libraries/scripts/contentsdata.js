@@ -125,6 +125,7 @@ function loadContentsData(data, categoryName, tags) {
     }
 
     function loadContentsList() {
+        var $tagName;
         var $list;
         var filtered;
         var i;
@@ -133,10 +134,11 @@ function loadContentsData(data, categoryName, tags) {
         filtered = parseInt($("#filtered").val(), 10);
 
         if (categoryName.length > 0) {
+            $tagName = $("<div>");
             $list = $("<section>");
 
             $("#contents")
-                .append($("<div>")
+                .append($tagName
                     .addClass("tag-name")
                     .append($("<h2>")
                         .text(categoryName)))
@@ -152,13 +154,21 @@ function loadContentsData(data, categoryName, tags) {
             }
         } else {
             for (i = 0; i < tags.length; i += 1) {
+                $tagName = $("<div>");
                 $list = $("<section>");
 
                 $("#contents")
-                    .append($("<div>")
+                    .append($tagName
                         .addClass("tag-name")
                         .append($("<h2>")
                             .text(tags[i].Name))
+                        .append($("<span>")
+                            .addClass("info")
+                            .prop("hidden", (tags[i].Description.length === 0))
+                            .attr("tooltip", tags[i].Description)
+                            .append($("<i>")
+                                .addClass("material-icons")
+                                .html("&#xE88E;")))
                         .append($("<a>")
                             .attr("href", "/category/T" + tags[i].ID)
                             .addClass("show-all")
