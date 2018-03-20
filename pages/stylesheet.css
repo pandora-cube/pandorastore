@@ -227,7 +227,7 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
     position: absolute;
     z-index: 1;
     line-height: 1.5;
-    padding: 5px;
+    padding: 5px 10px;
     opacity: 0;
     color: white;
     background-color: gray;
