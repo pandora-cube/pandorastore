@@ -19,13 +19,13 @@ class Categories {
 
     public function loadNames() {
         $sql = "
-            SELECT *, 'Genre' AS Type
+            SELECT ID, Name, 'Genre' AS Type
             FROM {$this->table["genres"]}
             UNION
-            SELECT *, 'Platform' AS Type
+            SELECT ID, Name, 'Platform' AS Type
             FROM {$this->table["platforms"]}
             UNION
-            SELECT *, 'Tag' AS Type
+            SELECT ID, Name, 'Tag' AS Type
             FROM {$this->table["tags"]}";
 
         $this->names = array();
