@@ -226,6 +226,7 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
     content: attr(tooltip);
     position: absolute;
     z-index: 1;
+    line-height: 1.5;
     padding: 5px;
     opacity: 0;
     color: white;
