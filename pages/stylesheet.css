@@ -218,6 +218,25 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
     vertical-align: top;
 }
 
+/* 툴팁 */
+[tooltip]:before {
+    content: attr(tooltip);
+    position: absolute;
+    z-index: 1;
+    padding: 5px;
+    opacity: 0;
+    color: white;
+    background-color: gray;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px silver;
+    transition: all 0.15s ease;
+}
+[tooltip]:hover:before {
+    margin-top: 10px;
+    margin-left: 10px;
+    opacity: .95;
+}
+
 /* 헤더 */
 header {
     background-color: white;
