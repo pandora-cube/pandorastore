@@ -219,6 +219,9 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
 }
 
 /* 툴팁 */
+[tooltip] {
+    cursor: help;
+}
 [tooltip]:before {
     content: attr(tooltip);
     position: absolute;
