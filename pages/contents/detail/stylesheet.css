@@ -6,14 +6,14 @@
 }
 
 #contents-detail .top {
-    min-height: 10em;
+    min-height: 128px;
 }
 #contents-detail .top .cover {
     display: block;
     float: left;
-    width: 10em;
-    height: 10em;
-    line-height: 10em;
+    width: 128px;
+    height: 128px;
+    line-height: 128px;
     border-radius: 2em;
     overflow: hidden;
     margin-right: 2em;

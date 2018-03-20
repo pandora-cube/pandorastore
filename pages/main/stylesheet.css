@@ -56,26 +56,26 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
     font-size: .9em;
 }
 #contents .contents-list {
-    margin-top: -.5em;
+    margin-top: -.3em;
     overflow: hidden;
 }
 #contents .contents-list.row {
-    height: calc(13em + (1.1 * 2.2em) + (.9 * 2em)); /* .contents-item + .title + .creator */
+    height: calc((128px + 3em) + (1.1 * 2em) + (.9 * 1.8em)); /* .contents-item + .title + .creator */
 }
 #contents  .contents-item {
     float: left;
     box-sizing: content-box;
-    width: 10em;
-    margin: .5em;
+    width: 128px;
+    margin: .3em;
     padding: 1em;
     background-color: white;
     border: 1px solid #e1e1e1;
     cursor: pointer;
 }
 #contents .contents-item .cover {
-    width: 10em;
-    height: 10em;
-    line-height: 10em;
+    width: 128px;
+    height: 128px;
+    line-height: 128px;
     overflow: hidden;
 }
 #contents .contents-item .cover img {
@@ -87,6 +87,7 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
     line-height: 1.5em;
     margin-top: .7em;
     font-size: 1.1em;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -94,6 +95,7 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
     line-height: 1.5em;
     margin-top: .5em;
     font-size: .9em;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
