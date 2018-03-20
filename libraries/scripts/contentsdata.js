@@ -162,7 +162,7 @@ function loadContentsData(data, categoryName, tags) {
                         .addClass("tag-name")
                         .append($("<h2>")
                             .text(tags[i].Name))
-                        .append($("<span>")
+                        .append($("<button>")
                             .addClass("info")
                             .prop("hidden", (tags[i].Description.length === 0))
                             .attr("tooltip", tags[i].Description)

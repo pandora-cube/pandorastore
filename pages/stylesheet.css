@@ -235,7 +235,8 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
     box-shadow: 2px 2px 1px silver;
     transition: all 0.15s ease;
 }
-[tooltip]:hover:before {
+[tooltip]:hover:before,
+[tooltip]:focus:before {
     margin-top: 10px;
     margin-left: 10px;
     opacity: .95;
