@@ -225,7 +225,7 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
 [tooltip]:before {
     content: attr(tooltip);
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     line-height: 1.5;
     padding: 5px 10px;
     opacity: 0;
@@ -233,10 +233,11 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
     background-color: gray;
     border-radius: 10px;
     box-shadow: 2px 2px 1px silver;
-    transition: all 0.15s ease;
+    transition: all 0.5s ease;
 }
 [tooltip]:hover:before,
 [tooltip]:focus:before {
+    z-index: 1;
     margin-top: 10px;
     margin-left: 10px;
     opacity: .95;
