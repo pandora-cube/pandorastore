@@ -1,4 +1,4 @@
-function loadContentsData(data, categoryName, tags) {
+function loadContentsData(data, categoryName, categoryDescription, tags) {
     function loadThumbnail($item, datum) {
         $.ajax({
             type: "HEAD",
@@ -124,8 +124,39 @@ function loadContentsData(data, categoryName, tags) {
         loadThumbnail($item, datum);
     }
 
+    function addContentsList(name, description, ID, filtered) {
+        var $name = $("<div>");
+        var $list = $("<section>");
+
+        $("#contents")
+            .append($name
+                .addClass("category-name")
+                .append($("<h2>")
+                    .text(name))
+                .append($("<button>")
+                    .addClass("info")
+                    .prop("hidden", (description.length === 0))
+                    .attr("tooltip", description)
+                    .append($("<i>")
+                        .addClass("material-icons")
+                        .html("&#xE88E;")))
+                .append($("<a>")
+                    .prop("hidden", (ID.length === 0))
+                    .attr("href", "/category/" + ID)
+                    .addClass("show-all")
+                    .append($("<span>")
+                        .text("모두 보기"))))
+            .append($list
+                .addClass("contents-list"));
+
+        if (filtered === 0) {
+            $list.addClass("row");
+        }
+
+        return $list;
+    }
+
     function loadContentsList() {
-        var $tagName;
         var $list;
         var filtered;
         var i;
@@ -134,57 +165,19 @@ function loadContentsData(data, categoryName, tags) {
         filtered = parseInt($("#filtered").val(), 10);
 
         if (categoryName.length > 0) {
-            $tagName = $("<div>");
-            $list = $("<section>");
+            $list = addContentsList(categoryName, categoryDescription, "", filtered);
 
-            $("#contents")
-                .append($tagName
-                    .addClass("tag-name")
-                    .append($("<h2>")
-                        .text(categoryName)))
-                .append($list
-                    .addClass("contents-list"));
-                
-            if (filtered === 0) {
-                $list.addClass("row");
-            }
-
-            for (i = 0; i < data.length; i += 1) {
+            for (i = 0; i < data.length; i++) {
                 loadContentsItem($list, i, data[i]);
             }
         } else {
-            for (i = 0; i < tags.length; i += 1) {
-                $tagName = $("<div>");
-                $list = $("<section>");
-
-                $("#contents")
-                    .append($tagName
-                        .addClass("tag-name")
-                        .append($("<h2>")
-                            .text(tags[i].Name))
-                        .append($("<button>")
-                            .addClass("info")
-                            .prop("hidden", (tags[i].Description.length === 0))
-                            .attr("tooltip", tags[i].Description)
-                            .append($("<i>")
-                                .addClass("material-icons")
-                                .html("&#xE88E;")))
-                        .append($("<a>")
-                            .attr("href", "/category/T" + tags[i].ID)
-                            .addClass("show-all")
-                            .append($("<span>")
-                                .text("모두 보기"))))
-                    .append($list
-                        .attr("id", "tag-" + tags[i].ID)
-                        .addClass("contents-list"));
-                
-                if (filtered === 0) {
-                    $list.addClass("row");
-                }
+            for (i = 0; i < tags.length; i++) {
+                addContentsList(tags[i].Name, tags[i].Description, "T" + tags[i].ID, filtered)
+                    .attr("id", "tag-" + tags[i].ID);
             }
 
-            for (i = 0; i < data.length; i += 1) {
-                for (j = 0; j < data[i].TagsID.length; j += 1) {
+            for (i = 0; i < data.length; i++) {
+                for (j = 0; j < data[i].TagsID.length; j++) {
                     $list = $("#tag-" + data[i].TagsID[j]);
                     if ($list.length > 0) {
                         loadContentsItem($list, i, data[i]);

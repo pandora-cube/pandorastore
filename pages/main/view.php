@@ -38,6 +38,7 @@
             loadContentsData(
                 <?=json_encode($this->getAttribute("contents"))?>,
                 <?=json_encode($this->getAttribute("category_name"))?>,
+                <?=json_encode($this->getAttribute("category_description"))?>,
                 <?=json_encode($this->getAttribute("tags"))?>);
             setSearchText(<?=json_encode($this->getAttribute("search"))?>);
         });

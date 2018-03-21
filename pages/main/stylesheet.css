@@ -25,35 +25,35 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
 #contents {
     padding-top: 0;
 }
-#contents .tag-name {
+#contents .category-name {
     position: relative;
     padding: 1em 0;
 }
-#contents .tag-name:nth-of-type(n+2) {
+#contents .category-name:nth-of-type(n+2) {
     margin-top: 1em;
     border-top: 2px solid #cdcece;
 }
-#contents .tag-name::after {
+#contents .category-name::after {
     content: '';
     display: block;
     clear: both;
 }
-#contents .tag-name h2 {
+#contents .category-name h2 {
     float: left;
     line-height: 1em;
 }
-#contents .tag-name .info {
+#contents .category-name .info {
     float: left;
     line-height: 1.7;
     margin-left: .5em;
     font-size: 1em;
     border: none;
 }
-#contents .tag-name .info i {
+#contents .category-name .info i {
     color: steelblue;
     font-size: 1.5em;
 }
-#contents .tag-name .show-all {
+#contents .category-name .show-all {
     position: absolute;
     top: 0;
     right: 0;
@@ -65,10 +65,10 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
     background-color: SteelBlue;
     transition: background-color 1s;
 }
-#contents .tag-name .show-all:hover {
+#contents .category-name .show-all:hover {
     background-color: LightSteelBlue;
 }
-#contents .tag-name .show-all span {
+#contents .category-name .show-all span {
     display: block;
     font-size: .9em;
 }
