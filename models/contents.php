@@ -128,7 +128,8 @@ class Contents {
             if ($type === "T") {
                 $team_model = new Team($number);
                 $team_data = $team_model->getData();
-                $creator = $team_data["Name"];
+
+                $creator = (strlen($team_data["Name"]) > 0) ? $team_data["Name"] : $team_data["MembersList"];
                 $creators = $team_data["MembersList"];
             } else if ($type === "U") {
             }
