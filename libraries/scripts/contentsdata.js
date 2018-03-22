@@ -75,7 +75,7 @@ function loadContentsData(data, categoryName, categoryDescription, tags) {
             $modal.find(".summary .title").text(datum.Title);
             $modal.find(".summary .creator").text(datum.Creator);
             $modal.find(".summary .tooltip")
-                .prop("hidden", (datum.Creators === null))
+                .prop("hidden", (datum.Creators === null || datum.Creators === datum.Creator))
                 .attr("tooltip", datum.Creators);
             $modal.find(".summary .genres").text(genres);
             $modal.find(".summary .platforms").text(platforms);
