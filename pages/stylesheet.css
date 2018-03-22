@@ -218,7 +218,7 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
     vertical-align: top;
 }
 
-/* 툴팁 */
+/* 툴팁 UI */
 [tooltip] {
     cursor: help;
 }
@@ -241,6 +241,15 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
     margin-top: 10px;
     margin-left: 10px;
     opacity: .95;
+}
+[tooltip].info {
+    vertical-align: text-bottom;
+    font-size: 1em;
+    border: none;
+}
+[tooltip].info i {
+    color: steelblue;
+    font-size: 1.5em;
 }
 
 /* 헤더 */

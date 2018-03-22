@@ -10,7 +10,10 @@
     <!-- 콘텐츠 정보 -->
     <div class="summary">
         <p class="title"></p>
-        <p>제작: <span class="creator"></span></p>
+        <p>제작:
+            <span class="creator"></span>
+            <button class="tooltip info" tooltip><i class="material-icons">&#xE88E;</i></button>
+        </p>
         <p>장르: <span class="genres"></span></p>
         <p>환경: <span class="platforms"></span></p>
     </div>

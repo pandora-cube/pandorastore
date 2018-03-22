@@ -1,5 +1,5 @@
 <?php
-require_once("models/user.php");
+require_once("models/users.php");
 
 class Team {
     private $mysqli;
@@ -24,11 +24,11 @@ class Team {
             FROM {$this->table["teams"]}
             WHERE ID = {$teamID}";
 
-        $this->data = [];
+        $this->data = null;
         if ($result = $this->mysqli->query($sql)) {
-            while ($datum = $result->fetch_assoc()) {
-                $datum["MembersList"] = $this->parseMembers($datum["Members"]);
-                array_push($this->data, $datum);
+            if ($result->num_rows > 0) {
+                $this->data = $result->fetch_assoc();
+                $this->data["MembersList"] = $this->parseMembers($this->data["Members"]);
             }
             $result->free();
         }
@@ -47,10 +47,10 @@ class Team {
             $type = gettype($member);
 
             if ($type === "integer") {
-                $user_model = new User($member, null, null, true);
-                $user_data = $user_model->getData();
+                $users_model = new Users([["UserNumber", "=", $member]]);
+                $user_data = $users_model->getData()[0];
 
-                if ($user_data["PCubeMember"] === 1) { // 판도라큐브 회원인 경우
+                if ($user_data["PCubeMember"] == 1) { // 판도라큐브 회원인 경우
                     if ($user_data["Name"] === $user_data["Nickname"]) { // 성명과 닉네임이 같은 경우
                         $result .= "{$user_data["Name"]}"; // 성명
                     } else {

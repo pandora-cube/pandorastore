@@ -1,5 +1,7 @@
 <?php
 require_once("models/categories.php");
+require_once("models/team.php");
+require_once("models/user.php");
 
 class Contents {
     private $mysqli;
@@ -71,6 +73,8 @@ class Contents {
                 $this->contents[$i]["Thumbnail"] = $this->getPath($identifier)."/{$this->config["file"]["thumbnail"]}";
                 // Images
                 $this->contents[$i]["Images"] = $this->getImages($identifier);
+                // Creator
+                $this->contents[$i]["Creators"] = $this->getCreators($this->contents[$i]["Creator"]);
                 // Genres
                 $categories_model->parseArray($origin, $this->contents[$i], "Genre");
                 $categories_model->parseName($origin, $this->contents[$i], "Genre");
@@ -113,6 +117,24 @@ class Contents {
         }
 
         return $files;
+    }
+
+    private function getCreators(&$creator) {
+        $creators = json_decode($creator);
+        $type = substr($creators, 0, 1);
+        $number = intval(substr($creators, 1, strlen($creators)-1));
+
+        if (gettype($creators) === "string") {
+            if ($type === "T") {
+                $team_model = new Team($number);
+                $team_data = $team_model->getData();
+                $creator = $team_data["Name"];
+                $creators = $team_data["MembersList"];
+            } else if ($type === "U") {
+            }
+        }
+
+        return $creators;
     }
 }
 ?>
