@@ -527,6 +527,26 @@ header .menuArea .menu {
     }
 }
 
+/* 맨위로 버튼 */
+#top-button {
+    display: none;
+    position: fixed;
+    right: 15px;
+    bottom: 20px;
+    width: 35px;
+    height: 35px;
+    color: #555;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    opacity: .9;
+}
+@media screen and (max-width: 50rem) { /* for Mobile */
+    #top-button {
+        display: block;
+    }
+}
+
 /* 푸터 */
 footer {
     background-color: #333;
