@@ -71,7 +71,7 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
     overflow: hidden;
 }
 #contents .contents-list.row {
-    height: calc((128px + 3em) + (1.1 * 2em) + (.9 * 1.8em)); /* .contents-item + .title + .creator */
+    height: calc((128px + 2.6em + 2px) + (1.1 * 2.2em) + (.9 * 2em)); /* .contents-item + .title + .creator */
 }
 #contents  .contents-item {
     float: left;
@@ -109,4 +109,17 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+@media screen and (max-width: 50rem) { /* for Mobile */
+    #contents .contents-list.row {
+        height: calc((64px + 2.6em + 2px) + (1.1 * 2.2em) + (.9 * 2em)); /* .contents-item + .title + .creator */
+    }
+    #contents  .contents-item {
+        width: 64px;
+    }
+    #contents .contents-item .cover {
+        width: 64px;
+        height: 64px;
+        line-height: 64px;
+    }
 }
