@@ -16,11 +16,13 @@
     line-height: 128px;
     border-radius: 2em;
     overflow: hidden;
-    margin-right: 2em;
 }
 #contents-detail .top .cover img {
     width: 100%;
     vertical-align: middle;
+}
+#contents-detail .top .summary {
+    margin-left: calc(128px + 2em);
 }
 #contents-detail .top .summary p {
     margin: .5em 0;
@@ -29,8 +31,23 @@
     font-size: 1.2em;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
+    #contents-detail .top {
+        min-height: 64px;
+    }
+    #contents-detail .top .cover {
+        width: 64px;
+        height: 64px;
+        line-height: 64px;
+        border-radius: 1em;
+    }
     #contents-detail .top .summary {
+        margin-left: calc(64px + 1em);
+    }
+    #contents-detail .top .summary p {
         font-size: 1.2em;
+    }
+    #contents-detail .top .summary .title {
+        font-size: 1.4em;
     }
 }
 
