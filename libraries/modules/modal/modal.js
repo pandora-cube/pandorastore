@@ -4,23 +4,20 @@ function Modal(name, url) {
     var $modal;
     var scrollTop;
 
-    function ModalInner(openModal_, destroyModal_) {
-        this.onPrepared = function onModalPrepared() { };
-        this.onOpen = function onModalOpen() { };
-        this.onClose = function onModalClose() { };
+    function initializeModal(openModal_, destroyModal_) {
+        this.onReady = $.Event("ready");
+        this.onOpen = $.Event("onOpen");
+        this.onClose = $.Event("close");
 
-        this.open = function open() {
-            openModal_();
-        };
-
-        this.close = function close() {
-            destroyModal_();
-        };
+        $.fn.extend({
+            open: openModal_,
+            close: destroyModal_,
+        });
     }
 
     function onCloseButtonClicked(e) {
         if (e.target !== this) return;
-        $area.get(0).close();
+        $area.close();
     }
 
     function createModal(html) {
@@ -41,7 +38,7 @@ function Modal(name, url) {
     function openModal(html) {
         $area
             .fadeIn("slow")
-            .get(0).onOpen();
+            .trigger($area.get(0).onOpen);
 
         scrollTop = window.pageYOffset;
         $("html, body").addClass("scrollLock");
@@ -59,13 +56,13 @@ function Modal(name, url) {
         */
         $bodyWrapper.css("top", "");
 
-        $area.get(0).onClose();
+        $area.trigger($area.get(0).onClose);
         $area.remove();
     }
 
     function createArea() {
         if ($("#" + name).length > 0) {
-            $("#" + name).get(0).close();
+            $("#" + name).close();
         }
 
         if ($(".body-wrapper").length === 0) {
@@ -84,16 +81,16 @@ function Modal(name, url) {
             .on("click", onCloseButtonClicked)
             .appendTo("body")
             .each(function applyInnerClass() {
-                ModalInner.call(this, openModal, destroyModal);
+                initializeModal.call(this, openModal, destroyModal);
             });
 
         return $area;
     }
 
     createArea();
-    $.get(url).done(function prepare(html) {
+    $.get(url).done(function ready(html) {
         createModal(html);
-        $area.get(0).onPrepared();
+        $area.trigger($area.get(0).onReady);
     });
 
     return $area;

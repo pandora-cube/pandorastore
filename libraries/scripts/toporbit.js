@@ -7,8 +7,10 @@ function loadTopOrbitData(data) {
         if (data[i].URL.length > 0) {
             $imageWrapper = $("<a>")
                 .addClass("image-wrapper")
-                .attr("href", data[i].URL)
-                .attr("target", "_blank");
+                .attr("href", data[i].URL);
+            if (data[i].URL.indexOf("http://") === 0 || data[i].URL.indexOf("https://") === 0) {
+                $imageWrapper.attr("target", "_blank");
+            }
         } else {
             $imageWrapper = $("<div>")
                 .addClass("image-wrapper");

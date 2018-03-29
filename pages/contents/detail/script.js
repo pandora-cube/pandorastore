@@ -1,5 +1,45 @@
 $(document).ready(function onDocumentReady() {
     var $modal = $("#contents-detail");
+    var identifier = $("#identifier").val();
+    var contentsTitle = $("#contents-title").val();
+
+    // Modal 닫힐 시
+    $modal.on("close", function onModalClose() {
+        window.location.hash = "#_";
+    });
+
+    // 문서의 타이틀 변경
+    function applyDocumentTitle() {
+        var originalTitle = $("title").text();
+        $("title").text(contentsTitle + " - " + originalTitle);
+
+        $modal.on("close", function onModalClose() {
+            $("title").text(originalTitle);
+        });
+    }
+
+    // 이미지 슬라이드 불러오기
+    function loadSlide() {
+        var $slideWrapper = $modal.find(".slideArea .slideWrapper");
+        var $images = $slideWrapper.find("img");
+
+        if ($images.length === 1) {
+            // 콘텐츠 이미지가 한 개일 시
+            $slideWrapper.bxSlider({
+                touchEnabled: false,
+                pager: false,
+                captions: true,
+            });
+        } else {
+            // 콘텐츠 이미지가 여러 개일 시
+            $slideWrapper.bxSlider({
+                auto: true,
+                autoControls: true,
+                stopAutoOnClick: true,
+                captions: true,
+            });
+        }
+    }
 
     // 수정 활성화
     function activeEdit() {
@@ -74,7 +114,7 @@ $(document).ready(function onDocumentReady() {
             .text("불러오는 중");
 
         $.get("/contents/reviews/load", {
-            content: $modal.data("identifier"),
+            content: identifier,
         }).done(function onSuccess(json) {
             resetReviews();
             applyReviews(JSON.parse(json));
@@ -183,6 +223,8 @@ $(document).ready(function onDocumentReady() {
         $modal.find(".reviewArea .refresh").on("click", loadReviews);
     }
 
+    applyDocumentTitle();
+    loadSlide();
     loadReviews();
     $modal.find(".reviewArea .write").on("submit", writeReview);
 });

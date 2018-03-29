@@ -2,29 +2,49 @@
 <script src="/libraries/modules/bxSlider/jquery.bxslider.min.js"></script>
 <script src="/pages/contents/detail/script.js"></script>
 
+<input id="identifier" type="hidden" value="<?=$this->getAttribute("Identifier")?>" />
+<input id="contents-title" type="hidden" value="<?=$this->getAttribute("Title")?>" />
+
 <div class="top">
     <!-- 아이콘 -->
     <div class="cover">
-        <img />
+        <img src="<?=$this->getAttribute("Thumbnail")?>" alt="<?=$this->getAttribute("ThumbnailAlt")?>" />
     </div>
     <!-- 콘텐츠 정보 -->
     <div class="summary">
-        <p class="title"></p>
+        <p class="title"><?=$this->getAttribute("Title")?></p>
         <p>제작:
-            <span class="creator"></span>
-            <button class="tooltip info" tooltip><i class="material-icons">&#xE88E;</i></button>
+            <span class="creator"><?=$this->getAttribute("Creator")?></span>
+            <?php if ($this->isEnabledArea("tooltip")): ?>
+                <button class="tooltip info" tooltip="<?=$this->getAttribute("Creators")?>">
+                    <i class="material-icons">&#xE88E;</i>
+                </button>
+            <?php endif; ?>
         </p>
-        <p>장르: <span class="genres"></span></p>
-        <p>환경: <span class="platforms"></span></p>
+        <p>장르: <span class="genres"><?=$this->getAttribute("GenresList")?></span></p>
+        <p>환경: <span class="platforms"><?=$this->getAttribute("PlatformsList")?></span></p>
     </div>
 </div>
 
 <!-- 다운로드 버튼 영역 -->
-<div class="download"></div>
+<div class="download">
+    <?php foreach ($this->getAttribute("download-data") as $download): ?>
+        <a href="<?=$download["URL"]?>"><?=$download["Text"]?></a>
+    <?php endforeach; ?>
+</div>
 
 <!-- 이미지 슬라이드 -->
 <div class="slideArea">
-    <div class="slideWrapper"></div>
+    <div class="slideWrapper">
+        <?php for ($i = 0; $i < count($this->getAttribute("Images")); $i++): ?>
+            <div class="image-wrapper">
+                <img class="align-middle"
+                    src="<?=$this->getAttribute("Images")[$i]?>"
+                    title="<?=$this->getAttribute("ImagesTitle")[$i]?>"
+                    alt="콘텐츠 이미지" />
+            </div>
+        <?php endfor; ?>
+    </div>
 </div>
 
 <!-- 리뷰 -->
@@ -39,7 +59,7 @@
     <!-- 리뷰 등록 -->
     <?php if ($this->isEnabledArea("review-write")): ?>
         <form class="write" action="/contents/reviews/write" method="post">
-            <input name="content" type="hidden" />
+            <input name="content" type="hidden" value="<?=$this->getAttribute("Identifier")?>" />
             <textarea name="result"></textarea>
             <input type="submit" value="등록" />
         </form>

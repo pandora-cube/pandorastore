@@ -3,7 +3,7 @@
  *      [Pandora Cube contents store]
  * 
  *          Pandora Store
- *          v1.06.2
+ *          v1.06.3
  * 
  *      First Release:  2017.06.18
  *      Last Update:    2018.03.20

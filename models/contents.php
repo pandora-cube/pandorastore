@@ -9,7 +9,7 @@ class Contents {
     private $config;
     private $contents;
 
-    public function __construct($genre = null, $platform = null, $tag = null, $id = null, $search = null) {
+    public function __construct($genre = null, $platform = null, $tag = null, $identifier = null, $search = null) {
         $config_db = parse_ini_file("configs/database.ini");
 
         $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);
@@ -17,20 +17,20 @@ class Contents {
         $this->config = parse_ini_file("configs/contents.ini");
 
         if ($this->mysqli)
-            $this->load($genre, $platform, $tag, $id, $search);
+            $this->load($genre, $platform, $tag, $identifier, $search);
     }
 
-    public function load($genre = null, $platform = null, $tag = null, $id = null, $search = null) {
+    public function load($genre = null, $platform = null, $tag = null, $identifier = null, $search = null) {
         $genre = $this->mysqli->escape_string($genre);
         $platform = $this->mysqli->escape_string($platform);
         $tag = $this->mysqli->escape_string($tag);
-        $id = $this->mysqli->escape_string($id);
+        $identifier = $this->mysqli->escape_string($identifier);
         $search = $this->mysqli->escape_string($search);
 
         $con_genre = ($genre == null) ? "TRUE" : "CONCAT(\",\", Genres, \",\") LIKE \"%,{$genre},%\"";
         $con_platform = ($platform == null) ? "TRUE" : "CONCAT(\",\", Platforms, \",\") LIKE \"%,{$platform},%\"";
         $con_tag = ($tag == null) ? "TRUE" : "CONCAT(\",\", Tags, \",\") LIKE \"%,{$tag},%\"";
-        $con_id = ($id == null) ? "TRUE" : "ID = {$id}";
+        $con_identifier = ($identifier == null) ? "TRUE" : "Identifier = \"{$identifier}\"";
         /*$con_search = ($search == null) ? "TRUE" : "
             REGEXP_REPLACE(
                 REGEXP_REPLACE(
@@ -52,14 +52,14 @@ class Contents {
             }
             $search = implode(" ", $matches);
 
-            $con_genre = $con_platform = $con_tag = $con_id = "TRUE";
+            $con_genre = $con_platform = $con_tag = $con_identifier = "TRUE";
             $con_search = "MATCH(Title, Identifier, Creator) AGAINST('{$search}' IN BOOLEAN MODE)";
         }
 
         $sql = "
             SELECT *
             FROM {$this->table["contents"]}
-            WHERE {$con_genre} AND {$con_platform} AND {$con_tag} AND {$con_id} AND {$con_search} AND Enabled = 1
+            WHERE {$con_genre} AND {$con_platform} AND {$con_tag} AND {$con_identifier} AND {$con_search} AND Enabled = 1
             ORDER BY CreatedTime DESC";
 
         $categories_model = new Categories();
@@ -71,19 +71,29 @@ class Contents {
 
                 // Thumbnail
                 $this->contents[$i]["Thumbnail"] = $this->getPath($identifier)."/{$this->config["file"]["thumbnail"]}";
+                $this->contents[$i]["ThumbnailAlt"] = $origin["Title"] + " 썸네일 이미지";
+                if (!file_exists(".{$this->contents[$i]["Thumbnail"]}"))
+                    $this->contents[$i]["Thumbnail"] = $this->config["file"]["thumbnail_none"];
                 // Images
                 $this->contents[$i]["Images"] = $this->getImages($identifier);
+                if (count($this->contents[$i]["Images"]) === 0) {
+                    $this->contents[$i]["Images"] = [$this->config["file"]["image_none"]];
+                    $this->contents[$i]["ImagesTitle"] = ["등록된 이미지가 없습니다."];
+                }
                 // Creator
                 $this->contents[$i]["Creators"] = $this->getCreators($this->contents[$i]["Creator"]);
                 // Genres
                 $categories_model->parseArray($origin, $this->contents[$i], "Genre");
                 $categories_model->parseName($origin, $this->contents[$i], "Genre");
+                $this->contents[$i]["GenresList"] = implode(", ", $this->contents[$i]["Genres"]);
                 // Platforms
                 $categories_model->parseArray($origin, $this->contents[$i], "Platform");
                 $categories_model->parseName($origin, $this->contents[$i], "Platform");
+                $this->contents[$i]["PlatformsList"] = implode(", ", $this->contents[$i]["Platforms"]);
                 // Tags
                 $categories_model->parseArray($origin, $this->contents[$i], "Tag");
                 $categories_model->parseName($origin, $this->contents[$i], "Tag");
+                $this->contents[$i]["TagsList"] = implode(", ", $this->contents[$i]["Tags"]);
             }
             $result->free();
         }

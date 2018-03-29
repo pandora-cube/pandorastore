@@ -3,10 +3,10 @@
  *      [Framework for Managing Design and Data on Websites]
  * 
  *          Fadow (파도)
- *          v1.02
+ *          v1.1
  * 
  *      First Release:  2017.06.18
- *      Last Update:    2018.01.29
+ *      Last Update:    2018.03.28
  * 
  *      Coded by Seongbum @ All rights reserved.
  *          sBum.Seo@gmail.com
@@ -23,6 +23,11 @@ class Template {
         $this->title = $title;
     }
 
+    public function addAttributes($array) {
+        foreach ($array as $key => $value) {
+            $this->attributes[$key] = $value;
+        }
+    }
     public function setAttribute($key, $value) {
         $this->attributes[$key] = $value;
     }
