@@ -5,13 +5,16 @@ function loadTopOrbitData(data) {
 
     for (i = 0; i < data.length; i++) {
         if (data[i].URL.length > 0) {
+            // URL이 있는 경우 이미지 영역을 A 태그로 만듬
             $imageWrapper = $("<a>")
                 .addClass("image-wrapper")
                 .attr("href", data[i].URL);
+            // 외부 링크인 경우
             if (data[i].URL.indexOf("http://") === 0 || data[i].URL.indexOf("https://") === 0) {
                 $imageWrapper.attr("target", "_blank");
             }
         } else {
+            // URL이 없는 경우 이미지 영역을 DIV 태그로 만듬
             $imageWrapper = $("<div>")
                 .addClass("image-wrapper");
         }
