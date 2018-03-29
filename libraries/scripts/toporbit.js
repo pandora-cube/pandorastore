@@ -28,10 +28,17 @@ function loadTopOrbitData(data) {
                     .attr("alt", data[i].Description))); // ALT 적용되지 않고 있음
     }
 
-    $slideWrapper.bxSlider({
-        auto: true,
-        autoControls: true,
-        stopAutoOnClick: true,
-        captions: true,
-    });
+    if (data.length === 1) {
+        $slideWrapper.bxSlider({
+            pager: false,
+            captions: true,
+        });
+    } else {
+        $slideWrapper.bxSlider({
+            auto: true,
+            autoControls: true,
+            stopAutoOnClick: true,
+            captions: true,
+        });
+    }
 }
