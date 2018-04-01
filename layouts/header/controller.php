@@ -21,6 +21,6 @@ if (isset($_SESSION["UserID"]) && isset($_SESSION["Password"])) { // 이미 로�
 if (explode(".", $_SERVER["HTTP_HOST"])[0] === "test") { // 테스트 사이트인 경우
     $this->setAttribute("LogoText", "PStore TW");
 } else {
-    $this->setAttribute("LogoText", "판도라스토어");
+    $this->setAttribute("LogoText", "N# Store");
 }
 ?>
