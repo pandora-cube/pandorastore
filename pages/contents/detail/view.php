@@ -16,8 +16,9 @@
         <p>제작:
             <span class="creator"><?=$this->getAttribute("Creator")?></span>
             <?php if ($this->isEnabledArea("tooltip")): ?>
-                <button class="tooltip info" tooltip="<?=$this->getAttribute("Creators")?>">
+                <button class="tooltip-wrapper tooltip-icon">
                     <i class="material-icons">&#xE88E;</i>
+                    <span class="tooltip"><?=$this->getAttribute("Creators")?></span>
                 </button>
             <?php endif; ?>
         </p>
