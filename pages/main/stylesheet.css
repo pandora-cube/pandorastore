@@ -42,7 +42,7 @@ header .slideArea .bx-wrapper .bx-viewport .image-wrapper img.align-bottom {
     float: left;
     line-height: 1em;
 }
-#contents .category-name .info {
+#contents .category-name .tooltip-icon {
     float: left;
     line-height: 1.7;
     margin-left: .5em;

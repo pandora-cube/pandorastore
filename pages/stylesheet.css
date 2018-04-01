@@ -218,40 +218,6 @@ body .bx-wrapper .bx-controls .bx-controls-auto .bx-controls-auto-item {
     vertical-align: top;
 }
 
-/* 툴팁 UI */
-[tooltip] {
-    cursor: help;
-}
-[tooltip]:before {
-    content: attr(tooltip);
-    position: absolute;
-    z-index: -1;
-    line-height: 1.5;
-    padding: 5px 10px;
-    opacity: 0;
-    color: white;
-    background-color: gray;
-    border-radius: 10px;
-    box-shadow: 2px 2px 1px silver;
-    transition: all 0.5s ease;
-}
-[tooltip]:hover:before,
-[tooltip]:focus:before {
-    z-index: 1;
-    margin-top: 10px;
-    margin-left: 10px;
-    opacity: .95;
-}
-[tooltip].info {
-    vertical-align: text-bottom;
-    font-size: 1em;
-    border: none;
-}
-[tooltip].info i {
-    color: steelblue;
-    font-size: 1.5em;
-}
-
 /* 헤더 */
 header {
     background-color: white;

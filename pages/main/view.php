@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="/pages/main/stylesheet.css" />
     <link rel="stylesheet" href="/pages/contents/detail/stylesheet.css" />
     <link rel="stylesheet" href="/libraries/modules/modal/modal.css" />
+    <link rel="stylesheet" href="/libraries/modules/tooltip/tooltip.css" />
     <script src="/libraries/modules/modal/modal.js"></script>
+    <script src="/libraries/modules/tooltip/tooltip.js"></script>
     <script src="/libraries/scripts/toporbit.js"></script>
     <script src="/libraries/scripts/contentsdata.js"></script>
 </head>
