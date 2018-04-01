@@ -1,6 +1,39 @@
 $(document).ready(function onDocumentReady() {
+    function adjustTooltipOffset(wrapper) {
+        var $tooltip = $(wrapper).children(".tooltip"); // 툴팁 선택자
+        var documentWidth = document.body.clientWidth; // 문서 폭
+        var wrapperLeft = $(wrapper).offset().left; // 툴팁 위치 (left)
+        var offsetPer = (wrapperLeft / documentWidth) * 100; // 문서 폭 대비 툴팁 위치
+
+        /* 툴팁 위치 판별
+         * ~ 40vw: 왼쪽에 위치
+         * 40vw ~ 60vw: 중앙에 위치
+         * 60vw ~: 오른쪽에 위치
+         */
+        if (offsetPer < 40.0) { // 툴팁이 왼쪽에 위치한 경우
+            // 툴팁을 오른쪽으로 전개
+            $tooltip
+                .removeClass("left middle")
+                .css("max-width", (documentWidth - wrapperLeft) + "px");
+        } else if (offsetPer < 60.0) { // 툴팁이 중앙에 위치한 경우
+            // 툴팁을 중앙으로 전개
+            $tooltip
+                .removeClass("left")
+                .addClass("middle")
+                .css("max-width", documentWidth + "px");
+        } else { // 툴팁이 오른쪽에 위치한 경우
+            // 툴팁을 왼쪽으로 전개
+            $tooltip
+                .removeClass("middle")
+                .addClass("left")
+                .css("max-width", wrapperLeft + "px");
+        }
+    }
+
     // 툴팁 활성화
     function activateTooltip() {
+        adjustTooltipOffset(this); // 좌표 조정
+
         $(this).children(".tooltip")
             .addClass("on");
     }

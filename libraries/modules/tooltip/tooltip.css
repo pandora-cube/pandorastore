@@ -12,13 +12,20 @@
     border-radius: 10px;
     box-shadow: 2px 2px 1px silver;
     transform: translate(-15px, 0);
-    transition: all 0.5s ease;
+    transition: margin .5s ease, opacity .5s ease;
 }
 .tooltip.on {
     z-index: 1;
     margin-top: 10px;
     margin-left: 5px;
     opacity: .95;
+}
+.tooltip.left {
+    width: 100%;
+    transform: translate(-100%, 0);
+}
+.tooltip.left.on {
+    margin-left: -5px;
 }
 .tooltip-icon {
     vertical-align: text-bottom;
