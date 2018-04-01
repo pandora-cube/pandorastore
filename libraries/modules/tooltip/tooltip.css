@@ -3,7 +3,6 @@
 }
 .tooltip {
     position: absolute;
-    z-index: -1;
     line-height: 1.5;
     padding: 5px 10px;
     opacity: 0;
@@ -15,7 +14,6 @@
     transition: margin .5s ease, opacity .5s ease;
 }
 .tooltip.on {
-    z-index: 1;
     margin-top: 10px;
     margin-left: 5px;
     opacity: .95;
