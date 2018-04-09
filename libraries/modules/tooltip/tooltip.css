@@ -3,6 +3,8 @@
 }
 .tooltip {
     position: absolute;
+    z-index: 1;
+    width: fit-content;
     line-height: 1.5;
     padding: 5px 10px;
     opacity: 0;
@@ -19,11 +21,16 @@
     opacity: .95;
 }
 .tooltip.left {
-    width: 100%;
     transform: translate(-100%, 0);
 }
 .tooltip.left.on {
     margin-left: -5px;
+}
+.tooltip.middle {
+    transform: translate(-50%, 0);
+}
+.tooltip.middle.on {
+    margin-left: 0;
 }
 .tooltip-icon {
     vertical-align: text-bottom;
