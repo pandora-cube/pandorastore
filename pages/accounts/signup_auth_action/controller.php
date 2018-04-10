@@ -15,7 +15,7 @@ if ($_SESSION["signup_auth_try"] > 3) { // 3회 이상 실패 시
 $user = new User($email, null, null, true);
 $user_data = $user->getData();
 
-$template = new Template();
+$template = new Template("판도라스토어 회원 가입");
 if ($user_data["Authenticated"] != 0) { // 이미 가입된 계정인 경우
     $template->setAttribute("email", $email);
     $template->disableArea("auth-complete");

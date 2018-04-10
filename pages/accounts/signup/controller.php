@@ -1,7 +1,7 @@
 <?php
 require_once("libraries/functions/template.php");
 
-$template = new Template();
+$template = new Template("판도라스토어 회원 가입");
 if (isset($_COOKIE["Error"])) {
     $error = json_decode($_COOKIE["Error"]);
     setcookie("Error", "", time()-3600, "/accounts/");

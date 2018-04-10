@@ -1,7 +1,7 @@
 $(document).ready(function onDocumentReady() {
     var $modal = $("#contents-detail");
     var identifier = $("#identifier").val();
-    var contentsTitle = $("#contents-title").val();
+    var pageTitle = $("#page-title").val();
 
     // Modal 닫힐 시
     $modal.on("close", function onModalClose() {
@@ -11,7 +11,7 @@ $(document).ready(function onDocumentReady() {
     // 문서의 타이틀 변경
     function applyDocumentTitle() {
         var originalTitle = $("title").text();
-        $("title").text(contentsTitle + " - " + originalTitle);
+        $("title").text(pageTitle);
 
         $modal.on("close", function onModalClose() {
             $("title").text(originalTitle);

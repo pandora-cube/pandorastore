@@ -3,7 +3,7 @@
 <script src="/pages/contents/detail/script.js"></script>
 
 <input id="identifier" type="hidden" value="<?=$this->getAttribute("Identifier")?>" />
-<input id="contents-title" type="hidden" value="<?=$this->getAttribute("Title")?>" />
+<input id="page-title" type="hidden" value="<?=$this->title?>" />
 
 <div class="top">
     <!-- 아이콘 -->

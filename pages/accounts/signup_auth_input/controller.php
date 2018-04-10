@@ -3,7 +3,7 @@ require_once("libraries/functions/template.php");
 
 session_start();
 
-$template = new Template();
+$template = new Template("판도라스토어 회원 가입");
 if ($_SESSION["signup_auth_try"] > 3) { // 3회 이상 실패 시
     $template->disableArea("auth-reinput");
     $template->disableArea("auth-input");

@@ -54,7 +54,7 @@ require_once("models/contents.php");
 }
 
 /* 뷰 로드 */ {
-    $template = new Template();
+    $template = new Template("판도라스토어");
     $template->setAttribute("orbit", $orbit_data);
     $template->setAttribute("contents", $contents_data);
     $template->setAttribute("category_name", $category_name);

@@ -28,7 +28,7 @@ $html_nickname = htmlentities($_POST["Nickname"]);
 $authCode = rand(100000, 999999); // 6자리 난수
 
 // 인증 메일의 뷰 로드
-$mailTemplate = new Template();
+$mailTemplate = new Template("판도라스토어 회원 가입 인증 메일");
 $mailTemplate->setAttribute("nickname", $html_nickname);
 $mailTemplate->setAttribute("auth_code", $authCode);
 $mailTemplate->setAttribute("auth_href", "http://{$_SERVER["HTTP_HOST"]}/accounts/signup_auth_action?email={$url_email}&authcode={$authCode}");

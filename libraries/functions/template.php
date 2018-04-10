@@ -19,7 +19,7 @@ class Template {
     private $attributes;
     private $disabled;
 
-    public function __construct($title = "Pandora Store") {
+    public function __construct($title) {
         $this->title = $title;
     }
 
