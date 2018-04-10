@@ -138,10 +138,10 @@ class Contents {
 
     private function getCreators(&$creator) {
         $creators = json_decode($creator);
-        $type = substr($creators, 0, 1);
-        $number = intval(substr($creators, 1, strlen($creators)-1));
+        $type = substr($creator, 0, 1);
+        $number = intval(substr($creator, 1, strlen($creator)-1));
 
-        if (gettype($creators) === "string") {
+        if (gettype($creators) !== "string") {
             if ($type === "T") {
                 $team_model = new Team($number);
                 $team_data = $team_model->getData();
@@ -150,6 +150,8 @@ class Contents {
                 $creators = $team_data["MembersList"];
             } else if ($type === "U") {
             }
+        } else {
+            $creator = $creators;
         }
 
         return $creators;
