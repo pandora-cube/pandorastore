@@ -1,0 +1,22 @@
+#contents h2 {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+#contents form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+#contents form label,
+#contents form input,
+#contents form textarea {
+    display: block;
+}
+#contents form input[type=text],
+#contents form textarea {
+    width: 100%;
+    height: 2rem;
+    margin: .5em 0;
+    padding-left: .5em;
+    border: 1px solid #AAA;
+}
