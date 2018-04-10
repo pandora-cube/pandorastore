@@ -301,7 +301,7 @@ header .user-menu .user-menu-item {
     position: relative;
 }
 header .user-menu .signin {
-    display: inline-block;
+    float: left;
     line-height: calc(2rem - 2px);
     padding: 0 1em;
     font-size: 1em;
@@ -310,7 +310,7 @@ header .user-menu .signin {
     transition: color .5s, background-color .5s;
 }
 header .user-menu .signup {
-    display: inline-block;
+    float: left;
     line-height: 2rem;
     padding: 0 1em;
     font-size: 1em;
