@@ -94,6 +94,13 @@ class Contents {
                 $categories_model->parseArray($origin, $this->contents[$i], "Tag");
                 $categories_model->parseName($origin, $this->contents[$i], "Tag");
                 $this->contents[$i]["TagsList"] = implode(", ", $this->contents[$i]["Tags"]);
+                // Downloads
+                $this->contents[$i]["Downloads"] = json_decode($this->contents[$i]["Downloads"]);
+                foreach ($this->contents[$i]["Downloads"] as $platform => &$url) {
+                    if (strpos($url, "http://") === false && strpos($url, "https://") === false) {
+                        $url = $this->getPath($identifier)."/{$url}";
+                    }
+                }
             }
             $result->free();
         }

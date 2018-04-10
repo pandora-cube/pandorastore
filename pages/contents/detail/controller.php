@@ -16,21 +16,8 @@ $template = null;
     || $data["Creators"] === $data["Creator"])
         $template->disableArea("tooltip");
 
-    // Download URL
-    $downloadConfig = [
-        ["DownloadURL_Android", "Android"],
-        ["DownloadURL_iOS", "iOS"],
-        ["DownloadURL", "기타OS"],
-    ];
-    $downloadData = $downloadDatum = [];
-    foreach ($downloadConfig as $config) {
-        if (strlen($data[$config[0]]) > 0) {
-            $downloadDatum["URL"] = $data[$config[0]];
-            $downloadDatum["Text"] = $config[1];
-            array_push($downloadData, $downloadDatum);
-        }
-    }
-    $template->setAttribute("download-data", $downloadData);
+    // Downloads
+    $template->setAttribute("download-data", $data["Downloads"]);
 
     // Whole data
     $template->addAttributes($data);

@@ -29,8 +29,8 @@
 
 <!-- 다운로드 버튼 영역 -->
 <div class="download">
-    <?php foreach ($this->getAttribute("download-data") as $download): ?>
-        <a href="<?=$download["URL"]?>"><?=$download["Text"]?></a>
+    <?php foreach ($this->getAttribute("download-data") as $platform => $url): ?>
+        <a href="<?=$url?>"><?=$platform?></a>
     <?php endforeach; ?>
 </div>
 
