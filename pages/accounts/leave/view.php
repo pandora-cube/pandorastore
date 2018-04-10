@@ -38,7 +38,7 @@
 
 			<textarea id="Detail" name="Detail" style="display: none;"></textarea>
 			
-			<input class="alert" type="submit" value="회원 탈퇴"> 
+			<input class="button_style_1 alert" type="submit" value="회원 탈퇴"> 
 		</form>
     </div>
 

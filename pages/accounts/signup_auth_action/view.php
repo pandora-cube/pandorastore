@@ -26,7 +26,7 @@
                 <p>환영합니다!</p>
             <?php endif; ?>
 
-            <input type="submit" value="로그인" />
+            <input class="button_style_1" type="submit" value="로그인" />
         </form>
     </div>
 

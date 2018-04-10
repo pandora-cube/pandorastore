@@ -46,7 +46,7 @@
 #contents form input[type=password],
 #contents form input[type=number] {
     width: 100%;
-    height: 2rem;
+    height: 2em;
     margin: 1em 0;
     padding-left: .5em;
     border: 1px solid #AAA;
@@ -77,30 +77,7 @@
 }
 #contents form input[type=submit] {
     width: 100%;
-    height: 2.3rem;
     margin: 1em auto;
-    padding: 0 1em;
-    font-size: 1em;
-    font-weight: bolder;
-    color: #8badc9;
-    background-color: #e7eef4;
-    border: 1px solid #8badc9;
-    border-radius: 1em;
-    cursor: pointer;
-    transition: background-color .5s, color .5s;
-}
-#contents form input[type=submit]:hover {
-    color: white;
-    background-color: #8badc9;
-}
-#contents form input[type=submit].alert {
-    color: #c98bad;
-    background-color: #f4e7ee;
-    border: 1px solid #c98bad;
-}
-#contents form input[type=submit].alert:hover {
-    color: white;
-    background-color: #c98bad;
 }
 
 #contents form .multi input {
@@ -136,7 +113,7 @@
 #contents form textarea {
     display: block;
     width: 100%;
-    height: 3em;
+    height: 5em;
     margin: 1em 0;
     padding: .5em;
     background-color: white;

@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <input type="submit" value="회원 가입" />
+            <input class="button_style_1" type="submit" value="회원 가입" />
         </form>
     </div>
 

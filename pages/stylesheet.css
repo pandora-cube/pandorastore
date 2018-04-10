@@ -48,6 +48,33 @@ template {
     display: none;
 }
 
+/* 버튼 */
+.button_style_1 {
+    height: 2.3em;
+    padding: 0 1em;
+    font-size: 1em;
+    font-weight: bolder;
+    color: #8badc9;
+    background-color: #e7eef4;
+    border: 1px solid #8badc9;
+    border-radius: 1em !important;
+    cursor: pointer;
+    transition: background-color .5s, color .5s;
+}
+.button_style_1:hover {
+    color: white;
+    background-color: #8badc9;
+}
+.button_style_1.alert {
+    color: #c98bad;
+    background-color: #f4e7ee;
+    border: 1px solid #c98bad;
+}
+.button_style_1.alert:hover {
+    color: white;
+    background-color: #c98bad;
+}
+
 /* 입력 폼 */
 input {
     font-size: 1em;
