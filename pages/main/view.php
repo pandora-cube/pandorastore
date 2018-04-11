@@ -13,6 +13,24 @@
 </head>
 
 <body>
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "판도라스토어",
+            "url": "http://p-store.kr",
+            "sameAs": [
+                "http://cafe.naver.com/pcube",
+                "https://play.google.com/store/apps/developer?id=%ED%8C%90%EB%8F%84%EB%9D%BC%ED%81%90%EB%B8%8C"
+            ],
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "http://p-store.kr?search={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+    </script>
+
     <header>
         <?=$this->loadLayout("header")?>
     </header>

@@ -3,23 +3,6 @@
 <script src="/libraries/modules/stickymenu/stickymenu.js"></script>
 <script src="/libraries/modules/bxSlider/jquery.bxslider.min.js"></script>
 <script src="/layouts/header/script.js"></script>
-<script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "WebSite",
-        "name": "판도라스토어",
-        "url": "http://p-store.kr",
-        "sameAs": [
-            "http://cafe.naver.com/pcube",
-            "https://play.google.com/store/apps/developer?id=%ED%8C%90%EB%8F%84%EB%9D%BC%ED%81%90%EB%B8%8C",
-        ],
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "http://p-store.kr?search={search_term_string}",
-            "query-input": "required name=search_term_string",
-        },
-    }
-</script>
 
 <!-- 스킵 네비게이션 -->
 <a id="skip-nav" href="#contents">메뉴 건너뛰기</a>
