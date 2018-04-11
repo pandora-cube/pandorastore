@@ -16,7 +16,7 @@
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",
-            "@type": "WebSite",
+            "@type": "Organization",
             "name": "판도라스토어",
             "url": "http://p-store.kr",
             "sameAs": [
