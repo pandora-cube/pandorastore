@@ -11,6 +11,7 @@
 
 <title><?=$this->title?></title>
 
+<link rel="canonical" href="http://p-store.kr">
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="/fonts/NotoSansKR/NotoSansKR-Hestia.css" />
 <link rel="stylesheet" href="/fonts/MaterialIcons/MaterialIcons.css" />
