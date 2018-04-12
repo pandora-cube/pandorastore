@@ -19,7 +19,7 @@
             <input id="Title" name="Title" type="text" required />
 
             <label for="Creator">제작자</label>
-            <input id="Creator" name="Creator" type="text" required />
+            <input id="Creator" name="Creator" type="text" placeholder="팀명(팀원)" required />
 
             <label for="Genre">장르</label>
             <input id="Genre" name="Genre" type="text" required />
@@ -27,24 +27,24 @@
             <label for="Platform">환경</label>
             <input id="Platform" name="Platform" type="text" required />
 
-            <label for="Description">콘텐츠 소개</label>
+            <label for="Description">소개</label>
             <textarea id="Description" name="Description" required></textarea>
 
-            <label>다운로드</label>
-            <button class="add-download">
+            <label>파일</label>
+            <button class="add-file">
                 <i class="material-icons">&#xE145;</i>
                 <span>추가</span>
             </button>
-            <ul class="downloads">
+            <ul class="files">
                 <template>
                     <input class="url" type="text" placeholder="URL 입력" />
                     <span class="or">혹은</span>
-                    <label class="file-label">
+                    <label class="select-file-label">
                         <i class="material-icons">&#xE2C6;</i>
                         <span>파일 선택</span>
                     </label> 
                     <input name="MAX_FILE_SIZE" type="hidden" value="536870912" /> <!-- 최대용량 512MB -->
-                    <input class="file-input" type="file" />
+                    <input class="select-file-input" type="file" />
                     <div class="delete-wrapper">
                         <button class="delete">
                             <span class="blind">삭제</span>

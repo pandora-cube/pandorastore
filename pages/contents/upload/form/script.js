@@ -1,11 +1,11 @@
 $(document).ready(function onDocumentReady() {
     var fileNumber = 0;
 
-    function insertDownloadInput(event) {
-        var $downloads = $("#upload-form .downloads");
-        var template = $downloads.find("template").html();
+    function addFileRow(event) {
+        var $files = $("#upload-form .files");
+        var template = $files.find("template").html();
 
-        $downloads
+        $files
             .append($("<li>")
                 .html(template)
                 .find(".file-label")
@@ -22,6 +22,6 @@ $(document).ready(function onDocumentReady() {
         }
     }
 
-    $("#upload-form .add-download").on("click", insertDownloadInput);
-    insertDownloadInput();
+    $("#upload-form .add-file").on("click", addFileRow);
+    addFileRow();
 });
