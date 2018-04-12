@@ -108,8 +108,8 @@ textarea {
 .blind {
     position: absolute;
     clip: rect(0 0 0 0);
-    width: 1px;
-    height: 1px;
+    width: 1px !important;
+    height: 1px !important;
     margin: -1px;
     overflow: hidden;
 }
@@ -141,6 +141,10 @@ textarea {
 .table_style_1 td {
     padding: .7em 0;
     border-bottom: 1px solid #aaa;
+}
+
+/* 리스트 */
+.list_style_1 {
 }
 
 /* 뱃지 */
