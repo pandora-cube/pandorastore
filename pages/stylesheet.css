@@ -2,8 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* 텍스트 크기 자동 조절 X */
-    -webkit-text-size-adjust: none;
+    -webkit-text-size-adjust: none; /* 텍스트 크기 자동 조절 X */
 }
 ::selection {
     background-color: rgba(153, 255, 0, .3);
@@ -17,6 +16,7 @@ body {
     margin: 0;
     color: #555;
     font-family: 'Noto Sans Korean', 'Malgun Gothic', Dotum, Helvetica, Arial, sans-serif;
+    text-rendering: optimizeLegibility; /* 텍스트 렌더링 시 커닝 페어 및 선택적 합자 사용 */
 }
 /* body를 제외한 모든 요소의 폰트 사이즈는 em단위 */
 @media screen and (max-width: 50rem) { /* for Mobile */
