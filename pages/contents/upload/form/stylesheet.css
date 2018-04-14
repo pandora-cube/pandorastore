@@ -98,7 +98,7 @@
     transition: opacity 1s, visibility 1s;
 }
 #contents form .files li .url .url-apply.on {
-    opacity: 1;
+    opacity: .7;
     visibility: visible;
 }
 #contents form .files li .url .url-apply div {
