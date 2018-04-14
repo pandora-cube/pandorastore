@@ -17,6 +17,8 @@ body {
     color: #555;
     font-family: 'Noto Sans Korean', 'Malgun Gothic', Dotum, Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility; /* 텍스트 렌더링 시 커닝 페어 및 선택적 합자 사용 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 /* body를 제외한 모든 요소의 폰트 사이즈는 em단위 */
 @media screen and (max-width: 50rem) { /* for Mobile */
