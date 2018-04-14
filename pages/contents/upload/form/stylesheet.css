@@ -24,10 +24,6 @@
     padding: .5em;
     resize: none;
 }
-#contents form input[type=submit] {
-    width: 100%;
-    margin-top: 1em;
-}
 #contents form .add-file {
     float: right;
     padding: .1em .3em;
@@ -136,4 +132,8 @@
 }
 #contents form .files li .delete i {
     display: block;
+}
+#contents form input[type=submit] {
+    width: 100%;
+    margin-top: 1.7em;
 }
