@@ -31,15 +31,15 @@
 #contents form .add-file {
     float: right;
     padding: .1em .3em;
-    font-size: 1em;
-    font-weight: bold;
     color: White;
     background-color: SteelBlue;
     border: none;
     cursor: pointer;
 }
 #contents form .add-file > * {
-    vertical-align: middle;
+    float: left;
+    display: block;
+    line-height: inherit;
     font-size: .8em;
 }
 #contents form .files {
@@ -61,27 +61,58 @@
     list-style: none;
 }
 #contents form .files li .url {
+    position: relative;
     float: left;
     width: calc(100% - 11em);
     height: 100%;
     margin: 0 0 0 .5em;
+}
+#contents form .files li .url .url-input {
+    width: 100%;
+    height: 100%;
+    margin: 0;
     background-color: inherit;
     border: none;
+}
+#contents form .files li .url .url-apply {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    width: 3em;
+    height: 1.5em;
+    top: .25em;
+    right: .25em;
+    color: White;
+    background-color: #AAA;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 1s, visibility 1s;
+}
+#contents form .files li .url .url-apply.on {
+    opacity: 1;
+    visibility: visible;
+}
+#contents form .files li .url .url-apply div {
+    font-size: .8em;
 }
 #contents form .files li .or {
     float: left;
     width: 3em;
     text-align: center;
 }
-#contents form .files li .select-file-label {
+#contents form .files li .select-file-input {
+    display: none;
+}
+#contents form .files li .select-file-button {
     float: left;
+    display: block;
     width: 5.5em;
     height: 100%;
     text-align: center;
+    color: inherit;
+    border: none;
     cursor: pointer;
-}
-#contents form .files li .select-file-input {
-    display: none;
 }
 #contents form .files li .delete-wrapper {
     float: right;

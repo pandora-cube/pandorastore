@@ -37,14 +37,19 @@
             </button>
             <ul class="files">
                 <template>
-                    <input class="url" type="text" placeholder="URL 입력" />
+                    <div class="url">
+                        <input class="url-input" type="text" placeholder="URL 입력" />
+                        <button class="url-apply">
+                            <div>확인</div>
+                        </button>
+                    </div>
                     <span class="or">혹은</span>
-                    <label class="select-file-label">
-                        <i class="material-icons">&#xE2C6;</i>
-                        <span>파일 선택</span>
-                    </label> 
                     <input name="MAX_FILE_SIZE" type="hidden" value="536870912" /> <!-- 최대용량 512MB -->
                     <input class="select-file-input" type="file" />
+                    <button class="select-file-button">
+                        <i class="material-icons">&#xE2C6;</i>
+                        <span>파일 선택</span>
+                    </button> 
                     <div class="delete-wrapper">
                         <button class="delete">
                             <span class="blind">삭제</span>
