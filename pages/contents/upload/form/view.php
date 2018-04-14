@@ -37,6 +37,7 @@
             </button>
             <ul class="files">
                 <template>
+                    <input class="platform-input" type="text" placeholder="환경" />
                     <div class="url">
                         <input class="url-input" type="text" placeholder="URL 입력" />
                         <button class="url-apply">

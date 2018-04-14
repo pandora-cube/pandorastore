@@ -60,12 +60,20 @@
     margin: .5em 0;
     list-style: none;
 }
+#contents form .files li .platform-input {
+    float: left;
+    width: 20%;
+    height: 100%;
+    margin: 0 0 0 .5em;
+    background-color: inherit;
+    border: none;
+    border-right: 2px solid #AAA;
+}
 #contents form .files li .url {
     position: relative;
     float: left;
-    width: calc(100% - 11em);
+    width: calc(80% - 11em);
     height: 100%;
-    margin: 0 0 0 .5em;
 }
 #contents form .files li .url .url-input {
     width: 100%;
