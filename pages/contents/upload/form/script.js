@@ -18,24 +18,41 @@ $(document).ready(function onDocumentReady() {
         $("#" + $(this).data("for")).click();
     }
 
+    function deleteFileRow(event) {
+        event.preventDefault();
+        $(this).parents("#upload-form .files li").remove();
+    }
+
     function addFileRow(event) {
         var $files = $("#upload-form .files");
         var template = $files.find("template").html();
 
+        function getFileInputName() {
+            return this.name + "-" + fileNumber;
+        }
+
+        /* eslint-disable indent */
         $files
             .append($("<li>")
                 .html(template)
+                .find("input:not([name=MAX_FILE_SIZE])")
+                    .attr("name", getFileInputName)
+                    .end()
                 .find(".url")
                     .on("focusin", enableURLApply)
                     .on("focusout", disableURLApply)
-                .end()
+                    .end()
                 .find(".select-file-input")
                     .attr("id", "file-" + fileNumber)
-                .end()
+                    .end()
                 .find(".select-file-button")
                     .data("for", "file-" + fileNumber)
                     .on("click", showFileDialog)
-                .end());
+                    .end()
+                .find(".delete")
+                    .on("click", deleteFileRow)
+                    .end());
+        /* eslint-enable */
 
         fileNumber += 1;
 
