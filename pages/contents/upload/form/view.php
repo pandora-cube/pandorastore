@@ -20,6 +20,7 @@
 
             <label for="Creator">제작자</label>
             <label for="Creator" class="description">제작자가 모두 판도라스토어에 가입되어 있어야 합니다.</label>
+            <label for="Creator" class="description">모든 제작자는 콘텐츠에 대해 관리 권한을 가집니다.</label>
             <input id="Creator" name="Creator" type="text" placeholder="팀명(팀원) 혹은 제작자명" required />
 
             <label for="Genre">장르</label>
