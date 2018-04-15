@@ -18,9 +18,44 @@ $(document).ready(function onDocumentReady() {
         $("#" + $(this).data("for")).click();
     }
 
-    function deleteFileRow(event) {
+    function showFileName($li, fileName) {
+        /* eslint-disable indent */
+        $li
+            .find(".file-input")
+                .addClass("disabled")
+                .end()
+            .find(".file-name")
+                .addClass("enabled")
+                .text(fileName)
+                .end();
+        /* eslint-enable */
+    }
+
+    function onFileChanged() {
+        var $li = $(this).parents("#upload-form .files li");
+        var file = this.files[0];
+
+        if (file !== undefined) {
+            showFileName($li, file.name);
+        }
+    }
+
+    function onFileURLEntered() {
+        var $li = $(this).parents("#upload-form .files li");
+        var fileName = $li.find(".url-input").val();
+
+        if (fileName.length > 0) {
+            showFileName($li, fileName);
+        } else {
+            alert("파일 URL을 입력하십시오.");
+        }
+
         event.preventDefault();
+    }
+
+    function deleteFileRow(event) {
         $(this).parents("#upload-form .files li").remove();
+        event.preventDefault();
     }
 
     function addFileRow(event) {
@@ -41,9 +76,13 @@ $(document).ready(function onDocumentReady() {
                 .find(".url")
                     .on("focusin", enableURLApply)
                     .on("focusout", disableURLApply)
+                    .find(".url-apply")
+                        .on("click", onFileURLEntered)
+                        .end()
                     .end()
-                .find(".select-file-input")
+                .find(".select-file")
                     .attr("id", "file-" + fileNumber)
+                    .on("change", onFileChanged)
                     .end()
                 .find(".select-file-button")
                     .data("for", "file-" + fileNumber)

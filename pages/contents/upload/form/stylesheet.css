@@ -84,20 +84,29 @@
     border: none;
     border-right: 1px solid #AAA;
 }
-#contents form .files li .url {
-    position: relative;
+#contents form .files li .file-input,
+#contents form .files li .file-name {
     float: left;
-    width: calc(80% - 11em);
+    width: calc(80% - 2.5em);
     height: 100%;
 }
-#contents form .files li .url .url-input {
+#contents form .files li .file-input.disabled {
+    display: none;
+}
+#contents form .files li .file-input .url {
+    position: relative;
+    float: left;
+    width: calc(100% - 8.5em);
+    height: 100%;
+}
+#contents form .files li .file-input .url .url-input {
     width: 100%;
     height: 100%;
     margin: 0;
     background-color: inherit;
     border: none;
 }
-#contents form .files li .url .url-apply {
+#contents form .files li .file-input .url .url-apply {
     position: absolute;
     visibility: hidden;
     opacity: 0;
@@ -112,22 +121,22 @@
     cursor: pointer;
     transition: opacity 1s, visibility 1s;
 }
-#contents form .files li .url .url-apply.on {
+#contents form .files li .file-input .url .url-apply.on {
     opacity: .7;
     visibility: visible;
 }
-#contents form .files li .url .url-apply div {
+#contents form .files li .file-input .url .url-apply div {
     font-size: .8em;
 }
-#contents form .files li .or {
+#contents form .files li .file-input .or {
     float: left;
     width: 3em;
     text-align: center;
 }
-#contents form .files li .select-file-input {
+#contents form .files li .file-input .select-file {
     display: none;
 }
-#contents form .files li .select-file-button {
+#contents form .files li .file-input .select-file-button {
     float: left;
     display: block;
     width: 5.5em;
@@ -136,6 +145,15 @@
     color: inherit;
     border: none;
     cursor: pointer;
+}
+#contents form .files li .file-name {
+    display: none;
+    padding-left: .5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#contents form .files li .file-name.enabled {
+    display: block;
 }
 #contents form .files li .delete-wrapper {
     float: right;

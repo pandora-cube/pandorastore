@@ -42,21 +42,25 @@
                 <template>
                     <input class="platform-input" name="platform" type="text" placeholder="환경" />
 
-                    <div class="url">
-                        <input class="url-input" name="url" type="text" placeholder="URL 입력" />
-                        <button class="url-apply">
-                            <div>확인</div>
+                    <div class="file-input">
+                        <div class="url">
+                            <input class="url-input" name="url" type="text" placeholder="URL 입력" />
+                            <button class="url-apply">
+                                <div>확인</div>
+                            </button>
+                        </div>
+
+                        <span class="or">혹은</span>
+
+                        <input name="MAX_FILE_SIZE" type="hidden" value="536870912" /> <!-- 최대용량 512MB -->
+                        <input class="select-file" name="file" type="file" />
+                        <button class="select-file-button">
+                            <i class="material-icons">&#xE2C6;</i>
+                            <span>파일 선택</span>
                         </button>
                     </div>
 
-                    <span class="or">혹은</span>
-
-                    <input name="MAX_FILE_SIZE" type="hidden" value="536870912" /> <!-- 최대용량 512MB -->
-                    <input class="select-file-input" name="file" type="file" />
-                    <button class="select-file-button">
-                        <i class="material-icons">&#xE2C6;</i>
-                        <span>파일 선택</span>
-                    </button> 
+                    <div class="file-name"></div>
 
                     <div class="delete-wrapper">
                         <button class="delete">
