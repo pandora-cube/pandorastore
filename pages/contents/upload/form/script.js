@@ -26,7 +26,7 @@ $(document).ready(function onDocumentReady() {
                 .end()
             .find(".file-name")
                 .addClass("enabled")
-                .text(fileName)
+                .val(fileName)
                 .end();
         /* eslint-enable */
     }

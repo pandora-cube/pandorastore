@@ -148,9 +148,11 @@
 }
 #contents form .files li .file-name {
     display: none;
-    padding-left: .5em;
+    margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+    background-color: inherit;
+    border: none;
 }
 #contents form .files li .file-name.enabled {
     display: block;

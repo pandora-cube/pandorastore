@@ -40,7 +40,7 @@
             </div>
             <ul class="files">
                 <template>
-                    <input class="platform-input" name="platform" type="text" placeholder="환경" />
+                    <input class="platform-input" name="platform" type="text" placeholder="환경" required />
 
                     <div class="file-input">
                         <div class="url">
@@ -60,7 +60,7 @@
                         </button>
                     </div>
 
-                    <div class="file-name"></div>
+                    <input class="file-name" name="file-name" type="text" readonly required />
 
                     <div class="delete-wrapper">
                         <button class="delete">
@@ -69,7 +69,6 @@
                         </button>
                     </div>
                 </template>
-
             </ul>
 
             <input class="button_style_1" type="submit" value="제출" />
