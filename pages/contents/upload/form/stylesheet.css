@@ -7,6 +7,17 @@
     max-width: 500px;
     margin: 0 auto;
 }
+#contents form label {
+    display: block;
+    width: fit-content;
+}
+#contents form label.description {
+    opacity: .9;
+    font-size: .8em;
+}
+#contents form label.description::before {
+    content: '* ';
+}
 #contents form input,
 #contents form textarea {
     display: block;
@@ -24,7 +35,15 @@
     padding: .5em;
     resize: none;
 }
-#contents form .add-file {
+#contents form .files-header::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+#contents form .files-header label {
+    float: left;
+}
+#contents form .files-header .add-file {
     float: right;
     padding: .1em .3em;
     color: White;
@@ -32,7 +51,7 @@
     border: none;
     cursor: pointer;
 }
-#contents form .add-file > * {
+#contents form .files-header .add-file > * {
     float: left;
     display: block;
     line-height: inherit;

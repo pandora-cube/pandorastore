@@ -19,7 +19,8 @@
             <input id="Title" name="Title" type="text" placeholder="콘텐츠의 제목" required />
 
             <label for="Creator">제작자</label>
-            <input id="Creator" name="Creator" type="text" placeholder="팀명(팀원)" required />
+            <label for="Creator" class="description">제작자가 모두 판도라스토어에 가입되어 있어야 합니다.</label>
+            <input id="Creator" name="Creator" type="text" placeholder="팀명(팀원) 혹은 제작자명" required />
 
             <label for="Genre">장르</label>
             <input id="Genre" name="Genre" type="text" placeholder="콘텐츠의 장르" required />
@@ -30,11 +31,13 @@
             <label for="Description">소개</label>
             <textarea id="Description" name="Description" placeholder="콘텐츠 열람 시 노출될 소개문" required></textarea>
 
-            <label>파일</label>
-            <button class="add-file">
-                <i class="material-icons">&#xE145;</i>
-                <span>추가</span>
-            </button>
+            <div class="files-header">
+                <label>파일</label>
+                <button class="add-file">
+                    <i class="material-icons">&#xE145;</i>
+                    <span>추가</span>
+                </button>
+            </div>
             <ul class="files">
                 <template>
                     <input class="platform-input" name="platform" type="text" placeholder="환경" />
