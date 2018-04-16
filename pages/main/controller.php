@@ -33,12 +33,16 @@ require_once("models/contents.php");
     $tag_name = &$category_names["Tag"][$tag];
     if (isset($search)) {
         $category_name = "검색 결과 - {$search}";
+        $title_text = "{$search} - 판도라스토어 검색";
     } else if(isset($genre_name) && isset($platform_name)) {
         $category_name = "{$genre_name} / {$platform_name}";
+        $title_text = "{$genre_name}, {$platform_name} - 판도라스토어";
     } else if(isset($genre_name)) {
         $category_name = $genre_name;
+        $title_text = "{$genre_name} - 판도라스토어";
     } else if(isset($platform_name)) {
         $category_name = $platform_name;
+        $title_text = "{$platform_name} - 판도라스토어";
     } else if(isset($tag_name)) {
         $category_name = $tag_name;
         $category_description = "";
@@ -48,13 +52,15 @@ require_once("models/contents.php");
                 break;
             }
         }
+        $title_text = "{$tag_name} - 판도라스토어";
     } else {
         $category_name = null;
+        $title_text = "판도라스토어";
     }
 }
 
 /* 뷰 로드 */ {
-    $template = new Template("판도라스토어");
+    $template = new Template($title_text);
     $template->setAttribute("orbit", $orbit_data);
     $template->setAttribute("contents", $contents_data);
     $template->setAttribute("category_name", $category_name);

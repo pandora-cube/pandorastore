@@ -9,7 +9,7 @@ $template = null;
     $contents = new Contents(null, null, null, $_GET["identifier"], null);
     $data = $contents->getContents()[0];
 
-    $template = new Template("{$data["Title"]} - 판도라스토어");
+    $template = new Template("{$data["Title"]} - 판도라스토어 콘텐츠");
 
     // Creators
     if (strlen($data["Creators"]) === 0
