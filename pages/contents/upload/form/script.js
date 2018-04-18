@@ -32,7 +32,7 @@ $(document).ready(function onDocumentReady() {
                 .end()
             .find(".file-name") // 파일 이름 출력 영역 활성화
                 .addClass("enabled")
-                .val(fileName)
+                .text(fileName)
                 .end();
         /* eslint-enable */
     }

@@ -149,10 +149,9 @@
 #contents form .files li .file-name {
     display: none;
     margin: 0;
+    padding-left: .5em;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: inherit;
-    border: none;
 }
 #contents form .files li .file-name.enabled {
     display: block;

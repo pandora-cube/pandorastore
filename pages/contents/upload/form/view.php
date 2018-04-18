@@ -76,6 +76,7 @@
                     </div>
 
                     <!-- 파일 이름 출력 영역 -->
+                    <div class="file-name"></div>
 
                     <!-- 파일 항목 삭제 버튼 -->
                     <div class="delete-wrapper">
