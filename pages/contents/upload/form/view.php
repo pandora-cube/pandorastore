@@ -38,7 +38,7 @@
             <textarea id="Description" name="Description" placeholder="콘텐츠 열람 시 노출될 소개문" required></textarea>
 
             <!-- 파일 -->
-            <input name="MAX_FILE_SIZE" type="hidden" value="536870912" /> <!-- 최대용량 512MB -->
+            <input name="MAX_FILE_SIZE" type="hidden" value="<?=$this->getAttribute("MAX_FILE_SIZE")?>" /> <!-- 최대 용량 (Byte) -->
             <div class="files-header">
                 <label>파일</label>
                 <button class="add-file">
