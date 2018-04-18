@@ -70,14 +70,14 @@ class Contents {
                 $identifier = $origin["Identifier"];
 
                 // Thumbnail
-                $this->contents[$i]["Thumbnail"] = $this->getPath($identifier)."/{$this->config["file"]["thumbnail"]}";
+                $this->contents[$i]["Thumbnail"] = $this->getPath($identifier)."/{$this->config["image"]["thumbnail"]}";
                 $this->contents[$i]["ThumbnailAlt"] = $origin["Title"] + " 썸네일 이미지";
                 if (!file_exists(".{$this->contents[$i]["Thumbnail"]}"))
-                    $this->contents[$i]["Thumbnail"] = $this->config["file"]["thumbnail_none"];
+                    $this->contents[$i]["Thumbnail"] = $this->config["image"]["thumbnail_none"];
                 // Images
                 $this->contents[$i]["Images"] = $this->getImages($identifier);
                 if (count($this->contents[$i]["Images"]) === 0) {
-                    $this->contents[$i]["Images"] = [$this->config["file"]["image_none"]];
+                    $this->contents[$i]["Images"] = [$this->config["image"]["image_none"]];
                     $this->contents[$i]["ImagesTitle"] = ["등록된 이미지가 없습니다."];
                 }
                 // Creator
