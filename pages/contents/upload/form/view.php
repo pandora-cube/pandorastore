@@ -38,6 +38,7 @@
             <textarea id="Description" name="Description" placeholder="콘텐츠 열람 시 노출될 소개문" required></textarea>
 
             <!-- 파일 -->
+            <input name="MAX_FILE_SIZE" type="hidden" value="536870912" /> <!-- 최대용량 512MB -->
             <div class="files-header">
                 <label>파일</label>
                 <button class="add-file">
@@ -65,7 +66,6 @@
 
                         <span class="or">혹은</span>
 
-                        <!-- 최대용량 512MB -->
                         <!-- 파일 선택 input -->
                         <input class="select-file" name="file" type="file" />
                         <!-- 파일 선택 버튼 -->
