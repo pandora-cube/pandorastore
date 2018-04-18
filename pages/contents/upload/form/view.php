@@ -12,7 +12,7 @@
     </header>
 
     <div id="contents">
-        <form id="upload-form" action="/contents/upload/request" method="post">
+        <form id="upload-form" action="/contents/upload/request" method="post" enctype="multipart/form-data">
             <h2>콘텐츠 등록</h2>
 
             <label for="Title">제목</label>
