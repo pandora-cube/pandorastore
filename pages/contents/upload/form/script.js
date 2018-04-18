@@ -63,13 +63,13 @@ $(document).ready(function onDocumentReady() {
         event.preventDefault();
     }
 
-    // 파일 입력 영역 제거
+    // 파일 항목 영역 제거
     function deleteFileRow(event) {
         $(this).parents("#upload-form .files li").remove();
         event.preventDefault();
     }
 
-    // 파일 입력 영역 추가
+    // 파일 항목 영역 추가
     function addFileRow(event) {
         var $files = $("#upload-form .files");
         var template = $files.find("template").html();
@@ -82,7 +82,7 @@ $(document).ready(function onDocumentReady() {
 
         /* eslint-disable indent */
         $files
-            .append($("<li>") // 파일 입력 영역
+            .append($("<li>") // 파일 항목 영역
                 .html(template) // 템플릿 복사
                 .find("input:not([name=MAX_FILE_SIZE])") // 영역 내의 input 엘리먼트들
                     .attr("name", getInputElementName)
@@ -102,7 +102,7 @@ $(document).ready(function onDocumentReady() {
                     .data("for", "file-" + fileNumber)
                     .on("click", onSelectFileButtonClicked)
                     .end()
-                .find(".delete") // 파일 입력 영역 제거 버튼
+                .find(".delete") // 파일 항목 영역 제거 버튼
                     .on("click", deleteFileRow)
                     .end());
         /* eslint-enable */
