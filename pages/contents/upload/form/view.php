@@ -57,6 +57,7 @@
                         <div class="url">
                             <!-- 파일 URL -->
                             <input class="url-input" name="url" type="text" placeholder="URL 입력" />
+                            <!-- 파일 URL 입력 확인 버튼 -->
                             <button class="url-apply">
                                 <div>확인</div>
                             </button>
