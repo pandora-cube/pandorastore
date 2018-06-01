@@ -102,25 +102,23 @@
         </li>
         <li>
             <div class="title-wrapper" tabindex="0">
-                <span class="title">게임</span>
+                <span class="title">장르</span>
             </div>
             <ul class="inner-menu">
-                <li><a href="/"><b>전체</b></a></li>
-                <li><a href="/category/G1">타이쿤</a></li>
-                <li><a href="/category/G2">어드벤처</a></li>
-                <li><a href="/category/G4">전략</a></li>
-                <li><a href="/category/G5">퍼즐</a></li>
-                <li><a href="/category/G6">보드</a></li>
-                <li><a href="/category/G7">액션</a></li>
-                <li><a href="/category/G8">캐주얼</a></li>
-                <li><a href="/category/G9">아케이드</a></li>
-                <li><a href="/category/G10">시뮬레이션</a></li>
+                <?php foreach ($this->getAttribute("Category-Genres") as $index => $name): ?>
+                    <li><a href="/category/G<?=$index?>"><?=$name?></a></li>
+                <?php endforeach; ?>
             </ul>
         </li>
         <li>
-            <div class="title-wrapper">
-                <a class="title" href="/category/G3">소프트웨어</a>
+            <div class="title-wrapper" tabindex="0">
+                <span class="title">플랫폼</span>
             </div>
+            <ul class="inner-menu">
+                <?php foreach ($this->getAttribute("Category-Platforms") as $index => $name): ?>
+                    <li><a href="/category/P<?=$index?>"><?=$name?></a></li>
+                <?php endforeach; ?>
+            </ul>
         </li>
     </ul>
 </div>

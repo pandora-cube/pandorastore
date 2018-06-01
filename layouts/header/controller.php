@@ -15,6 +15,12 @@ if (isset($_SESSION["UserID"]) && isset($_SESSION["Password"])) { // 이미 로�
 
     $this->disableArea("signin");
     $this->setAttribute("Nickname", $user_data["Nickname"]);
+
+    // 카테고리 정보 불러오기
+    $categories_model = new Categories();
+    $category_names = $categories_model->loadNames();
+    $this->setAttribute("Category-Genres", $category_names["Genre"]);
+    $this->setAttribute("Category-Platforms", $category_names["Platform"]);
 } else {
     $this->disableArea("user-button");
 }
