@@ -70,7 +70,6 @@
 }
 
 .menuArea .menu > li {
-    position: relative;
     display: inline-block;
     height: 3em;
     cursor: pointer;
@@ -92,7 +91,6 @@
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
     .menuArea .menu > li {
-        position: static;
         display: block;
         height: auto;
         background-color: inherit !important;
@@ -115,16 +113,23 @@
     position: absolute;
     display: block;
     visibility: hidden;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     z-index: 1000;
+    max-width: calc(100% - 10rem);
+    width: 100%;
     list-style: none;
     white-space: nowrap;
-    background-color: white;
+    background-color: #f1f1f1;
     opacity: 0;
-    transition: .5s;
 }
 .menuArea .menu > li.on .inner-menu {
     visibility: visible;
     opacity: 1;
+}
+.menuArea .menu > li .inner-menu li {
+    float: left;
 }
 .menuArea .menu > li .inner-menu li a {
     display: block;
@@ -135,7 +140,10 @@
         position: static;
         visibility: visible;
         z-index: 0;
-        background-color: #f1f1f1;
+        max-width: 100%;
         opacity: 1;
+    }
+    .menuArea .menu > li .inner-menu li {
+        float: none;
     }
 }

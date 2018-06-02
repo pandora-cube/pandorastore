@@ -27,6 +27,8 @@ function loadContentsData(data, categoryName, categoryDescription, tags) {
                 .addClass("category-name")
                 .append($("<h2>")
                     .text(name))
+                .append($("<span>")
+                    .addClass("num-contents"))
                 .append($("<button>")
                     .addClass("tooltip-wrapper")
                     .addClass("tooltip-icon")
