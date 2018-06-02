@@ -141,6 +141,7 @@
         visibility: visible;
         z-index: 0;
         max-width: 100%;
+        width: 100%;
         opacity: 1;
     }
     .menuArea .menu > li .inner-menu li {
