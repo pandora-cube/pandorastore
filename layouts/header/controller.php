@@ -1,5 +1,6 @@
 <?php
 require_once("models/user.php");
+require_once("models/categories.php");
 
 session_start();
 
@@ -15,12 +16,6 @@ if (isset($_SESSION["UserID"]) && isset($_SESSION["Password"])) { // 이미 로�
 
     $this->disableArea("signin");
     $this->setAttribute("Nickname", $user_data["Nickname"]);
-
-    // 카테고리 정보 불러오기
-    $categories_model = new Categories();
-    $category_names = $categories_model->loadNames();
-    $this->setAttribute("Category-Genres", $category_names["Genre"]);
-    $this->setAttribute("Category-Platforms", $category_names["Platform"]);
 } else {
     $this->disableArea("user-button");
 }
@@ -29,4 +24,10 @@ if (explode(".", $_SERVER["HTTP_HOST"])[0] === "test") { // 테스트 사이트�
 } else {
     $this->setAttribute("LogoText", "판도라스토어");
 }
+
+// 카테고리 정보 불러오기
+$categories_model = new Categories();
+$category_names = $categories_model->loadNames();
+$this->setAttribute("Category-Genres", $category_names["Genre"]);
+$this->setAttribute("Category-Platforms", $category_names["Platform"]);
 ?>
