@@ -18,7 +18,7 @@ function loadContentsData(data, categoryName, categoryDescription, tags) {
         $item.find(".summary .creator").text(datum.Creator);
     }
 
-    function addContentsList(name, description, ID, filtered) {
+    function addContentsList(name, description, ID, numContents, filtered) {
         var $name = $("<div>");
         var $list = $("<section>");
 
@@ -28,7 +28,8 @@ function loadContentsData(data, categoryName, categoryDescription, tags) {
                 .append($("<h2>")
                     .text(name))
                 .append($("<span>")
-                    .addClass("num-contents"))
+                    .addClass("num-contents")
+                    .text(numContents + "개"))
                 .append($("<button>")
                     .addClass("tooltip-wrapper")
                     .addClass("tooltip-icon")
@@ -58,28 +59,40 @@ function loadContentsData(data, categoryName, categoryDescription, tags) {
     function loadContentsList() {
         var $list;
         var filtered;
+        var tagID;
+        var numContents;
         var i;
         var j;
 
         filtered = parseInt($("#filtered").val(), 10);
 
         if (categoryName.length > 0) {
-            $list = addContentsList(categoryName, categoryDescription, "", filtered);
+            $list = addContentsList(categoryName, categoryDescription, "", data.length, filtered);
 
             for (i = 0; i < data.length; i++) {
                 loadContentsItem($list, i, data[i]);
             }
         } else {
             for (i = 0; i < tags.length; i++) {
-                addContentsList(tags[i].Name, tags[i].Description, "T" + tags[i].ID, filtered)
+                addContentsList(tags[i].Name, tags[i].Description, "T" + tags[i].ID, data.length, filtered)
                     .attr("id", "tag-" + tags[i].ID);
             }
 
+            numContents = [];
             for (i = 0; i < data.length; i++) {
                 for (j = 0; j < data[i].TagsID.length; j++) {
+                    tagID = data[i].TagsID[j];
+
+                    if (numContents[tagID] === undefined) {
+                        numContents[tagID] = 0;
+                    }
+                    numContents[tagID] += 1;
+
                     $list = $("#tag-" + data[i].TagsID[j]);
                     if ($list.length > 0) {
                         loadContentsItem($list, i, data[i]);
+                        $list.prev(".category-name").find(".num-contents")
+                            .text(numContents[tagID] + "개");
                     }
                 }
             }
