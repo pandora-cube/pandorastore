@@ -1,5 +1,7 @@
 $(document).ready(function onDocumentReady() {
     var fileNumber = 0;
+    var genreNumber = 0;
+    var platformNumber = 0;
 
     // 파일 URL 입력 영역 포커스 인 이벤트
     function onFileURLFocusedIn() {
@@ -63,6 +65,100 @@ $(document).ready(function onDocumentReady() {
         event.preventDefault();
     }
 
+    // 장르 항목 제거
+    function deleteGenre(event) {
+        $(this).parents("#upload-form .genres li").remove();
+        event.preventDefault();
+    }
+
+    // 장르 항목 추가
+    function addGenre(event) {
+        var $genres = $("#upload-form .genres");
+        var template = $("#gp-item-template").html();
+        var selectedGenreID = $("#Genre").val();
+        var selectedGenreName = $("#Genre option:selected").text();
+
+        // 이미 추가된 항목인지 검사
+        if ($("#upload-form .genres li input[value='"+selectedGenreID+"']").length > 0) {
+            alert("이미 추가된 장르입니다.");
+            return;
+        }
+
+        // 영역 내 input 엘리먼트의 name 속성
+        function getInputElementName() {
+            return "genre-" + genreNumber;
+        }
+
+        /* eslint-disable indent */
+        $genres
+            .append($(template)
+                .find("input")
+                    .attr("name", getInputElementName)
+                    .val(selectedGenreID)
+                    .end()
+                .find(".name")
+                    .text(selectedGenreName)
+                    .end()
+                .find(".delete")
+                    .on("click", deleteGenre)
+                    .end());
+        /* eslint-enable */
+
+        // 장르 번호 증가
+        genreNumber++;
+
+        if (event !== undefined) {
+            event.preventDefault();
+        }
+    }
+
+    // 플랫폼 항목 제거
+    function deletePlatform(event) {
+        $(this).parents("#upload-form .platforms li").remove();
+        event.preventDefault();
+    }
+
+    // 플랫폼 항목 추가
+    function addPlatform(event) {
+        var $platforms = $("#upload-form .platforms");
+        var template = $("#gp-item-template").html();
+        var selectedPlatformID = $("#Platform").val();
+        var selectedPlatformName = $("#Platform option:selected").text();
+
+        // 이미 추가된 항목인지 검사
+        if ($("#upload-form .platforms li input[value='"+selectedPlatformID+"']").length > 0) {
+            alert("이미 추가된 플랫폼입니다.");
+            return;
+        }
+
+        // 영역 내 input 엘리먼트의 name 속성
+        function getInputElementName() {
+            return "platform-" + platformNumber;
+        }
+
+        /* eslint-disable indent */
+        $platforms
+            .append($(template)
+                .find("input")
+                    .attr("name", getInputElementName)
+                    .val(selectedPlatformID)
+                    .end()
+                .find(".name")
+                    .text(selectedPlatformName)
+                    .end()
+                .find(".delete")
+                    .on("click", deletePlatform)
+                    .end());
+        /* eslint-enable */
+
+        // 플랫폼 번호 증가
+        platformNumber++;
+
+        if (event !== undefined) {
+            event.preventDefault();
+        }
+    }
+
     // 파일 항목 영역 제거
     function deleteFileRow(event) {
         $(this).parents("#upload-form .files li").remove();
@@ -115,6 +211,8 @@ $(document).ready(function onDocumentReady() {
         }
     }
 
+    $("#upload-form .add-genre").on("click", addGenre);
+    $("#upload-form .add-platform").on("click", addPlatform);
     $("#upload-form .add-file").on("click", addFileRow);
 
     addFileRow();

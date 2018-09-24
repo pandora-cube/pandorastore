@@ -27,11 +27,41 @@
 
             <!-- 장르 -->
             <label for="Genre">장르</label>
-            <input id="Genre" name="Genre" type="text" placeholder="콘텐츠의 장르" required />
+            <div class="select-wrapper">
+                <!-- 장르 목록 -->
+                <select id="Genre">
+                    <?php foreach ($this->getAttribute("genres") as $genre): ?>
+                        <option value="<?=$genre["ID"]?>"><?=$genre["Name"]?></option>
+                    <?php endforeach; ?>
+                </select>
+                <!-- 장르 선택 -->
+                <button class="add add-genre">
+                    <i class="material-icons">&#xE145;</i>
+                    <span>추가</span>
+                </button>
+            </div>
+            <!-- 선택한 장르들 -->
+            <ul class="selected-items genres">
+            </ul>
 
-            <!-- 환경 -->
-            <label for="Platform">환경</label>
-            <input id="Platform" name="Platform" type="text" placeholder="콘텐츠를 이용 가능한 플랫폼" required />
+            <!-- 플랫폼 -->
+            <label for="Platform">플랫폼</label>
+            <div class="select-wrapper">
+                <!-- 플랫폼 목록 -->
+                <select id="Platform">
+                    <?php foreach ($this->getAttribute("platforms") as $platform): ?>
+                        <option value="<?=$platform["ID"]?>"><?=$platform["Name"]?></option>
+                    <?php endforeach; ?>
+                </select>
+                <!-- 플랫폼 선택 -->
+                <button class="add add-platform">
+                    <i class="material-icons">&#xE145;</i>
+                    <span>추가</span>
+                </button>
+            </div>
+            <!-- 선택한 플랫폼들 -->
+            <ul class="selected-items platforms">
+            </ul>
 
             <!-- 소개 -->
             <label for="Description">소개</label>
@@ -41,7 +71,7 @@
             <input name="MAX_FILE_SIZE" type="hidden" value="<?=$this->getAttribute("MAX_FILE_SIZE")?>" /> <!-- 최대 용량 (Byte) -->
             <div class="files-header">
                 <label>파일</label>
-                <button class="add-file">
+                <button class="add add-file">
                     <i class="material-icons">&#xE145;</i>
                     <span>추가</span>
                 </button>
@@ -92,6 +122,25 @@
             <input class="button_style_1" type="submit" value="제출" />
         </form>
     </div>
+
+    <!-- 장르 및 플랫폼 항목 템플릿 -->
+    <template id="gp-item-template">
+        <li>
+            <!-- 장르 혹은 플랫폼의 이름 -->
+            <span class="name"></span>
+
+            <!-- 장르 혹은 플랫폼의 ID -->
+            <input type="hidden" />
+
+            <!-- 항목 삭제 버튼 -->
+            <div class="delete-wrapper">
+                <button class="delete">
+                    <span class="blind">삭제</span>
+                    <i class="material-icons">&#xE15B;</i>
+                </button>
+            </div>
+        </li>
+    </template>
 
     <footer>
         <?=$this->loadLayout("footer")?>

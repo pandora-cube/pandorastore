@@ -3,6 +3,8 @@ class Categories {
     private $mysqli;
     private $table;
     private $names;
+    private $genres;
+    private $platforms;
     private $tags;
 
     public function __construct() {
@@ -13,6 +15,8 @@ class Categories {
 
         if ($this->mysqli) {
             $this->loadNames();
+            $this->loadGenres();
+            $this->loadPlatforms();
             $this->loadTags();
         }
     }
@@ -39,6 +43,38 @@ class Categories {
         return $this->names;
     }
 
+    public function loadGenres() {
+        $sql = "
+            SELECT *
+            FROM {$this->table["genres"]}
+            ORDER BY ID DESC";
+        
+        $this->genres = array();
+        if($result = $this->mysqli->query($sql)) {
+            for($i = 0; $i < $result->num_rows; $i++) {
+                $this->genres[$i] = $result->fetch_assoc();
+            }
+            $result->free();
+        }
+        return $this->genres;
+    }
+
+    public function loadPlatforms() {
+        $sql = "
+            SELECT *
+            FROM {$this->table["platforms"]}
+            ORDER BY ID DESC";
+        
+        $this->platforms = array();
+        if($result = $this->mysqli->query($sql)) {
+            for($i = 0; $i < $result->num_rows; $i++) {
+                $this->platforms[$i] = $result->fetch_assoc();
+            }
+            $result->free();
+        }
+        return $this->platforms;
+    }
+
     public function loadTags() {
         $sql = "
             SELECT *
@@ -57,6 +93,14 @@ class Categories {
 
     public function getNames() {
         return $this->names;
+    }
+
+    public function getGenres() {
+        return $this->genres;
+    }
+
+    public function getPlatforms() {
+        return $this->platforms;
     }
 
     public function getTags() {

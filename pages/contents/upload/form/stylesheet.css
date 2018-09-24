@@ -22,11 +22,15 @@
 #contents form textarea {
     display: block;
 }
+#contents form .select-wrapper,
 #contents form input[type=text],
 #contents form textarea {
     width: 100%;
     height: 2em;
     margin: .5em 0 1em 0;
+}
+#contents form input[type=text],
+#contents form textarea {
     padding-left: .5em;
     border: 1px solid #AAA;
 }
@@ -34,6 +38,58 @@
     height: 10em;
     padding: .5em;
     resize: none;
+}
+#contents form .add {
+    margin: .4em 0 0 .5em;
+    padding: .1em .3em;
+    color: White;
+    background-color: SteelBlue;
+    border: none;
+    cursor: pointer;
+}
+#contents form .add > * {
+    float: left;
+    display: block;
+    line-height: inherit;
+    font-size: .8em;
+}
+#contents form .select-wrapper select {
+    float: left;
+    height: 2em;
+}
+#contents form .select-wrapper .add {
+    float: left;
+}
+#contents form .selected-items {
+    margin: .5em 0 1em 0;
+    padding: .5em;
+    list-style: none;
+    background-color: #DDD;
+    border-radius: 5px;
+}
+#contents form .selected-items::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+#contents form .selected-items > li {
+    float: left;
+    margin: 0 .5em;
+}
+#contents form .delete-wrapper {
+    float: right;
+    height: 100%;
+}
+#contents form .delete {
+    width: 1em;
+    margin: 0 .5em;
+    font-size: 1em;
+    color: #CC5555;
+    border: none;
+    cursor: pointer;
+}
+#contents form .delete i {
+    display: block;
 }
 #contents form .files-header::after {
     content: '';
@@ -43,19 +99,9 @@
 #contents form .files-header label {
     float: left;
 }
-#contents form .files-header .add-file {
+#contents form .files-header .add {
     float: right;
-    padding: .1em .3em;
-    color: White;
-    background-color: SteelBlue;
-    border: none;
-    cursor: pointer;
-}
-#contents form .files-header .add-file > * {
-    float: left;
-    display: block;
-    line-height: inherit;
-    font-size: .8em;
+    margin: 0;
 }
 #contents form .files {
     margin: .5em 0 1em 0;
@@ -154,21 +200,6 @@
     text-overflow: ellipsis;
 }
 #contents form .files li .file-name.enabled {
-    display: block;
-}
-#contents form .files li .delete-wrapper {
-    float: right;
-    height: 100%;
-}
-#contents form .files li .delete {
-    width: 1em;
-    margin: 0 .5em;
-    font-size: 1em;
-    color: #CC5555;
-    border: none;
-    cursor: pointer;
-}
-#contents form .files li .delete i {
     display: block;
 }
 #contents form input[type=submit] {
