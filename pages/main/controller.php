@@ -69,7 +69,7 @@ require_once("models/contents.php");
     $template->setAttribute("filtered", $filtered);
     $template->setAttribute("search", addslashes($search));
 
-    if (count($orbit_data) === 0) {
+    if (count($orbit_data) === 0) { // Orbit 데이터가 존재하지 않을 시 비활성화
         $template->disableArea("topOrbit");
     }
     
