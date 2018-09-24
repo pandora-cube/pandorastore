@@ -48,9 +48,21 @@
     </div>
 </div>
 
+<!-- 소개문 영역 -->
+<div class="introductionArea">
+    <div class="areaHeader">
+        <span class="text">콘텐츠 소개</span>
+    </div>
+    <?php if (strlen($this->getAttribute("Introduction"))): ?>
+        <p class="introduction"><?=$this->getAttribute("Introduction")?></p>
+    <?php else: ?>
+        <p class="introduction disabled">소개문이 등록되지 않았습니다.</p>
+    <?php endif; ?>
+</div>
+
 <!-- 리뷰 -->
 <div class="reviewArea">
-    <div class="header">
+    <div class="areaHeader">
         <span class="text">리뷰</span>
         <span class="num-reviews"></span>
         <div class="right">

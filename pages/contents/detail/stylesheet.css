@@ -5,6 +5,15 @@
     }
 }
 
+#contents-detail .areaHeader {
+    padding: 0 .5em .2em .5em;
+    text-align: left;
+    border-bottom: 1px solid #AAA;
+}
+#contents-detail .areaHeader .text {
+    font-size: 1.2em;
+}
+
 #contents-detail .top {
     min-height: 128px;
 }
@@ -51,6 +60,21 @@
     }
 }
 
+#contents-detail .introductionArea {
+    margin: 1em 0;
+    text-align: center;
+}
+#contents-detail .introductionArea .introduction {
+    display: inline-block;
+    padding: 2em 0;
+}
+#contents-detail .introductionArea .introduction.disabled {
+    padding: 2em 0;
+    text-align: center;
+    font-size: .9em;
+    font-style: italic;
+}
+
 #contents-detail .download {
     margin-bottom: 1em;
     text-align: right;
@@ -91,23 +115,16 @@
 #contents-detail .reviewArea {
     margin-top: 1em;
 }
-#contents-detail .reviewArea .header {
-    padding: 0 .5em .2em .5em;
-    border-bottom: 1px solid #AAA;
-}
-#contents-detail .reviewArea .header .text {
-    font-size: 1.2em;
-}
-#contents-detail .reviewArea .header .num-reviews {
+#contents-detail .reviewArea .areaHeader .num-reviews {
     margin-left: .3em;
     font-size: .9em;
     color: #999;
 }
-#contents-detail .reviewArea .header .right {
+#contents-detail .reviewArea .areaHeader .right {
     float: right;
     font-size: 1.2em;
 }
-#contents-detail .reviewArea .header .refresh {
+#contents-detail .reviewArea .areaHeader .refresh {
     width: 16px;
     height: 16px;
     text-indent: -9999px;
