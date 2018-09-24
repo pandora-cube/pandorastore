@@ -121,7 +121,7 @@
     width: calc(100% - 10rem);
     list-style: none;
     white-space: nowrap;
-    background-color: #f1f1f1;
+    background-color: white;
     opacity: 0;
 }
 .menuArea .menu > li.on .inner-menu {
