@@ -68,6 +68,11 @@ require_once("models/contents.php");
     $template->setAttribute("tags", $category_tags);
     $template->setAttribute("filtered", $filtered);
     $template->setAttribute("search", addslashes($search));
+
+    if (count($orbit_data) === 0) {
+        $template->disableArea("topOrbit");
+    }
+    
     $template->loadView("main");
 }
 ?>
