@@ -40,7 +40,7 @@
         <span class="text">소개</span>
     </div>
     <?php if (strlen($this->getAttribute("Introduction")) > 0): ?>
-        <pre class="introduction"><?=$this->getAttribute("Introduction")?></pre>
+        <p class="introduction"><?=$this->getAttribute("Introduction")?></p>
     <?php else: ?>
         <p class="introduction disabled">소개문이 등록되지 않았습니다.</p>
     <?php endif; ?>

@@ -19,6 +19,9 @@ $template = null;
     // Downloads
     $template->setAttribute("download-data", $data["Downloads"]);
 
+    // Introduction
+    $data["Introduction"] = str_replace(array(" ", "\n"), array("&nbsp;", "<br/>"), $data["Introduction"]);
+
     // Whole data
     $template->addAttributes($data);
 }
