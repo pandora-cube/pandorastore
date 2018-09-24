@@ -48,6 +48,9 @@
 
 <!-- 이미지 슬라이드 -->
 <div class="slideArea">
+    <div class="areaHeader">
+        <span class="text">이미지</span>
+    </div>
     <div class="slideWrapper">
         <?php for ($i = 0; $i < count($this->getAttribute("Images")); $i++): ?>
             <div class="image-wrapper">

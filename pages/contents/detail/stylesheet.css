@@ -103,7 +103,7 @@
     margin-left: .5em;
 }
 
-#contents-detail .slideArea {
+#contents-detail .slideArea .bx-wrapper {
     font-size: .7em;
 }
 #contents-detail .slideArea .bx-wrapper .bx-viewport .image-wrapper::before {
