@@ -67,6 +67,7 @@
 #contents-detail .introductionArea .introduction {
     display: inline-block;
     padding: 2em 0;
+    text-align: left;
 }
 #contents-detail .introductionArea .introduction.disabled {
     padding: 2em 0;

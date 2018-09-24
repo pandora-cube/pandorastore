@@ -88,6 +88,7 @@ textarea {
     -webkit-appearance: none;
     border-radius: 0;
 }
+pre,
 textarea {
     font-family: inherit;
 }

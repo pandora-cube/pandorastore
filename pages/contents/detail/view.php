@@ -34,6 +34,18 @@
     <?php endforeach; ?>
 </div>
 
+<!-- 소개문 영역 -->
+<div class="introductionArea">
+    <div class="areaHeader">
+        <span class="text">소개</span>
+    </div>
+    <?php if (strlen($this->getAttribute("Introduction")) > 0): ?>
+        <pre class="introduction"><?=$this->getAttribute("Introduction")?></pre>
+    <?php else: ?>
+        <p class="introduction disabled">소개문이 등록되지 않았습니다.</p>
+    <?php endif; ?>
+</div>
+
 <!-- 이미지 슬라이드 -->
 <div class="slideArea">
     <div class="slideWrapper">
@@ -46,18 +58,6 @@
             </div>
         <?php endfor; ?>
     </div>
-</div>
-
-<!-- 소개문 영역 -->
-<div class="introductionArea">
-    <div class="areaHeader">
-        <span class="text">콘텐츠 소개</span>
-    </div>
-    <?php if (strlen($this->getAttribute("Introduction"))): ?>
-        <p class="introduction"><?=$this->getAttribute("Introduction")?></p>
-    <?php else: ?>
-        <p class="introduction disabled">소개문이 등록되지 않았습니다.</p>
-    <?php endif; ?>
 </div>
 
 <!-- 리뷰 -->
