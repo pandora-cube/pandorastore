@@ -93,7 +93,7 @@ $(document).ready(function onDocumentReady() {
 
         // 영역 내 input 엘리먼트의 name 속성
         function getInputElementName() {
-            return "genre-" + genreNumber;
+            return "Genre-" + genreNumber;
         }
 
         /* eslint-disable indent */
@@ -150,7 +150,7 @@ $(document).ready(function onDocumentReady() {
 
         // 영역 내 input 엘리먼트의 name 속성
         function getInputElementName() {
-            return "platform-" + platformNumber;
+            return "Platform-" + platformNumber;
         }
 
         /* eslint-disable indent */
