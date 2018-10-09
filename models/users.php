@@ -16,7 +16,7 @@ class Users {
             $this->load($conditions);
     }
 
-    public function load($conditions) {
+    public function load($conditions, $sort) {
         $sql = "
             SELECT *
             FROM {$this->table["users"]}";
@@ -27,6 +27,10 @@ class Users {
                 $value = $this->mysqli->escape_string($condition[2]);
                 $sql .= " AND ({$condition[0]} {$condition[1]} '{$value}')";
             }
+        }
+
+        if (strlen($sort)) {
+            $sql .= " ORDER BY {$sort}";
         }
         
         $this->data = [];
