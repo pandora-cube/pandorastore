@@ -67,7 +67,14 @@ $(document).ready(function onDocumentReady() {
 
     // 장르 항목 제거
     function deleteGenre(event) {
-        $(this).parents("#upload-form .genres li").remove();
+        var $genres = $(this).parents("#upload-form .genres");
+
+        $(this).parents("#upload-form .genres > .item").remove();
+
+        if ($genres.find(".item").length === 0) {
+            $genres.find(".no-item").removeClass("hidden");
+        }
+
         event.preventDefault();
     }
 
@@ -79,7 +86,7 @@ $(document).ready(function onDocumentReady() {
         var selectedGenreName = $("#Genre option:selected").text();
 
         // 이미 추가된 항목인지 검사
-        if ($("#upload-form .genres li input[value='"+selectedGenreID+"']").length > 0) {
+        if ($("#upload-form .genres > .item input[value='" + selectedGenreID + "']").length > 0) {
             alert("이미 추가된 장르입니다.");
             return;
         }
@@ -92,6 +99,7 @@ $(document).ready(function onDocumentReady() {
         /* eslint-disable indent */
         $genres
             .append($(template)
+                .addClass("item")
                 .find("input")
                     .attr("name", getInputElementName)
                     .val(selectedGenreID)
@@ -101,7 +109,9 @@ $(document).ready(function onDocumentReady() {
                     .end()
                 .find(".delete")
                     .on("click", deleteGenre)
-                    .end());
+                    .end())
+            .find(".no-item")
+                .addClass("hidden");
         /* eslint-enable */
 
         // 장르 번호 증가
@@ -114,7 +124,14 @@ $(document).ready(function onDocumentReady() {
 
     // 플랫폼 항목 제거
     function deletePlatform(event) {
-        $(this).parents("#upload-form .platforms li").remove();
+        var $platforms = $(this).parents("#upload-form .platforms");
+
+        $(this).parents("#upload-form .platforms > .item").remove();
+
+        if ($platforms.find(".item").length === 0) {
+            $platforms.find(".no-item").removeClass("hidden");
+        }
+
         event.preventDefault();
     }
 
@@ -126,7 +143,7 @@ $(document).ready(function onDocumentReady() {
         var selectedPlatformName = $("#Platform option:selected").text();
 
         // 이미 추가된 항목인지 검사
-        if ($("#upload-form .platforms li input[value='"+selectedPlatformID+"']").length > 0) {
+        if ($("#upload-form .platforms > .item input[value='" + selectedPlatformID + "']").length > 0) {
             alert("이미 추가된 플랫폼입니다.");
             return;
         }
@@ -139,6 +156,7 @@ $(document).ready(function onDocumentReady() {
         /* eslint-disable indent */
         $platforms
             .append($(template)
+                .addClass("item")
                 .find("input")
                     .attr("name", getInputElementName)
                     .val(selectedPlatformID)
@@ -148,7 +166,9 @@ $(document).ready(function onDocumentReady() {
                     .end()
                 .find(".delete")
                     .on("click", deletePlatform)
-                    .end());
+                    .end())
+            .find(".no-item")
+                .addClass("hidden");
         /* eslint-enable */
 
         // 플랫폼 번호 증가

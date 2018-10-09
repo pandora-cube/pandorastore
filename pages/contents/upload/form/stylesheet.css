@@ -72,9 +72,16 @@
     display: block;
     clear: both;
 }
-#contents form .selected-items > li {
+#contents form .selected-items > .item {
     float: left;
     margin: 0 .5em;
+}
+#contents form .selected-items > .no-item {
+    font-style: italic;
+    text-align: center;
+}
+#contents form .selected-items > .no-item.hidden {
+    display: none;
 }
 #contents form .delete-wrapper {
     float: right;

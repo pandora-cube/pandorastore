@@ -42,6 +42,7 @@
             </div>
             <!-- 선택한 장르들 -->
             <ul class="selected-items genres">
+                <li class="no-item">장르를 추가해 주세요.</li>
             </ul>
 
             <!-- 플랫폼 -->
@@ -61,6 +62,7 @@
             </div>
             <!-- 선택한 플랫폼들 -->
             <ul class="selected-items platforms">
+                <li class="no-item">플랫폼을 추가해 주세요.</li>
             </ul>
 
             <!-- 소개 -->
