@@ -19,11 +19,25 @@
             <label for="Title">제목</label>
             <input id="Title" name="Title" type="text" placeholder="콘텐츠의 제목" required />
 
-            <!-- 제작자 -->
-            <label for="Creator">제작자</label>
+            <!-- 제작팀명 -->
+            <label for="Creator-TeamName">제작팀명</label>
+            <input id="Creator-TeamName" name="Creator-TeamName" type="text" placeholder="팀명" required />
+
+            <!-- 제작팀원 -->
+            <label for="Creator">제작팀원</label>
             <label for="Creator" class="description">제작자가 모두 판도라스토어에 가입되어 있어야 합니다.</label>
             <label for="Creator" class="description">모든 제작자는 콘텐츠에 대해 관리 권한을 가집니다.</label>
-            <input id="Creator" name="Creator" type="text" placeholder="팀명(팀원) 혹은 제작자명" required />
+            <div class="input-creators">
+                <input id="Creator" name="Creator" type="text" placeholder="팀원명" />
+                <button class="add add-creator">
+                    <i class="material-icons">&#xE145;</i>
+                    <span>추가</span>
+                </button>
+            </div>
+            <!-- 추가된 제작팀원들 -->
+            <ul class="selected-items creators">
+                <li class="no-item">팀원을 추가해 주세요.</li>
+            </ul>
 
             <!-- 장르 -->
             <label for="Genre">장르</label>

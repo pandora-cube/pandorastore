@@ -1,5 +1,6 @@
 $(document).ready(function onDocumentReady() {
     var fileNumber = 0;
+    var creatorNumber = 0;
     var genreNumber = 0;
     var platformNumber = 0;
 
@@ -63,6 +64,77 @@ $(document).ready(function onDocumentReady() {
         }
 
         event.preventDefault();
+    }
+
+    // 제작팀원 항목 제거
+    function deleteCreator(event) {
+        var $creators = $(this).parents("#upload-form .creators");
+
+        $(this).parents("#upload-form .creators > .item").remove();
+
+        if ($creators.find(".item").length === 0) {
+            $creators.find(".no-item").removeClass("hidden");
+        }
+
+        event.preventDefault();
+    }
+
+    // 제작팀원 헝목 추가
+    function onCreatorDataResponse(json) {
+        var $creators = $("#upload-form .creators");
+        var template = $("#gp-item-template").html();
+        var data = JSON.parse(json);
+        var creatorUserNumber = data.UserNumber;
+        var creatorName = data.Name;
+
+        // 판도라스토어 회원 데이터 존재 여부 검사
+        if (data.length === 0 || creatorUserNumber == null || creatorName == null) {
+            alert("판도라스토어에 가입된 회원이 아닙니다.");
+            return;
+        }
+
+        // 이미 추가된 팀원인지 검사
+        if ($("#upload-form .creators > .item input[value='" + creatorUserNumber + "']").length > 0) {
+            alert("이미 추가된 팀원입니다.");
+            return;
+        }
+
+        // 영역 내 input 엘리먼트의 name 속성
+        function getInputElementName() {
+            return "Creator-" + creatorNumber;
+        }
+
+        /* eslint-disable indent */
+        $creators
+            .append($(template)
+                .addClass("item")
+                .find("input")
+                    .attr("name", getInputElementName)
+                    .val(creatorUserNumber)
+                    .end()
+                .find(".name")
+                    .text(creatorName)
+                    .end()
+                .find(".delete")
+                    .on("click", deleteCreator)
+                    .end())
+            .find(".no-item")
+                .addClass("hidden");
+        /* eslint-enable */
+
+        // 팀원 번호 증가
+        creatorNumber++;
+    }
+    function addCreator(event) {
+        var creatorName = $("#Creator").val();
+
+        $.post("/contents/upload/get_creator", {
+            name: creatorName,
+        }).done(onCreatorDataResponse);
+
+        if (event !== undefined) {
+            event.preventDefault();
+        }
     }
 
     // 장르 항목 제거
@@ -231,6 +303,13 @@ $(document).ready(function onDocumentReady() {
         }
     }
 
+    $("#upload-form .add-creator")
+        .on("click", addCreator)
+        .on("keydown", function onKeyDown(event) {
+            if (event.keyCode === 13) {
+                addCreator();
+            }
+        });
     $("#upload-form .add-genre").on("click", addGenre);
     $("#upload-form .add-platform").on("click", addPlatform);
     $("#upload-form .add-file").on("click", addFileRow);
