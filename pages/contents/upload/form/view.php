@@ -83,6 +83,51 @@
             <label for="Description">소개</label>
             <textarea id="Description" name="Description" placeholder="콘텐츠 열람 시 노출될 소개문" required></textarea>
 
+            <!-- 이미지 -->
+            <input name="MAX_FILE_SIZE" type="hidden" value="<?=$this->getAttribute("MAX_FILE_SIZE")?>" /> <!-- 최대 용량 (Byte) -->
+            <div class="files-header">
+                <label>이미지</label>
+                <button class="add add-image">
+                    <i class="material-icons">&#xE145;</i>
+                    <span>추가</span>
+                </button>
+            </div>
+            <ul class="uploads images">
+                <!-- 이미지 항목 영역 템플릿 -->
+                <template>
+                    <div class="image-type-wrapper">
+                        <!-- 이미지 종류 -->
+                        <input id="image-type-icon" class="image-type" name="image-type" type="radio" value="icon" />
+                        <label for="image-type-icon">아이콘</label>
+                        <span>&nbsp;</span>
+                        <input id="image-type-screenshot" class="image-type" name="image-type" type="radio" value="screenshot" checked />
+                        <label for="image-type-screenshot">스크린샷</label>
+                    </div>
+
+                    <!-- 이미지 파일 입력 영역 -->
+                    <div class="file-input">
+                        <!-- 이미지 파일 선택 input -->
+                        <input class="select-file" name="file" type="file" />
+                        <!-- 이미지 파일 선택 버튼 -->
+                        <button class="select-file-button">
+                            <i class="material-icons">&#xE2C6;</i>
+                            <span>파일 선택</span>
+                        </button>
+                    </div>
+
+                    <!-- 이미지 파일 이름 출력 영역 -->
+                    <div class="file-name"></div>
+
+                    <!-- 이미지 항목 삭제 버튼 -->
+                    <div class="delete-wrapper">
+                        <button class="delete">
+                            <span class="blind">삭제</span>
+                            <i class="material-icons">&#xE15B;</i>
+                        </button>
+                    </div>
+                </template>
+            </ul>
+
             <!-- 파일 -->
             <input name="MAX_FILE_SIZE" type="hidden" value="<?=$this->getAttribute("MAX_FILE_SIZE")?>" /> <!-- 최대 용량 (Byte) -->
             <div class="files-header">
@@ -92,7 +137,7 @@
                     <span>추가</span>
                 </button>
             </div>
-            <ul class="files">
+            <ul class="uploads files">
                 <!-- 파일 항목 영역 템플릿 -->
                 <template>
                     <!-- 파일 실행 환경 -->

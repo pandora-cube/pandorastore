@@ -1,8 +1,41 @@
 $(document).ready(function onDocumentReady() {
+    var imageNumber = 0;
     var fileNumber = 0;
     var creatorNumber = 0;
     var genreNumber = 0;
     var platformNumber = 0;
+
+    // 이미지 파일 선택 버튼 클릭 이벤트
+    function onSelectImageFileButtonClicked(event) {
+        event.preventDefault();
+        // for 데이터에 지정된 input[type=file] 클릭 트리거 실행
+        $("#" + $(this).data("for")).click();
+    }
+
+    // 이미지 파일 이름 출력
+    function showImageFileName($li, fileName) {
+        /* eslint-disable indent */
+        $li
+            .find(".file-input") // 파일 입력 영역 비활성화
+                .addClass("disabled")
+                .end()
+            .find(".file-name") // 파일 이름 출력 영역 활성화
+                .addClass("enabled")
+                .text(fileName)
+                .end();
+        /* eslint-enable */
+    }
+
+    // 이미지 파일 선택 완료 이벤트
+    function onImageFileChanged() {
+        var $li = $(this).parents("#upload-form .images li");
+        var file = this.files[0]; // 선택된 파일 (클라이언트 로컬 파일)
+
+        // 파일 선택이 정상적으로 완료된 경우 파일 이름 출력
+        if (file !== undefined) {
+            showImageFileName($li, file.name);
+        }
+    }
 
     // 파일 URL 입력 영역 포커스 인 이벤트
     function onFileURLFocusedIn() {
@@ -251,6 +284,51 @@ $(document).ready(function onDocumentReady() {
         }
     }
 
+    // 이미지 항목 영역 제거
+    function deleteImageRow(event) {
+        $(this).parents("#upload-form .images li").remove();
+        event.preventDefault();
+    }
+
+    // 업로드 항목 영역 추가
+    function addImageRow(event) {
+        var $images = $("#upload-form .images");
+        var template = $images.find("template").html();
+
+        // 영역 내 input 엘리먼트들의 name 속성
+        function getInputElementName() {
+            // 본래의 name 속성 - 파일 번호
+            return this.name + "-" + imageNumber;
+        }
+
+        /* eslint-disable indent */
+        $images
+            .append($("<li>")
+                .html(template)
+                .find("input:not([name=MAX_FILE_SIZE])") // 영역 내의 input 엘리먼트들
+                    .attr("name", getInputElementName)
+                    .end()
+                .find(".select-file") // 파일 선택 input[type=file]
+                    .attr("id", "image-" + imageNumber)
+                    .on("change", onImageFileChanged)
+                    .end()
+                .find(".select-file-button")
+                    .data("for", "image-" + imageNumber)
+                    .on("click", onSelectImageFileButtonClicked)
+                    .end()
+                .find(".delete")
+                    .on("click", deleteImageRow)
+                    .end());
+        /* eslint-enable */
+
+        // 이미지 번호 증가
+        imageNumber += 1;
+
+        if (event !== undefined) {
+            event.preventDefault();
+        }
+    }
+
     // 파일 항목 영역 제거
     function deleteFileRow(event) {
         $(this).parents("#upload-form .files li").remove();
@@ -314,5 +392,6 @@ $(document).ready(function onDocumentReady() {
     $("#upload-form .add-platform").on("click", addPlatform);
     $("#upload-form .add-file").on("click", addFileRow);
 
+    addImageRow();
     addFileRow();
 });
