@@ -47,7 +47,7 @@ class Categories {
         $sql = "
             SELECT *
             FROM {$this->table["genres"]}
-            ORDER BY ID DESC";
+            ORDER BY ID ASC";
         
         $this->genres = array();
         if($result = $this->mysqli->query($sql)) {
@@ -63,7 +63,7 @@ class Categories {
         $sql = "
             SELECT *
             FROM {$this->table["platforms"]}
-            ORDER BY ID DESC";
+            ORDER BY ID ASC";
         
         $this->platforms = array();
         if($result = $this->mysqli->query($sql)) {
@@ -79,7 +79,7 @@ class Categories {
         $sql = "
             SELECT *
             FROM {$this->table["tags"]}
-            ORDER BY ID DESC";
+            ORDER BY ID ASC";
 
         $this->tags = array();
         if($result = $this->mysqli->query($sql)) {
@@ -101,6 +101,15 @@ class Categories {
 
     public function getPlatforms() {
         return $this->platforms;
+    }
+
+    public function getPlatformNameById($id) {
+        foreach($this->platforms as $platform) {
+            if ($platform["ID"] == $id) {
+                return $platform["Name"];
+            }
+        }
+        return null;
     }
 
     public function getTags() {

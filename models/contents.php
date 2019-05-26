@@ -96,11 +96,11 @@ class Contents {
                 $this->contents[$i]["TagsList"] = implode(", ", $this->contents[$i]["Tags"]);
                 // Downloads
                 $this->contents[$i]["Downloads"] = json_decode($this->contents[$i]["Downloads"]);
-                foreach ($this->contents[$i]["Downloads"] as $platform => &$url) {
+                /*foreach ($this->contents[$i]["Downloads"] as $platform => &$url) {
                     if (strpos($url, "http://") === false && strpos($url, "https://") === false) {
                         $url = $this->getPath($identifier)."/{$url}";
                     }
-                }
+                }*/
             }
             $result->free();
         }
@@ -116,6 +116,26 @@ class Contents {
             if(!in_array($category_id, $content[$type."sID"]))
                 unset($this->contents[$key]);
         return $this->contents;
+    }
+
+    public function insert($title, $identifier, $genres, $platforms, $tags, $creator, $downloads, $introduction) {
+        $title = $this->mysqli->escape_string($title);
+        $identifier = $this->mysqli->escape_string($identifier);
+        $genres = $this->mysqli->escape_string($this->parseArrayToText($genres));
+        $platforms = $this->mysqli->escape_string($this->parseArrayToText($platforms));
+        $tags = $this->mysqli->escape_string($this->parseArrayToText($tags));
+        $creator = $this->mysqli->escape_string($creator);
+        $downloads = $this->mysqli->escape_string(json_encode($downloads));
+        $introduction = $this->mysqli->escape_string($introduction);
+
+        $sql = "
+            INSERT INTO {$this->table["contents"]}
+                (Title, Identifier, Genres, Platforms, Tags, Creator, Downloads, Introduction)
+            VALUES
+                ('{$title}', '{$identifier}', '{$genres}', '{$platforms}', '{$tags}', '{$creator}', '{$downloads}', '{$introduction}')";
+        $this->mysqli->query($sql);
+
+        return $this->mysqli->insert_id;
     }
 
     private function getPath($identifier) {
@@ -155,6 +175,14 @@ class Contents {
         }
 
         return $creators;
+    }
+
+    private function parseArrayToText($array) {
+        $text = "";
+        foreach ($array as $datum) {
+            $text .= $datum.",";
+        }
+        return substr($text, 0, strlen($text)-1);
     }
 }
 ?>

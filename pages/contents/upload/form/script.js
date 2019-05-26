@@ -1,7 +1,75 @@
 $(document).ready(function onDocumentReady() {
+    var imageNumber = 0;
     var fileNumber = 0;
+    var creatorNumber = 0;
     var genreNumber = 0;
-    var platformNumber = 0;
+
+    // 아이콘 파일 선택 버튼 클릭 이벤트
+    function onSelectIconFileButtonClicked(event) {
+        event.preventDefault();
+        // for 데이터에 지정된 input[type=file] 클릭 트리거 실행
+        $("#" + $(this).data("for")).click();
+    }
+
+    // 아이콘 파일 이름 출력
+    function showIconFileName($li, fileName) {
+        /* eslint-disable indent */
+        $li
+            .find(".file-input") // 파일 입력 영역 비활성화
+                .addClass("disabled")
+                .end()
+            .find(".file-name") // 파일 이름 출력 영역 활성화
+                .addClass("enabled")
+                .text(fileName)
+                .end()
+            .find(".replace-wrapper")
+                .addClass("enabled")
+                .end();
+        /* eslint-enable */
+    }
+
+    // 아이콘 파일 선택 완료 이벤트
+    function onIconFileChanged() {
+        var $li = $(this).parents("#upload-form .icons li");
+        var file = this.files[0]; // 선택된 파일 (클라이언트 로컬 파일)
+
+        // 파일 선택이 정상적으로 완료된 경우 파일 이름 출력
+        if (file !== undefined) {
+            showIconFileName($li, file.name);
+        }
+    }
+
+    // 이미지 파일 선택 버튼 클릭 이벤트
+    function onSelectImageFileButtonClicked(event) {
+        event.preventDefault();
+        // for 데이터에 지정된 input[type=file] 클릭 트리거 실행
+        $("#" + $(this).data("for")).click();
+    }
+
+    // 이미지 파일 이름 출력
+    function showImageFileName($li, fileName) {
+        /* eslint-disable indent */
+        $li
+            .find(".file-input") // 파일 입력 영역 비활성화
+                .addClass("disabled")
+                .end()
+            .find(".file-name") // 파일 이름 출력 영역 활성화
+                .addClass("enabled")
+                .text(fileName)
+                .end();
+        /* eslint-enable */
+    }
+
+    // 이미지 파일 선택 완료 이벤트
+    function onImageFileChanged() {
+        var $li = $(this).parents("#upload-form .images li");
+        var file = this.files[0]; // 선택된 파일 (클라이언트 로컬 파일)
+
+        // 파일 선택이 정상적으로 완료된 경우 파일 이름 출력
+        if (file !== undefined) {
+            showImageFileName($li, file.name);
+        }
+    }
 
     // 파일 URL 입력 영역 포커스 인 이벤트
     function onFileURLFocusedIn() {
@@ -65,9 +133,88 @@ $(document).ready(function onDocumentReady() {
         event.preventDefault();
     }
 
+    // 제작팀원 항목 제거
+    function deleteCreator(event) {
+        var $creators = $(this).parents("#upload-form .creators");
+
+        $(this).parents("#upload-form .creators > .item").remove();
+
+        if ($creators.find(".item").length === 0) {
+            $creators.find(".no-item").removeClass("hidden");
+        }
+
+        event.preventDefault();
+    }
+
+    // 제작팀원 헝목 추가
+    function onCreatorDataResponse(json) {
+        var $creators = $("#upload-form .creators");
+        var template = $("#gp-item-template").html();
+        var data = JSON.parse(json);
+        var creatorUserNumber = data.UserNumber;
+        var creatorName = data.Name;
+
+        // 판도라스토어 회원 데이터 존재 여부 검사
+        if (data.length === 0 || creatorUserNumber == null || creatorName == null) {
+            alert("판도라스토어에 가입된 회원이 아닙니다.");
+            return;
+        }
+
+        // 이미 추가된 팀원인지 검사
+        if ($("#upload-form .creators > .item input[value='" + creatorUserNumber + "']").length > 0) {
+            alert("이미 추가된 팀원입니다.");
+            return;
+        }
+
+        // 영역 내 input 엘리먼트의 name 속성
+        function getInputElementName() {
+            return "Creator-" + creatorNumber;
+        }
+
+        /* eslint-disable indent */
+        $creators
+            .append($(template)
+                .addClass("item")
+                .find("input")
+                    .attr("name", getInputElementName)
+                    .val(creatorUserNumber)
+                    .end()
+                .find(".name")
+                    .text(creatorName)
+                    .end()
+                .find(".delete")
+                    .on("click", deleteCreator)
+                    .end())
+            .find(".no-item")
+                .addClass("hidden");
+        /* eslint-enable */
+
+        // 팀원 번호 증가
+        creatorNumber++;
+        $("#Num-Creators").val(creatorNumber);
+    }
+    function addCreator(event) {
+        var creatorName = $("#Creator").val();
+
+        $.post("/contents/upload/get_creator", {
+            name: creatorName,
+        }).done(onCreatorDataResponse);
+
+        if (event !== undefined) {
+            event.preventDefault();
+        }
+    }
+
     // 장르 항목 제거
     function deleteGenre(event) {
-        $(this).parents("#upload-form .genres li").remove();
+        var $genres = $(this).parents("#upload-form .genres");
+
+        $(this).parents("#upload-form .genres > .item").remove();
+
+        if ($genres.find(".item").length === 0) {
+            $genres.find(".no-item").removeClass("hidden");
+        }
+
         event.preventDefault();
     }
 
@@ -79,19 +226,20 @@ $(document).ready(function onDocumentReady() {
         var selectedGenreName = $("#Genre option:selected").text();
 
         // 이미 추가된 항목인지 검사
-        if ($("#upload-form .genres li input[value='"+selectedGenreID+"']").length > 0) {
+        if ($("#upload-form .genres > .item input[value='" + selectedGenreID + "']").length > 0) {
             alert("이미 추가된 장르입니다.");
             return;
         }
 
         // 영역 내 input 엘리먼트의 name 속성
         function getInputElementName() {
-            return "genre-" + genreNumber;
+            return "Genre-" + genreNumber;
         }
 
         /* eslint-disable indent */
         $genres
             .append($(template)
+                .addClass("item")
                 .find("input")
                     .attr("name", getInputElementName)
                     .val(selectedGenreID)
@@ -101,58 +249,60 @@ $(document).ready(function onDocumentReady() {
                     .end()
                 .find(".delete")
                     .on("click", deleteGenre)
-                    .end());
+                    .end())
+            .find(".no-item")
+                .addClass("hidden");
         /* eslint-enable */
 
         // 장르 번호 증가
         genreNumber++;
+        $("#Num-Genres").val(genreNumber);
 
         if (event !== undefined) {
             event.preventDefault();
         }
     }
 
-    // 플랫폼 항목 제거
-    function deletePlatform(event) {
-        $(this).parents("#upload-form .platforms li").remove();
+    // 이미지 항목 영역 제거
+    function deleteImageRow(event) {
+        $(this).parents("#upload-form .images li").remove();
         event.preventDefault();
     }
 
-    // 플랫폼 항목 추가
-    function addPlatform(event) {
-        var $platforms = $("#upload-form .platforms");
-        var template = $("#gp-item-template").html();
-        var selectedPlatformID = $("#Platform").val();
-        var selectedPlatformName = $("#Platform option:selected").text();
+    // 이미지 항목 영역 추가
+    function addImageRow(event) {
+        var $images = $("#upload-form .images");
+        var template = $images.find("template").html();
 
-        // 이미 추가된 항목인지 검사
-        if ($("#upload-form .platforms li input[value='"+selectedPlatformID+"']").length > 0) {
-            alert("이미 추가된 플랫폼입니다.");
-            return;
-        }
-
-        // 영역 내 input 엘리먼트의 name 속성
+        // 영역 내 input 엘리먼트들의 name 속성
         function getInputElementName() {
-            return "platform-" + platformNumber;
+            // 본래의 name 속성 - 파일 번호
+            return this.name + "-" + imageNumber;
         }
 
         /* eslint-disable indent */
-        $platforms
-            .append($(template)
-                .find("input")
+        $images
+            .append($("<li>")
+                .html(template)
+                .find("input:not([name=MAX_FILE_SIZE])") // 영역 내의 input 엘리먼트들
                     .attr("name", getInputElementName)
-                    .val(selectedPlatformID)
                     .end()
-                .find(".name")
-                    .text(selectedPlatformName)
+                .find(".select-file") // 파일 선택 input[type=file]
+                    .attr("id", "image-" + imageNumber)
+                    .on("change", onImageFileChanged)
+                    .end()
+                .find(".select-file-button")
+                    .data("for", "image-" + imageNumber)
+                    .on("click", onSelectImageFileButtonClicked)
                     .end()
                 .find(".delete")
-                    .on("click", deletePlatform)
+                    .on("click", deleteImageRow)
                     .end());
         /* eslint-enable */
 
-        // 플랫폼 번호 증가
-        platformNumber++;
+        // 이미지 번호 증가
+        imageNumber += 1;
+        $("#Num-Images").val(imageNumber);
 
         if (event !== undefined) {
             event.preventDefault();
@@ -183,6 +333,9 @@ $(document).ready(function onDocumentReady() {
                 .find("input:not([name=MAX_FILE_SIZE])") // 영역 내의 input 엘리먼트들
                     .attr("name", getInputElementName)
                     .end()
+                .find(".platform-select")
+                    .attr("name", getInputElementName)
+                    .end()
                 .find(".url") // 파일 URL 입력 영역
                     .on("focusin", onFileURLFocusedIn)
                     .on("focusout", onFileURLFocusedOut)
@@ -205,15 +358,33 @@ $(document).ready(function onDocumentReady() {
 
         // 파일 번호 증가
         fileNumber += 1;
+        $("#Num-Files").val(fileNumber);
 
         if (event !== undefined) {
             event.preventDefault();
         }
     }
 
+    /* eslint-disable indent */
+    $("#upload-form .add-creator")
+        .on("click", addCreator)
+        .on("keydown", function onKeyDown(event) {
+            if (event.keyCode === 13) {
+                addCreator();
+            }
+        });
     $("#upload-form .add-genre").on("click", addGenre);
-    $("#upload-form .add-platform").on("click", addPlatform);
+    $("#upload-form .add-image").on("click", addImageRow);
     $("#upload-form .add-file").on("click", addFileRow);
+    $("#upload-form .icons")
+        .find(".select-file")
+            .on("change", onIconFileChanged)
+            .end()
+        .find(".select-file-button")
+            .on("click", onSelectIconFileButtonClicked)
+            .end();
+    /* eslint-enable */
 
+    addImageRow();
     addFileRow();
 });

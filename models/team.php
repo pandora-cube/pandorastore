@@ -39,6 +39,25 @@ class Team {
         return $this->data;
     }
 
+    public function insert($teamName, $members) {
+        $teamName = $this->mysqli->escape_string($teamName);
+
+        $membersText = "";
+        foreach ($members as $memberID) {
+            $membersText .= "{$memberID},";
+        }
+        $membersText = substr($membersText, 0, strlen($membersText)-1);
+
+        $sql = "
+            INSERT INTO {$this->table["teams"]}
+                (Name, Members)
+            VALUES
+                ('{$teamName}', '$membersText')";
+        $this->mysqli->query($sql);
+
+        return $this->mysqli->insert_id;
+    }
+
     private function parseMembers($members_) {
         $members = json_decode("[{$members_}]");
 

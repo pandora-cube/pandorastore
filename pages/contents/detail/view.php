@@ -42,7 +42,7 @@
     <?php if (strlen($this->getAttribute("Introduction")) > 0): ?>
         <p class="introduction"><?=$this->getAttribute("Introduction")?></p>
     <?php else: ?>
-        <p class="introduction disabled">소개문이 등록되지 않았습니다.</p>
+        <p class="introduction disabled">소개문이 등록되어 있지 않습니다.</p>
     <?php endif; ?>
 </div>
 
