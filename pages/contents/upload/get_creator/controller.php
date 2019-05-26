@@ -4,7 +4,7 @@ require_once("models/users.php");
 $name = $_POST["name"];
 
 $conditions = [
-    ["Name", "=", $name],
+    ["Name", "LIKE", "{$name}%"],
     ["Name", "<>", ""],
     ["Authenticated", "=", 1],
 ];
@@ -15,6 +15,7 @@ $creator_data = array();
 foreach ($users_data as $datum) {
     $map = [
         UserNumber => $datum["UserNumber"],
+        Nickname => $datum["Nickname"],
         Name => $datum["Name"],
     ];
     array_push($creator_data, $map);

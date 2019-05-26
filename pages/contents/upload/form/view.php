@@ -35,6 +35,7 @@
             <input id="Num-Creators" name="Num-Creators" type="hidden" />
             <div class="input-creators">
                 <input id="Creator" name="Creator" type="text" placeholder="팀원명" />
+                <ul id="creator-autocomplete" class="autocomplete"></ul>
                 <button class="add add-creator">
                     <i class="material-icons">&#xE145;</i>
                     <span>추가</span>

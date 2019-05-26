@@ -133,6 +133,33 @@ $(document).ready(function onDocumentReady() {
         event.preventDefault();
     }
 
+    // 제작팀원 입력란 갱신 이벤트
+    function onCreatorInputChanged() {
+        var creatorName = $("#Creator").val();
+
+        if (creatorName.length === 0) {
+            return;
+        }
+
+        $.post("/contents/upload/get_creator", {
+            name: creatorName,
+        }).done(function onCreatorDataResponse(json) {
+            var $autocomplete = $("#creator-autocomplete");
+            var data = JSON.parse(json);
+
+            $autocomplete.empty();
+            for (var i = 0; i < data.length; i++) {
+                var creator = data[i];
+                var text = creator.Nickname + "(" + creator.Name + ")";
+
+                $autocomplete
+                    .append($("<li>")
+                        .data("UserNumber", creator.UserNumber)
+                        .text(text));
+            }
+        });
+    }
+
     // 제작팀원 항목 제거
     function deleteCreator(event) {
         var $creators = $(this).parents("#upload-form .creators");
@@ -147,58 +174,57 @@ $(document).ready(function onDocumentReady() {
     }
 
     // 제작팀원 헝목 추가
-    function onCreatorDataResponse(json) {
-        var $creators = $("#upload-form .creators");
-        var template = $("#gp-item-template").html();
-        var data = JSON.parse(json);
-        var creatorUserNumber = data.UserNumber;
-        var creatorName = data.Name;
-
-        // 판도라스토어 회원 데이터 존재 여부 검사
-        if (data.length === 0 || creatorUserNumber == null || creatorName == null) {
-            alert("판도라스토어에 가입된 회원이 아닙니다.");
-            return;
-        }
-
-        // 이미 추가된 팀원인지 검사
-        if ($("#upload-form .creators > .item input[value='" + creatorUserNumber + "']").length > 0) {
-            alert("이미 추가된 팀원입니다.");
-            return;
-        }
-
-        // 영역 내 input 엘리먼트의 name 속성
-        function getInputElementName() {
-            return "Creator-" + creatorNumber;
-        }
-
-        /* eslint-disable indent */
-        $creators
-            .append($(template)
-                .addClass("item")
-                .find("input")
-                    .attr("name", getInputElementName)
-                    .val(creatorUserNumber)
-                    .end()
-                .find(".name")
-                    .text(creatorName)
-                    .end()
-                .find(".delete")
-                    .on("click", deleteCreator)
-                    .end())
-            .find(".no-item")
-                .addClass("hidden");
-        /* eslint-enable */
-
-        // 팀원 번호 증가
-        creatorNumber++;
-        $("#Num-Creators").val(creatorNumber);
-    }
     function addCreator(event) {
         var creatorName = $("#Creator").val();
 
         $.post("/contents/upload/get_creator", {
             name: creatorName,
-        }).done(onCreatorDataResponse);
+        }).done(function onCreatorDataResponse(json) {
+            var $creators = $("#upload-form .creators");
+            var template = $("#gp-item-template").html();
+            var data = JSON.parse(json);
+            var creatorUserNumber = data[0].UserNumber;
+            var creatorName = data[0].Name;
+
+            // 판도라스토어 회원 데이터 존재 여부 검사
+            if (data.length === 0 || creatorUserNumber == null || creatorName == null) {
+                alert("판도라스토어에 가입된 회원이 아닙니다.");
+                return;
+            }
+
+            // 이미 추가된 팀원인지 검사
+            if ($("#upload-form .creators > .item input[value='" + creatorUserNumber + "']").length > 0) {
+                alert("이미 추가된 팀원입니다.");
+                return;
+            }
+
+            // 영역 내 input 엘리먼트의 name 속성
+            function getInputElementName() {
+                return "Creator-" + creatorNumber;
+            }
+
+            /* eslint-disable indent */
+            $creators
+                .append($(template)
+                    .addClass("item")
+                    .find("input")
+                        .attr("name", getInputElementName)
+                        .val(creatorUserNumber)
+                        .end()
+                    .find(".name")
+                        .text(creatorName)
+                        .end()
+                    .find(".delete")
+                        .on("click", deleteCreator)
+                        .end())
+                .find(".no-item")
+                    .addClass("hidden");
+            /* eslint-enable */
+
+            // 팀원 번호 증가
+            creatorNumber++;
+            $("#Num-Creators").val(creatorNumber);
+        });
 
         if (event !== undefined) {
             event.preventDefault();
@@ -366,6 +392,7 @@ $(document).ready(function onDocumentReady() {
     }
 
     /* eslint-disable indent */
+    $("#Creator").on("keyup", onCreatorInputChanged);
     $("#upload-form .add-creator")
         .on("click", addCreator)
         .on("keydown", function onKeyDown(event) {
