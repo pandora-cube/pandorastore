@@ -1,0 +1,25 @@
+.autocomplete {
+    position: absolute;
+    display: none;
+    line-height: 1.5;
+    margin-top: 2em;
+    list-style: none;
+    font-size: .9em;
+    background-color: White;
+    border: 1px solid #AAA;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}
+.autocomplete.on {
+    display: block;
+}
+.autocomplete > .ac-item {
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.autocomplete > .ac-item:hover {
+    background-color: #E7EEF4;
+}

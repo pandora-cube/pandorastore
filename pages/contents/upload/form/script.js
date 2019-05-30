@@ -147,16 +147,14 @@ $(document).ready(function onDocumentReady() {
             var $autocomplete = $("#creator-autocomplete");
             var data = JSON.parse(json);
 
-            $autocomplete.empty();
+            $autocomplete.clear();
             for (var i = 0; i < data.length; i++) {
                 var creator = data[i];
                 var text = creator.Nickname + "(" + creator.Name + ")";
 
-                $autocomplete
-                    .append($("<li>")
-                        .data("UserNumber", creator.UserNumber)
-                        .text(text));
+                $autocomplete.addItem(text, creator.Nickname);
             }
+            $autocomplete.show();
         });
     }
 
@@ -414,4 +412,5 @@ $(document).ready(function onDocumentReady() {
 
     addImageRow();
     addFileRow();
+    $(".autocomplete").each(AutoComplete);
 });

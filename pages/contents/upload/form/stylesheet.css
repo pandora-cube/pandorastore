@@ -128,15 +128,6 @@
     float: right;
     margin: 0;
 }
-#contents form .autocomplete {
-    position: absolute;
-    margin-top: 2em;
-    list-style: none;
-}
-#contents form .autocomplete > li {
-    line-height: 1.5;
-    cursor: pointer;
-}
 #contents form .uploads {
     margin: .5em 0 1em 0;
     padding: .5em 0;
