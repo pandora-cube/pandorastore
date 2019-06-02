@@ -22,11 +22,8 @@ class Users {
             FROM {$this->table["users"]}";
         
         if (count($conditions) > 0) {
-            $sql .= " WHERE TRUE";
-            foreach ($conditions as $condition) {
-                $value = $this->mysqli->escape_string($condition[2]);
-                $sql .= " AND ({$condition[0]} {$condition[1]} '{$value}')";
-            }
+            $sql .= " WHERE ";
+            $sql .= $this->convertConditions($conditions);
         }
 
         if (strlen($sort)) {
@@ -116,6 +113,34 @@ class Users {
                 ('{$email}', '{$nickname}', SHA1('{$password}'), '{$authCode}' {$val_pcube})";
         $this->mysqli->query($sql);
         return true;
+    }
+
+    private function convertConditions($conditions, $gate = "AND") {
+        $conditionText = "";
+
+        if (gettype($conditions) === "array") {
+            if ($conditions[0] === "AND") {
+                $temp = "";
+                for ($i = 1; $i < count($conditions); $i++) {
+                    $converted = $this->convertConditions($conditions[$i], "AND");
+                    $temp .= " AND ({$converted})";
+                }
+                $conditionText = substr($temp, 5);
+            } else if ($conditions[0] === "OR") {
+                $temp = "";
+                for ($i = 1; $i < count($conditions); $i++) {
+                    $converted = $this->convertConditions($conditions[$i], "OR");
+                    $temp .= " OR ({$converted})";
+                }
+                $conditionText = substr($temp, 4);
+            } else if (count($conditions) === 3 && gettype($conditions[0]) === "string" && gettype($conditions[1]) === "string") {
+                $value = $this->mysqli->escape_string($conditions[2]);
+                $temp = " {$gate} ({$conditions[0]} {$conditions[1]} '{$value}')";
+                $conditionText = substr($temp, 2 + strlen($gate));
+            }
+        }
+
+        return $conditionText;
     }
 }
 ?>
