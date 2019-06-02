@@ -79,7 +79,7 @@ class Categories {
         $sql = "
             SELECT *
             FROM {$this->table["tags"]}
-            ORDER BY ID ASC";
+            ORDER BY ID DESC";
 
         $this->tags = array();
         if($result = $this->mysqli->query($sql)) {
