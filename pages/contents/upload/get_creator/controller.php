@@ -2,10 +2,24 @@
 require_once("models/users.php");
 
 $name = $_POST["name"];
+$equal = $_POST["equal"];
 
-$conditions = [
+$nameCondition = [
+    "OR",
     ["Name", "LIKE", "{$name}%"],
-    ["Name", "<>", ""],
+    ["Nickname", "LIKE", "{$name}%"],
+];
+if ($equal) {
+    $nameCondition = [
+        "OR",
+        ["Name", "=", $name],
+        ["Nickname", "=", $name],
+    ];
+}
+$conditions = [
+    "AND",
+    $nameCondition,
+    ["LENGTH(Name)", ">", 0],
     ["Authenticated", "=", 1],
 ];
 

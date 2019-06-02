@@ -133,6 +133,70 @@ $(document).ready(function onDocumentReady() {
         event.preventDefault();
     }
 
+    // 제작팀원 항목 제거
+    function deleteCreator(event) {
+        var $creators = $(this).parents("#upload-form .creators");
+
+        $(this).parents("#upload-form .creators > .item").remove();
+
+        if ($creators.find(".item").length === 0) {
+            $creators.find(".no-item").removeClass("hidden");
+        }
+
+        event.preventDefault();
+    }
+
+    // 제작팀원 항목 추가
+    function addCreator(creatorUserNumber, creatorNickname, creatorName) {
+        var $creators = $("#upload-form .creators");
+        var template = $("#gp-item-template").html();
+
+        // 판도라스토어 회원 데이터 존재 여부 검사
+        if (creatorUserNumber == null || creatorNickname == null || creatorName == null) {
+            alert("판도라스토어에 가입된 회원이 아닙니다.");
+            return;
+        }
+
+        // 이미 추가된 팀원인지 검사
+        if ($("#upload-form .creators > .item input[value='" + creatorUserNumber + "']").length > 0) {
+            alert("이미 추가된 팀원입니다.");
+            return;
+        }
+
+        // 영역 내 input 엘리먼트의 name 속성
+        function getInputElementName() {
+            return "Creator-" + creatorNumber;
+        }
+
+        /* eslint-disable indent */
+        $creators
+            .append($(template)
+                .addClass("item")
+                .find("input")
+                    .attr("name", getInputElementName)
+                    .val(creatorUserNumber)
+                    .end()
+                .find(".name")
+                    .text(creatorNickname)
+                    .end()
+                .find(".delete")
+                    .on("click", deleteCreator)
+                    .end())
+            .find(".no-item")
+                .addClass("hidden");
+        /* eslint-enable */
+
+        // 팀원 번호 증가
+        creatorNumber++;
+        $("#Num-Creators").val(creatorNumber);
+    }
+
+    // 제작팀원 입력란 자동입력 이벤트
+    function onCreatorAutoCompleted(event, value, data) {
+        addCreator(data.UserNumber, data.Nickname, data.Name);
+        event.preventDefault();
+    }
+
     // 제작팀원 입력란 갱신 이벤트
     function onCreatorInputChanged() {
         var creatorName = $("#Creator").val();
@@ -152,81 +216,40 @@ $(document).ready(function onDocumentReady() {
                 var creator = data[i];
                 var text = creator.Nickname + "(" + creator.Name + ")";
 
-                $autocomplete.addItem(text, creator.Nickname);
+                $autocomplete.addItem(text, creator.Nickname)
+                    .data("UserNumber", creator.UserNumber)
+                    .data("Nickname", creator.Nickame)
+                    .data("Name", creator.Name);
             }
             $autocomplete.show();
         });
     }
 
-    // 제작팀원 항목 제거
-    function deleteCreator(event) {
-        var $creators = $(this).parents("#upload-form .creators");
+    // 제작팀원 추가 버튼 클릭 이벤트
+    function onAddCreatorButtonClicked(event) {
+        var creatorName = $("#Creator").val();
 
-        $(this).parents("#upload-form .creators > .item").remove();
+        if (creatorName.length === 0) {
+            alert("팀원의 이름 혹은 닉네임을 입력해 주세요.");
+        } else {
+            $.post("/contents/upload/get_creator", {
+                name: creatorName,
+                equal: true,
+            }).done(function onCreatorDataResponse(json) {
+                var data = JSON.parse(json);
 
-        if ($creators.find(".item").length === 0) {
-            $creators.find(".no-item").removeClass("hidden");
+                if (data.length === 0) {
+                    alert("판도라스토어에 가입된 회원이 아닙니다.");
+                    return;
+                }
+
+                addCreator(data[0].UserNumber, data[0].Nickname, data[0].Name);
+                $("#Creator").val(null);
+                $("#creator-autocomplete").clear();
+            });
         }
 
         event.preventDefault();
-    }
-
-    // 제작팀원 헝목 추가
-    function addCreator(event) {
-        var creatorName = $("#Creator").val();
-
-        $.post("/contents/upload/get_creator", {
-            name: creatorName,
-        }).done(function onCreatorDataResponse(json) {
-            var $creators = $("#upload-form .creators");
-            var template = $("#gp-item-template").html();
-            var data = JSON.parse(json);
-            var creatorUserNumber = data[0].UserNumber;
-            var creatorName = data[0].Name;
-
-            // 판도라스토어 회원 데이터 존재 여부 검사
-            if (data.length === 0 || creatorUserNumber == null || creatorName == null) {
-                alert("판도라스토어에 가입된 회원이 아닙니다.");
-                return;
-            }
-
-            // 이미 추가된 팀원인지 검사
-            if ($("#upload-form .creators > .item input[value='" + creatorUserNumber + "']").length > 0) {
-                alert("이미 추가된 팀원입니다.");
-                return;
-            }
-
-            // 영역 내 input 엘리먼트의 name 속성
-            function getInputElementName() {
-                return "Creator-" + creatorNumber;
-            }
-
-            /* eslint-disable indent */
-            $creators
-                .append($(template)
-                    .addClass("item")
-                    .find("input")
-                        .attr("name", getInputElementName)
-                        .val(creatorUserNumber)
-                        .end()
-                    .find(".name")
-                        .text(creatorName)
-                        .end()
-                    .find(".delete")
-                        .on("click", deleteCreator)
-                        .end())
-                .find(".no-item")
-                    .addClass("hidden");
-            /* eslint-enable */
-
-            // 팀원 번호 증가
-            creatorNumber++;
-            $("#Num-Creators").val(creatorNumber);
-        });
-
-        if (event !== undefined) {
-            event.preventDefault();
-        }
     }
 
     // 장르 항목 제거
@@ -391,11 +414,12 @@ $(document).ready(function onDocumentReady() {
 
     /* eslint-disable indent */
     $("#Creator").on("keyup", onCreatorInputChanged);
+    $("#Creator").on("autocompleted", onCreatorAutoCompleted);
     $("#upload-form .add-creator")
-        .on("click", addCreator)
+        .on("click", onAddCreatorButtonClicked)
         .on("keydown", function onKeyDown(event) {
             if (event.keyCode === 13) {
-                addCreator();
+                onAddCreatorButtonClicked();
             }
         });
     $("#upload-form .add-genre").on("click", addGenre);
