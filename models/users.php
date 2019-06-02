@@ -6,27 +6,23 @@ class Users {
     private $table;
     private $data;
 
-    public function __construct($conditions = []) {
+    public function __construct($condition = "") {
         $config_db = parse_ini_file("configs/database.ini");
 
         $this->mysqli = mysqli_connect($config_db["host"], $config_db["user"], $config_db["password"], $config_db["database"]);
         $this->table = $config_db["table"];
 
         if ($this->mysqli)
-            $this->load($conditions);
+            $this->load($condition);
     }
 
-    public function load($conditions, $sort) {
+    public function load($condition, $sort) {
         $sql = "
             SELECT *
             FROM {$this->table["users"]}";
         
-        if (count($conditions) > 0) {
-            $sql .= " WHERE TRUE";
-            foreach ($conditions as $condition) {
-                $value = $this->mysqli->escape_string($condition[2]);
-                $sql .= " AND ({$condition[0]} {$condition[1]} '{$value}')";
-            }
+        if (strlen($condition) > 0) {
+            $sql .= " WHERE ({$condition})";
         }
 
         if (strlen($sort)) {
