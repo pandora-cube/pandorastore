@@ -14,7 +14,7 @@ function checkAccount($key, $input, &$checkList, $checkAll) {
             } else if (strlen($value) > 16) {
                 $data = ["Nickname", 0, "너무 깁니다."];
             } else {
-                $users_model = new Users([["Nickname", "=", $value], ["Authenticated", "=", 1]]);
+                $users_model = new Users(["AND", ["Nickname", "=", $value], ["Authenticated", "=", 1]]);
                 $users_data = $users_model->getData();
 
                 if (count($users_data) > 0) {
@@ -32,7 +32,7 @@ function checkAccount($key, $input, &$checkList, $checkAll) {
             } else if (strpos($value, "@") === false) {
                 $data = ["EMail", -1, "도메인까지 작성해 주세요~"];
             } else {
-                $users_model = new Users([["EMail", "=", $value], ["Authenticated", "=", 1]]);
+                $users_model = new Users(["AND", ["EMail", "=", $value], ["Authenticated", "=", 1]]);
                 $users_data = $users_model->getData();
 
                 if (count($users_data) > 0) {
@@ -81,7 +81,7 @@ function checkAccount($key, $input, &$checkList, $checkAll) {
             } else if (strlen($input["StudentID"]) > 12) {
                 $data = ["Univ", 0, "학번이 너무 깁니다."];
             } else {
-                $users_model = new Users([["University", "=", $input["Univ"]], ["StudentID", "=", $input["StudentID"]], ["Authenticated", "=", 1]]);
+                $users_model = new Users(["AND", ["University", "=", $input["Univ"]], ["StudentID", "=", $input["StudentID"]], ["Authenticated", "=", 1]]);
                 $users_data = $users_model->getData();
 
                 if (count($users_data) > 0) {
