@@ -66,7 +66,7 @@ class Team {
             $type = gettype($member);
 
             if ($type === "integer") {
-                $users_model = new Users([["UserNumber", "=", $member]]);
+                $users_model = new Users(["UserNumber", "=", $member]);
                 $user_data = $users_model->getData()[0];
 
                 if ($user_data["PCubeMember"] == 1) { // 판도라큐브 회원인 경우

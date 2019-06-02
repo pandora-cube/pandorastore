@@ -119,7 +119,7 @@ class Users {
         $conditionText = "";
 
         if (gettype($conditions) === "array") {
-            if ($conditions[0] === "AND") {
+            if ($conditions[0] === "AND" || gettype($conditions[0]) === "array") {
                 $temp = "";
                 for ($i = 1; $i < count($conditions); $i++) {
                     $converted = $this->convertConditions($conditions[$i], "AND");
