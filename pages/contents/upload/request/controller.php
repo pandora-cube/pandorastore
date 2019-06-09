@@ -1,11 +1,4 @@
 <?php
-echo "GET: <br>";
-print_r($_GET);
-echo "<br><br>POST: <br>";
-print_r($_POST);
-echo "<br><br>FILES(prev): <br>";
-print_r($_FILES);
-
 require_once("models/team.php");
 require_once("models/contents.php");
 require_once("models/categories.php");
@@ -26,13 +19,9 @@ function uploadFiles($config_contents, $identifier) {
     $numScreenShot = 0;
 
     $uploadedFiles = ["File" => [], "Image" => []];
-    echo "<br><br>FILES(post): <br>";
-    print_r($_FILES);
     foreach ($_FILES as $key => $file) {
-        echo "<br><br>---<br>";
         if ($file["size"] === 0) {
             // 업로드되지 않은 경우
-            echo "!";
             continue;
         } else if ($file["size"] > $MAX_FILE_SIZE) {
             // 제한 용량을 초과한 경우
@@ -44,7 +33,6 @@ function uploadFiles($config_contents, $identifier) {
 
             // 디렉토리 생성
             $dirResult = mkdir($fileDest, 0777, true);
-            echo $fileDest." - ".is_dir($fileDest);
             if (is_dir($fileDest) === false && $dirResult === false) {
                 exit("콘텐츠 디렉토리를 생성하지 못했습니다.");
             }
