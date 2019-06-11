@@ -25,18 +25,24 @@
     padding: 19.5px;
     background-color: white;
 }
-.modalArea .closebutton {
+.modalArea .top-buttons {
     float: right;
     margin: -1em -.7em 0 0;
+}
+.modalArea .top-buttons > button {
+    float: left;
     font-family: sans-serif;
     cursor: pointer;
     border: none;
 }
-.modalArea .closebutton:hover {
+.modalArea .top-buttons > button:nth-child(n+2) {
+    margin-left: .3em;
+}
+.modalArea .top-buttons > button:hover {
     color: #8badc9;
 }
 @media screen and (max-width: 50rem) { /* for Mobile */
-    .modalArea .closebutton {
+    .modalArea .top-buttons {
         font-size: 1.2em;
         margin: -.7em -.5em 0 0;
     }

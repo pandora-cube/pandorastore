@@ -5,6 +5,10 @@
 <input id="identifier" type="hidden" value="<?=$this->getAttribute("Identifier")?>" />
 <input id="page-title" type="hidden" value="<?=$this->title?>" />
 
+<?php if ($this->isEnabledArea("manage")): ?>
+    <input id="enable-manage" type="hidden" />
+<?php endif; ?>
+
 <div class="top">
     <!-- 아이콘 -->
     <div class="cover">

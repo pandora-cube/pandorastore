@@ -31,6 +31,8 @@ $template = null;
     $user_data = $user->getData();
     if ($user_data["PCubeMember"] != 1)
         $template->disableArea("review-write");
+    if ($user_data["AdminLevel"] < 1)
+        $template->disableArea("manage");
 }
 
 $template->loadView("contents/detail");

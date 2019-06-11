@@ -18,6 +18,19 @@ $(document).ready(function onDocumentReady() {
         });
     }
 
+    // 관리자 버튼 추가
+    function insertManagementButtons() {
+        /*if ($("#enable-manage").val() === undefined) {
+            return;
+        }*/
+
+        $modal.addTopButton()
+            .addClass("edit-button")
+            .append($("<i>")
+                .addClass("material-icons")
+                .html("settings"));
+    }
+
     // 이미지 슬라이드 불러오기
     function loadSlide() {
         var $slideWrapper = $modal.find(".slideArea .slideWrapper");
@@ -224,6 +237,7 @@ $(document).ready(function onDocumentReady() {
     }
 
     applyDocumentTitle();
+    insertManagementButtons();
     loadSlide();
     loadReviews();
     $modal.find(".reviewArea .write").on("submit", writeReview);

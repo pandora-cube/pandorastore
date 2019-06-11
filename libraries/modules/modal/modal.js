@@ -2,9 +2,11 @@ function Modal(name, url) {
     var $bodyWrapper;
     var $area;
     var $modal;
+    var $topButtonsContainer;
+    var $topButtons = [];
     var scrollTop;
 
-    function initializeModal(openModal_, destroyModal_) {
+    function initializeModal(openModal_, destroyModal_, addTopButton_) {
         this.onReady = $.Event("ready");
         this.onOpen = $.Event("onOpen");
         this.onClose = $.Event("close");
@@ -12,6 +14,7 @@ function Modal(name, url) {
         $.fn.extend({
             open: openModal_,
             close: destroyModal_,
+            addTopButton: addTopButton_,
         });
     }
 
@@ -21,16 +24,28 @@ function Modal(name, url) {
     }
 
     function createModal(html) {
+        var i;
+
         $modal = $("<div>")
             .html(html)
             .addClass("modal")
             .prependTo($area);
 
-        $("<button>")
-            .addClass("closebutton")
-            .on("click", onCloseButtonClicked)
-            .html("&#10006;")
+        $topButtonsContainer = $("<div>")
+            .addClass("top-buttons")
             .prependTo($modal);
+
+        for (i = 0; i < $topButtons.length; i++) {
+            $topButtons[i].appendTo($topButtonsContainer);
+        }
+
+        $topButtonsContainer
+            .append($("<button>")
+                .addClass("closebutton")
+                .on("click", onCloseButtonClicked)
+                .append($("<i>")
+                    .addClass("material-icons")
+                    .html("close")));
 
         return $modal;
     }
@@ -60,6 +75,14 @@ function Modal(name, url) {
         $area.remove();
     }
 
+    function addTopButton() {
+        var $button = $("<button>");
+
+        $topButtons.push($button);
+
+        return $button;
+    }
+
     function createArea() {
         if ($("#" + name).length > 0) {
             $("#" + name).close();
@@ -81,7 +104,7 @@ function Modal(name, url) {
             .on("click", onCloseButtonClicked)
             .appendTo("body")
             .each(function applyInnerClass() {
-                initializeModal.call(this, openModal, destroyModal);
+                initializeModal.call(this, openModal, destroyModal, addTopButton);
             });
 
         return $area;
