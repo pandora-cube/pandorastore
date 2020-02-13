@@ -218,7 +218,7 @@ $(document).ready(function onDocumentReady() {
 
                 $autocomplete.addItem(text, creator.Nickname)
                     .data("UserNumber", creator.UserNumber)
-                    .data("Nickname", creator.Nickame)
+                    .data("Nickname", creator.Nickname)
                     .data("Name", creator.Name);
             }
             $autocomplete.show();
