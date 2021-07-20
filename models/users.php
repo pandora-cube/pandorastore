@@ -16,7 +16,7 @@ class Users {
             $this->load($conditions);
     }
 
-    public function load($conditions, $sort) {
+    public function load($conditions, $sort=null) {
         $sql = "
             SELECT *
             FROM {$this->table["users"]}";
