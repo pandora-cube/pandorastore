@@ -4,7 +4,7 @@ class User {
     private $table;
     private $data;
 
-    public function __construct($userID, $password, $encrypt, $compel = false) {
+    public function __construct($userID = null, $password = null, $encrypt = null, $compel = false) {
         if (is_null($userID) && is_null($password)) {
             session_start();
             $userID = $_SESSION["UserID"];
