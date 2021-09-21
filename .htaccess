@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteRule ^(.*)\.(.*)$    $0 [NC,L]
+RewriteRule ^category/([^\.]+)$    ?category=$1 [QSA,NC,L]
+RewriteRule ^(.*)\?(.*)$        ?action=$1$2$3 [QSA,NC,L]
+RewriteRule ^[^\.]+$    ?action=$0 [QSA,NC,L]
+
