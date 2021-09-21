@@ -4,10 +4,9 @@ require_once("models/contents.php");
 $config_contents = parse_ini_file("configs/contents.ini");
 
 $identifier = $_GET["identifier"];
-$platform = $_GET["platform"];
 $fileName = $_GET["filename"];
 
-$filePath = getcwd()."{$config_contents["path"]["root"]}/{$identifier}/.Platform_{$platform}";
+$filePath = getcwd()."{$config_contents["path"]["root"]}/{$identifier}/{$filename}";
 $fileSize = filesize($filePath);
 
 header("Pragma: public");

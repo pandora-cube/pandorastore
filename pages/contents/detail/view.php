@@ -33,8 +33,8 @@
 
 <!-- 다운로드 버튼 영역 -->
 <div class="download">
-    <?php foreach ($this->getAttribute("download-data") as $platform => $url): ?>
-        <a href="<?=$url?>"><?=$platform?></a>
+    <?php foreach ($this->getAttribute("download-data") as $platform => $filename): ?>
+        <a href="<?=$filename?>"><?=$platform?></a>
     <?php endforeach; ?>
 </div>
 
