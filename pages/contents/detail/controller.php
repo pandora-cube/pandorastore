@@ -17,7 +17,11 @@ $template = null;
         $template->disableArea("tooltip");
 
     // Downloads
-    $template->setAttribute("download-data", $data["Downloads"]);
+    $downloadData = $data["Downloads"];
+    foreach ($downloadData as $platform => &$path)
+        if (strpos($path, "http://") === false && strpos($path, "https://") === false)
+            $path = "/contents/download?identifier={$data['Identifier']}&platform={$platform}";
+    $template->setAttribute("download-data", $downloadData);
 
     // Introduction
     $data["Introduction"] = str_replace(array(" ", "\n"), array("&nbsp;", "<br/>"), $data["Introduction"]);

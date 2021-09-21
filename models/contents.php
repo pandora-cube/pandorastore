@@ -95,7 +95,7 @@ class Contents {
                 $categories_model->parseName($origin, $this->contents[$i], "Tag");
                 $this->contents[$i]["TagsList"] = implode(", ", $this->contents[$i]["Tags"]);
                 // Downloads
-                $this->contents[$i]["Downloads"] = json_decode($this->contents[$i]["Downloads"]);
+                $this->contents[$i]["Downloads"] = json_decode($this->contents[$i]["Downloads"], true);
                 /*foreach ($this->contents[$i]["Downloads"] as $platform => &$url) {
                     if (strpos($url, "http://") === false && strpos($url, "https://") === false) {
                         $url = $this->getPath($identifier)."/{$url}";
@@ -157,7 +157,7 @@ class Contents {
     }
 
     private function getCreators(&$creator) {
-        $creators = json_decode($creator);
+        $creators = json_decode($creator, true);
         $type = substr($creator, 0, 1);
         $number = intval(substr($creator, 1, strlen($creator)-1));
 
